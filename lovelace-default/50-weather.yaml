@@ -61,10 +61,10 @@ cards:
             hours_to_show: 6
             detail: 2
             graph: line
-            entity: sensor.saa_feels_like_temperature
+            entity: sensor.openweathermap_feels_like_temperature
             name: Tuntuu kuin
           - type: gauge
-            entity: sensor.saa_uv_index
+            entity: sensor.openweathermap_uv_index
             min: 0
             max: 13
             name: UV-indeksi
@@ -75,7 +75,7 @@ cards:
               yellow: 3
               red: 8
           - type: gauge
-            entity: sensor.saa_rain
+            entity: sensor.openweathermap_rain
             min: 0
             max: 10 # keskim. normaali ip 1013 hPa
             name: Sademäärä
@@ -94,7 +94,7 @@ cards:
               yellow: 1003
               red: 0
           - type: gauge
-            entity: sensor.saa_wind_speed
+            entity: sensor.openweathermap_wind_speed
             min: 0
             max: 33
             name: Tuulen nopeus
@@ -110,10 +110,10 @@ cards:
           - type: sensor
             graph: none
             icon: mdi:gauge
-            entity: sensor.saa_wind_bearing
+            entity: sensor.openweathermap_wind_bearing
             name: Tuulen suunta
           - type: sensor
-            entity: sensor.saa_cloud_coverage
+            entity: sensor.openweathermap_cloud_coverage
             name: Pilvisyys
             icon: mdi:percent
             graph: none
