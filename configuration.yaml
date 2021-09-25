@@ -1,8 +1,4 @@
 homeassistant:
-  allowlist_external_dirs:
-    - /tmp
-    - /home/homeassistant/weathersnaps
-    - /home/homeassistant/snapshots
 ##############################
 # COMPONENTS CONFIGURED HERE #
 ##############################
