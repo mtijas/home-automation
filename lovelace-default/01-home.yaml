@@ -118,7 +118,7 @@ cards:
           - operator: "<"
             value: 20
         entities:
-          - entity: sensor.markuksen_iphone_battery_level
+          - entity: sensor.iphone_markus_battery_level
             name: "Markuksen iPhone"
           - entity: sensor.iphone_veera_battery_level
             name: "Veeran iPhone"
@@ -142,8 +142,8 @@ cards:
           - type: picture-glance
             entity: person.markus
             entities:
-              - entity: sensor.markuksen_iphone_battery_level
-              - entity: sensor.markuksen_iphone_geocoded_location
+              - entity: sensor.iphone_markus_battery_level
+              - entity: sensor.iphone_markus_geocoded_location
             state_image:
               "home": "/local/avatars/markus.jpg"
               "not_home": "/local/avatars/markus-bw.jpg"
@@ -393,7 +393,7 @@ cards:
           - "#ffff00" # yellow
           - "#00ff00" # green
         entities:
-          - entity: sensor.markuksen_iphone_battery_level
+          - entity: sensor.iphone_markus_battery_level
             name: "Markuksen iPhone"
           - entity: sensor.ipad_markus_battery_level
             name: "Markuksen iPad"
