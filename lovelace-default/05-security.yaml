@@ -1,0 +1,281 @@
+title: Turvallisuus
+icon: mdi:security
+background: var(--background-image)
+# The cards to show on this view.
+cards:
+  - type: vertical-stack
+    title: Turvatoiminnot
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:button-card"
+            entity: input_boolean.master_caution_triggered
+            color_type: card
+            color: yellow
+            tap_action:
+              action: call-service
+              service: input_boolean.turn_on
+              service_data:
+                entity_id: input_boolean.ack_master_caution
+          - type: "custom:button-card"
+            entity: group.master_warning
+            color_type: card
+            color: red
+            tap_action:
+              action: more-info
+
+      - type: conditional
+        conditions:
+          - entity: input_boolean.ack_master_caution
+            state: "on"
+        card:
+          type: "custom:button-card"
+          color: rgb(100, 100, 255)
+          color_type: card
+          show_icon: false
+          entity: input_boolean.ack_master_caution
+          tap_action:
+            action: more-info
+
+      - type: conditional
+        conditions:
+          - entity: group.master_warning
+            state: "on"
+        card:
+          type: "custom:button-card"
+          color: rgb(50, 0, 255)
+          color_type: card
+          name: "Kuittaa hälytykset"
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.reverse_emergency_state
+
+      - type: entity-filter
+        show_empty: false
+        entities:
+          - input_boolean.burglar_alarm_raised
+          - input_boolean.fire_alarm_raised
+          - input_boolean.panic_alarm_raised
+          - input_boolean.fridge_temperature_alarm
+          - input_boolean.front_door_alarm
+          - binary_sensor.scfb_temp_alarm
+          - binary_sensor.scfb_fan_alarm
+          - binary_sensor.olohuoneen_kaasuhalytys
+        state_filter:
+          - "on"
+        card:
+          type: glance
+          title: Aktiiviset hälytykset
+
+      - type: grid
+        columns: 3
+        square: false
+        cards:
+          - type: "custom:button-card"
+            color_type: card
+            entity: alarm_control_panel.ha_alarm
+            name: Murtohälytin
+            tap_action:
+              action: more-info
+            state:
+              - value: "armed_home"
+                color: green
+                icon: mdi:shield-home-outline
+              - value: "armed_away"
+                color: green
+                icon: mdi:shield-airplane
+              - value: "armed_night"
+                color: green
+                icon: mdi:shield-home
+              - value: "triggered"
+                color: red
+                icon: mdi:alert
+              - value: "pending"
+                color: yellow
+                icon: mdi:shield-half-full
+              - value: "disarmed"
+                color: grey
+                icon: mdi:shield-check-outline
+              - operator: default
+                color: orange
+                icon: mdi:shield-remove-outline
+          - type: "custom:button-card"
+            entity: input_boolean.perimeter_notifications
+            name: Kuorivalvonta
+            color_type: card
+            color: green
+            tap_action:
+              action: toggle
+            icon: mdi:home-circle-outline
+          - type: "custom:button-card"
+            entity: input_boolean.motion_notify
+            name: Liikeilmoitus
+            color_type: card
+            color: green
+            tap_action:
+              action: toggle
+          - type: "custom:button-card"
+            entity: binary_sensor.mh_aanihalytin
+            name: MH äänihälytin
+            color_type: card
+            color: green
+            tap_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: binary_sensor.halytinpaneelin_aanihalytin
+            name: ET äänihälytin
+            color_type: card
+            color: green
+            tap_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: binary_sensor.halytinpaneelin_tila
+            name: ET hälypaneeli yhdistetty
+            color_type: card
+            color: green
+            icon: mdi:alarm-panel-outline
+            tap_action:
+              action: more-info
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            name: "Mykistä"
+            tap_action:
+              action: call-service
+              service: mqtt.publish
+              service_data:
+                topic: "notify/cmd"
+                payload: "event,mute"
+                qos: 1
+                retain: 0
+          - type: "custom:button-card"
+            name: "Mykistys pois"
+            tap_action:
+              action: call-service
+              service: mqtt.publish
+              service_data:
+                topic: "notify/cmd"
+                payload: "event,unmute"
+                qos: 1
+                retain: 0
+          - type: "custom:button-card"
+            name: "Kuittaa"
+            tap_action:
+              action: call-service
+              service: mqtt.publish
+              service_data:
+                topic: "notify/cmd"
+                payload: "event,clear"
+                qos: 1
+                retain: 0
+          - type: "custom:button-card"
+            name: "Testi"
+            tap_action:
+              action: call-service
+              service: mqtt.publish
+              service_data:
+                topic: "notify/cmd"
+                payload: "event,doorbell"
+                qos: 1
+                retain: 0
+
+      - type: entity
+        entity: sensor.event_topic
+
+      - type: logbook
+        hours_to_show: 24
+        entities:
+          - sensor.event_topic
+
+      - type: logbook
+        hours_to_show: 24
+        entities:
+          - alarm_control_panel.ha_alarm
+          - input_boolean.burglar_alarm_raised
+          - input_boolean.fire_alarm_raised
+          - input_boolean.panic_alarm_raised
+          - input_boolean.fridge_temperature_alarm
+          - input_boolean.front_door_alarm
+          - binary_sensor.scfb_temp_alarm
+          - binary_sensor.scfb_fan_alarm
+          - binary_sensor.olohuoneen_kaasuhalytys
+          - input_boolean.perimeter_notifications
+          - input_boolean.motion_notify
+
+  - type: vertical-stack
+    title: Kodin tila
+    cards:
+      - type: entity
+        entity: input_select.home_mode
+      - type: grid
+        columns: 3
+        square: false
+        cards:
+          - type: "custom:button-card"
+            entity: binary_sensor.all_motion
+            color_type: card
+            color: yellow
+            name: Liikehavainto
+            tap_action:
+              action: more-info
+            icon: mdi:motion-sensor
+          - type: "custom:button-card"
+            entity: binary_sensor.all_doors
+            color_type: card
+            color: yellow
+            name: Ovet
+            tap_action:
+              action: more-info
+            state:
+              - value: "on"
+                icon: mdi:door-open
+              - operator: default
+                icon: mdi:door-closed
+      - type: entities
+        show_header_toggle: false
+        state_color: true
+        entities:
+          - entity: group.all_toilet_motion
+            secondary_info: last-changed
+          - entity: group.all_hallway_motion
+            secondary_info: last-changed
+          - entity: group.all_kitchen_motion
+            secondary_info: last-changed
+      - type: entities
+        show_header_toggle: false
+        state_color: true
+        entities:
+          - entity: binary_sensor.etuovi
+            secondary_info: last-changed
+          - entity: binary_sensor.parvekkeen_ovi
+            secondary_info: last-changed
+
+  - type: vertical-stack
+    title: Ihmiset
+    cards:
+      - type: entity
+        entity: input_boolean.guests
+      - type: entities
+        show_header_toggle: false
+        state_color: true
+        entities:
+          - entity: person.markus
+            secondary_info: last-changed
+          - entity: person.veera
+            secondary_info: last-changed
+      - type: map
+        default_zoom: 14
+        aspect_ratio: 1:1
+        dark_mode: false
+        hours_to_show: 24
+        entities:
+          - person.markus
+          - person.veera
+          - zone.home
+          - zone.p_r
+          - zone.turkuamk

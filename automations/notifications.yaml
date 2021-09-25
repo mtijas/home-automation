@@ -1,0 +1,128 @@
+- id: good_morning_msg
+  alias: "Lämpötilailmoitus"
+  trigger:
+    - at: "06:20:00"
+      platform: time
+  action:
+    - service: notify.telegram_notify_possula
+      data_template:
+        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ulkoilman_lampotila") }} °C, tuulee {{ states("sensor.saa_wind_speed") }} m/s ja {{ states("sensor.saa_condition") }}.'
+
+- id: coffee_brewed_notification
+  alias: "Kahvin valmistumisilmoitus"
+  trigger:
+    - entity_id: binary_sensor.coffee_is_brewing
+      platform: state
+      to: "off"
+  action:
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Kahvi on valmista.
+
+- id: scfb_temp_alarm
+  alias: "SCFB Temp Alarm"
+  trigger:
+    - entity_id: binary_sensor.scfb_temp_alarm
+      platform: state
+      to: "on"
+      from: "off"
+  action:
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: "Palvelinkaapin lämpötila on korkea!"
+    - service: notify.telegram_notify_possula
+      data_template:
+        message: "Palvelinkaapin lämpötila on korkea!"
+
+- id: scfb_fan_alarm
+  alias: "SCFB Fan Stop Alarm"
+  trigger:
+    - entity_id: binary_sensor.scfb_fan_alarm
+      platform: state
+      to: "on"
+      from: "off"
+  action:
+    - service: notify.telegram_notify_possula
+      data_template:
+        message: "Palvelinkaapin tuuletin on pysähtynyt!"
+
+- id: gas_alarm_possula
+  alias: Gas alarm announcement through Possula
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.olohuoneen_kaasuhalytys
+      to: "on"
+      from: "off"
+  action:
+    - service: notify.telegram_notify_possula
+      data_template:
+        title: "Suojeluhälytys!"
+        message: >
+          Epäpuhtauksia havaittu olohuoneen ilmassa.
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Varoitus: Epäpuhtauksia havaittu olohuoneen ilmassa.
+
+- id: telegram_heartbeat
+  alias: "Heartbeat-viesti Telegramiin"
+  trigger:
+    - platform: time
+      at: "12:00:00"
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: group.people
+        state: "not_home"
+        for:
+          hours: 12
+      - condition: state
+        entity_id: alarm_control_panel.ha_alarm
+        state: "armed_away"
+        for:
+          hours: 12
+  action:
+    - service: notify.telegram_notify_possula
+      data_template:
+        message:
+          'Ulkoilman lämpötila on {{ states("sensor.ulkoilman_lampotila") }} °C,
+          tuulee {{ states("sensor.saa_wind_speed") }} m/s ja {{ states("sensor.saa_condition") }}.
+          Olohuoneessa on {{ states("sensor.olohuoneen_lampotila") }} °C ja suhteellinen kosteus
+          {{ states("sensor.olohuoneen_kosteus") }} %. Murtohälyttimen tila:
+          {{ states("alarm_control_panel.ha_alarm") }}, kuorivalvonta: {{ states("input_boolean.perimeter_notifications") }}.'
+
+- id: ha_start
+  alias: "Home Assistantin käynnistysilmoitus"
+  trigger:
+    - platform: homeassistant
+      # Event can also be 'shutdown'
+      event: start
+  condition:
+    - condition: state
+      entity_id: group.people
+      state: "home"
+  action:
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Kotiautomaatio käynnistetty.
+
+- id: burglar_alarm_disarm_notification
+  alias: "Burglar alarm disarm notification"
+  trigger:
+    - entity_id: alarm_control_panel.ha_alarm
+      platform: state
+      to: "disarmed"
+      from: "pending"
+  action:
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Murtohälytin pois.

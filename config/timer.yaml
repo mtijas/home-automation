@@ -1,0 +1,6 @@
+hallway_motion_timeout:
+  duration: "00:03:00"
+kitchen_motion_timeout:
+  duration: "00:03:00"
+toilet_motion_timeout:
+  duration: "00:03:00"

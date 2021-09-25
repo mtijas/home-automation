@@ -1,0 +1,251 @@
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_use_percent
+    - type: processor_use
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+- platform: template
+  sensors:
+    tp_link_smart_plug_5f83_power:
+      value_template: "{{ state_attr('switch.tp_link_smart_plug_5f83', 'current_power_w') | float }}"
+      unit_of_measurement: "W"
+      friendly_name: "MH kostuttimen tehonkulutus"
+    living_room_harmony_hub:
+      value_template: "{{ state_attr('remote.living_room', 'current_activity') }}"
+      friendly_name: "Living room harmony hub"
+    wan_router_ping_round_time:
+      value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float }}"
+      unit_of_measurement: "ms"
+    google_ping_round_time:
+      value_template: "{{ state_attr('binary_sensor.ping_google', 'round_trip_time_avg') | float }}"
+      unit_of_measurement: "ms"
+    pressure_hourly_trend:
+      value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float) * 3600) | round(2) }}"
+      friendly_name: "Ilmanpaineen trendi (hPa/h)"
+      unit_of_measurement: "hPa"
+    living_room_brightness_difference:
+      value_template: >
+        {% set current = states('sensor.olohuoneen_valoisuus') | float %}
+        {% set target = states('input_number.living_room_brightness_target') | float %}
+        {{ (target - current) | float | round(2) }}
+      friendly_name: "OH valoisuuden erotus"
+      unit_of_measurement: "%"
+    living_room_brightness_needed_change:
+      value_template: >
+        {% set current = states('sensor.olohuoneen_valoisuus') | float %}
+        {% set target = states('input_number.living_room_brightness_target') | float %}
+        {% set damping = states('input_number.living_room_brightness_damping') | float %}
+        {% set new_val = ((target - current) * damping) | int %}
+        {{ new_val }}
+      friendly_name: "OH valaistuksen asetuksen muutospyynti"
+      unit_of_measurement: "%"
+    lr_brightness_target:
+      value_template: "{{ states('input_number.living_room_brightness_target') | int }}"
+      friendly_name: "OH valoisuuden pyynti"
+      unit_of_measurement: "%"
+    lr_brightness_setting:
+      value_template: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
+      friendly_name: "OH valaistuksen esiasetus"
+      unit_of_measurement: "one"
+    sun_elevation:
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+      friendly_name: "Auringon korkeus"
+      unit_of_measurement: "°"
+    sun_azimuth:
+      value_template: "{{ state_attr('sun.sun', 'azimuth') }}"
+      friendly_name: "Auringon sijainti"
+      unit_of_measurement: "°"
+    bedroom_humidifier_status:
+      friendly_name: "MH ilmankostuttimen tila"
+      value_template: >-
+        {% if is_state('input_boolean.bedroom_humidifier_empty', 'on') %}
+          empty
+        {% elif is_state('switch.tp_link_smart_plug_5f83', 'off') %}
+          off
+        {% elif (states('sensor.tp_link_smart_plug_5f83_power') | float) > 50 %}
+          humidifying
+        {% elif is_state('switch.tp_link_smart_plug_5f83', 'on') %}
+          standby
+        {% else %}
+          failed
+        {% endif %}
+    living_room_entertainment_status:
+      friendly_name: "OH viihde-elektroniikan tila"
+      value_template: >-
+        {% set th = states('input_number.living_room_entertainment_standby_threshold') | float %}
+        {% if is_state('switch.living_room_entertainment_switch', 'off') %}
+          off
+        {% elif (states('sensor.living_room_entertainment_power') | float) < th %}
+          standby
+        {% elif (states('sensor.living_room_entertainment_power') | float) >= th %}
+          on
+        {% else %}
+          failed
+        {% endif %}
+- platform: rest
+  resource: !secret hue_sensor_2
+  value_template: "{{ value_json.config.battery }}"
+  unit_of_measurement: "%"
+  scan_interval: 1800
+  name: "Eteisen liiketunnistimen paristo"
+- platform: rest
+  resource: !secret hue_sensor_20
+  value_template: "{{ value_json.config.battery }}"
+  unit_of_measurement: "%"
+  scan_interval: 1800
+  name: "Keittiön liiketunnistimen paristo"
+- platform: rest
+  resource: !secret hue_sensor_24
+  value_template: "{{ value_json.config.battery }}"
+  unit_of_measurement: "%"
+  scan_interval: 1800
+  name: "Pesuhuoneen liiketunnistimen paristo"
+- platform: time_date
+  display_options:
+    - "time"
+    - "date"
+    - "beat"
+- platform: mqtt
+  name: "Olohuoneen lämpötila"
+  state_topic: "home/climate/livingroom/payload1"
+  unit_of_measurement: "°C"
+  value_template: "{{ (value_json.temperature | float) - 1.0 }}"
+- platform: mqtt
+  name: "Olohuoneen kosteus"
+  state_topic: "home/climate/livingroom/payload1"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+- platform: mqtt
+  name: "Olohuoneen paine"
+  state_topic: "home/climate/livingroom/payload1"
+  unit_of_measurement: "hPa"
+  value_template: "{{ (value_json.pressure | float) + 5.0 }}"
+- platform: mqtt
+  name: "Olohuoneen valoisuus"
+  state_topic: "home/climate/livingroom/payload1"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.brightness }}"
+- platform: mqtt
+  name: "Olohuoneen kaasutaso"
+  state_topic: "home/climate/livingroom/payload2"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.gaslevel }}"
+- platform: mqtt
+  name: "Pesuhuoneen lämpötila"
+  state_topic: "sensor/bathroom/env/temp"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Pesuhuoneen ESP:n paristo"
+  state_topic: "sensor/bathroom/Battery/Battery"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "Keittiön lämpötila"
+  state_topic: "home/433/sensors/135"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature }}"
+- platform: mqtt
+  name: "Keittiön kosteus"
+  state_topic: "home/433/sensors/135"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+- platform: mqtt
+  name: "Insuliinilokeron lämpötila"
+  state_topic: "home/433/sensors/136"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature }}"
+- platform: mqtt
+  name: "Parvekkeen lämpötila"
+  state_topic: "home/433/sensors/151"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature }}"
+- platform: mqtt
+  name: "Parvekkeen kosteus"
+  state_topic: "home/433/sensors/151"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+- platform: mqtt
+  name: "Ulkoilman lämpötila"
+  state_topic: "home/433/sensors/152"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature }}"
+- platform: mqtt
+  name: "Vaatehuoneen lämpötila"
+  state_topic: "home/433/sensors/167"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature }}"
+- platform: mqtt
+  name: "Vaatehuoneen kosteus"
+  state_topic: "home/433/sensors/167"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+- platform: mqtt
+  name: "Makuuhuoneen lämpötila"
+  state_topic: "sensor/alarmlight_1/env/Temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Makuuhuoneen kosteus"
+  state_topic: "sensor/alarmlight_1/env/Humidity"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "Makuuhuoneen paine"
+  state_topic: "sensor/alarmlight_1/env/Pressure"
+  value_template: "{{ (value | float) + 5.0 }}"
+  unit_of_measurement: "hPa"
+- platform: mqtt
+  name: "Palopainikkeen pariston lataus"
+  state_topic: "sensor/fire-alarm-button-1/Battery/Volts"
+  value_template: "{{ ((value | float) * 100) - 200 }}"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "SCFB Temp"
+  state_topic: "home/server/cabinet/exhausttemp"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "SCFB Setpoint"
+  state_topic: "home/server/cabinet/setpoint"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "SCFB Fan"
+  state_topic: "home/server/cabinet/fanspeed"
+  unit_of_measurement: "rpm"
+- platform: mqtt
+  name: "SCFB PID"
+  state_topic: "home/server/cabinet/pwmout"
+  value_template: "{{ ( 100 - ( (value | float) / 230 * 100 ) ) | round(1) }}"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "Event topic"
+  state_topic: "notify/cmd"
+- platform: moon
+- platform: waqi
+  token: !secret aqicn_api_token
+  locations:
+    - "ihala, raisio"
+- platform: mqtt
+  name: "Living Room Entertainment Power"
+  unique_id: "living-room-entertainment-power-plug-power"
+  state_topic: "shellies/shellyplug-s-C111E6/relay/0/power"
+  unit_of_measurement: "W"
+  force_update: "true"
+  device_class: "power"
+- platform: mqtt
+  name: "Living Room Entertainment Plug Temp"
+  unique_id: "living-room-entertainment-power-plug-temp"
+  state_topic: "shellies/shellyplug-s-C111E6/temperature"
+  unit_of_measurement: "°C"
+  force_update: "true"
+- platform: mqtt
+  name: "Etuoven anturin paristo"
+  unique_id: "shelly-front-door-sensor-battery"
+  state_topic: "shellies/shellydw2-A9E249/sensor/battery"
+  unit_of_measurement: "%"
+  force_update: "true"
+- platform: mqtt
+  name: "Parvekkeen oven anturin paristo"
+  unique_id: "shelly-balcony-door-sensor-battery"
+  state_topic: "shellies/shellydw2-AA793A/sensor/battery"
+  unit_of_measurement: "%"
+  force_update: "true"

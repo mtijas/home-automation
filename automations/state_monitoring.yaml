@@ -1,0 +1,104 @@
+- id: fridge_temperature_alarm_low
+  alias: "Jääkaapin lämpötilavalvonta alaraja"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.insuliinilokeron_lampotila
+      below: 5
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.fridge_temperature_alarm
+      state: "off"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.fridge_temperature_alarm
+    - service: notify.telegram_notify_possula
+      data_template:
+        message: "Jääkaapin lämpötila on alhainen."
+
+- id: fridge_temperature_alarm_high
+  alias: "Jääkaapin lämpötilavalvonta yläraja"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.insuliinilokeron_lampotila
+      above: 15
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.fridge_temperature_alarm
+      state: "off"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.fridge_temperature_alarm
+    - service: notify.telegram_notify_possula
+      data_template:
+        message: "Jääkaapin lämpötila on korkea."
+
+- id: fridge_temperature_alarm_clear
+  alias: "Jääkaapin lämpötilavalvonta kuittaus"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.insuliinilokeron_lampotila
+      above: 6
+      below: 14
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.fridge_temperature_alarm
+      state: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.fridge_temperature_alarm
+
+- id: front_door_alarm_open
+  alias: "Etuoven valvonta ovi auki"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.etuovi
+      to: "on"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.front_door_alarm
+      state: "off"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.front_door_alarm
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          "Etuovi on jäänyt auki."
+    - service: notify.telegram_notify_possula
+      data_template:
+        message: "Etuovi on jäänyt auki."
+
+- id: front_door_alarm_clear
+  alias: "Etuoven valvonnan kuittaus"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.etuovi
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.front_door_alarm
+      state: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.front_door_alarm
+
+- id: force_update_sensors_for_grafana
+  alias: "Force update sensors for Grafana"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  action:
+    - service: homeassistant.update_entity
+      target:
+        entity_id: >
+          - sensor.lr_brightness_target
+          - sensor.lr_brightness_setting

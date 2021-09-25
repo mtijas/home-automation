@@ -1,0 +1,17 @@
+- platform: manual_mqtt
+  state_topic: state/burglar_alarm
+  command_topic: notify/burglar_alarm_state_request
+  code: !secret alarm_code
+  pending_time: 30
+  delay_time: 30
+  trigger_time: 1800
+  disarmed:
+    trigger_time: 0
+  armed_home:
+    pending_time: 0
+    delay_time: 0
+  armed_night:
+    pending_time: 0
+    delay_time: 0
+  triggered:
+    pending_time: 0

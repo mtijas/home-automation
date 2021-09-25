@@ -1,0 +1,403 @@
+title: Koti
+icon: mdi:home
+background: var(--background-image)
+# The cards to show on this view.
+cards:
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 6
+        square: false
+        cards:
+          - type: "custom:button-card"
+            color_type: card
+            entity: alarm_control_panel.ha_alarm
+            show_icon: true
+            show_state: false
+            show_name: false
+            tap_action:
+              action: more-info
+            state:
+              - value: "armed_home"
+                color: green
+                icon: mdi:shield-home-outline
+              - value: "armed_away"
+                color: green
+                icon: mdi:shield-airplane
+              - value: "armed_night"
+                color: green
+                icon: mdi:shield-home
+              - value: "triggered"
+                color: red
+                icon: mdi:alert
+              - value: "pending"
+                color: yellow
+                icon: mdi:shield-half-full
+              - value: "disarmed"
+                color: grey
+                icon: mdi:shield-check-outline
+              - operator: default
+                color: orange
+                icon: mdi:shield-remove-outline
+          - type: "custom:button-card"
+            entity: input_select.home_mode
+            show_icon: true
+            show_state: false
+            show_name: false
+            color_type: card
+            tap_action:
+              action: more-info
+            state:
+              - value: "Awake"
+                color: green
+                icon: mdi:home-assistant
+              - value: "Asleep"
+                color: black
+                icon: mdi:bed
+              - value: "Party"
+                color: hotpink
+                icon: mdi:balloon
+              - value: "Away"
+                color: yellow
+                icon: mdi:airplane
+              - value: "Emergency"
+                color: red
+                icon: mdi:alert
+              - operator: default
+                color: grey
+          - type: "custom:button-card"
+            entity: input_boolean.guests
+            show_icon: true
+            show_state: false
+            show_name: false
+            color_type: card
+            color: yellow
+            tap_action:
+              action: toggle
+          - type: "custom:button-card"
+            entity: input_boolean.master_caution_triggered
+            color_type: card
+            show_icon: true
+            show_state: false
+            show_name: false
+            color: yellow
+            tap_action:
+              action: navigate
+              navigation_path: "/lovelace/1"
+          - type: "custom:button-card"
+            entity: group.master_warning
+            color_type: card
+            show_icon: true
+            show_state: false
+            show_name: false
+            color: red
+            tap_action:
+              action: navigate
+              navigation_path: "/lovelace/1"
+          - type: "custom:button-card"
+            entity: binary_sensor.all_doors
+            color_type: card
+            color: yellow
+            show_icon: true
+            show_state: false
+            show_name: false
+            tap_action:
+              action: more-info
+            state:
+              - value: "on"
+                icon: mdi:door-open
+              - operator: default
+                icon: mdi:door-closed
+
+      - type: entity-filter
+        card:
+          title: "Sähkö vähissä:"
+          show_header_toggle: false
+        show_empty: false
+        state_filter:
+          - operator: "<"
+            value: 20
+        entities:
+          - entity: sensor.markuksen_iphone_battery_level
+            name: "Markuksen iPhone"
+          - entity: sensor.iphone_veera_battery_level
+            name: "Veeran iPhone"
+          - entity: sensor.eteisen_liiketunnistimen_paristo
+            name: "Eteisen liike"
+          - entity: sensor.makuuhuoneen_himmenninkytkimen_paristo
+            name: "Makuuhuoneen kytkin"
+          - entity: sensor.pesuhuoneen_esp_n_paristo
+            name: "Pesuhuoneen ESP"
+          - entity: sensor.pesuhuoneen_liiketunnistimen_paristo
+            name: "Pesuhuoneen liike"
+          - entity: sensor.keittion_liiketunnistimen_paristo
+            name: "Keittiön liike"
+          - entity: sensor.olohuoneen_himmenninkytkimen_paristo
+            name: "Olohuoneen kytkin"
+          - entity: sensor.palopainikkeen_pariston_lataus
+            name: "Eteisen palopainike"
+
+      - type: horizontal-stack
+        cards:
+          - type: picture-glance
+            entity: person.markus
+            entities:
+              - entity: sensor.markuksen_iphone_battery_level
+              - entity: sensor.markuksen_iphone_geocoded_location
+            state_image:
+              "home": "/local/avatars/markus.jpg"
+              "not_home": "/local/avatars/markus-bw.jpg"
+              "P-R": "/local/avatars/markus-pr.jpg"
+              "TurkuAMK": "/local/avatars/markus-turkuamk.jpg"
+            title: "Markus"
+          - type: picture-glance
+            entity: person.veera
+            entities:
+              - entity: sensor.iphone_veera_battery_level
+              - entity: sensor.iphone_veera_geocoded_location
+            state_image:
+              "home": "/local/avatars/veera.jpg"
+              "not_home": "/local/avatars/veera-bw.jpg"
+              "P-R": "/local/avatars/veera-pr.jpg"
+              "TurkuAMK": "/local/avatars/veera-turkuamk.jpg"
+            title: "Veera"
+
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.saa_huononee_nopeasti
+            state: "on"
+        card:
+          type: "custom:button-card"
+          entity: binary_sensor.saa_huononee_nopeasti
+          color: orange
+          color_type: card
+          layout: icon_name_state
+          show_icon: true
+          show_state: false
+          show_name: true
+          icon: mdi:weather-cloudy-alert
+          tap_action:
+            action: more-info
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: sensor.time
+            show_icon: false
+            show_state: true
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: sensor.internet_time
+            show_icon: false
+            show_state: true
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: sensor.date
+            show_icon: false
+            show_state: true
+            show_name: false
+            tap_action:
+              action: more-info
+
+      - type: horizontal-stack
+        cards:
+          - name: Olohuone
+            type: entity-button
+            entity: light.olohuoneen_yleisvalot
+            tap_action:
+              action: toggle
+          - name: Makuuhuone
+            type: entity-button
+            entity: light.makuuhuoneen_yleisvalot
+            tap_action:
+              action: toggle
+          - name: Yöpöydät
+            type: entity-button
+            entity: light.yopoydat
+            tap_action:
+              action: toggle
+
+      - type: entity-filter
+        card:
+          title: "Pysäytetyt valoautomatiikat:"
+          show_header_toggle: true
+        show_empty: false
+        state_filter:
+          - "off"
+        entities:
+          - input_boolean.living_room_light_automations
+          - input_boolean.kitchen_light_automations
+          - input_boolean.hallway_light_automations
+          - input_boolean.toilet_light_automations
+          - input_boolean.bedroom_light_automations
+          - input_boolean.cloakroom_light_automations
+
+      - type: grid
+        columns: 4
+        square: false
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: "custom:button-card"
+                entity: switch.kahvinkeitin
+                icon: mdi:coffee
+                tap_action:
+                  action: toggle
+              - type: "custom:button-card"
+                entity: input_boolean.coffee_maker_loaded
+                name: on ladattu
+                show_icon: false
+                show_state: false
+                show_name: true
+                color_type: card
+                tap_action:
+                  action: toggle
+          - type: conditional
+            conditions:
+              - entity: switch.tp_link_smart_plug_5f83
+                state_not: "unavailable"
+            card:
+              type: vertical-stack
+              cards:
+                - type: "custom:button-card"
+                  entity: input_boolean.bedroom_humidifier_automations
+                  icon: mdi:air-humidifier
+                  name: "MH kostutus"
+                  tap_action:
+                    action: toggle
+                - type: "custom:button-card"
+                  entity: sensor.bedroom_humidifier_status
+                  show_icon: false
+                  show_state: true
+                  show_name: false
+                  color_type: card
+                  tap_action:
+                    action: more-info
+                  state:
+                    - value: "off"
+                      color: rgb(28, 28, 28)
+                    - value: "humidifying"
+                      color: rgb(50, 50, 255)
+                    - value: "standby"
+                      color: rgb(125, 255, 0)
+                    - value: "empty"
+                      color: rgb(255, 125, 0)
+                    - value: "failed"
+                      color: rgb(255, 0, 0)
+          - type: vertical-stack
+            cards:
+              - type: "custom:button-card"
+                entity: switch.living_room_entertainment_switch
+                icon: mdi:television-classic
+                tap_action:
+                  action: toggle
+                lock:
+                  enabled: '[[[ return states["sensor.living_room_entertainment_status"].state === "on"; ]]]'
+                  exemptions: []
+              - type: "custom:button-card"
+                entity: sensor.living_room_entertainment_status
+                show_icon: false
+                show_state: true
+                show_name: false
+                color_type: card
+                tap_action:
+                  action: more-info
+                state:
+                  - value: "off"
+                    color: rgb(28, 28, 28)
+                  - value: "standby"
+                    color: rgb(255, 137, 77)
+                  - value: "on"
+                    color: rgb(48, 179, 9)
+                  - value: "failed"
+                    color: rgb(255, 0, 0)
+          - type: vertical-stack
+            cards:
+              - type: conditional
+                conditions:
+                  - entity: input_select.home_mode
+                    state: "Awake"
+                  - entity: input_boolean.get_to_bed_mode
+                    state: "off"
+                card:
+                  type: "custom:button-card"
+                  show_icon: true
+                  show_state: false
+                  show_name: true
+                  name: "Nukkumaan"
+                  icon: mdi:bed
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.time_for_bed
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.get_to_bed_mode
+                    state: "on"
+                card:
+                  type: "custom:button-card"
+                  show_icon: true
+                  show_state: false
+                  show_name: true
+                  name: Hyvää yötä
+                  icon: mdi:sleep
+                  color_type: card
+                  color: rgb(255, 237, 87)
+                  tap_action:
+                    action: call-service
+                    service: input_select.select_option
+                    service_data:
+                      entity_id: input_select.home_mode
+                      option: "Asleep"
+              - type: conditional
+                conditions:
+                  - entity: input_select.home_mode
+                    state: "Asleep"
+                card:
+                  type: "custom:button-card"
+                  show_icon: true
+                  show_state: false
+                  show_name: true
+                  name: Hyvää huomenta
+                  icon: mdi:sleep-off
+                  color_type: card
+                  color: rgb(131, 23, 255)
+                  tap_action:
+                    action: call-service
+                    service: input_select.select_option
+                    service_data:
+                      entity_id: input_select.home_mode
+                      option: "Awake"
+
+  - type: vertical-stack
+    cards:
+      - type: weather-forecast
+        entity: weather.openweathermap
+        show_forecast: false
+        name: "Turku"
+
+      - type: calendar
+        initial_view: listWeek
+        entities:
+          - calendar.perhe_perhe
+
+      - type: custom:battery-state-card
+        name: "Paristot"
+        color_gradient:
+          - "#ff0000" # red
+          - "#ffff00" # yellow
+          - "#00ff00" # green
+        entities:
+          - entity: sensor.markuksen_iphone_battery_level
+            name: "Markuksen iPhone"
+          - entity: sensor.ipad_markus_battery_level
+            name: "Markuksen iPad"
+          - entity: sensor.iphone_veera_battery_level
+            name: "Veeran iPhone"
+          - entity: sensor.pesuhuoneen_esp_n_paristo
+            name: "Pesuhuoneen ESP"

@@ -1,0 +1,705 @@
+- id: awake_mode_start
+  alias: "Starting Awake mode"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Awake"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: group.all_light_automations
+    
+- id: asleep_mode_start
+  alias: "Starting Asleep mode"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Asleep"
+  action:
+    - service: light.turn_off
+      entity_id: light.yopoydat
+    - condition: state
+      entity_id: input_boolean.guests
+      state: "off"
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.keittio
+          - light.olohuone
+
+- id: away_mode_lights_turn_off
+  alias: "Turn light off on away mode"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Away"
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: group.all_interior_lights
+
+- id: party_mode_start_lights
+  alias: "Starting Party mode lights"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Party"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.living_room_light_automations
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bedroom_light_automations
+    - service: light.turn_on
+      data:
+        entity_id: light.oh_katto_sisempi
+        brightness: 168
+        color_name: "yellow"
+    - service: light.turn_on
+      data:
+        entity_id: light.oh_katto_ulompi
+        brightness: 168
+        color_name: "yellow"
+    - service: light.turn_on
+      data:
+        entity_id: light.oh_lattiavalaisin
+        brightness: 125
+        effect: "random"
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_shelf_color_1
+        brightness: 125
+        effect: "random"
+    - service: light.turn_on
+      data:
+        entity_id: light.office_lightstrip
+        brightness: 100
+        effect: "random"
+    - service: light.turn_on
+      data:
+        entity_id: light.master_bedroom_ceiling_1
+        brightness: 125
+        effect: "random"
+
+- id: living_room_auto_brightness_set_ceiling
+  alias: "Olohuoneen kattovalojen valoautomatiikka"
+  trigger:
+    - platform: state
+      entity_id: input_number.living_room_light_auto_brightness
+    - platform: state
+      entity_id: input_number.living_room_light_default_kelvin
+    - platform: state
+      entity_id: input_boolean.living_room_should_illuminate
+    - platform: state
+      entity_id: input_boolean.living_room_light_automations
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Awake"
+    - platform: time_pattern
+      minutes: "/2"
+  condition:
+    - condition: state
+      entity_id: input_boolean.living_room_light_automations
+      state: "on"
+    - condition: state
+      entity_id: input_select.home_mode
+      state: "Awake"
+    - condition: state
+      entity_id: light.olohuoneen_yleisvalot
+      state: "on"
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.living_room_should_illuminate
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              data_template:
+                entity_id: light.olohuoneen_yleisvalot
+                brightness: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
+                kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
+                transition: 5
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.living_room_should_illuminate
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              entity_id: light.olohuoneen_yleisvalot
+
+- id: living_room_should_illuminate_determination
+  alias: "Olohuoneen kattovalojen sytytyskriteerit"
+  trigger:
+    - platform: state
+      entity_id: switch.living_room_play_xbox_one
+    - platform: time_pattern
+      minutes: "/2"
+  condition:
+    - condition: state
+      entity_id: input_boolean.living_room_light_automations
+      state: "on"
+    - condition: state
+      entity_id: input_select.home_mode
+      state: "Awake"
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: switch.living_room_play_xbox_one
+              state: "on"
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.living_room_should_illuminate
+        - conditions:
+            - condition: state
+              entity_id: switch.living_room_play_xbox_one
+              state: "off"
+          sequence:
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.living_room_should_illuminate
+            - service: light.turn_on
+              data_template:
+                entity_id: light.olohuoneen_yleisvalot
+                brightness: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
+                kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
+                transition: 5
+
+- id: living_room_light_brightness_determination
+  alias: "Olohuoneen valaistuksen kirkkauden automaattisäätö"
+  trigger:
+    - platform: time_pattern
+      seconds: "/20"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.living_room_light_automations
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.guests
+        state: "off"
+      - condition: state
+        entity_id: light.olohuoneen_yleisvalot
+        state: "on"
+      - condition: or
+        conditions:
+          - condition: numeric_state
+            entity_id: sensor.living_room_brightness_difference
+            below: -0.8
+          - condition: numeric_state
+            entity_id: sensor.living_room_brightness_difference
+            above: 0.8
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.living_room_light_auto_brightness
+        value: >
+          {% set current = states('input_number.living_room_light_auto_brightness') | float %}
+          {% set change = states('sensor.living_room_brightness_needed_change') | float %}
+          {% set new_val = ( current + change ) | round(0, 'ceil') %}
+          {% if new_val > 255 %}
+            255
+          {% elif new_val < 5 %}
+            5
+          {% else %}
+            {{ new_val }}
+          {% endif %}
+
+- id: living_room_lights_auto_on
+  alias: "Käynnistysautomatiikka olohuoneen yleisvaloille"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Awake"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.olohuoneen_yleisvalot
+        brightness: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
+        kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
+        transition: 5
+
+- id: living_room_auto_brightness_default_set
+  alias: "Olohuoneen yleisvalojen kirkkauden oletusasetus kun pois päältä"
+  trigger:
+    - platform: time_pattern
+      minutes: "/5"
+  condition:
+    - condition: state
+      entity_id: light.olohuoneen_yleisvalot
+      state: "off"
+      for:
+        minutes: 15
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.living_room_light_auto_brightness
+        value: "{{ states('input_number.living_room_light_default_brightness') | int }}"
+
+
+- id: decorative_lights_auto_on
+  alias: "Käynnistysautomatiikka koristevaloille"
+  trigger:
+    - platform: state
+      entity_id: light.olohuoneen_yleisvalot
+      to: "on"
+      from: "off"
+  condition:
+    - condition: state
+      entity_id: input_select.home_mode
+      state: "Awake"
+    - condition: state
+      entity_id: input_boolean.living_room_light_automations
+      state: "on"
+  action:
+    - service: script.turn_on
+      entity_id: script.turn_on_decorative_lights_to_default
+
+- id: decorative_lights_set_on_significant_change
+  alias: "Koristevalojen asetus isoissa muutoksissa"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Awake"
+    - platform: state
+      entity_id: input_number.living_room_light_default_kelvin
+  condition:
+    - condition: state
+      entity_id: input_boolean.living_room_light_automations
+      state: "on"
+    - condition: state
+      entity_id: light.koristevalot
+      state: "on"
+  action:
+    - service: script.turn_on
+      entity_id: script.turn_on_decorative_lights_to_default
+
+- id: home_status_light
+  alias: "Kodin tilavalo"
+  mode: "queued"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+    - platform: state
+      entity_id: group.master_caution
+    - platform: state
+      entity_id: alarm_control_panel.ha_alarm
+    - platform: time_pattern
+      minutes: "/2"
+  action:
+    - choose:
+        - conditions: >
+            {{ is_state("input_select.home_mode", "Emergency") }}
+          sequence:
+            - service: script.turn_on_home_mode_light
+              data_template:
+                light_brightness: 255
+                light_rgb_color: "[255,0,0]"
+        - conditions: >
+            {{ is_state("group.master_caution", "on") }}
+          sequence:
+            - service: script.turn_on_home_mode_light
+              data_template:
+                light_brightness: 50
+                light_rgb_color: "[255,128,0]"
+        - conditions: >
+            {{ is_state("alarm_control_panel.ha_alarm", "pending") }}
+          sequence:
+            - service: script.turn_on_home_mode_light
+              data_template:
+                light_brightness: 1
+                light_rgb_color: "[255,255,0]"
+        - conditions: >
+            {{ is_state("alarm_control_panel.ha_alarm", "armed_home")
+                or is_state("alarm_control_panel.ha_alarm", "armed_night")
+                or is_state("alarm_control_panel.ha_alarm", "armed_away") }}
+          sequence:
+            - service: script.turn_on_home_mode_light
+              data_template:
+                light_brightness: 1
+                light_rgb_color: "[0,255,0]"
+        - conditions: >
+            {{ is_state("input_select.home_mode", "Awake") }}
+          sequence:
+            - service: script.turn_on_home_mode_light
+              data_template:
+                light_brightness: 1
+                light_rgb_color: "[255,255,255]"
+        - conditions: >
+            {{ is_state("input_select.home_mode", "Party") }}
+          sequence:
+            - service: script.turn_on_home_mode_light
+              data_template:
+                light_brightness: 1
+                light_rgb_color: "[255,0,255]"
+
+- id: bedroom_auto_brightness_set_ceiling
+  alias: "Makuuhuoneen kattovalojen valoautomatiikka"
+  trigger:
+    - platform: state
+      entity_id: input_number.bedroom_light_default_brightness
+    - platform: state
+      entity_id: input_number.bedroom_light_default_kelvin
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_light_automations
+      state: "on"
+    - condition: state
+      entity_id: light.makuuhuoneen_yleisvalot
+      state: "on"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.makuuhuoneen_yleisvalot
+        brightness: "{{ states('input_number.bedroom_light_default_brightness') | int }}"
+        kelvin: "{{ states('input_number.bedroom_light_default_kelvin') | int }}"
+        transition: 60
+
+- id: bedroom_light_automations_back_on
+  alias: "Makuuhuoneen kattovalojen säätö kun palataan automatiikalle"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bedroom_light_automations
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.makuuhuoneen_yleisvalot
+      state: "on"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.makuuhuoneen_yleisvalot
+        brightness: "{{ states('input_number.bedroom_light_default_brightness') | int }}"
+        kelvin: "{{ states('input_number.bedroom_light_default_kelvin') | int }}"
+        transition: 5
+
+- id: bedroom_auto_brightness_set_ceiling_on_start
+  alias: "Makuuhuoneen kattovalojen käynnistyksen valoautomatiikka"
+  trigger:
+    - platform: state
+      entity_id: light.makuuhuoneen_yleisvalot
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_light_automations
+      state: "on"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.makuuhuoneen_yleisvalot
+        brightness: "{{ states('input_number.bedroom_light_default_brightness') | int }}"
+        kelvin: "{{ states('input_number.bedroom_light_default_kelvin') | int }}"
+
+- id: hallway_light_autostart_by_motion
+  alias: "Eteisen valojen liiketunnistus"
+  trigger:
+    - platform: state
+      entity_id: group.all_hallway_motion
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.hallway_should_illuminate
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.hallway_light_automations
+      state: "on"
+  action:
+    - service: script.turn_hallway_light_on_with_settings
+      data_template:
+        light_brightness: "{{ states('input_number.hallway_light_default_brightness') | int }}"
+        light_kelvin: "{{ states('input_number.hallway_light_default_kelvin') | int }}"
+    - service: timer.start
+      data_template:
+        entity_id: timer.hallway_motion_timeout
+        duration: "00:{{ states('input_number.hallway_light_turnoff_time') | int}}:00"
+
+- id: kitchen_light_autostart_by_motion
+  alias: "Keittiön valojen liiketunnistus"
+  trigger:
+    - platform: state
+      entity_id: group.all_kitchen_motion
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.kitchen_should_illuminate
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.kitchen_light_automations
+      state: "on"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.keittio
+        brightness: "{{ states('input_number.kitchen_light_default_brightness') | int }}"
+        kelvin: "{{ states('input_number.kitchen_light_default_kelvin') | int }}"
+    - service: timer.start
+      data_template:
+        entity_id: timer.kitchen_motion_timeout
+        duration: "00:{{ states('input_number.kitchen_light_turnoff_time') | int}}:00"
+
+- id: toilet_light_autostart_by_motion
+  alias: "Pesuhuoneen valojen liiketunnistus"
+  trigger:
+    - platform: state
+      entity_id: group.all_toilet_motion
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.toilet_should_illuminate
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.toilet_light_automations
+      state: "on"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.pesuhuone
+        brightness: "{{ states('input_number.toilet_light_default_brightness') | int }}"
+        kelvin: "{{ states('input_number.toilet_light_default_kelvin') | int }}"
+    - service: timer.start
+      data_template:
+        entity_id: timer.toilet_motion_timeout
+        duration: "00:{{ states('input_number.toilet_light_turnoff_time') | int}}:00"
+
+- id: hallway_light_auto_off
+  alias: "Eteisen valojen automaattisammutus"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.hallway_motion_timeout
+  condition:
+    - condition: state
+      entity_id: group.all_hallway_motion
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.hallway_light_automations
+      state: "on"
+  action:
+    - service: light.turn_off
+      entity_id: light.eteisen_yleisvalot
+
+- id: kitchen_light_auto_off
+  alias: "Keittiön valojen automaattisammutus"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.kitchen_motion_timeout
+  condition:
+    - condition: state
+      entity_id: group.all_kitchen_motion
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.kitchen_light_automations
+      state: "on"
+  action:
+    - service: light.turn_off
+      entity_id: light.keittio
+
+- id: toilet_light_auto_off
+  alias: "Pesuhuoneen valojen automaattisammutus"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.toilet_motion_timeout
+  condition:
+    - condition: state
+      entity_id: group.all_toilet_motion
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.toilet_light_automations
+      state: "on"
+  action:
+    - service: light.turn_off
+      entity_id: light.pesuhuone
+
+- id: hallway_light_timer_restart
+  alias: "Eteisen valojen ajastuksen uudelleenkäynnistys"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.hallway_motion_timeout
+  condition:
+    - condition: state
+      entity_id: group.all_hallway_motion
+      state: "on"
+  action:
+    - service: timer.start
+      data_template:
+        entity_id: timer.hallway_motion_timeout
+        duration: "00:{{ states('input_number.hallway_light_turnoff_time') | int}}:00"
+
+- id: kitchen_light_timer_restart
+  alias: "Keittiön valojen ajastuksen uudelleenkäynnistys"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.kitchen_motion_timeout
+  condition:
+    - condition: state
+      entity_id: group.all_kitchen_motion
+      state: "on"
+  action:
+    - service: timer.start
+      data_template:
+        entity_id: timer.kitchen_motion_timeout
+        duration: "00:{{ states('input_number.kitchen_light_turnoff_time') | int}}:00"
+
+- id: toilet_light_timer_restart
+  alias: "Pesuhuoneen valojen ajastuksen uudelleenkäynnistys"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.toilet_motion_timeout
+  condition:
+    - condition: state
+      entity_id: group.all_toilet_motion
+      state: "on"
+  action:
+    - service: timer.start
+      data_template:
+        entity_id: timer.toilet_motion_timeout
+        duration: "00:{{ states('input_number.toilet_light_turnoff_time') | int}}:00"
+
+- id: circadian_rhythm_setting_changes
+  alias: "Valaistuksen asetusten muutokset kellonajan mukaan"
+  trigger:
+    - platform: time_pattern
+      minutes: "/5"
+  action:
+    - service: python_script.circadian_rhythm
+
+- id: light_hallway_illumination_criteria
+  alias: "Eteisen valaistuksen käynnistyskriteerit"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: numeric_state
+      entity_id: sensor.eteisen_liiketunnistin_light_level
+      below: 30
+    - platform: numeric_state
+      entity_id: sensor.eteisen_liiketunnistin_light_level
+      above: 40
+  action:
+    - choose:
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.eteisen_liiketunnistin_light_level
+              below: 30
+          sequence:
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.hallway_should_illuminate
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.eteisen_liiketunnistin_light_level
+              above: 40
+            - condition: state
+              entity_id: light.eteisen_yleisvalot
+              state: "off"
+              for:
+                minutes: 1
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.hallway_should_illuminate
+
+- id: light_kitchen_illumination_criteria
+  alias: "Keittiön valaistuksen käynnistyskriteerit"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: numeric_state
+      entity_id: sensor.kitchen_sensor_light_level
+      below: 30
+    - platform: numeric_state
+      entity_id: sensor.kitchen_sensor_light_level
+      above: 40
+  action:
+    - choose:
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.kitchen_sensor_light_level
+              below: 30
+          sequence:
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.kitchen_should_illuminate
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.kitchen_sensor_light_level
+              above: 40
+            - condition: state
+              entity_id: light.keittio
+              state: "off"
+              for:
+                minutes: 1
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.kitchen_should_illuminate
+
+- id: light_toilet_illumination_criteria
+  alias: "Pesuhuoneen valaistuksen käynnistyskriteerit"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: numeric_state
+      entity_id: sensor.toilet_sensor_light_level
+      below: 30
+    - platform: numeric_state
+      entity_id: sensor.toilet_sensor_light_level
+      above: 40
+  action:
+    - choose:
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.toilet_sensor_light_level
+              below: 30
+          sequence:
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.toilet_should_illuminate
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.toilet_sensor_light_level
+              above: 40
+            - condition: state
+              entity_id: light.pesuhuone
+              state: "off"
+              for:
+                minutes: 1
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.toilet_should_illuminate
+
+- id: cloakroom_light_turn_on
+  alias: "Vaatehuoneen valaistuksen käynnistys"
+  trigger:
+    - platform: mqtt
+      topic: "home/433/devices/1"
+      payload: "turn on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.cloakroom_light_automations
+      state: "on"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.vaatehuone
+        brightness: 255
+        kelvin: 5000
+
+- id: cloakroom_light_turn_off
+  alias: "Vaatehuoneen valaistuksen sammutus"
+  trigger:
+    - platform: state
+      entity_id: light.vaatehuone
+      to: "on"
+      for: "00:05:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.cloakroom_light_automations
+      state: "on"
+  action:
+    - service: light.turn_off
+      entity_id: light.vaatehuone

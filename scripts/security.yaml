@@ -1,0 +1,108 @@
+turn_on_emergency_lighting:
+  alias: "Hätävalaistuksen käynnistys"
+  sequence:
+    - service: input_boolean.turn_off
+      entity_id: group.all_light_automations
+    - service: light.turn_on
+      data:
+        entity_id: group.emergency_lights_common
+        brightness: 255
+        kelvin: 5000
+    - service: light.turn_on
+      data:
+        entity_id: group.emergency_lights_alarm
+        brightness: 255
+        rgb_color: [255, 0, 0]
+    - service: notify.syslog_info
+      data_template:
+        message: "Hätävalaistus käynnistetty."
+
+turn_off_all_appliances:
+  alias: "Kaiken kodin yleistekniikan sammutus"
+  sequence:
+    - service: switch.turn_off
+      entity_id:
+        - switch.kahvinkeitin
+        - switch.tp_link_smart_plug_5f83
+        - switch.living_room_entertainment_switch
+    - service: input_boolean.turn_off
+      entity_id:
+        - input_boolean.bedroom_humidifier_automations
+        - input_boolean.coffee_maker_loaded
+    - service: notify.syslog_info
+      data_template:
+        message: "Yleistekniikka sammutettu."
+
+reverse_emergency_state:
+  alias: "Kodin palautus hätätilasta"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "notify/cmd"
+        payload: "event,clear"
+        qos: 0
+        retain: false
+    - service: mqtt.publish
+      data_template:
+        topic: "notify/burglar_alarm_state_request"
+        payload: "DISARM"
+        qos: 1
+        retain: 0
+    - service: input_boolean.turn_off
+      data:
+        entity_id:
+          - input_boolean.panic_alarm_raised
+          - input_boolean.fire_alarm_raised
+          - input_boolean.burglar_alarm_raised
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.home_mode
+      data:
+        option: "Awake"
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Hälytykset kuitattu.
+    - service: notify.telegram_notify_possula
+      data:
+        title: "Hälytykset kuitattu"
+        message: "Hälytykset kuitattu."
+    - service: notify.syslog_info
+      data_template:
+        message: "Hälytykset kuitattu."
+
+raise_alarm:
+  alias: "Yleishälytys"
+  sequence:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.home_mode
+      data:
+        option: "Emergency"
+    - service: mqtt.publish
+      data_template:
+        topic: "notify/cmd"
+        payload: "{{ command_payload }}"
+        qos: 1
+        retain: 0
+    - service: input_boolean.turn_on
+      data_template:
+        entity_id: "{{ alarm_boolean }}"
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: "{{ alarm_message }}"
+    - service: notify.telegram_notify_possula
+      data_template:
+        title: "{{ alarm_title }}"
+        message: "{{ alarm_message }}"
+        data:
+          push:
+            sound:
+              name: "Minuet.caf"
+              critical: 1
+              volume: 1.0
+    - service: notify.syslog_emergency
+      data_template:
+        message: "{{ alarm_title }}"

@@ -1,0 +1,127 @@
+- platform: mqtt
+  name: Hälytinpaneelin tila
+  state_topic: "availability/alarmpanel-1"
+  payload_on: "online"
+  payload_off: "offline"
+  device_class: "connectivity"
+- platform: mqtt
+  name: "Hälytinpaneelin äänihälytin"
+  state_topic: "sensor/alarmpanel-1/sound-enabled"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: "sound"
+  availability_topic: "availability/alarmpanel-1"
+- platform: template
+  sensors:
+    coffee_is_brewing:
+      friendly_name: "Kahvi keittyy"
+      delay_on:
+        minutes: 1
+      delay_off:
+        minutes: 1
+      value_template: >-
+        {{ states('sensor.kahvinkeitin_current_consumption') | float > 100 }}
+    all_motion:
+      device_class: motion
+      value_template: "{{ is_state('group.all_motion', 'on') }}"
+    all_doors:
+      device_class: door
+      value_template: "{{ is_state('group.all_doors', 'on') }}"
+    server_cabinet_fire_alarm:
+      value_template: "{{ (states('sensor.scfb_temp') | float) > 50 }}"
+      friendly_name: "SCFB Fire Alarm"
+      delay_on:
+        seconds: 20
+      delay_off:
+        seconds: 20
+      device_class: "problem"
+    scfb_fan_alarm:
+      value_template: "{{ (states('sensor.scfb_fan') | int) < 150 }}"
+      friendly_name: "SCFB Fan Alarm"
+      delay_on:
+        seconds: 20
+      delay_off:
+        seconds: 20
+      device_class: "problem"
+    living_room_remote_on_activity:
+      value_template: "{{ state_attr('remote.living_room', 'current_activity') != 'PowerOff'}}"
+- platform: rest
+  resource: !secret hue_sensor_3
+  value_template: "{{ value_json.state.presence }}"
+  scan_interval: 2
+  name: "Eteisen liike"
+  device_class: motion
+- platform: rest
+  resource: !secret hue_sensor_21
+  value_template: "{{ value_json.state.presence }}"
+  scan_interval: 2
+  name: "Keittiön liike"
+  device_class: motion
+- platform: rest
+  resource: !secret hue_sensor_25
+  value_template: "{{ value_json.state.presence }}"
+  scan_interval: 2
+  name: "Pesuhuoneen liike"
+  device_class: motion
+- platform: ping
+  host: 8.8.8.8
+  name: Ping Google
+  count: 5
+  scan_interval: 60
+- platform: ping
+  host: 192.168.20.1
+  name: Ping WAN Router
+  count: 5
+  scan_interval: 60
+#- platform: meteoalarm
+#  country: 'FI'
+#  province: 'Varsinais-Suomi'
+#  language: 'fi'
+#  scan_interval: 1800
+- platform: mqtt
+  name: "Olohuoneen kaasuhälytys"
+  state_topic: "home/climate/livingroom/gasalarm"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: "gas"
+- platform: mqtt
+  name: "SCFB Temp Alarm"
+  state_topic: "home/server/cabinet/tempalarm"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: "heat"
+- platform: trend
+  sensors:
+    pressure_trend_storm:
+      entity_id: sensor.olohuoneen_paine
+      sample_duration: 7200
+      min_gradient: -0.00055
+      max_samples: 480
+      friendly_name: "Ilmanpaineen trendi"
+# - platform: aurora
+#   forecast_threshold: 50
+- platform: threshold
+  entity_id: sensor.pressure_hourly_trend
+  name: "Sää huononee nopeasti"
+  lower: -1.45
+  hysteresis: 0.45 #On when under 1.9 and off when over 1
+- platform: mqtt
+  name: "MH äänihälytin"
+  state_topic: "sensor/alarmlight_1/Sound/Enabled"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: "sound"
+- platform: mqtt
+  name: "Etuovi"
+  unique_id: "shelly-front-door-sensor"
+  state_topic: "shellies/shellydw2-A9E249/sensor/state"
+  payload_off: "close"
+  payload_on: "open"
+  device_class: "door"
+- platform: mqtt
+  name: "Parvekkeen ovi"
+  unique_id: "shelly-balcony-door-sensor"
+  state_topic: "shellies/shellydw2-AA793A/sensor/state"
+  payload_off: "close"
+  payload_on: "open"
+  device_class: "door"

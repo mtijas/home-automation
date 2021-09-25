@@ -1,0 +1,143 @@
+title: Sää
+icon: mdi:weather-partly-cloudy
+background: var(--background-image)
+# The cards to show on this view.
+cards:
+  - type: vertical-stack
+    cards:
+      - type: weather-forecast
+        entity: weather.openweathermap
+        name: "Turku"
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.meteoalarm
+            state: "on"
+        card:
+          type: vertical-stack
+          cards:
+            - type: "custom:button-card"
+              color_type: card
+              entity: sensor.meteoalarm_severity
+              show_icon: false
+              show_state: true
+              show_name: true
+              name: "Säävaroitus:"
+              state:
+                - value: "Moderate"
+                  color: yellow
+                  icon: mdi:alert
+                - value: "Severe"
+                  color: orange
+                  icon: mdi:alert
+                - value: "High"
+                  color: red
+                  icon: mdi:alert
+                - operator: default
+                  color: green
+                  icon: mdi:shield-check
+            - type: horizontal-stack
+              cards:
+                - type: entities
+                  entities:
+                    - sensor.meteoalarm_event
+                    - sensor.meteoalarm_onset
+                    - sensor.meteoalarm_expires
+      - type: picture-entity
+        entity: camera.finland_weather
+
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            entity: sensor.ulkoilman_lampotila
+            name: Ulkoilman lämpötila
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            entity: sensor.saa_feels_like_temperature
+            name: Tuntuu kuin
+          - type: gauge
+            entity: sensor.saa_uv_index
+            min: 0
+            max: 13
+            name: UV-indeksi
+            unit: UV
+            needle: true
+            severity:
+              green: 0
+              yellow: 3
+              red: 8
+          - type: gauge
+            entity: sensor.saa_rain
+            min: 0
+            max: 10 # keskim. normaali ip 1013 hPa
+            name: Sademäärä
+            severity:
+              green: 0
+              yellow: 3
+              red: 6
+          - type: gauge
+            entity: sensor.olohuoneen_paine
+            min: 983
+            max: 1043 # keskim. normaali ip 1013 hPa
+            name: Ilmanpaine
+            needle: true
+            severity:
+              green: 1023
+              yellow: 1003
+              red: 0
+          - type: gauge
+            entity: sensor.saa_wind_speed
+            min: 0
+            max: 33
+            name: Tuulen nopeus
+            severity:
+              green: 0
+              yellow: 8
+              red: 21
+          - type: sensor
+            graph: none
+            icon: mdi:gauge
+            entity: sensor.pressure_hourly_trend
+            name: "Ilmanpaineen trendi"
+          - type: sensor
+            graph: none
+            icon: mdi:gauge
+            entity: sensor.saa_wind_bearing
+            name: Tuulen suunta
+          - type: sensor
+            entity: sensor.saa_cloud_coverage
+            name: Pilvisyys
+            icon: mdi:percent
+            graph: none
+          - type: sensor
+            entity: sensor.sun_elevation
+            name: Auringon korkeus
+            graph: none
+          - type: sensor
+            entity: sensor.sun_azimuth
+            name: Auringon atsimuutti
+            graph: none
+          - type: sensor
+            entity: sensor.moon
+            name: Kuun vaihe
+            graph: none
+
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: sensor
+            hours_to_show: 12
+            detail: 2
+            graph: line
+            entity: sensor.waqi_ihala_raisio_finland

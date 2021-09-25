@@ -1,0 +1,2 @@
+title: Koti
+views: !include_dir_list lovelace-default/

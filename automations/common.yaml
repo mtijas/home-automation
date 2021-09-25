@@ -1,0 +1,237 @@
+- id: coffee_maker_shutdown_timer
+  alias: Kahvinkeittimen sammutusajastin
+  trigger:
+    - entity_id: switch.kahvinkeitin
+      platform: state
+      to: "on"
+      for:
+        minutes: 30
+  action:
+    - service: switch.turn_off
+      entity_id: switch.kahvinkeitin
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Sammutin kahvinkeittimen.
+
+- id: coffee_maker_autostart
+  alias: "Kahvinkeittimen automaattikäynnistys"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Awake"
+      from: "Asleep"
+  condition:
+    - condition: state
+      entity_id: group.master_warning
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.coffee_maker_loaded
+      state: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.coffee_maker_loaded
+    - service: switch.turn_on
+      entity_id: switch.kahvinkeitin
+
+- id: sonos_autostop_at_night
+  alias: "Sonoksen automaattistop kun yö"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Asleep"
+  condition:
+    - condition: state
+      entity_id: media_player.olohuone
+      state: "Playing"
+  action:
+    - service: media_player.media_stop
+      entity_id: media_player.olohuone
+
+- id: away_mode_switches_turn_off
+  alias: "Turn off switches on away mode"
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Away"
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id:
+          - switch.kahvinkeitin
+
+- id: living_room_entertainment_auto_shutdown
+  alias: Olohuoneen viihde-elektroniikan automaattisammutus
+  trigger:
+    - entity_id: sensor.living_room_entertainment_status
+      platform: state
+      to: "standby"
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: input_select.home_mode
+      to: "Away"
+  condition:
+    - condition: state
+      entity_id: input_boolean.prevent_living_room_entertainment_auto_off
+      state: "off"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.living_room_entertainment_switch
+
+- alias: "Detect bedroom humidifier emptiness"
+  trigger:
+    - platform: state
+      entity_id: sensor.bedroom_humidifier_status
+      to: "standby"
+      for:
+        minutes: 4
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bedroom_humidifier_automations
+    - service: switch.turn_off
+      entity_id: switch.tp_link_smart_plug_5f83
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.bedroom_humidifier_empty
+
+- alias: "Reset bedroom humidifier emptiness status"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bedroom_humidifier_automations
+      to: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bedroom_humidifier_empty
+
+- alias: "Turn off bedroom humidifier when automation turns off"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bedroom_humidifier_automations
+      to: "off"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.tp_link_smart_plug_5f83
+
+- alias: "Autostart bedroom humidifier"
+  trigger:
+    - platform: time_pattern
+      minutes: "/2"
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_humidifier_automations
+      state: "on"
+    - condition: state
+      entity_id: switch.tp_link_smart_plug_5f83
+      state: "off"
+    - condition: numeric_state
+      entity_id: sensor.makuuhuoneen_kosteus
+      below: input_number.bedroom_humidifier_start_point
+  action:
+    - service: switch.turn_on
+      entity_id: switch.tp_link_smart_plug_5f83
+
+- alias: "Autostop bedroom humidifier"
+  trigger:
+    - platform: time_pattern
+      minutes: "/2"
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_humidifier_automations
+      state: "on"
+    - condition: state
+      entity_id: switch.tp_link_smart_plug_5f83
+      state: "on"
+    - condition: numeric_state
+      entity_id: sensor.makuuhuoneen_kosteus
+      above: input_number.bedroom_humidifier_stop_point
+  action:
+    - service: switch.turn_off
+      entity_id: switch.tp_link_smart_plug_5f83
+
+- alias: "Ensure bedroom humidifier hysteresis when increasing start point"
+  trigger:
+    - platform: state
+      entity_id: input_number.bedroom_humidifier_start_point
+  condition:
+    - condition: template
+      value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
+  action:
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.bedroom_humidifier_stop_point
+        value: "{{ states('input_number.bedroom_humidifier_start_point') | int + 2 }}"
+
+- alias: "Ensure bedroom humidifier hysteresis when decreasing stop point"
+  trigger:
+    - platform: state
+      entity_id: input_number.bedroom_humidifier_stop_point
+  condition:
+    - condition: template
+      value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
+  action:
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.bedroom_humidifier_start_point
+        value: "{{ states('input_number.bedroom_humidifier_stop_point') | int - 2 }}"
+
+- alias: "Keyfob-9-key-press"
+  trigger:
+    - platform: state
+      entity_id: sensor.nodeid_9_scene_state_scene_001
+    - platform: state
+      entity_id: sensor.nodeid_9_scene_state_scene_002
+    - platform: state
+      entity_id: sensor.nodeid_9_scene_state_scene_003
+    - platform: state
+      entity_id: sensor.nodeid_9_scene_state_scene_004
+    - platform: state
+      entity_id: sensor.nodeid_9_scene_state_scene_005
+    - platform: state
+      entity_id: sensor.nodeid_9_scene_state_scene_006
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: sensor.nodeid_9_scene_state_scene_001
+              state: "0"
+          sequence:
+            - service: mqtt.publish
+              data_template:
+                topic: "notify/burglar_alarm_state_request"
+                payload: "ARM_HOME"
+                qos: 1
+                retain: 0
+        - conditions:
+            - condition: state
+              entity_id: sensor.nodeid_9_scene_state_scene_002
+              state: "0"
+          sequence:
+            - service: mqtt.publish
+              data_template:
+                topic: "notify/burglar_alarm_state_request"
+                payload: "ARM_NIGHT"
+                qos: 1
+                retain: 0
+        - conditions:
+            - condition: state
+              entity_id: sensor.nodeid_9_scene_state_scene_003
+              state: "0"
+          sequence:
+            - service: mqtt.publish
+              data_template:
+                topic: "notify/burglar_alarm_state_request"
+                payload: "ARM_AWAY"
+                qos: 1
+                retain: 0
+        - conditions:
+            - condition: state
+              entity_id: sensor.nodeid_9_scene_state_scene_004
+              state: "0"
+          sequence:
+            - service: mqtt.publish
+              data_template:
+                topic: "notify/burglar_alarm_state_request"
+                payload: "DISARM"
+                qos: 1
+                retain: 0

@@ -1,0 +1,8 @@
+meteoalarm_frame:
+  title: "Meteoalarm"
+  url: "https://www.meteoalarm.eu/su_FI/0/0/FI032-Varsinais-Suomi.html"
+  icon: mdi:weather-windy
+blitzortung_frame:
+  title: "Ukkostutka"
+  url: "http://map.blitzortung.org/#8.51/60.5335/22.3352"
+  icon: mdi:flash

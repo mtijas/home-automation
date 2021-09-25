@@ -1,0 +1,89 @@
+title: Makuuhuone
+icon: mdi:bed
+background: var(--background-image)
+# The cards to show on this view.
+cards:
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 3
+        cards:
+          - type: "custom:button-card"
+            entity: input_boolean.bedroom_light_automations
+            name: "Automatiikka"
+            tap_action:
+              action: toggle
+          - type: light
+            entity: light.makuuhuoneen_yleisvalot
+            name: Yleisvalot
+          - type: light
+            entity: light.veeran_studio
+            name: Veeran studio
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: custom:slider-entity-row
+            entity: light.yopoydat
+            toggle: true
+      - type: grid
+        columns: 4
+        cards:
+          - type: "custom:button-card"
+            entity: input_boolean.bedroom_humidifier_automations
+            icon: mdi:air-humidifier
+            name: "MH kostutus"
+            tap_action:
+              action: toggle
+          - type: "custom:button-card"
+            entity: sensor.bedroom_humidifier_status
+            show_icon: true
+            show_state: true
+            show_name: false
+            color_type: card
+            tap_action:
+              action: more-info
+            state:
+              - value: "off"
+                icon: mdi:air-humidifier-off
+              - value: "humidifying"
+                color: rgb(50, 50, 255)
+                icon: mdi:air-humidifier
+              - value: "standby"
+                color: rgb(125, 255, 0)
+                icon: mdi:air-humidifier-off
+              - value: "empty"
+                color: rgb(255, 125, 0)
+                icon: mdi:air-humidifier-off
+              - value: "failed"
+                color: rgb(255, 0, 0)
+                icon: mdi:alert-circle
+
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            name: "Lämpötila"
+            entity: sensor.makuuhuoneen_lampotila
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            name: "Kosteus"
+            entity: sensor.makuuhuoneen_kosteus
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - sensor.makuuhuoneen_paine
+          - sensor.tp_link_smart_plug_5f83_power
+      - type: entities
+        show_header_toggle: false
+        title: "Asetukset"
+        entities:
+          - input_number.bedroom_humidifier_start_point
+          - input_number.bedroom_humidifier_stop_point

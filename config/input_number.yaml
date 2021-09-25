@@ -1,0 +1,139 @@
+living_room_brightness_target:
+  name: "OH valaistuksen tavoite"
+  min: 1
+  max: 100
+  step: 1
+  icon: mdi:speedometer-medium
+  mode: box
+living_room_brightness_damping:
+  name: "OH valaistuksen vaimennus"
+  min: 0.1
+  max: 10
+  step: 0.1
+  icon: mdi:speedometer-medium
+  mode: box
+kitchen_light_default_brightness:
+  name: "Keittiön valaistuksen kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+hallway_light_default_brightness:
+  name: "Eteisen valaistuksen kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+toilet_light_default_brightness:
+  name: "Pesuhuoneen valaistuksen kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+living_room_light_default_brightness:
+  name: "Olohuoneen valaistuksen oletuskirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+living_room_light_auto_brightness:
+  name: "Olohuoneen valaistuksen kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+bedroom_light_default_brightness:
+  name: "Makuuhuoneen valaistuksen kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+filament_1_default_brightness:
+  name: "Olohuoneen filamenttilampun kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+office_lightstrip_default_brightness:
+  name: "Toimiston valonauhan kirkkaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+kitchen_light_default_kelvin:
+  name: "Keittiön valaistuksen värilämpötila"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+hallway_light_default_kelvin:
+  name: "Eteisen valaistuksen värilämpötila"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+toilet_light_default_kelvin:
+  name: "Pesuhuoneen valaistuksen värilämpötila"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+living_room_light_default_kelvin:
+  name: "Olohuoneen valaistuksen värilämpötila"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+bedroom_light_default_kelvin:
+  name: "Makuuhuoneen valaistuksen värilämpötila"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+kitchen_light_turnoff_time:
+  name: "Keittiön valaistuksen sammutusviive"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+hallway_light_turnoff_time:
+  name: "Eteisen valaistuksen sammutusviive"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+toilet_light_turnoff_time:
+  name: "Pesuhuoneen valaistuksen sammutusviive"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+default_notification_volume_sonos:
+  min: 0
+  max: 1
+  step: 0.05
+  mode: box
+  name: "Sonosten ilmoitusten äänenvoimakkuus"
+bedroom_humidifier_start_point:
+  name: "MH kostutuksen käynnistys"
+  min: 20
+  max: 40
+  step: 1
+  icon: mdi:water-percent
+bedroom_humidifier_stop_point:
+  name: "MH kostutuksen sammutus"
+  min: 30
+  max: 60
+  step: 1
+  icon: mdi:water-percent
+living_room_entertainment_standby_threshold:
+  name: "OH viihde-elektroniikan sammutusraja"
+  min: 10
+  max: 30
+  step: 0.1
+  icon: mdi:power-plug-off

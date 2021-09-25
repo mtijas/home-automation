@@ -1,0 +1,69 @@
+homeassistant:
+  allowlist_external_dirs:
+    - /tmp
+    - /home/homeassistant/weathersnaps
+    - /home/homeassistant/snapshots
+##############################
+# COMPONENTS CONFIGURED HERE #
+##############################
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/button-card.js
+      type: module
+    - url: /local/plan-coordinates.js
+      type: module
+    - url: /local/battery-state-card.js
+      type: module
+    - url: /local/slider-entity-row.js
+      type: module
+
+#############################
+# COMPONENTS WITHOUT CONFIG #
+#############################
+
+cloud:
+conversation:
+history:
+logbook:
+map:
+sun:
+system_health:
+device_tracker:
+config:
+http:
+updater:
+mobile_app:
+python_script:
+person:
+ffmpeg:
+
+###################################
+# COMPONENTS WITH EXTERNAL CONFIG #
+###################################
+
+discovery: !include config/discovery.yaml
+zone: !include config/zone.yaml
+mqtt: !include config/mqtt.yaml
+recorder: !include config/recorder.yaml
+remote: !include config/remote.yaml
+binary_sensor: !include config/binary_sensor.yaml
+sensor: !include config/sensor.yaml
+tplink: !include config/tplink.yaml
+input_boolean: !include config/input_boolean.yaml
+input_number: !include config/input_number.yaml
+input_select: !include config/input_select.yaml
+timer: !include config/timer.yaml
+telegram_bot: !include config/telegram_bot.yaml
+notify: !include config/notify.yaml
+panel_iframe: !include config/panel_iframe.yaml
+alarm_control_panel: !include config/alarm_control_panel.yaml
+calendar: !include config/calendar.yaml
+camera: !include config/camera.yaml
+prometheus: !include config/prometheus.yaml
+sonos: !include config/sonos.yaml
+switch: !include config/switch.yaml
+group: !include_dir_merge_named groups/
+automation: !include_dir_merge_list automations/
+script: !include_dir_merge_named scripts/

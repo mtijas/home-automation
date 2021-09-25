@@ -1,0 +1,82 @@
+coffee_maker_loaded:
+  name: "Kahvinkeitin on ladattu"
+  icon: mdi:coffee-to-go
+show_alarm_buttons:
+  name: "Näytä hälytyspainikkeet"
+  initial: off
+  icon: mdi:alert-outline
+kitchen_should_illuminate:
+  name: "Keittiön valaistuksen sytytys"
+  initial: on
+  icon: mdi:lightbulb-on-outline
+hallway_should_illuminate:
+  name: "Eteisen valaistuksen sytytys"
+  initial: on
+  icon: mdi:lightbulb-on-outline
+toilet_should_illuminate:
+  name: "Pesuhuoneen valaistuksen sytytys"
+  initial: on
+  icon: mdi:lightbulb-on-outline
+living_room_should_illuminate:
+  name: "Olohuoneen valaistuksen sytytys"
+  icon: mdi:lightbulb-on-outline
+burglar_alarm_raised:
+  name: "Murtohälytys"
+  initial: off
+fire_alarm_raised:
+  name: "Palohälytys"
+  initial: off
+panic_alarm_raised:
+  name: "Paniikkihälytys"
+  initial: off
+get_to_bed_mode:
+  name: "Nukkumaan-tila"
+  icon: mdi:bed
+perimeter_notifications:
+  name: "Kuorivalvonta"
+  initial: on
+  icon: mdi:vector-square
+fridge_temperature_alarm:
+  name: "Jääkaapin lämpötilahälytys"
+  initial: off
+  icon: mdi:fridge-bottom
+front_door_alarm:
+  name: "Etuoven aukijääntihälytys"
+motion_notify:
+  name: "Liikeilmoitus"
+  icon: mdi:bell-outline
+bedroom_humidifier_automations:
+  name: "MH ilmankostutuksen automatiikka"
+bedroom_humidifier_empty:
+  name: "MH ilmankostutin tyhjä"
+living_room_light_automations:
+  name: "Olohuoneen valoautomatiikka"
+  icon: mdi:brightness-auto
+kitchen_light_automations:
+  name: "Keittiön valoautomatiikka"
+  icon: mdi:brightness-auto
+hallway_light_automations:
+  name: "Käytävän valoautomatiikka"
+  icon: mdi:brightness-auto
+toilet_light_automations:
+  name: "Pesuhuoneen valoautomatiikka"
+  icon: mdi:brightness-auto
+bedroom_light_automations:
+  name: "Makuuhuoneen valoautomatiikka"
+  icon: mdi:brightness-auto
+cloakroom_light_automations:
+  name: "Vaatehuoneen valoautomatiikka"
+  icon: mdi:brightness-auto
+master_caution_triggered:
+  name: "Master Caution"
+  icon: mdi:alert-circle-outline
+ack_master_caution:
+  name: "Varoitukset kuitattu"
+  icon: mdi:check-all
+  initial: off
+guests:
+  name: "Guests"
+  icon: mdi:human-capacity-increase
+prevent_living_room_entertainment_auto_off:
+  name: "Estä viihde-elektroniikan automaattisammutus"
+  icon: mdi:cancel

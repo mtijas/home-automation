@@ -1,0 +1,27 @@
+- name: Telegram_Notify_Markus
+  platform: telegram
+  chat_id: !secret telegram_chatid_markus
+
+- name: Telegram_Notify_Possula
+  platform: telegram
+  chat_id: !secret telegram_chatid_possula
+
+- name: ALL_DEVICES
+  platform: group
+  services:
+    - service: mobile_app_nokia_6_2
+    - service: mobile_app_markuksen_iphone
+
+- name: syslog_info
+  platform: syslog
+  facility: local0
+
+- name: syslog_emergency
+  platform: syslog
+  facility: local0
+  priority: 5
+
+- name: syslog_critical
+  platform: syslog
+  facility: local0
+  priority: 3

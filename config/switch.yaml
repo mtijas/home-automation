@@ -1,0 +1,7 @@
+- platform: mqtt
+  name: "Living Room Entertainment Switch"
+  unique_id: "living-room-entertainment-power-plug"
+  command_topic: "shellies/shellyplug-s-C111E6/relay/0/command"
+  state_topic: "shellies/shellyplug-s-C111E6/relay/0"
+  payload_off: "off"
+  payload_on: "on"

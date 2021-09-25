@@ -1,0 +1,20 @@
+title: Varautuminen
+icon: mdi:biohazard
+background: var(--background-image)
+# The cards to show on this view.
+cards:
+  - type: vertical-stack
+    title: "SARS-CoV-2 / COVID-19"
+    cards:
+      - type: entities
+        entities:
+          - sensor.finland_coronavirus_confirmed
+          - sensor.finland_coronavirus_current
+          - sensor.finland_coronavirus_deaths
+          - sensor.finland_coronavirus_recovered
+      - type: entities
+        entities:
+          - sensor.worldwide_coronavirus_confirmed
+          - sensor.worldwide_coronavirus_current
+          - sensor.worldwide_coronavirus_deaths
+          - sensor.worldwide_coronavirus_recovered

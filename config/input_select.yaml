@@ -1,0 +1,10 @@
+home_mode:
+  name: "Kodin tila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Party"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:home-circle

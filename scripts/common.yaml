@@ -1,0 +1,60 @@
+time_for_bed:
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.yopoydat
+        kelvin: 2700
+        brightness: 75
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.makuuhuoneen_yleisvalot
+          - light.koristevalot
+    - service: input_boolean.turn_on
+      data_template:
+        entity_id: input_boolean.get_to_bed_mode
+
+turn_off_harmony_if_on:
+  sequence:
+    - condition: template
+      value_template: "{{ state_attr('remote.living_room', 'current_activity') != 'PowerOff'}}"
+    - service: remote.turn_on
+      entity_id: remote.living_room
+      data:
+        activity: "PowerOff"
+
+test_living_room_announcer:
+  sequence:
+    - service: script.sonos_tts_notification
+      data_template:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Kello on {{ now().strftime("%H:%M") }}.
+
+sonos_tts_notification:
+  alias: "Sonos TTS script"
+  sequence:
+    - service: sonos.snapshot
+      data:
+        entity_id: "{{ player_location }}"
+    - service: sonos.unjoin
+      data:
+        entity_id: "{{ player_location }}"
+    - service: media_player.volume_set
+      data:
+        entity_id: "{{ player_location }}"
+        volume_level: "{{ states('input_number.default_notification_volume_sonos')|float }}"
+    - service: tts.cloud_say
+      data_template:
+        entity_id: "{{ player_location }}"
+        message: "{{ message_str }}"
+        options:
+          gender: female
+        language: fi-FI
+    - delay: "00:00:02"
+    - wait_template: '{{ not is_state(player_location, "playing") }}'
+      timeout: "00:00:30"
+      continue_on_timeout: true
+    - service: sonos.restore
+      data:
+        entity_id: "{{ player_location }}"

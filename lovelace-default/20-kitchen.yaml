@@ -1,0 +1,63 @@
+title: Keittiö
+icon: mdi:pot-steam
+background: var(--background-image)
+# The cards to show on this view.
+cards:
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 4
+        cards:
+          - type: "custom:button-card"
+            entity: switch.kahvinkeitin
+            icon: mdi:coffee
+            tap_action:
+              action: toggle
+          - type: "custom:button-card"
+            entity: input_boolean.coffee_maker_loaded
+            color_type: card
+            name: on ladattu
+            tap_action:
+              action: toggle
+      - type: grid
+        columns: 3
+        cards:
+          - type: "custom:button-card"
+            entity: input_boolean.kitchen_light_automations
+            name: "Automatiikka"
+            tap_action:
+              action: toggle
+          - type: light
+            entity: light.keittio
+            name: Yleisvalot
+
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            name: "Lämpötila"
+            entity: sensor.keittion_lampotila
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            name: "Kosteus"
+            entity: sensor.keittion_kosteus
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - sensor.kahvinkeitin_current_consumption
+          - sensor.insuliinilokeron_lampotila
+          - sensor.kitchen_sensor_light_level
+      - type: entities
+        show_header_toggle: false
+        title: "Asetukset"
+        entities:
+          - automation.kahvin_valmistumisilmoitus
+          - automation.kahvinkeittimen_sammutusajastin
