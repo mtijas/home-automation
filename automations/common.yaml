@@ -69,9 +69,6 @@
       to: "standby"
       for:
         minutes: 10
-    - platform: state
-      entity_id: input_select.home_mode
-      to: "Away"
   condition:
     - condition: state
       entity_id: input_boolean.prevent_living_room_entertainment_auto_off
