@@ -11,6 +11,7 @@
         payload: "awake"
         qos: 1
         retain: 1
+    - service: script.living_room_camera_to_wall
 
 - id: asleep_mode_state_set
   alias: "Set Asleep mode MQTT state"
@@ -55,6 +56,7 @@
         payload: "away"
         qos: 1
         retain: 1
+    - service: script.living_room_camera_to_hallway
 
 - id: emergency_mode_state_set
   alias: "Set Emergency mode MQTT state"
@@ -69,6 +71,7 @@
         payload: "emergency"
         qos: 1
         retain: 1
+    - service: script.living_room_camera_to_hallway
 
 - id: automated_away_mode
   alias: "Away-tilan aktivointi automaattisesti"
