@@ -353,3 +353,40 @@
       entity_id: input_boolean.master_caution_triggered
     - service: input_boolean.turn_off
       entity_id: input_boolean.ack_master_caution
+
+- id: burglar_alarm_tag_scan
+  alias: "Toggles burglar alarm between away-disarmed on tag scan"
+  mode: single
+  max_exceeded: silent
+  variables:
+    tags:
+      - 0402e39c-2f9f-4540-9f9d-78bb2b143a64
+  trigger:
+    - platform: event
+      event_type: tag_scanned
+  condition:
+    - "{{ trigger.event.data.tag_id in tags }}"
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: alarm_control_panel.ha_alarm
+              state: disarmed
+          sequence:
+            - service: alarm_control_panel.alarm_arm_away
+              target:
+                entity_id: alarm_control_panel.ha_alarm
+        - conditions:
+            - condition: state
+              entity_id: alarm_control_panel.ha_alarm
+              state:
+                - armed_away
+                - armed_night
+                - armied_home
+                - pending
+                - triggered
+          sequence:
+            - service: alarm_control_panel.alarm_disarm
+              target:
+                entity_id: alarm_control_panel.ha_alarm
+    - delay: 2
