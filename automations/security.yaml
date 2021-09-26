@@ -373,9 +373,12 @@
               entity_id: alarm_control_panel.ha_alarm
               state: disarmed
           sequence:
-            - service: alarm_control_panel.alarm_arm_away
-              target:
-                entity_id: alarm_control_panel.ha_alarm
+            - service: mqtt.publish
+              data_template:
+                topic: "notify/burglar_alarm_state_request"
+                payload: "ARM_AWAY"
+                qos: 1
+                retain: 0
         - conditions:
             - condition: state
               entity_id: alarm_control_panel.ha_alarm
@@ -386,7 +389,10 @@
                 - pending
                 - triggered
           sequence:
-            - service: alarm_control_panel.alarm_disarm
-              target:
-                entity_id: alarm_control_panel.ha_alarm
+            - service: mqtt.publish
+              data_template:
+                topic: "notify/burglar_alarm_state_request"
+                payload: "DISARM"
+                qos: 1
+                retain: 0
     - delay: 2
