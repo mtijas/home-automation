@@ -1,0 +1,8 @@
+living_room_camera_back_to_wall:
+  alias: Living Room Camera Back To Wall
+  sequence:
+    - service: onvif.ptz
+      data:
+        entity_id: camera.olohuone_profile000_mainstream
+        preset: "000"
+        move_mode: GotoPreset
