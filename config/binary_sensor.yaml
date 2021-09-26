@@ -1,16 +1,3 @@
-- platform: mqtt
-  name: Hälytinpaneelin tila
-  state_topic: "availability/alarmpanel-1"
-  payload_on: "online"
-  payload_off: "offline"
-  device_class: "connectivity"
-- platform: mqtt
-  name: "Hälytinpaneelin äänihälytin"
-  state_topic: "sensor/alarmpanel-1/sound-enabled"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "sound"
-  availability_topic: "availability/alarmpanel-1"
 - platform: template
   sensors:
     coffee_is_brewing:

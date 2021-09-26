@@ -125,21 +125,6 @@ cards:
             color: green
             tap_action:
               action: more-info
-          - type: "custom:button-card"
-            entity: binary_sensor.halytinpaneelin_aanihalytin
-            name: ET äänihälytin
-            color_type: card
-            color: green
-            tap_action:
-              action: more-info
-          - type: "custom:button-card"
-            entity: binary_sensor.halytinpaneelin_tila
-            name: ET hälypaneeli yhdistetty
-            color_type: card
-            color: green
-            icon: mdi:alarm-panel-outline
-            tap_action:
-              action: more-info
 
       - type: horizontal-stack
         cards:
