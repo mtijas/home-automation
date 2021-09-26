@@ -1,4 +1,4 @@
 - platform: generic
   name: Finland Weather
-  still_image_url: http://127.0.0.1:8123/local/finland-weather-latest.png
+  still_image_url: https://cdn.fmi.fi/weather-observations/products/finland/frontpage_wx_obs-latest.png
   verify_ssl: false
