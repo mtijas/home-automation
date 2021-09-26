@@ -124,7 +124,7 @@ cards:
             name: "Veeran iPhone"
           - entity: sensor.eteisen_liiketunnistimen_paristo
             name: "Eteisen liike"
-          - entity: sensor.makuuhuoneen_himmenninkytkimen_paristo
+          - entity: sensor.mh_himmenninkytkin_1_battery_level
             name: "Makuuhuoneen kytkin"
           - entity: sensor.pesuhuoneen_esp_n_paristo
             name: "Pesuhuoneen ESP"
@@ -132,7 +132,7 @@ cards:
             name: "Pesuhuoneen liike"
           - entity: sensor.keittion_liiketunnistimen_paristo
             name: "Keittiön liike"
-          - entity: sensor.olohuoneen_himmenninkytkimen_paristo
+          - entity: sensor.olohuoneen_himmenninkytkin_battery_level
             name: "Olohuoneen kytkin"
           - entity: sensor.palopainikkeen_pariston_lataus
             name: "Eteisen palopainike"

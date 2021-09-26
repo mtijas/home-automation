@@ -12,8 +12,8 @@ all_batteries:
     - sensor.eteisen_liiketunnistimen_paristo
     - sensor.keittion_liiketunnistimen_paristo
     - sensor.pesuhuoneen_liiketunnistimen_paristo
-    - sensor.olohuoneen_himmenninkytkimen_paristo
-    - sensor.makuuhuoneen_himmenninkytkimen_paristo
+    - sensor.olohuoneen_himmenninkytkin_battery_level
+    - sensor.mh_himmenninkytkin_1_battery_level
     - sensor.etuoven_anturin_paristo
     - sensor.parvekkeen_oven_anturin_paristo
 people:
