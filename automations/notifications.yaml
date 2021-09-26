@@ -6,7 +6,7 @@
   action:
     - service: notify.telegram_notify_possula
       data_template:
-        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ulkoilman_lampotila") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_condition") }}.'
+        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ulkoilman_lampotila") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
 
 - id: coffee_brewed_notification
   alias: "Kahvin valmistumisilmoitus"
