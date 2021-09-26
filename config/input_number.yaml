@@ -137,3 +137,4 @@ living_room_entertainment_standby_threshold:
   max: 30
   step: 0.1
   icon: mdi:power-plug-off
+  mode: box
