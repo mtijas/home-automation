@@ -92,7 +92,6 @@
     - platform: state
       entity_id: alarm_control_panel.ha_alarm
       to: "disarmed"
-      from: "pending"
   condition:
     - condition: state
       entity_id: input_select.home_mode
