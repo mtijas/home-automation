@@ -147,8 +147,8 @@ cards:
             state_image:
               "home": "/local/avatars/markus.jpg"
               "not_home": "/local/avatars/markus-bw.jpg"
-              "P-R": "/local/avatars/markus-pr.jpg"
-              "TurkuAMK": "/local/avatars/markus-turkuamk.jpg"
+              "P-R": "/local/avatars/markus-bw.jpg"
+              "TurkuAMK": "/local/avatars/markus-bw.jpg"
             title: "Markus"
           - type: picture-glance
             entity: person.veera
@@ -158,8 +158,8 @@ cards:
             state_image:
               "home": "/local/avatars/veera.jpg"
               "not_home": "/local/avatars/veera-bw.jpg"
-              "P-R": "/local/avatars/veera-pr.jpg"
-              "TurkuAMK": "/local/avatars/veera-turkuamk.jpg"
+              "P-R": "/local/avatars/veera-bw.jpg"
+              "TurkuAMK": "/local/avatars/veera-bw.jpg"
             title: "Veera"
 
       - type: conditional
