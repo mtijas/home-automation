@@ -61,5 +61,6 @@ prometheus: !include config/prometheus.yaml
 sonos: !include config/sonos.yaml
 switch: !include config/switch.yaml
 group: !include_dir_merge_named groups/
-automation: !include_dir_merge_list automations/
+automation manual: !include_dir_merge_list automations/
+automation ui: !include automations.yaml
 script: !include_dir_merge_named scripts/
