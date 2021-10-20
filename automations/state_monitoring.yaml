@@ -60,7 +60,7 @@
       entity_id: binary_sensor.etuovi
       to: "on"
       for:
-        minutes: 5
+        minutes: 15
   condition:
     - condition: state
       entity_id: input_boolean.front_door_alarm
@@ -102,3 +102,4 @@
         entity_id: >
           - sensor.lr_brightness_target
           - sensor.lr_brightness_setting
+          - sensor.scfb_setpoint
