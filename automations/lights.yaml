@@ -7,7 +7,7 @@
   action:
     - service: input_boolean.turn_on
       entity_id: group.all_light_automations
-
+    
 - id: asleep_mode_start
   alias: "Starting Asleep mode"
   trigger:
@@ -403,11 +403,10 @@
       entity_id: input_boolean.hallway_light_automations
       state: "on"
   action:
-    - service: light.turn_on
+    - service: script.turn_hallway_light_on_with_settings
       data_template:
-        entity_id: light.eteisen_yleisvalot
-        brightness: "{{ states('input_number.hallway_light_default_brightness') | int }}"
-        kelvin: "{{ states('input_number.hallway_light_default_kelvin') | int }}"
+        light_brightness: "{{ states('input_number.hallway_light_default_brightness') | int }}"
+        light_kelvin: "{{ states('input_number.hallway_light_default_kelvin') | int }}"
     - service: timer.start
       data_template:
         entity_id: timer.hallway_motion_timeout

@@ -1,3 +1,15 @@
+turn_hallway_light_on_with_settings:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.eteisen_yleisvalot
+        brightness: "{{ light_brightness }}"
+    - delay: "00:00:03"
+    - service: light.turn_on
+      data_template:
+        entity_id: light.eteisen_yleisvalot
+        kelvin: "{{ light_kelvin }}"
+
 turn_cloakroom_light_on_with_settings:
   sequence:
     - service: light.turn_on
