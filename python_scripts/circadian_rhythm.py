@@ -9,7 +9,7 @@ night_start = datetime.time(22, 0)
 # A setting is a tuple of (morning, day, evening, later_evening, night)
 all_settings = {
     "hallway_light_default_kelvin": (6500, 5000, 4000, 3200, 2700),
-    "hallway_light_default_brightness": (150, 255, 255, 180, 8),
+    "hallway_light_default_brightness": (150, 255, 255, 180, 65),
     "hallway_light_turnoff_time": (3, 4, 3, 3, 1),
     "kitchen_light_default_kelvin": (6500, 5000, 4000, 3200, 2700),
     "kitchen_light_default_brightness": (255, 255, 255, 180, 90),
