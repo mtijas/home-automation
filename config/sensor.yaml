@@ -9,10 +9,6 @@
     - type: load_15m
 - platform: template
   sensors:
-    tp_link_smart_plug_5f83_power:
-      value_template: "{{ state_attr('switch.tp_link_smart_plug_5f83', 'current_power_w') | float }}"
-      unit_of_measurement: "W"
-      friendly_name: "MH kostuttimen tehonkulutus"
     living_room_harmony_hub:
       value_template: "{{ state_attr('remote.living_room', 'current_activity') }}"
       friendly_name: "Living room harmony hub"
@@ -65,7 +61,7 @@
           empty
         {% elif is_state('switch.tp_link_smart_plug_5f83', 'off') %}
           off
-        {% elif (states('sensor.tp_link_smart_plug_5f83_power') | float) > 50 %}
+        {% elif (states('sensor.tp_link_smart_plug_5f83_current_consumption') | float) > 50 %}
           humidifying
         {% elif is_state('switch.tp_link_smart_plug_5f83', 'on') %}
           standby
