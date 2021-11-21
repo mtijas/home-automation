@@ -16,9 +16,6 @@ cards:
           - type: light
             entity: light.makuuhuoneen_yleisvalot
             name: Yleisvalot
-          - type: light
-            entity: light.veeran_studio
-            name: Veeran studio
       - type: entities
         show_header_toggle: false
         entities:

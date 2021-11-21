@@ -204,7 +204,7 @@ cards:
               action: more-info
 
       - type: grid
-        columns: 4
+        columns: 3
         square: false
         cards:
           - name: Olohuone
