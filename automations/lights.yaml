@@ -70,7 +70,7 @@
         effect: "random"
     - service: light.turn_on
       data:
-        entity_id: light.office_lightstrip
+        entity_id: light.oh_valonauhat
         brightness: 100
         effect: "random"
     - service: light.turn_on

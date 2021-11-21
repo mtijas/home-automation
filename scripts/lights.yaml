@@ -14,12 +14,12 @@ turn_on_decorative_lights_to_default:
   sequence:
     - service: light.turn_on
       data_template:
-        entity_id: light.filament_1
-        brightness: "{{ states('input_number.filament_1_default_brightness')|float }}"
+        entity_id: light.koristevalot
+        brightness: "{{ states('input_number.decorative_lights_default_brightness')|float }}"
     - service: light.turn_on
       data_template:
-        entity_id: light.office_lightstrip
-        brightness: "{{ states('input_number.office_lightstrip_default_brightness')|float }}"
+        entity_id: light.oh_valonauhat
+        brightness: "{{ states('input_number.living_room_lightstrips_default_brightness')|float }}"
         kelvin: "{{ states('input_number.living_room_light_default_kelvin')|float }}"
     - service: light.turn_on
       data_template:

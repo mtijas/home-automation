@@ -203,11 +203,23 @@ cards:
             tap_action:
               action: more-info
 
-      - type: horizontal-stack
+      - type: grid
+        columns: 4
+        square: false
         cards:
           - name: Olohuone
             type: entity-button
             entity: light.olohuoneen_yleisvalot
+            tap_action:
+              action: toggle
+          - name: Valonauhat
+            type: entity-button
+            entity: light.oh_valonauhat
+            tap_action:
+              action: toggle
+          - name: Koristevalot
+            type: entity-button
+            entity: light.koristevalot
             tap_action:
               action: toggle
           - name: Makuuhuone

@@ -25,10 +25,10 @@ cards:
         show_header_toggle: false
         entities:
           - type: custom:slider-entity-row
-            entity: light.filament_1
+            entity: light.koristevalot
             toggle: true
           - type: custom:slider-entity-row
-            entity: light.office_lightstrip
+            entity: light.oh_valonauhat
             toggle: true
       - type: grid
         columns: 4
@@ -256,8 +256,8 @@ cards:
         show_header_toggle: false
         title: "Asetukset"
         entities:
-          - input_number.filament_1_default_brightness
-          - input_number.office_lightstrip_default_brightness
+          - input_number.decorative_lights_default_brightness
+          - input_number.living_room_lightstrips_default_brightness
           - input_number.living_room_brightness_target
           - input_number.living_room_brightness_damping
           - input_boolean.prevent_living_room_entertainment_auto_off

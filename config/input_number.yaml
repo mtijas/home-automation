@@ -54,15 +54,15 @@ bedroom_light_default_brightness:
   step: 1
   icon: mdi:brightness-auto
   mode: box
-filament_1_default_brightness:
-  name: "Olohuoneen filamenttilampun kirkkaus"
+decorative_lights_default_brightness:
+  name: "Koristevalojen kirkkaus"
   min: 1
   max: 255
   step: 1
   icon: mdi:brightness-auto
   mode: box
-office_lightstrip_default_brightness:
-  name: "Toimiston valonauhan kirkkaus"
+living_room_lightstrips_default_brightness:
+  name: "Valonauhojen kirkkaus"
   min: 1
   max: 255
   step: 1

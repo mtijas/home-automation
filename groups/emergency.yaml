@@ -12,7 +12,7 @@ emergency_lights_alarm:
   name: "Hälytysvalot"
   entities:
     - light.oh_lattiavalaisin
-    - light.office_lightstrip
+    - light.oh_valonauhat
 master_warning:
   name: "Master Warning"
   icon: mdi:alert-outline
