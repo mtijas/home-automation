@@ -141,3 +141,9 @@ cards:
             detail: 2
             graph: line
             entity: sensor.waqi_ihala_raisio_finland
+          - type: sensor
+            hours_to_show: 6
+            detail: 2
+            graph: line
+            entity: sensor.parvekkeen_lampotila
+            name: Parvekkeen lämpötila
