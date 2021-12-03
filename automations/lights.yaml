@@ -7,6 +7,10 @@
   action:
     - service: input_boolean.turn_on
       entity_id: group.all_light_automations
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.color_light_1 # Joulukuusi
 
 - id: asleep_mode_start
   alias: "Starting Asleep mode"
