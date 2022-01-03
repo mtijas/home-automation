@@ -100,7 +100,9 @@ cards:
       - type: entity
         name: "UPS Status"
         entity: sensor.asustor_status
-      - type: horizontal-stack
+      - type: grid
+        columns: 3
+        square: false
         cards:
           - type: gauge
             name: "Batt volts"
@@ -130,6 +132,26 @@ cards:
               green: 0
               yellow: 30
               red: 50
+          - type: gauge
+            name: "Input"
+            entity: sensor.asustor_input_voltage
+            min: 0
+            max: 300
+            severity:
+              green: 176
+              yellow: 0
+              red: 288
+          - type: sensor
+            name: "Runtime"
+            entity: sensor.asustor_battery_runtime
+            graph: line
+            detail: 2
+            hours_to_show: 1
+          - type: button
+            name: "Sound"
+            entity: sensor.asustor_beeper_status
+            tap_action:
+              action: none
   - type: vertical-stack
     title: "Server Cabinet Fan Box"
     cards:
