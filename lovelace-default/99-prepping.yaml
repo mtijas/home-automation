@@ -4,17 +4,10 @@ background: var(--background-image)
 # The cards to show on this view.
 cards:
   - type: vertical-stack
-    title: "SARS-CoV-2 / COVID-19"
+    title: "GDACS"
     cards:
-      - type: entities
-        entities:
-          - sensor.finland_coronavirus_confirmed
-          - sensor.finland_coronavirus_current
-          - sensor.finland_coronavirus_deaths
-          - sensor.finland_coronavirus_recovered
-      - type: entities
-        entities:
-          - sensor.worldwide_coronavirus_confirmed
-          - sensor.worldwide_coronavirus_current
-          - sensor.worldwide_coronavirus_deaths
-          - sensor.worldwide_coronavirus_recovered
+      - type: entity
+        entity: sensor.gdacs_home
+      - type: map
+        geo_location_sources:
+          - gdacs
