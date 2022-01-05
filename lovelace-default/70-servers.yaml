@@ -150,8 +150,9 @@ cards:
           - type: button
             name: "Sound"
             entity: sensor.asustor_beeper_status
-            state_color: true
-            icon: mdi:bell
+            show_icon: false
+            show_title: true
+            show_state: true
             tap_action:
               action: none
   - type: vertical-stack
