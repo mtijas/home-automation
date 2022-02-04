@@ -116,7 +116,7 @@ cards:
         show_empty: false
         state_filter:
           - operator: "<"
-            value: 20
+            value: 10
         entities:
           - entity: sensor.iphone_markus_battery_level
             name: "Markuksen iPhone"
