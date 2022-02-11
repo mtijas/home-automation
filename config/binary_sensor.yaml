@@ -60,11 +60,9 @@
   name: Ping WAN Router
   count: 5
   scan_interval: 60
-#- platform: meteoalarm
-#  country: 'FI'
-#  province: 'Varsinais-Suomi'
-#  language: 'fi'
-#  scan_interval: 1800
+- platform: meteoalarm
+  country: "finland"
+  province: "Varsinais-Suomi"
 - platform: mqtt
   name: "Olohuoneen kaasuhälytys"
   state_topic: "home/climate/livingroom/gasalarm"

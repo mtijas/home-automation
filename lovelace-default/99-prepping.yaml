@@ -11,3 +11,9 @@ cards:
       - type: map
         geo_location_sources:
           - gdacs
+
+  - type: vertical-stack
+    title: "Alarms"
+    cards:
+      - type: entity
+        entity: binary_sensor.meteoalarm
