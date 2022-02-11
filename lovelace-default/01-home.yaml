@@ -143,7 +143,6 @@ cards:
             entity: person.markus
             entities:
               - entity: sensor.iphone_markus_battery_level
-              - entity: sensor.iphone_markus_geocoded_location
             state_image:
               "home": "/local/avatars/markus.jpg"
               "not_home": "/local/avatars/markus-bw.jpg"
