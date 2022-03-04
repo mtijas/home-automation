@@ -142,7 +142,7 @@ cards:
           - type: picture-glance
             entity: person.markus
             entities:
-              - entity: sensor.sensor.moto_g41_battery_level
+              - entity: sensor.moto_g41_battery_level
               - entity: binary_sensor.moto_g41_is_charging
             state_image:
               "home": "/local/avatars/markus.jpg"
