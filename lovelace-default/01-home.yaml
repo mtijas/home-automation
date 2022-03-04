@@ -142,7 +142,8 @@ cards:
           - type: picture-glance
             entity: person.markus
             entities:
-              - entity: sensor.iphone_markus_battery_level
+              - entity: sensor.sensor.moto_g41_battery_level
+              - entity: binary_sensor.moto_g41_is_charging
             state_image:
               "home": "/local/avatars/markus.jpg"
               "not_home": "/local/avatars/markus-bw.jpg"
@@ -153,6 +154,7 @@ cards:
             entity: person.veera
             entities:
               - entity: sensor.iphone_veera_battery_level
+              - entity: sensor.iphone_veera_battery_state
               - entity: sensor.iphone_veera_geocoded_location
             state_image:
               "home": "/local/avatars/veera.jpg"
@@ -404,10 +406,8 @@ cards:
           - "#ffff00" # yellow
           - "#00ff00" # green
         entities:
-          - entity: sensor.iphone_markus_battery_level
-            name: "Markuksen iPhone"
-          - entity: sensor.ipad_markus_battery_level
-            name: "Markuksen iPad"
+          - entity: sensor.sensor.moto_g41_battery_level
+            name: "Markuksen Moto G41"
           - entity: sensor.iphone_veera_battery_level
             name: "Veeran iPhone"
           - entity: sensor.pesuhuoneen_esp_n_paristo
