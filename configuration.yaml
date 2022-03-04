@@ -29,7 +29,6 @@ system_health:
 device_tracker:
 config:
 http:
-updater:
 mobile_app:
 python_script:
 person:

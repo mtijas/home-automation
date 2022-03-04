@@ -25,11 +25,6 @@ cards:
   - type: vertical-stack
     title: "Servers"
     cards:
-      - type: entities
-        title: "Home Assistant"
-        show_header_toggle: false
-        entities:
-          - binary_sensor.updater
       - type: grid
         columns: 3
         square: false
