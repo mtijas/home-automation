@@ -109,34 +109,6 @@ cards:
               - operator: default
                 icon: mdi:door-closed
 
-      - type: entity-filter
-        card:
-          title: "Sähkö vähissä:"
-          show_header_toggle: false
-        show_empty: false
-        state_filter:
-          - operator: "<"
-            value: 10
-        entities:
-          - entity: sensor.iphone_markus_battery_level
-            name: "Markuksen iPhone"
-          - entity: sensor.iphone_veera_battery_level
-            name: "Veeran iPhone"
-          - entity: sensor.eteisen_liiketunnistimen_paristo
-            name: "Eteisen liike"
-          - entity: sensor.mh_himmenninkytkin_1_battery_level
-            name: "Makuuhuoneen kytkin"
-          - entity: sensor.pesuhuoneen_esp_n_paristo
-            name: "Pesuhuoneen ESP"
-          - entity: sensor.pesuhuoneen_liiketunnistimen_paristo
-            name: "Pesuhuoneen liike"
-          - entity: sensor.keittion_liiketunnistimen_paristo
-            name: "Keittiön liike"
-          - entity: sensor.olohuoneen_himmenninkytkin_battery_level
-            name: "Olohuoneen kytkin"
-          - entity: sensor.palopainikkeen_pariston_lataus
-            name: "Eteisen palopainike"
-
       - type: horizontal-stack
         cards:
           - type: picture-glance
@@ -213,24 +185,9 @@ cards:
             entity: light.olohuoneen_yleisvalot
             tap_action:
               action: toggle
-          - name: Valonauhat
-            type: entity-button
-            entity: light.oh_valonauhat
-            tap_action:
-              action: toggle
-          - name: Koristevalot
-            type: entity-button
-            entity: light.koristevalot
-            tap_action:
-              action: toggle
           - name: Makuuhuone
             type: entity-button
             entity: light.makuuhuoneen_yleisvalot
-            tap_action:
-              action: toggle
-          - name: Yöpöydät
-            type: entity-button
-            entity: light.yopoydat
             tap_action:
               action: toggle
 
@@ -399,6 +356,34 @@ cards:
         entities:
           - calendar.perhe_perhe
 
+      - type: entity-filter
+        card:
+          title: "Sähkö vähissä:"
+          show_header_toggle: false
+        show_empty: false
+        state_filter:
+          - operator: "<"
+            value: 10
+        entities:
+          - entity: sensor.moto_g41_battery_level
+            name: "Markuksen Moto G41"
+          - entity: sensor.iphone_veera_battery_level
+            name: "Veeran iPhone"
+          - entity: sensor.eteisen_liiketunnistimen_paristo
+            name: "Eteisen liike"
+          - entity: sensor.mh_himmenninkytkin_1_battery_level
+            name: "Makuuhuoneen kytkin"
+          - entity: sensor.pesuhuoneen_esp_n_paristo
+            name: "Pesuhuoneen ESP"
+          - entity: sensor.pesuhuoneen_liiketunnistimen_paristo
+            name: "Pesuhuoneen liike"
+          - entity: sensor.keittion_liiketunnistimen_paristo
+            name: "Keittiön liike"
+          - entity: sensor.olohuoneen_himmenninkytkin_battery_level
+            name: "Olohuoneen kytkin"
+          - entity: sensor.palopainikkeen_pariston_lataus
+            name: "Eteisen palopainike"
+
       - type: custom:battery-state-card
         name: "Paristot"
         color_gradient:
@@ -406,7 +391,7 @@ cards:
           - "#ffff00" # yellow
           - "#00ff00" # green
         entities:
-          - entity: sensor.sensor.moto_g41_battery_level
+          - entity: sensor.moto_g41_battery_level
             name: "Markuksen Moto G41"
           - entity: sensor.iphone_veera_battery_level
             name: "Veeran iPhone"
