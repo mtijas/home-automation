@@ -239,7 +239,6 @@
         entity_id: input_number.living_room_light_auto_brightness
         value: "{{ states('input_number.living_room_light_default_brightness') | int }}"
 
-
 - id: decorative_lights_auto_on
   alias: "Käynnistysautomatiikka koristevaloille"
   trigger:
@@ -680,9 +679,9 @@
 - id: cloakroom_light_turn_on
   alias: "Vaatehuoneen valaistuksen käynnistys"
   trigger:
-    - platform: mqtt
-      topic: "home/433/devices/1"
-      payload: "turn on"
+    - platform: state
+      entity_id: switch.cloakroom_motion
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.cloakroom_light_automations
@@ -698,12 +697,15 @@
   alias: "Vaatehuoneen valaistuksen sammutus"
   trigger:
     - platform: state
-      entity_id: light.vaatehuone
-      to: "on"
-      for: "00:05:00"
+      entity_id: switch.cloakroom_motion
+      to: "off"
+      for: "00:01:00"
   condition:
     - condition: state
       entity_id: input_boolean.cloakroom_light_automations
+      state: "on"
+    - condition: state
+      entity_id: light.vaatehuone
       state: "on"
   action:
     - service: light.turn_off
