@@ -55,7 +55,7 @@ cards:
             hours_to_show: 6
             detail: 2
             graph: line
-            entity: sensor.ulkoilman_lampotila
+            entity: sensor.152_temperature
             name: Ulkoilman lämpötila
           - type: sensor
             hours_to_show: 6
@@ -145,5 +145,5 @@ cards:
             hours_to_show: 6
             detail: 2
             graph: line
-            entity: sensor.parvekkeen_lampotila
+            entity: sensor.151_temperature
             name: Parvekkeen lämpötila

@@ -2,7 +2,7 @@
   alias: "Jääkaapin lämpötilavalvonta alaraja"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.insuliinilokeron_lampotila
+      entity_id: sensor.136_temperature
       below: 5
       for:
         minutes: 5
@@ -21,7 +21,7 @@
   alias: "Jääkaapin lämpötilavalvonta yläraja"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.insuliinilokeron_lampotila
+      entity_id: sensor.136_temperature
       above: 15
       for:
         minutes: 5
@@ -40,7 +40,7 @@
   alias: "Jääkaapin lämpötilavalvonta kuittaus"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.insuliinilokeron_lampotila
+      entity_id: sensor.136_temperature
       above: 6
       below: 14
       for:

@@ -42,18 +42,18 @@ cards:
             detail: 2
             graph: line
             name: "Lämpötila"
-            entity: sensor.keittion_lampotila
+            entity: sensor.135_temperature
           - type: sensor
             hours_to_show: 6
             detail: 2
             graph: line
             name: "Kosteus"
-            entity: sensor.keittion_kosteus
+            entity: sensor.135_humidity
       - type: entities
         show_header_toggle: false
         entities:
           - sensor.kahvinkeitin_current_consumption
-          - sensor.insuliinilokeron_lampotila
+          - sensor.136_temperature
           - sensor.kitchen_sensor_light_level
       - type: entities
         show_header_toggle: false

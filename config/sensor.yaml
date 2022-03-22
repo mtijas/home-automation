@@ -138,46 +138,6 @@
   state_topic: "sensor/bathroom/Battery/Battery"
   unit_of_measurement: "%"
 - platform: mqtt
-  name: "Keittiön lämpötila"
-  state_topic: "home/433/sensors/135"
-  unit_of_measurement: "°C"
-  value_template: "{{ value_json.temperature }}"
-- platform: mqtt
-  name: "Keittiön kosteus"
-  state_topic: "home/433/sensors/135"
-  unit_of_measurement: "%"
-  value_template: "{{ value_json.humidity }}"
-- platform: mqtt
-  name: "Insuliinilokeron lämpötila"
-  state_topic: "home/433/sensors/136"
-  unit_of_measurement: "°C"
-  value_template: "{{ value_json.temperature }}"
-- platform: mqtt
-  name: "Parvekkeen lämpötila"
-  state_topic: "home/433/sensors/151"
-  unit_of_measurement: "°C"
-  value_template: "{{ value_json.temperature }}"
-- platform: mqtt
-  name: "Parvekkeen kosteus"
-  state_topic: "home/433/sensors/151"
-  unit_of_measurement: "%"
-  value_template: "{{ value_json.humidity }}"
-- platform: mqtt
-  name: "Ulkoilman lämpötila"
-  state_topic: "home/433/sensors/152"
-  unit_of_measurement: "°C"
-  value_template: "{{ value_json.temperature }}"
-- platform: mqtt
-  name: "Vaatehuoneen lämpötila"
-  state_topic: "home/433/sensors/167"
-  unit_of_measurement: "°C"
-  value_template: "{{ value_json.temperature }}"
-- platform: mqtt
-  name: "Vaatehuoneen kosteus"
-  state_topic: "home/433/sensors/167"
-  unit_of_measurement: "%"
-  value_template: "{{ value_json.humidity }}"
-- platform: mqtt
   name: "Makuuhuoneen lämpötila"
   state_topic: "sensor/alarmlight_1/env/Temperature"
   unit_of_measurement: "°C"

@@ -27,8 +27,8 @@ cards:
       - sensor.pesuhuoneen_lampotila
       - sensor.toilet_sensor_light_level
       - sensor.eteisen_liiketunnistin_light_level
-      - sensor.vaatehuoneen_lampotila
-      - sensor.vaatehuoneen_kosteus
+      - sensor.167_temperature
+      - sensor.167_humidity
   - type: vertical-stack
     title: "Muu valaistus"
     cards:
