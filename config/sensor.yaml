@@ -245,3 +245,4 @@
   state_topic: "shellies/shellydw2-AA793A/sensor/battery"
   unit_of_measurement: "%"
   force_update: "true"
+- platform: tellstick
