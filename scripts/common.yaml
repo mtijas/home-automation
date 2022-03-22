@@ -1,5 +1,8 @@
 time_for_bed:
   sequence:
+    - service: input_boolean.turn_on
+      data_template:
+        entity_id: input_boolean.get_to_bed_mode
     - service: light.turn_on
       data:
         entity_id: light.yopoydat
@@ -10,9 +13,6 @@ time_for_bed:
         entity_id:
           - light.makuuhuoneen_yleisvalot
           - light.koristevalot
-    - service: input_boolean.turn_on
-      data_template:
-        entity_id: input_boolean.get_to_bed_mode
 
 turn_off_harmony_if_on:
   sequence:
