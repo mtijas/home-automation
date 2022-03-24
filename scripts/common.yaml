@@ -5,7 +5,12 @@ time_for_bed:
         entity_id: input_boolean.get_to_bed_mode
     - service: light.turn_on
       data:
-        entity_id: light.yopoydat
+        entity_id: light.markuksen_yopoyta
+        kelvin: 2700
+        brightness: 75
+    - service: light.turn_on
+      data:
+        entity_id: light.veeran_yopoyta
         kelvin: 2700
         brightness: 75
     - service: light.turn_off
