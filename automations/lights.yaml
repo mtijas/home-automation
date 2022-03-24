@@ -142,8 +142,9 @@
               state: "off"
           sequence:
             - service: light.turn_off
-              entity_id: light.olohuoneen_yleisvalot
-              transition: 10
+              data_template:
+                entity_id: light.olohuoneen_yleisvalot
+                transition: 10
 
 - id: living_room_should_illuminate_determination
   alias: "Olohuoneen kattovalojen sytytyskriteerit Awakessa ja ei vieraita"
