@@ -13,6 +13,7 @@ time_for_bed:
         entity_id:
           - light.makuuhuoneen_yleisvalot
           - light.koristevalot
+        transition: 10
 
 turn_off_harmony_if_on:
   sequence:
