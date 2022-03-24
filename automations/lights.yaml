@@ -138,14 +138,24 @@
                 brightness: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
                 kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
                 transition: 10
+            - service: script.turn_on
+              entity_id: script.turn_on_decorative_lights_to_default
         - conditions:
             - condition: state
               entity_id: input_boolean.living_room_should_illuminate
               state: "off"
           sequence:
             - service: light.turn_off
-              data_template:
+              data:
                 entity_id: light.olohuoneen_yleisvalot
+                transition: 10
+            - service: light.turn_off
+              data:
+                entity_id: light.koristevalot
+                transition: 10
+            - service: light.turn_off
+              data:
+                entity_id: light.oh_valonauhat
                 transition: 10
 
 - id: living_room_should_illuminate_determination
@@ -256,60 +266,6 @@
       data_template:
         entity_id: input_number.living_room_light_auto_brightness
         value: "{{ states('input_number.living_room_light_default_brightness') | int }}"
-
-- id: decorative_lights_auto_on
-  alias: "Käynnistysautomatiikka koristevaloille"
-  trigger:
-    - platform: state
-      entity_id: light.olohuoneen_yleisvalot
-      to: "on"
-      for:
-        seconds: 5
-  condition:
-    - condition: state
-      entity_id: input_boolean.living_room_light_automations
-      state: "on"
-  action:
-    - service: script.turn_on
-      entity_id: script.turn_on_decorative_lights_to_default
-
-- id: decorative_lights_auto_off
-  alias: "Sammutusautomatiikka koristevaloille"
-  trigger:
-    - platform: state
-      entity_id: light.olohuoneen_yleisvalot
-      to: "off"
-      for:
-        seconds: 5
-  condition:
-    - condition: state
-      entity_id: input_boolean.living_room_light_automations
-      state: "on"
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: light.koristevalot
-        transition: 10
-    - service: light.turn_off
-      data:
-        entity_id: light.oh_valonauhat
-        transition: 10
-
-- id: decorative_lights_set_on_significant_change
-  alias: "Koristevalojen asetus isoissa muutoksissa"
-  trigger:
-    - platform: state
-      entity_id: input_number.living_room_light_default_kelvin
-  condition:
-    - condition: state
-      entity_id: input_boolean.living_room_light_automations
-      state: "on"
-    - condition: state
-      entity_id: light.koristevalot
-      state: "on"
-  action:
-    - service: script.turn_on
-      entity_id: script.turn_on_decorative_lights_to_default
 
 - id: bedroom_auto_brightness_set_ceiling
   alias: "Makuuhuoneen kattovalojen valoautomatiikka"
