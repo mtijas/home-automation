@@ -37,7 +37,6 @@
         {% set new_val = ((target - current) * damping) | int %}
         {{ new_val }}
       friendly_name: "OH valaistuksen asetuksen muutospyynti"
-      unit_of_measurement: "%"
     lr_brightness_target:
       value_template: "{{ states('input_number.living_room_brightness_target') | int }}"
       friendly_name: "OH valoisuuden pyynti"
