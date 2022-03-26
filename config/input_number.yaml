@@ -5,6 +5,7 @@ living_room_brightness_target:
   step: 1
   icon: mdi:speedometer-medium
   mode: box
+  unit_of_measurement: "%"
 living_room_brightness_damping:
   name: "OH valaistuksen vaimennus"
   min: 0.1
@@ -74,45 +75,53 @@ kitchen_light_default_kelvin:
   max: 6500
   step: 1
   icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
 hallway_light_default_kelvin:
   name: "Eteisen valaistuksen värilämpötila"
   min: 2700
   max: 6500
   step: 1
   icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
 toilet_light_default_kelvin:
   name: "Pesuhuoneen valaistuksen värilämpötila"
   min: 2700
   max: 6500
   step: 1
   icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
 living_room_light_default_kelvin:
   name: "Olohuoneen valaistuksen värilämpötila"
   min: 2700
   max: 6500
   step: 1
   icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
 bedroom_light_default_kelvin:
   name: "Makuuhuoneen valaistuksen värilämpötila"
   min: 2700
   max: 6500
   step: 1
   icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
 kitchen_light_turnoff_time:
   name: "Keittiön valaistuksen sammutusviive"
   min: 1
   max: 60
   icon: mdi:timer-sand
+  unit_of_measurement: "m"
 hallway_light_turnoff_time:
   name: "Eteisen valaistuksen sammutusviive"
   min: 1
   max: 60
   icon: mdi:timer-sand
+  unit_of_measurement: "m"
 toilet_light_turnoff_time:
   name: "Pesuhuoneen valaistuksen sammutusviive"
   min: 1
   max: 60
   icon: mdi:timer-sand
+  unit_of_measurement: "m"
 default_notification_volume_sonos:
   min: 0
   max: 1
@@ -125,12 +134,14 @@ bedroom_humidifier_start_point:
   max: 40
   step: 1
   icon: mdi:water-percent
+  unit_of_measurement: "%"
 bedroom_humidifier_stop_point:
   name: "MH kostutuksen sammutus"
   min: 30
   max: 60
   step: 1
   icon: mdi:water-percent
+  unit_of_measurement: "%"
 living_room_entertainment_standby_threshold:
   name: "OH viihde-elektroniikan sammutusraja"
   min: 10
