@@ -632,13 +632,16 @@
       entity_id: switch.cloakroom_motion
       to: "off"
       for: "00:01:00"
+    - platform: state
+      entity_id: switch.cloakroom_motion
+      to: "on"
+      for: "00:15:00"
   condition:
     - condition: state
       entity_id: input_boolean.cloakroom_light_automations
       state: "on"
-    - condition: state
-      entity_id: light.vaatehuone
-      state: "on"
   action:
     - service: light.turn_off
       entity_id: light.vaatehuone
+    - service: switch.turn_off
+      entity_id: switch.cloakroom_motion
