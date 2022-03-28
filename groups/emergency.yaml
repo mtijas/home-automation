@@ -29,3 +29,4 @@ master_caution:
     - binary_sensor.scfb_temp_alarm
     - binary_sensor.scfb_fan_alarm
     - binary_sensor.olohuoneen_kaasuhalytys
+    - binary_sensor.olohuoneen_hiukkashalytys

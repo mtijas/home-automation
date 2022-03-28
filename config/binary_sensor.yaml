@@ -30,6 +30,22 @@
       delay_off:
         seconds: 20
       device_class: "problem"
+    living_room_gas_alarm:
+      value_template: "{{ (states('sensor.olohuoneen_kaasutaso') | float) > 50 }}"
+      friendly_name: "Olohuoneen kaasuhälytys"
+      delay_on:
+        seconds: 20
+      delay_off:
+        seconds: 20
+      device_class: "problem"
+    living_room_particle_alarm:
+      value_template: "{{ (states('sensor.particulate_matter_2_5um_concentration') | float) > 100 }}"
+      friendly_name: "Olohuoneen hiukkashälytys"
+      delay_on:
+        seconds: 20
+      delay_off:
+        seconds: 20
+      device_class: "problem"
     living_room_remote_on_activity:
       value_template: "{{ state_attr('remote.living_room', 'current_activity') != 'PowerOff'}}"
 - platform: rest
@@ -63,12 +79,6 @@
 - platform: meteoalarm
   country: "finland"
   province: "Varsinais-Suomi"
-- platform: mqtt
-  name: "Olohuoneen kaasuhälytys"
-  state_topic: "home/climate/livingroom/gasalarm"
-  payload_on: "ON"
-  payload_off: "OFF"
-  device_class: "gas"
 - platform: mqtt
   name: "SCFB Temp Alarm"
   state_topic: "home/server/cabinet/tempalarm"
