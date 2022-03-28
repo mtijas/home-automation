@@ -28,5 +28,5 @@ master_caution:
     - input_boolean.front_door_alarm
     - binary_sensor.scfb_temp_alarm
     - binary_sensor.scfb_fan_alarm
-    - binary_sensor.olohuoneen_kaasuhalytys
-    - binary_sensor.olohuoneen_hiukkashalytys
+    - binary_sensor.living_room_gas_alarm
+    - binary_sensor.living_room_particle_alarm
