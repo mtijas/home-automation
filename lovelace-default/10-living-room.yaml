@@ -235,18 +235,18 @@ cards:
             detail: 2
             graph: line
             name: "Lämpötila"
-            entity: sensor.olohuoneen_lampotila
+            entity: sensor.living_room_temperature
           - type: sensor
             hours_to_show: 6
             detail: 2
             graph: line
             name: "Kosteus"
-            entity: sensor.olohuoneen_kosteus
+            entity: sensor.living_room_humidity
       - type: entities
         show_header_toggle: false
         entities:
           - sensor.olohuoneen_kaasutaso
-          - sensor.olohuoneen_paine
+          - sensor.living_room_pressure
           - sensor.olohuoneen_valoisuus
           - sensor.living_room_brightness_needed_change
           - sensor.living_room_brightness_difference

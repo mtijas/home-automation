@@ -84,7 +84,7 @@ cards:
               yellow: 3
               red: 6
           - type: gauge
-            entity: sensor.olohuoneen_paine
+            entity: sensor.living_room_pressure
             min: 983
             max: 1043 # keskim. normaali ip 1013 hPa
             name: Ilmanpaine

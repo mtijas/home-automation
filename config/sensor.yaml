@@ -80,6 +80,14 @@
         {% else %}
           failed
         {% endif %}
+    olohuoneen_valoisuus:
+      friendly_name: "Olohuoneen valoisuus"
+      unit_of_measurement: "%"
+      value_template: "{{ (states('sensor.living_room_brightness') | float) * 100 / 3.3 | round(0) }}"
+    olohuoneen_kaasutaso:
+      friendly_name: "Olohuoneen kaasutaso"
+      unit_of_measurement: "%"
+      value_template: "{{ (states('sensor.living_room_gas_level') | float) * 100 / 3.3 | round(0) }}"
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"
@@ -103,26 +111,6 @@
     - "time"
     - "date"
     - "beat"
-- platform: mqtt
-  name: "Olohuoneen lämpötila"
-  state_topic: "home/climate/livingroom/payload1"
-  unit_of_measurement: "°C"
-  value_template: "{{ (value_json.temperature | float) - 1.0 }}"
-- platform: mqtt
-  name: "Olohuoneen kosteus"
-  state_topic: "home/climate/livingroom/payload1"
-  unit_of_measurement: "%"
-  value_template: "{{ value_json.humidity }}"
-- platform: mqtt
-  name: "Olohuoneen paine"
-  state_topic: "home/climate/livingroom/payload1"
-  unit_of_measurement: "hPa"
-  value_template: "{{ (value_json.pressure | float) + 5.0 }}"
-- platform: mqtt
-  name: "Olohuoneen valoisuus"
-  state_topic: "home/climate/livingroom/payload1"
-  unit_of_measurement: "%"
-  value_template: "{{ value_json.brightness }}"
 - platform: mqtt
   name: "Olohuoneen kaasutaso"
   state_topic: "home/climate/livingroom/payload2"

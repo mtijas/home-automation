@@ -96,8 +96,8 @@
         message:
           'Ulkoilman lämpötila on {{ states("sensor.152_temperature") }} °C,
           tuulee {{ states("sensor.saa_wind_speed") }} m/s ja {{ states("sensor.saa_condition") }}.
-          Olohuoneessa on {{ states("sensor.olohuoneen_lampotila") }} °C ja suhteellinen kosteus
-          {{ states("sensor.olohuoneen_kosteus") }} %. Murtohälyttimen tila:
+          Olohuoneessa on {{ states("sensor.living_room_temperature") }} °C ja suhteellinen kosteus
+          {{ states("sensor.living_room_humidity") }} %. Murtohälyttimen tila:
           {{ states("alarm_control_panel.ha_alarm") }}, kuorivalvonta: {{ states("input_boolean.perimeter_notifications") }}.'
 
 - id: ha_start

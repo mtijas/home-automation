@@ -78,7 +78,7 @@
 - platform: trend
   sensors:
     pressure_trend_storm:
-      entity_id: sensor.olohuoneen_paine
+      entity_id: sensor.living_room_pressure
       sample_duration: 7200
       min_gradient: -0.00055
       max_samples: 480
