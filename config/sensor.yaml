@@ -80,14 +80,6 @@
         {% else %}
           failed
         {% endif %}
-    olohuoneen_valoisuus:
-      friendly_name: "Olohuoneen valoisuus"
-      unit_of_measurement: "%"
-      value_template: "{{ (states('sensor.living_room_brightness') | float) * 100 / 3.3 | round(0) }}"
-    olohuoneen_kaasutaso:
-      friendly_name: "Olohuoneen kaasutaso"
-      unit_of_measurement: "%"
-      value_template: "{{ (states('sensor.living_room_gas_level') | float) * 100 / 3.3 | round(0) }}"
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"
