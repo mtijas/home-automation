@@ -37,6 +37,7 @@
         {% set new_val = ((target - current) * damping) | int %}
         {{ new_val }}
       friendly_name: "OH valaistuksen asetuksen muutospyynti"
+      unit_of_measurement: "#"
     lr_brightness_target:
       value_template: "{{ states('input_number.living_room_brightness_target') | int }}"
       friendly_name: "OH valoisuuden pyynti"
@@ -44,7 +45,7 @@
     lr_brightness_setting:
       value_template: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
       friendly_name: "OH valaistuksen esiasetus"
-      unit_of_measurement: "one"
+      unit_of_measurement: "#"
     sun_elevation:
       value_template: "{{ state_attr('sun.sun', 'elevation') }}"
       friendly_name: "Auringon korkeus"
