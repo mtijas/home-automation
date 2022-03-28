@@ -104,11 +104,6 @@
     - "date"
     - "beat"
 - platform: mqtt
-  name: "Olohuoneen kaasutaso"
-  state_topic: "home/climate/livingroom/payload2"
-  unit_of_measurement: "%"
-  value_template: "{{ value_json.gaslevel }}"
-- platform: mqtt
   name: "Pesuhuoneen lämpötila"
   state_topic: "sensor/bathroom/env/temp"
   unit_of_measurement: "°C"
