@@ -138,8 +138,18 @@
                 brightness: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
                 kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
                 transition: 10
-            - service: script.turn_on
-              entity_id: script.turn_on_decorative_lights_to_default
+            - service: light.turn_on
+              data_template:
+                entity_id: light.koristevalot
+                brightness: "{{ states('input_number.living_room_light_auto_brightness') / 3 | int }}"
+                kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
+                transition: 10
+            - service: light.turn_on
+              data_template:
+                entity_id: light.oh_valonauhat
+                brightness: "{{ states('input_number.living_room_light_auto_brightness') / 3 | int }}"
+                kelvin: "{{ states('input_number.living_room_light_default_kelvin') | int }}"
+                transition: 10
         - conditions:
             - condition: state
               entity_id: input_boolean.living_room_should_illuminate
