@@ -19,7 +19,7 @@ all_settings = {
     "toilet_light_turnoff_time": (10, 15, 15, 15, 7),
     "living_room_light_default_kelvin": (6500, 5000, 4000, 3200, 2700),
     "living_room_light_default_brightness": (200, 255, 200, 150, 80),
-    "living_room_brightness_target": (19, 25, 19, 12, 5),
+    "living_room_brightness_target": (60, 80, 60, 38, 16),
     "bedroom_light_default_kelvin": (6500, 5000, 4000, 3200, 2700),
     "bedroom_light_default_brightness": (255, 255, 200, 180, 80),
 }
