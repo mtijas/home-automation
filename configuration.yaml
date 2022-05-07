@@ -33,6 +33,7 @@ mobile_app:
 python_script:
 person:
 ffmpeg:
+media_source:
 
 ###################################
 # COMPONENTS WITH EXTERNAL CONFIG #
