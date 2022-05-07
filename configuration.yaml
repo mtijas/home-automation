@@ -56,7 +56,6 @@ alarm_control_panel: !include config/alarm_control_panel.yaml
 calendar: !include config/calendar.yaml
 camera: !include config/camera.yaml
 prometheus: !include config/prometheus.yaml
-sonos: !include config/sonos.yaml
 switch: !include config/switch.yaml
 tellstick: !include config/tellstick.yaml
 group: !include_dir_merge_named groups/
