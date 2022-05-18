@@ -140,15 +140,15 @@
   locations:
     - "ihala, raisio"
 - platform: mqtt
-  name: "Living Room Entertainment Power"
-  unique_id: "living-room-entertainment-power-plug-power"
+  name: "Office UPS Plug Power"
+  unique_id: "office-ups-power-plug-power"
   state_topic: "shellies/shellyplug-s-C111E6/relay/0/power"
   unit_of_measurement: "W"
   force_update: "true"
   device_class: "power"
 - platform: mqtt
-  name: "Living Room Entertainment Plug Temp"
-  unique_id: "living-room-entertainment-power-plug-temp"
+  name: "Office UPS Plug Temp"
+  unique_id: "office-ups-power-plug-temp"
   state_topic: "shellies/shellyplug-s-C111E6/temperature"
   unit_of_measurement: "°C"
   force_update: "true"
