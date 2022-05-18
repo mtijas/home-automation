@@ -9,9 +9,6 @@
     - type: load_15m
 - platform: template
   sensors:
-    living_room_harmony_hub:
-      value_template: "{{ state_attr('remote.living_room', 'current_activity') }}"
-      friendly_name: "Living room harmony hub"
     wan_router_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float }}"
       unit_of_measurement: "ms"
@@ -65,19 +62,6 @@
           humidifying
         {% elif is_state('switch.tp_link_smart_plug_5f83', 'on') %}
           standby
-        {% else %}
-          failed
-        {% endif %}
-    living_room_entertainment_status:
-      friendly_name: "OH viihde-elektroniikan tila"
-      value_template: >-
-        {% set th = states('input_number.living_room_entertainment_standby_threshold') | float %}
-        {% if is_state('switch.living_room_entertainment_switch', 'off') %}
-          off
-        {% elif (states('sensor.living_room_entertainment_power') | float) < th %}
-          standby
-        {% elif (states('sensor.living_room_entertainment_power') | float) >= th %}
-          on
         {% else %}
           failed
         {% endif %}

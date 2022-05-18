@@ -7,10 +7,6 @@
   action:
     - service: script.turn_off_all_appliances
     - service: script.turn_on_emergency_lighting
-    - service: remote.turn_on
-      data:
-        entity_id: remote.living_room
-        activity: "PowerOff"
 
 - id: stop_emerg_mode_automations
   alias: "Stopping emergency mode"

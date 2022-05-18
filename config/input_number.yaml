@@ -142,10 +142,3 @@ bedroom_humidifier_stop_point:
   step: 1
   icon: mdi:water-percent
   unit_of_measurement: "%"
-living_room_entertainment_standby_threshold:
-  name: "OH viihde-elektroniikan sammutusraja"
-  min: 10
-  max: 30
-  step: 0.1
-  icon: mdi:power-plug-off
-  mode: box

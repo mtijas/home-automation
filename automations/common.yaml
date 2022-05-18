@@ -61,22 +61,6 @@
         entity_id:
           - switch.kahvinkeitin
 
-- id: living_room_entertainment_auto_shutdown
-  alias: Olohuoneen viihde-elektroniikan automaattisammutus
-  trigger:
-    - entity_id: sensor.living_room_entertainment_status
-      platform: state
-      to: "standby"
-      for:
-        minutes: 10
-  condition:
-    - condition: state
-      entity_id: input_boolean.prevent_living_room_entertainment_auto_off
-      state: "off"
-  action:
-    - service: switch.turn_off
-      entity_id: switch.living_room_entertainment_switch
-
 - alias: "Detect bedroom humidifier emptiness"
   trigger:
     - platform: state

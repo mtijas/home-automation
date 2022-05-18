@@ -260,33 +260,6 @@ cards:
                       color: rgb(255, 0, 0)
           - type: vertical-stack
             cards:
-              - type: "custom:button-card"
-                entity: switch.living_room_entertainment_switch
-                icon: mdi:television-classic
-                tap_action:
-                  action: toggle
-                lock:
-                  enabled: '[[[ return states["sensor.living_room_entertainment_status"].state === "on"; ]]]'
-                  exemptions: []
-              - type: "custom:button-card"
-                entity: sensor.living_room_entertainment_status
-                show_icon: false
-                show_state: true
-                show_name: false
-                color_type: card
-                tap_action:
-                  action: more-info
-                state:
-                  - value: "off"
-                    color: rgb(28, 28, 28)
-                  - value: "standby"
-                    color: rgb(255, 137, 77)
-                  - value: "on"
-                    color: rgb(48, 179, 9)
-                  - value: "failed"
-                    color: rgb(255, 0, 0)
-          - type: vertical-stack
-            cards:
               - type: conditional
                 conditions:
                   - entity: input_select.home_mode

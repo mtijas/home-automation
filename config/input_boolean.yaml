@@ -77,6 +77,3 @@ ack_master_caution:
 guests:
   name: "Guests"
   icon: mdi:human-capacity-increase
-prevent_living_room_entertainment_auto_off:
-  name: "Estä viihde-elektroniikan automaattisammutus"
-  icon: mdi:cancel

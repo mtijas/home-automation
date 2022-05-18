@@ -46,8 +46,6 @@
       delay_off:
         minutes: 2
       device_class: "problem"
-    living_room_remote_on_activity:
-      value_template: "{{ state_attr('remote.living_room', 'current_activity') != 'PowerOff'}}"
 - platform: rest
   resource: !secret hue_sensor_3
   value_template: "{{ value_json.state.presence }}"

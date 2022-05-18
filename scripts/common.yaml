@@ -20,15 +20,6 @@ time_for_bed:
           - light.koristevalot
         transition: 10
 
-turn_off_harmony_if_on:
-  sequence:
-    - condition: template
-      value_template: "{{ state_attr('remote.living_room', 'current_activity') != 'PowerOff'}}"
-    - service: remote.turn_on
-      entity_id: remote.living_room
-      data:
-        activity: "PowerOff"
-
 test_living_room_announcer:
   sequence:
     - service: script.sonos_tts_notification
