@@ -168,37 +168,6 @@
                 entity_id: light.oh_valonauhat
                 transition: 10
 
-- id: living_room_should_illuminate_determination
-  alias: "Olohuoneen kattovalojen sytytyskriteerit Awakessa ja ei vieraita"
-  trigger:
-    - platform: state
-      entity_id: switch.living_room_play_xbox_one
-    - platform: time_pattern
-      minutes: "/2"
-  condition:
-    - condition: state
-      entity_id: input_boolean.guests
-      state: "off"
-    - condition: state
-      entity_id: input_select.home_mode
-      state: "Awake"
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: switch.living_room_play_xbox_one
-              state: "on"
-          sequence:
-            - service: input_boolean.turn_off
-              entity_id: input_boolean.living_room_should_illuminate
-        - conditions:
-            - condition: state
-              entity_id: switch.living_room_play_xbox_one
-              state: "off"
-          sequence:
-            - service: input_boolean.turn_on
-              entity_id: input_boolean.living_room_should_illuminate
-
 - id: living_room_should_illuminate_determination_when_guests
   alias: "Olohuoneen kattovalojen sytytyskriteerit kun vieraita"
   trigger:
