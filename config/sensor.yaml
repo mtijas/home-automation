@@ -12,16 +12,13 @@
     wan_router_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float }}"
       unit_of_measurement: "ms"
-      state_class: measurement
     google_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_google', 'round_trip_time_avg') | float }}"
       unit_of_measurement: "ms"
-      state_class: measurement
     pressure_hourly_trend:
       value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float) * 3600) | round(2) }}"
       friendly_name: "Ilmanpaineen trendi (hPa/h)"
       unit_of_measurement: "hPa"
-      state_class: measurement
     living_room_brightness_difference:
       value_template: >
         {% set current = states('sensor.olohuoneen_valoisuus') | float %}
