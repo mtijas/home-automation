@@ -12,13 +12,16 @@
     wan_router_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float }}"
       unit_of_measurement: "ms"
+      state_class: measurement
     google_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_google', 'round_trip_time_avg') | float }}"
       unit_of_measurement: "ms"
+      state_class: measurement
     pressure_hourly_trend:
       value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float) * 3600) | round(2) }}"
       friendly_name: "Ilmanpaineen trendi (hPa/h)"
       unit_of_measurement: "hPa"
+      state_class: measurement
     living_room_brightness_difference:
       value_template: >
         {% set current = states('sensor.olohuoneen_valoisuus') | float %}
@@ -92,6 +95,7 @@
   name: "Pesuhuoneen lämpötila"
   state_topic: "sensor/bathroom/env/temp"
   unit_of_measurement: "°C"
+  state_class: measurement
 - platform: mqtt
   name: "Pesuhuoneen ESP:n paristo"
   state_topic: "sensor/bathroom/Battery/Battery"
@@ -100,15 +104,18 @@
   name: "Makuuhuoneen lämpötila"
   state_topic: "sensor/alarmlight_1/env/Temperature"
   unit_of_measurement: "°C"
+  state_class: measurement
 - platform: mqtt
   name: "Makuuhuoneen kosteus"
   state_topic: "sensor/alarmlight_1/env/Humidity"
   unit_of_measurement: "%"
+  state_class: measurement
 - platform: mqtt
   name: "Makuuhuoneen paine"
   state_topic: "sensor/alarmlight_1/env/Pressure"
   value_template: "{{ (value | float) + 5.0 }}"
   unit_of_measurement: "hPa"
+  state_class: measurement
 - platform: mqtt
   name: "Palopainikkeen pariston lataus"
   state_topic: "sensor/fire-alarm-button-1/Battery/Volts"
@@ -118,19 +125,23 @@
   name: "SCFB Temp"
   state_topic: "home/server/cabinet/exhausttemp"
   unit_of_measurement: "°C"
+  state_class: measurement
 - platform: mqtt
   name: "SCFB Setpoint"
   state_topic: "home/server/cabinet/setpoint"
   unit_of_measurement: "°C"
+  state_class: measurement
 - platform: mqtt
   name: "SCFB Fan"
   state_topic: "home/server/cabinet/fanspeed"
   unit_of_measurement: "rpm"
+  state_class: measurement
 - platform: mqtt
   name: "SCFB PID"
   state_topic: "home/server/cabinet/pwmout"
   value_template: "{{ ( 100 - ( (value | float) / 230 * 100 ) ) | round(1) }}"
   unit_of_measurement: "%"
+  state_class: measurement
 - platform: mqtt
   name: "Event topic"
   state_topic: "notify/cmd"
@@ -146,6 +157,7 @@
   unit_of_measurement: "W"
   force_update: "true"
   device_class: "power"
+  state_class: measurement
 - platform: mqtt
   name: "Office UPS Plug Temp"
   unique_id: "office-ups-power-plug-temp"
