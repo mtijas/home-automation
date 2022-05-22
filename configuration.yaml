@@ -58,7 +58,6 @@ calendar: !include config/calendar.yaml
 camera: !include config/camera.yaml
 prometheus: !include config/prometheus.yaml
 switch: !include config/switch.yaml
-tellstick: !include config/tellstick.yaml
 group: !include_dir_merge_named groups/
 automation manual: !include_dir_merge_list automations/
 automation ui: !include automations.yaml
