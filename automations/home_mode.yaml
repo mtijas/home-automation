@@ -26,19 +26,6 @@
         payload: "asleep"
         qos: 1
         retain: 1
-    - service: light.turn_on
-      data:
-        entity_id: 
-         - light.markuksen_yopoyta
-         - light.veeran_yopoyta
-        kelvin: 2700
-        brightness: 75
-    - service: light.turn_off
-      data:
-        entity_id:
-          - light.makuuhuoneen_yleisvalot
-          - light.koristevalot
-        transition: 10
 
 - id: party_mode_state_set
   alias: "Set Party mode MQTT state"

@@ -24,13 +24,18 @@
       entity_id: input_select.home_mode
       to: "Asleep"
   action:
+    - service: light.turn_on
+      data:
+        entity_id: 
+         - light.markuksen_yopoyta
+         - light.veeran_yopoyta
+        kelvin: 2700
+        brightness: 75
     - service: light.turn_off
       data:
-        entity_id: light.markuksen_yopoyta
-        transition: 10
-    - service: light.turn_off
-      data:
-        entity_id: light.veeran_yopoyta
+        entity_id:
+          - light.makuuhuoneen_yleisvalot
+          - light.koristevalot
         transition: 10
     - condition: state
       entity_id: input_boolean.guests
