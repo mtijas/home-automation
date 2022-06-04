@@ -29,9 +29,6 @@ fire_alarm_raised:
 panic_alarm_raised:
   name: "Paniikkihälytys"
   initial: off
-get_to_bed_mode:
-  name: "Nukkumaan-tila"
-  icon: mdi:bed
 perimeter_notifications:
   name: "Kuorivalvonta"
   initial: on

@@ -264,24 +264,6 @@ cards:
                 conditions:
                   - entity: input_select.home_mode
                     state: "Awake"
-                  - entity: input_boolean.get_to_bed_mode
-                    state: "off"
-                card:
-                  type: "custom:button-card"
-                  show_icon: true
-                  show_state: false
-                  show_name: true
-                  name: "Nukkumaan"
-                  icon: mdi:bed
-                  tap_action:
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.time_for_bed
-              - type: conditional
-                conditions:
-                  - entity: input_boolean.get_to_bed_mode
-                    state: "on"
                 card:
                   type: "custom:button-card"
                   show_icon: true
