@@ -84,32 +84,18 @@
       entity_id: input_boolean.bedroom_light_automations
     - service: light.turn_on
       data:
-        entity_id: light.oh_katto_sisempi
+        entity_id: 
+          - light.oh_katto_sisempi
+          - light.hue_ambiance_lamp_1_3
         brightness: 168
         color_name: "yellow"
     - service: light.turn_on
       data:
-        entity_id: light.oh_katto_ulompi
-        brightness: 168
-        color_name: "yellow"
-    - service: light.turn_on
-      data:
-        entity_id: light.oh_lattiavalaisin
-        brightness: 125
-        effect: "random"
-    - service: light.turn_on
-      data:
-        entity_id: light.living_room_shelf_color_1
-        brightness: 125
-        effect: "random"
-    - service: light.turn_on
-      data:
-        entity_id: light.oh_valonauhat
-        brightness: 100
-        effect: "random"
-    - service: light.turn_on
-      data:
-        entity_id: light.master_bedroom_ceiling_1
+        entity_id: 
+          - light.oh_lattiavalaisin
+          - light.living_room_shelf_color_1
+          - light.oh_valonauhat
+          - light.master_bedroom_ceiling_1
         brightness: 125
         effect: "random"
 
