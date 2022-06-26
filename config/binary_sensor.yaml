@@ -77,6 +77,7 @@
 - platform: meteoalarm
   country: "finland"
   province: "Varsinais-Suomi"
+  language: "fi-FI"
 - platform: mqtt
   name: "SCFB Temp Alarm"
   state_topic: "home/server/cabinet/tempalarm"
