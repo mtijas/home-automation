@@ -161,15 +161,3 @@
   state_topic: "shellies/shellyplug-s-C111E6/temperature"
   unit_of_measurement: "°C"
   force_update: "true"
-- platform: mqtt
-  name: "Etuoven anturin paristo"
-  unique_id: "shelly-front-door-sensor-battery"
-  state_topic: "shellies/shellydw2-A9E249/sensor/battery"
-  unit_of_measurement: "%"
-  force_update: "true"
-- platform: mqtt
-  name: "Parvekkeen oven anturin paristo"
-  unique_id: "shelly-balcony-door-sensor-battery"
-  state_topic: "shellies/shellydw2-AA793A/sensor/battery"
-  unit_of_measurement: "%"
-  force_update: "true"

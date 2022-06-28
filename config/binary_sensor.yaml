@@ -105,17 +105,3 @@
   payload_on: "1"
   payload_off: "0"
   device_class: "sound"
-- platform: mqtt
-  name: "Etuovi"
-  unique_id: "shelly-front-door-sensor"
-  state_topic: "shellies/shellydw2-A9E249/sensor/state"
-  payload_off: "close"
-  payload_on: "open"
-  device_class: "door"
-- platform: mqtt
-  name: "Parvekkeen ovi"
-  unique_id: "shelly-balcony-door-sensor"
-  state_topic: "shellies/shellydw2-AA793A/sensor/state"
-  payload_off: "close"
-  payload_on: "open"
-  device_class: "door"

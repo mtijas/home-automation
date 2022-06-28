@@ -3,7 +3,7 @@ homeassistant:
 # COMPONENTS CONFIGURED HERE #
 ##############################
 
-# lovelace:
+# lovelace: DEPRECATED
 #   mode: yaml
 #   resources:
 #     - url: /local/button-card.js
@@ -41,7 +41,7 @@ media_source:
 
 discovery: !include config/discovery.yaml
 zone: !include config/zone.yaml
-#mqtt: !include config/mqtt.yaml
+#mqtt: !include config/mqtt.yaml DEPRECATED
 recorder: !include config/recorder.yaml
 remote: !include config/remote.yaml
 binary_sensor: !include config/binary_sensor.yaml
@@ -55,7 +55,7 @@ notify: !include config/notify.yaml
 panel_iframe: !include config/panel_iframe.yaml
 alarm_control_panel: !include config/alarm_control_panel.yaml
 calendar: !include config/calendar.yaml
-camera: !include config/camera.yaml
+#camera: !include config/camera.yaml DEPRECATED
 prometheus: !include config/prometheus.yaml
 switch: !include config/switch.yaml
 group: !include_dir_merge_named groups/
