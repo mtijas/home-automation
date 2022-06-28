@@ -57,7 +57,7 @@
   alias: "Etuoven valvonta ovi auki"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi
+      entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
       for:
         minutes: 15
@@ -81,7 +81,7 @@
   alias: "Etuoven valvonnan kuittaus"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi
+      entity_id: binary_sensor.etuovi_door_window_2
       to: "off"
   condition:
     - condition: state

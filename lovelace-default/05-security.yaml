@@ -235,9 +235,9 @@ cards:
         show_header_toggle: false
         state_color: true
         entities:
-          - entity: binary_sensor.etuovi
+          - entity: binary_sensor.etuovi_door_window_2
             secondary_info: last-changed
-          - entity: binary_sensor.parvekkeen_ovi
+          - entity: binary_sensor.parvekkeen_ovi_door_window
             secondary_info: last-changed
 
   - type: vertical-stack

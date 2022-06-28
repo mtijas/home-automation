@@ -58,15 +58,15 @@
       entity_id: alarm_control_panel.ha_alarm
       to: "armed_away"
       for:
-        seconds: 10
+        seconds: 5
   condition:
     condition: or
     conditions:
       - condition: state
-        entity_id: binary_sensor.etuovi
+        entity_id: binary_sensor.etuovi_door_window_2
         state: "on"
       - condition: state
-        entity_id: binary_sensor.parvekkeen_ovi
+        entity_id: binary_sensor.parvekkeen_ovi_door_window
         state: "on"
   action:
     - service: notify.telegram_notify_possula
@@ -106,7 +106,7 @@
   alias: "Armed home -tilan hälytyksen aktivointilogiikka"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi
+      entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
   condition:
     - condition: state
@@ -120,7 +120,7 @@
   alias: "Armed night -tilan hälytyksen aktivointilogiikka"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi
+      entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
   condition:
     - condition: state
@@ -134,10 +134,10 @@
   alias: "Armed away -tilan hälytyksen aktivointilogiikka"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi
+      entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
     - platform: state
-      entity_id: binary_sensor.parvekkeen_ovi
+      entity_id: binary_sensor.parvekkeen_ovi_door_window
       to: "on"
   condition:
     - condition: state
@@ -272,10 +272,10 @@
   alias: "Kuori-ilmoitukset"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi
+      entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
     - platform: state
-      entity_id: binary_sensor.parvekkeen_ovi
+      entity_id: binary_sensor.parvekkeen_ovi_door_window
       to: "on"
   condition:
     - condition: state

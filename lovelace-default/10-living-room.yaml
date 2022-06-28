@@ -34,7 +34,7 @@ cards:
         columns: 4
         cards:
           - type: "custom:button-card"
-            entity: binary_sensor.parvekkeen_ovi
+            entity: binary_sensor.parvekkeen_ovi_door_window
             color_type: card
             color: yellow
             name: Parv. ovi
