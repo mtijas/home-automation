@@ -12,7 +12,7 @@ sonos_tts_notification:
     - service: sonos.snapshot
       data:
         entity_id: "{{ player_location }}"
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       data:
         entity_id: "{{ player_location }}"
     - service: media_player.volume_set
