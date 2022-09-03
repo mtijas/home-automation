@@ -6,7 +6,7 @@
   action:
     - service: notify.telegram_notify_possula
       data_template:
-        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.152_temperature") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
+        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
 
 - id: coffee_brewed_notification
   alias: "Kahvin valmistumisilmoitus"
@@ -94,7 +94,7 @@
     - service: notify.telegram_notify_possula
       data_template:
         message:
-          'Ulkoilman lämpötila on {{ states("sensor.152_temperature") }} °C,
+          'Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature") }} °C,
           tuulee {{ states("sensor.saa_wind_speed") }} m/s ja {{ states("sensor.saa_condition") }}.
           Olohuoneessa on {{ states("sensor.living_room_temperature") }} °C ja suhteellinen kosteus
           {{ states("sensor.living_room_humidity") }} %. Murtohälyttimen tila:
