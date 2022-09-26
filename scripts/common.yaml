@@ -33,3 +33,13 @@ sonos_tts_notification:
     - service: sonos.restore
       data:
         entity_id: "{{ player_location }}"
+
+scfb_command:
+  alias: "Send SCFB Command"
+  sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: "fancontrolbridge/test/commands"
+        payload: "{\"command\": \"{{ command }}\", \"channel\": {{ channel }}, \"value\": {{ value }} }"
+        qos: 1
+        retain: 0
