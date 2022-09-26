@@ -40,6 +40,6 @@ scfb_command:
     - service: mqtt.publish
       data_template:
         topic: "fancontrolbridge/test/commands"
-        payload: "{\"command\": \"{{ command }}\", \"channel\": {{ channel }}, \"value\": {{ value }} }"
+        payload: "{\"command\": \"{{ cmd }}\", \"channel\": {{ ch }}, \"value\": {{ val }} }"
         qos: 1
         retain: 0
