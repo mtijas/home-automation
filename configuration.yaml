@@ -41,7 +41,7 @@ media_source:
 
 discovery: !include config/discovery.yaml
 zone: !include config/zone.yaml
-#mqtt: !include config/mqtt.yaml DEPRECATED
+mqtt: !include config/mqtt.yaml
 recorder: !include config/recorder.yaml
 remote: !include config/remote.yaml
 binary_sensor: !include config/binary_sensor.yaml
