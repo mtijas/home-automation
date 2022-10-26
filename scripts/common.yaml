@@ -15,6 +15,7 @@ sonos_tts_notification:
     - service: media_player.unjoin
       data:
         entity_id: "{{ player_location }}"
+    - delay: "00:00:01"
     - service: media_player.volume_set
       data:
         entity_id: "{{ player_location }}"
