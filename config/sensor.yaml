@@ -88,7 +88,6 @@
     - "time"
     - "date"
     - "beat"
-- platform: moon
 - platform: waqi
   token: !secret aqicn_api_token
   locations:
