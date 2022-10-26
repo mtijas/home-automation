@@ -93,9 +93,3 @@
   name: "Sää huononee nopeasti"
   lower: -1.45
   hysteresis: 0.45 #On when under 1.9 and off when over 1
-- platform: mqtt
-  name: "MH äänihälytin"
-  state_topic: "sensor/alarmlight_1/Sound/Enabled"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "sound"
