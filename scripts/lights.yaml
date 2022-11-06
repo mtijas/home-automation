@@ -9,7 +9,7 @@ light_brightness_calculation:
       target:
         entity_id: "input_number.light_auto_awake_brightness_{{ target_name }}"
       data:
-        value_template: >
+        value: >
           {% set needed_change = ((lightness_target - current_lightness) * damping) | int %}
           {% set new_val = ( current_setting + needed_change ) | round(0, 'ceil') %}
           {% if new_val > 255 %}
