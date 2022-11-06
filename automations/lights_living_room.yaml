@@ -33,6 +33,7 @@
 
 - id: living_room_state_set
   alias: "Olohuoneen valaistuksen asetus"
+  mode: queued
   trigger:
     - platform: state
       entity_id: input_number.light_result_brightness_living_room
@@ -40,10 +41,6 @@
       entity_id: input_number.light_result_kelvin_living_room
     - platform: state
       entity_id: input_boolean.light_result_state_living_room
-  condition:
-    - condition: state
-      entity_id: input_boolean.living_room_light_automations
-      state: "on"
   action:
     - choose:
         - conditions:
@@ -86,3 +83,4 @@
               data:
                 entity_id: light.oh_valonauhat
                 transition: 4
+    - delay: 5
