@@ -4,7 +4,7 @@ light_brightness_calculation:
       data_template:
         entity_id: "input_number.light_auto_awake_brightness_{{ target_name }}"
         value_template: >
-          {% set current_setting = states('input_number.light_auto_awake_brightness_'+{{ target_name }}) | float %}
+          {% set current_setting = states('input_number.light_auto_awake_brightness_'+target_name) | float %}
           {% set current_lightness = states('sensor.current_lightness_'+target_name) | float %}
           {% set target = states('input_number.light_auto_lightness_target_'+target_name) | float %}
           {% set damping = states('input_number.light_auto_brightness_damping_'+target_name) | float %}
