@@ -1,18 +1,18 @@
-- id: light_auto_brightness_determination_living_room
-  alias: "OH valaistuksen kirkkauden laskenta-automaatio"
-  mode: restart
-  trigger:
-    - platform: time_pattern
-      seconds: "/20"
-  condition:
-    - condition: state
-      entity_id: light.olohuoneen_yleisvalot
-      state: "on"
-      for: "00:00:15"
-  action:
-    - service: script.light_brightness_calculation
-      data:
-        target_name: "living_room"
+# - id: light_auto_brightness_determination_living_room
+#   alias: "OH valaistuksen kirkkauden laskenta-automaatio"
+#   mode: restart
+#   trigger:
+#     - platform: time_pattern
+#       seconds: "/20"
+#   condition:
+#     - condition: state
+#       entity_id: light.olohuoneen_yleisvalot
+#       state: "on"
+#       for: "00:00:15"
+#   action:
+#     - service: script.light_brightness_calculation
+#       data:
+#         target_name: "living_room"
 
 - id: living_room_auto_brightness_default_set
   alias: "Olohuoneen yleisvalojen kirkkauden oletusasetus kun pois päältä"
