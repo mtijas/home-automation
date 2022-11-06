@@ -10,6 +10,7 @@
 
 - id: light_auto_home_mode_selector_follow_home_mode
   alias: "Light auto-home-mode-selectors to follow Home Mode"
+  mode: restart
   trigger:
     - platform: state
       entity_id: input_select.home_mode
@@ -20,11 +21,10 @@
           - input_select.light_auto_home_mode_living_room
       data:
         option: "{{ trigger.to_state.state }}"
-  mode: restart
 
 - id: light_store_results_automation
   alias: "Valaistuksen asetusten muutosautomatiikka"
-  mode: queue
+  mode: queued
   trigger:
     - platform: state
       entity_id: input_select.light_base_mode_living_room
