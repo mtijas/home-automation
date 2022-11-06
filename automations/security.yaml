@@ -8,14 +8,12 @@
     - service: script.turn_off_all_appliances
     - service: input_select.select_option
       target:
-        entity_id:
-          - input_select.light_auto_home_mode_living_room
+        entity_id: input_select.light_auto_home_mode_living_room
       data:
         option: "Emergency"
     - service: input_select.select_option
       target:
-        entity_id:
-          - input_select.light_base_mode_living_room
+        entity_id: input_select.light_base_mode_living_room
       data:
         option: "Automatic"
 
