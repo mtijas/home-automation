@@ -8,19 +8,19 @@
   action:
     - service: python_script.circadian_rhythm
 
-- id: light_auto_home_mode_selector_follow_home_mode
-  alias: "Light auto-home-mode-selectors to follow Home Mode"
-  mode: restart
-  trigger:
-    - platform: state
-      entity_id: input_select.home_mode
-  action:
-    - service: input_select.select_option
-      target:
-        entity_id: 
-          - input_select.light_auto_home_mode_living_room
-      data:
-        option: "{{ trigger.to_state.state }}"
+# - id: light_auto_home_mode_selector_follow_home_mode
+#   alias: "Light auto-home-mode-selectors to follow Home Mode"
+#   mode: restart
+#   trigger:
+#     - platform: state
+#       entity_id: input_select.home_mode
+#   action:
+#     - service: input_select.select_option
+#       target:
+#         entity_id: 
+#           - input_select.light_auto_home_mode_living_room
+#       data:
+#         option: "{{ trigger.to_state.state }}"
 
 # - id: light_store_state_results
 #   alias: "Valoautomatiikan tilojen päivitys"
