@@ -98,6 +98,8 @@
     - service_template: input_number.set_value
       target:
         entity_id: "input_number.light_result_brightness_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
 
 - id: light_store_kelvin_results
   alias: "Valoautomatiikan kelvinien päivitys"
@@ -137,6 +139,8 @@
     - service_template: input_number.set_value
       target:
         entity_id: "input_number.light_result_kelvin_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
 
 - id: light_store_results_automation_on_mode_change
   alias: "Valaistuksen moodien muutokset"
