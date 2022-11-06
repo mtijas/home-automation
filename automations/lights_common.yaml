@@ -170,6 +170,16 @@
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_awake_state_'+room) }}"
               target:
                 entity_id: "input_boolean.light_result_state_{{ room }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_brightness_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_awake_brightness_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_kelvin_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_awake_kelvin_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
@@ -177,6 +187,16 @@
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_asleep_state_'+room) }}"
               target:
                 entity_id: "input_boolean.light_result_state_{{ room }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_brightness_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_asleep_brightness_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_kelvin_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_asleep_kelvin_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
@@ -184,6 +204,16 @@
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_away_state_'+room) }}"
               target:
                 entity_id: "input_boolean.light_result_state_{{ room }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_brightness_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_away_brightness_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_kelvin_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_away_kelvin_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Party') }}"
@@ -191,6 +221,16 @@
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_party_state_'+room) }}"
               target:
                 entity_id: "input_boolean.light_result_state_{{ room }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_brightness_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_party_brightness_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_kelvin_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_party_kelvin_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
@@ -198,5 +238,15 @@
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_emergency_state_'+room) }}"
               target:
                 entity_id: "input_boolean.light_result_state_{{ room }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_brightness_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_emergency_brightness_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_kelvin_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_emergency_kelvin_'+room) }}"
 
 
