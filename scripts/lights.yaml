@@ -18,27 +18,6 @@ light_brightness_calculation:
             {{ new_val }}
           {% endif %}
 
-update_light_result:
-  sequence:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ target_name }}"
-              state: "Off"
-          sequence:
-            - service: input_boolean.turn_off
-              entity_id: "input_boolean.light_result_state_{{ target_name }}"
-        - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ target_name }}"
-              state: "Automatic"
-            - condition: state
-              entity_id: "input_select.light_auto_home_mode_{{ target_name }}"
-              state: "Awake"
-          sequence:
-            - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_awake_state_'+target_name) }}"
-              entity_id: "input_boolean.light_result_state_{{ target_name }}"
-
 turn_cloakroom_light_on_with_settings:
   sequence:
     - service: light.turn_on
