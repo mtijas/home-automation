@@ -6,7 +6,7 @@ light_brightness_calculation:
       data:
         value: >
           {% set needed_change = ((lightness_target - current_lightness) * damping) | int %}
-          {% set new_val = ( states(target_entity) + needed_change ) | round(0, 'ceil') %}
+          {% set new_val = ( previous_value + needed_change ) | round(0, 'ceil') %}
           {% if new_val > 255 %}
             255
           {% elif new_val < 5 %}
