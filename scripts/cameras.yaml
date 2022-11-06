@@ -2,7 +2,8 @@ living_room_camera_to_wall:
   alias: Living Room Camera To Wall
   sequence:
     - service: onvif.ptz
-      entity_id: camera.olohuone_profile000_mainstream
+      target:
+        entity_id: camera.olohuone_profile000_mainstream
       data:
         preset: "003"
         move_mode: GotoPreset
@@ -10,7 +11,8 @@ living_room_camera_to_hallway:
   alias: Living Room Camera To Hallway
   sequence:
     - service: onvif.ptz
-      entity_id: camera.olohuone_profile000_mainstream
+      target:
+        entity_id: camera.olohuone_profile000_mainstream
       data:
         preset: "000"
         move_mode: GotoPreset
@@ -18,7 +20,8 @@ living_room_camera_to_entertainment:
   alias: Living Room Camera To Entertainment Area
   sequence:
     - service: onvif.ptz
-      entity_id: camera.olohuone_profile000_mainstream
+      target:
+        entity_id: camera.olohuone_profile000_mainstream
       data:
         preset: "001"
         move_mode: GotoPreset

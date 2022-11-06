@@ -6,7 +6,8 @@ light_brightness_calculation:
         lightness_target: "{{ states('input_number.light_auto_lightness_target_'+target_name) | float }}"
         damping: "{{ states('input_number.light_auto_brightness_damping_'+target_name) | float }}"
     - service: input_number.set_value
-      entity_id: "{{ 'input_number.light_auto_awake_brightness_'+target_name }}"
+      target:
+        entity_id: "{{ 'input_number.light_auto_awake_brightness_'+target_name }}"
       data:
         value: >
           {% set needed_change = ((lightness_target - current_lightness) * damping) | int %}
@@ -22,24 +23,28 @@ light_brightness_calculation:
 turn_cloakroom_light_on_with_settings:
   sequence:
     - service: light.turn_on
-      entity_id: light.vaatehuone
+      target:
+        entity_id: light.vaatehuone
       data:
         brightness: "{{ light_brightness }}"
     - delay: "00:00:03"
     - service: light.turn_on
-      entity_id: light.vaatehuone
+      target:
+        entity_id: light.vaatehuone
       data:
         kelvin: "{{ light_kelvin }}"
 
 turn_on_decorative_lights_to_default:
   sequence:
     - service: light.turn_on
-      entity_id: light.koristevalot
+      target:
+        entity_id: light.koristevalot
       data:
         brightness: "{{ states('input_number.decorative_lights_default_brightness')|float }}"
         transition: 10
     - service: light.turn_on
-      entity_id: light.oh_valonauhat
+      target:
+        entity_id: light.oh_valonauhat
       data:
         brightness: "{{ states('input_number.living_room_lightstrips_default_brightness')|float }}"
         kelvin: "{{ states('input_number.light_result_kelvin_living_room')|float }}"

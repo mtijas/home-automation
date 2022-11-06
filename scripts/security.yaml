@@ -2,13 +2,15 @@ turn_off_all_appliances:
   alias: "Kaiken kodin yleistekniikan sammutus"
   sequence:
     - service: switch.turn_off
-      entity_id:
-        - switch.kahvinkeitin
-        - switch.tp_link_smart_plug_5f83
+      target:
+        entity_id:
+          - switch.kahvinkeitin
+          - switch.tp_link_smart_plug_5f83
     - service: input_boolean.turn_off
-      entity_id:
-        - input_boolean.bedroom_humidifier_automations
-        - input_boolean.coffee_maker_loaded
+      target:
+        entity_id:
+          - input_boolean.bedroom_humidifier_automations
+          - input_boolean.coffee_maker_loaded
     - service: notify.syslog_info
       data:
         message: "Yleistekniikka sammutettu."
@@ -34,7 +36,8 @@ reverse_emergency_state:
         - input_boolean.fire_alarm_raised
         - input_boolean.burglar_alarm_raised
     - service: input_select.select_option
-      entity_id: input_select.home_mode
+      target:
+        entity_id: input_select.home_mode
       data:
         option: "Awake"
     - service: script.sonos_tts_notification
@@ -64,7 +67,8 @@ raise_alarm:
         qos: 1
         retain: 0
     - service: input_boolean.turn_on
-      entity_id: "{{ alarm_boolean }}"
+      target:
+        entity_id: "{{ alarm_boolean }}"
     - service: script.sonos_tts_notification
       data:
         player_location: "media_player.olohuone"
