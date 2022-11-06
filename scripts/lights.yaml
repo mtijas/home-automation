@@ -1,14 +1,15 @@
 light_brightness_calculation:
   sequence:
+    - variables:
+        current_setting: "{{ states('input_number.light_auto_awake_brightness_'+target_name) | float }}"
+        current_lightness: "{{ states('sensor.current_lightness_'+target_name) | float }}"
+        lightness_target: "{{ states('input_number.light_auto_lightness_target_'+target_name) | float }}"
+        damping: "{{ states('input_number.light_auto_brightness_damping_'+target_name) | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: "input_number.light_auto_awake_brightness_{{ target_name }}"
         value_template: >
-          {% set current_setting = states('input_number.light_auto_awake_brightness_'+target_name) | float %}
-          {% set current_lightness = states('sensor.current_lightness_'+target_name) | float %}
-          {% set target = states('input_number.light_auto_lightness_target_'+target_name) | float %}
-          {% set damping = states('input_number.light_auto_brightness_damping_'+target_name) | float %}
-          {% set needed_change = ((target - current_lightness) * damping) | int %}
+          {% set needed_change = ((lightness_target - current_lightness) * damping) | int %}
           {% set new_val = ( current_setting + needed_change ) | round(0, 'ceil') %}
           {% if new_val > 255 %}
             255
