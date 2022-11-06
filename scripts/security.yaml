@@ -29,14 +29,12 @@ reverse_emergency_state:
         qos: 1
         retain: 0
     - service: input_boolean.turn_off
-      data:
-        entity_id:
-          - input_boolean.panic_alarm_raised
-          - input_boolean.fire_alarm_raised
-          - input_boolean.burglar_alarm_raised
+      entity_id:
+        - input_boolean.panic_alarm_raised
+        - input_boolean.fire_alarm_raised
+        - input_boolean.burglar_alarm_raised
     - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
+      entity_id: input_select.home_mode
       data:
         option: "Awake"
     - service: script.sonos_tts_notification
@@ -56,8 +54,7 @@ raise_alarm:
   alias: "Yleishälytys"
   sequence:
     - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
+      entity_id: input_select.home_mode
       data:
         option: "Emergency"
     - service: mqtt.publish
@@ -67,8 +64,7 @@ raise_alarm:
         qos: 1
         retain: 0
     - service: input_boolean.turn_on
-      data:
-        entity_id: "{{ alarm_boolean }}"
+      entity_id: "{{ alarm_boolean }}"
     - service: script.sonos_tts_notification
       data:
         player_location: "media_player.olohuone"

@@ -123,8 +123,7 @@
       value_template: "{{ not is_state('alarm_control_panel.ha_alarm', 'triggered') }}"
   action:
     - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
+      entity_id: input_select.home_mode
       data:
         option: "Awake"
 
@@ -146,8 +145,7 @@
       before: "05:30:00"
   action:
     - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
+      entity_id: input_select.home_mode
       data:
         option: "Asleep"
 

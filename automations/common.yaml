@@ -57,9 +57,7 @@
       to: "Away"
   action:
     - service: switch.turn_off
-      data:
-        entity_id:
-          - switch.kahvinkeitin
+      entity_id: switch.kahvinkeitin
 
 - alias: "Detect bedroom humidifier emptiness"
   trigger:
@@ -139,8 +137,8 @@
       value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
   action:
     - service: input_number.set_value
+      entity_id: input_number.bedroom_humidifier_stop_point
       data:
-        entity_id: input_number.bedroom_humidifier_stop_point
         value: "{{ states('input_number.bedroom_humidifier_start_point') | int + 2 }}"
 
 - alias: "Ensure bedroom humidifier hysteresis when decreasing stop point"
@@ -152,8 +150,8 @@
       value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
   action:
     - service: input_number.set_value
+      entity_id: input_number.bedroom_humidifier_start_point
       data:
-        entity_id: input_number.bedroom_humidifier_start_point
         value: "{{ states('input_number.bedroom_humidifier_stop_point') | int - 2 }}"
 
 - alias: "Turn on office power plug"

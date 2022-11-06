@@ -12,8 +12,7 @@
       data:
         option: "Emergency"
     - service: input_select.select_option
-      target:
-        entity_id: input_select.light_base_mode_living_room
+      entity_id: input_select.light_base_mode_living_room
       data:
         option: "Automatic"
 
@@ -25,9 +24,7 @@
       from: "Emergency"
   action:
     - service: light.turn_off
-      data:
-        entity_id:
-          - light.yopoydat
+      entity_id: light.yopoydat
     - service: script.turn_on
       entity_id: script.turn_on_decorative_lights_to_default
 
@@ -252,8 +249,7 @@
       state: "off"
   action:
     - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
+      entity_id: input_select.home_mode
       data:
         option: "Away"
 
@@ -270,8 +266,7 @@
       state: "off"
   action:
     - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
+      entity_id: input_select.home_mode
       data:
         option: "Awake"
     - service: input_boolean.turn_off
