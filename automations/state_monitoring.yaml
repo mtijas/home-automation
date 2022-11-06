@@ -12,7 +12,8 @@
       state: "off"
   action:
     - service: input_boolean.turn_on
-      entity_id: input_boolean.fridge_temperature_alarm
+      target:
+        entity_id: input_boolean.fridge_temperature_alarm
     - service: notify.telegram_notify_possula
       data:
         message: "Jääkaapin lämpötila on alhainen."
@@ -31,7 +32,8 @@
       state: "off"
   action:
     - service: input_boolean.turn_on
-      entity_id: input_boolean.fridge_temperature_alarm
+      target:
+        entity_id: input_boolean.fridge_temperature_alarm
     - service: notify.telegram_notify_possula
       data:
         message: "Jääkaapin lämpötila on korkea."
@@ -51,7 +53,8 @@
       state: "on"
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.fridge_temperature_alarm
+      target:
+        entity_id: input_boolean.fridge_temperature_alarm
 
 - id: front_door_alarm_open
   alias: "Etuoven valvonta ovi auki"
@@ -67,7 +70,8 @@
       state: "off"
   action:
     - service: input_boolean.turn_on
-      entity_id: input_boolean.front_door_alarm
+      target:
+        entity_id: input_boolean.front_door_alarm
     - service: script.sonos_tts_notification
       data:
         player_location: "media_player.olohuone"
@@ -89,7 +93,8 @@
       state: "on"
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.front_door_alarm
+      target:
+        entity_id: input_boolean.front_door_alarm
 
 - id: force_update_sensors_for_grafana
   alias: "Force update sensors for Grafana"

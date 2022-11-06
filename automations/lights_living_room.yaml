@@ -27,7 +27,8 @@
         minutes: 15
   action:
     - service: input_number.set_value
-      entity_id: input_number.light_auto_default_brightness_living_room
+      target:
+        entity_id: input_number.light_auto_default_brightness_living_room
       data:
         value: "{{ states('input_number.light_auto_awake_brightness_living_room') | int }}"
 
@@ -49,19 +50,22 @@
               state: "on"
           sequence:
             - service: light.turn_on
-              entity_id: light.olohuoneen_yleisvalot
+              target:
+                entity_id: light.olohuoneen_yleisvalot
               data:
                 brightness: "{{ states('input_number.light_result_brightness_living_room') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
                 transition: 4
             - service: light.turn_on
-              entity_id: light.koristevalot
+              target:
+                entity_id: light.koristevalot
               data:
                 brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
                 transition: 4
             - service: light.turn_on
-              entity_id: light.oh_valonauhat
+              target:
+                entity_id: light.oh_valonauhat
               data:
                 brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
@@ -72,15 +76,18 @@
               state: "off"
           sequence:
             - service: light.turn_off
-              entity_id: light.olohuoneen_yleisvalot
+              target:
+                entity_id: light.olohuoneen_yleisvalot
               data:
                 transition: 4
             - service: light.turn_off
-              entity_id: light.koristevalot
+              target:
+                entity_id: light.koristevalot
               data:
                 transition: 4
             - service: light.turn_off
-              entity_id: light.oh_valonauhat
+              target:
+                entity_id: light.oh_valonauhat
               data:
                 transition: 4
     - delay: 5

@@ -12,7 +12,8 @@
       data:
         option: "Emergency"
     - service: input_select.select_option
-      entity_id: input_select.light_base_mode_living_room
+      target:
+        entity_id: input_select.light_base_mode_living_room
       data:
         option: "Automatic"
 
@@ -24,9 +25,11 @@
       from: "Emergency"
   action:
     - service: light.turn_off
-      entity_id: light.yopoydat
+      target:
+        entity_id: light.yopoydat
     - service: script.turn_on
-      entity_id: script.turn_on_decorative_lights_to_default
+      target:
+        entity_id: script.turn_on_decorative_lights_to_default
 
 - id: automated_disarm_on_awake
   alias: "Automaattinen disarm kun siirrytään awake-tilaan"
@@ -100,7 +103,8 @@
       state: "on"
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.motion_notify
+      target:
+        entity_id: input_boolean.motion_notify
     - service: notify.telegram_notify_possula
       data:
         message: "Liikettä havaittu!"
@@ -120,7 +124,8 @@
       state: "armed_home"
   action:
     - service: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.ha_alarm
+      target:
+        entity_id: alarm_control_panel.ha_alarm
 
 - id: alarm_trigger_while_home_night_automation
   alias: "Armed night -tilan hälytyksen aktivointilogiikka"
@@ -134,7 +139,8 @@
       state: "armed_night"
   action:
     - service: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.ha_alarm
+      target:
+        entity_id: alarm_control_panel.ha_alarm
 
 - id: alarm_trigger_while_away_automation
   alias: "Armed away -tilan hälytyksen aktivointilogiikka"
@@ -151,7 +157,8 @@
       state: "armed_away"
   action:
     - service: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.ha_alarm
+      target:
+        entity_id: alarm_control_panel.ha_alarm
 
 - id: alarm_triggered_automation
   alias: "Tee murtohälytys"
@@ -233,7 +240,8 @@
         state: "on"
   action:
     - service: script.turn_on
-      entity_id: script.reverse_emergency_state
+      target:
+        entity_id: script.reverse_emergency_state
 
 - id: leaving_home_automation
   alias: "Kotoa poistumisautomaatiot"
@@ -249,7 +257,8 @@
       state: "off"
   action:
     - service: input_select.select_option
-      entity_id: input_select.home_mode
+      target:
+        entity_id: input_select.home_mode
       data:
         option: "Away"
 
@@ -266,11 +275,13 @@
       state: "off"
   action:
     - service: input_select.select_option
-      entity_id: input_select.home_mode
+      target:
+        entity_id: input_select.home_mode
       data:
         option: "Awake"
     - service: input_boolean.turn_off
-      entity_id: input_boolean.motion_notify
+      target:
+        entity_id: input_boolean.motion_notify
 
 - id: perimeter_notifications
   alias: "Kuori-ilmoitukset"
@@ -317,7 +328,8 @@
         qos: 1
         retain: 0
     - service: input_boolean.turn_on
-      entity_id: input_boolean.master_caution_triggered
+      target:
+        entity_id: input_boolean.master_caution_triggered
     - service: notify.syslog_critical
       data:
         message: "Master Caution!"
@@ -334,9 +346,11 @@
       state: "off"
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.master_caution_triggered
+      target:
+        entity_id: input_boolean.master_caution_triggered
     - service: input_boolean.turn_off
-      entity_id: input_boolean.ack_master_caution
+      target:
+        entity_id: input_boolean.ack_master_caution
 
 - id: clear_master_caution_if_acked_and_group_safe
   alias: "Clears Master Caution if acked and group goes safe"
@@ -350,9 +364,11 @@
       state: "on"
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.master_caution_triggered
+      target:
+        entity_id: input_boolean.master_caution_triggered
     - service: input_boolean.turn_off
-      entity_id: input_boolean.ack_master_caution
+      target:
+        entity_id: input_boolean.ack_master_caution
 
 - id: burglar_alarm_tag_scan
   alias: "Toggles burglar alarm between away-disarmed on tag scan"

@@ -108,7 +108,8 @@
       below: input_number.bedroom_humidifier_start_point
   action:
     - service: switch.turn_on
-      entity_id: switch.tp_link_smart_plug_5f83
+      target:
+        entity_id: switch.tp_link_smart_plug_5f83
 
 - alias: "Autostop bedroom humidifier"
   trigger:
@@ -126,7 +127,8 @@
       above: input_number.bedroom_humidifier_stop_point
   action:
     - service: switch.turn_off
-      entity_id: switch.tp_link_smart_plug_5f83
+      target:
+        entity_id: switch.tp_link_smart_plug_5f83
 
 - alias: "Ensure bedroom humidifier hysteresis when increasing start point"
   trigger:
@@ -137,7 +139,8 @@
       value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
   action:
     - service: input_number.set_value
-      entity_id: input_number.bedroom_humidifier_stop_point
+      target:
+        entity_id: input_number.bedroom_humidifier_stop_point
       data:
         value: "{{ states('input_number.bedroom_humidifier_start_point') | int + 2 }}"
 
@@ -150,7 +153,8 @@
       value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
   action:
     - service: input_number.set_value
-      entity_id: input_number.bedroom_humidifier_start_point
+      target:
+        entity_id: input_number.bedroom_humidifier_start_point
       data:
         value: "{{ states('input_number.bedroom_humidifier_stop_point') | int - 2 }}"
 
@@ -164,4 +168,5 @@
       state: "off"
   action:
     - service: switch.turn_on
-      entity_id: switch.office_ups_plug_switch
+      target:
+        entity_id: switch.office_ups_plug_switch
