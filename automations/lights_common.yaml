@@ -76,59 +76,37 @@
     sequence:
     - choose:
         - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ room }}"
-              state: "Off"
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Off') }}"
           sequence:
             - service: input_boolean.turn_off
               entity_id: "input_boolean.light_result_state_{{ room }}"
         - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ room }}"
-              state: "Automatic"
-            - condition: state
-              entity_id: "input_select.light_auto_home_mode_{{ room }}"
-              state: "Awake"
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+            - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Awake') }}"
           sequence:
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_awake_state_'+room) }}"
               entity_id: "input_boolean.light_result_state_{{ room }}"
         - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ room }}"
-              state: "Automatic"
-            - condition: state
-              entity_id: "input_select.light_auto_home_mode_{{ room }}"
-              state: "Asleep"
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+            - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
           sequence:
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_asleep_state_'+room) }}"
               entity_id: "input_boolean.light_result_state_{{ room }}"
         - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ room }}"
-              state: "Automatic"
-            - condition: state
-              entity_id: "input_select.light_auto_home_mode_{{ room }}"
-              state: "Away"
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+            - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
           sequence:
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_away_state_'+room) }}"
               entity_id: "input_boolean.light_result_state_{{ room }}"
         - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ room }}"
-              state: "Automatic"
-            - condition: state
-              entity_id: "input_select.light_auto_home_mode_{{ room }}"
-              state: "Party"
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+            - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Party') }}"
           sequence:
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_party_state_'+room) }}"
               entity_id: "input_boolean.light_result_state_{{ room }}"
         - conditions:
-            - condition: state
-              entity_id: "input_select.light_base_mode_{{ room }}"
-              state: "Automatic"
-            - condition: state
-              entity_id: "input_select.light_auto_home_mode_{{ room }}"
-              state: "Emergency"
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+            - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
           sequence:
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_emergency_state_'+room) }}"
               entity_id: "input_boolean.light_result_state_{{ room }}"
