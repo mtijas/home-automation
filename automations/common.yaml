@@ -10,7 +10,7 @@
     - service: switch.turn_off
       entity_id: switch.kahvinkeitin
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Sammutin kahvinkeittimen.

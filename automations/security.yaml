@@ -42,7 +42,7 @@
       from: "Asleep"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/burglar_alarm_state_request"
         payload: "DISARM"
         qos: 1
@@ -56,7 +56,7 @@
       to: "Asleep"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/burglar_alarm_state_request"
         payload: "ARM_NIGHT"
         qos: 1
@@ -81,16 +81,16 @@
         state: "on"
   action:
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message: "Asunto ei ole suojattu, joten murtohälytintä ei voitu aktivoida. Tarkista asunto ja yritä uudelleen."
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/burglar_alarm_state_request"
         payload: "DISARM"
         qos: 1
         retain: 0
     - service: notify.syslog_info
-      data_template:
+      data:
         message: "Asunto ei ole suojattu, joten murtohälytintä ei voitu aktivoida."
 
 - id: motion_notification
@@ -107,10 +107,10 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.motion_notify
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message: "Liikettä havaittu!"
     - service: notify.syslog_info
-      data_template:
+      data:
         message: "Liikeilmoitus."
 
 - id: alarm_trigger_while_home_day_automation
@@ -173,7 +173,7 @@
       state: "off"
   action:
     - service: script.raise_alarm
-      data_template:
+      data:
         command_payload: "event,burglar"
         alarm_boolean: input_boolean.burglar_alarm_raised
         alarm_title: "Murtohälytys!"
@@ -194,7 +194,7 @@
       state: "off"
   action:
     - service: script.raise_alarm
-      data_template:
+      data:
         command_payload: "event,fire"
         alarm_boolean: input_boolean.fire_alarm_raised
         alarm_title: "Palohälytys!"
@@ -212,7 +212,7 @@
       state: "off"
   action:
     - service: script.raise_alarm
-      data_template:
+      data:
         command_payload: "event,panic"
         alarm_boolean: input_boolean.panic_alarm_raised
         alarm_title: "Paniikkihälytys!"
@@ -294,13 +294,13 @@
       state: "on"
   action:
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message: "{{ trigger.to_state.name }} on avattu"
     - service: notify.syslog_info
-      data_template:
+      data:
         message: "{{ trigger.to_state.name }} on avattu"
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/cmd"
         payload: "event,doorbell"
         qos: 1
@@ -318,7 +318,7 @@
       state: "off"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/cmd"
         payload: "event,master_caution"
         qos: 1
@@ -326,7 +326,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.master_caution_triggered
     - service: notify.syslog_critical
-      data_template:
+      data:
         message: "Master Caution!"
 
 - id: clear_master_caution_on_ack
@@ -381,7 +381,7 @@
               state: disarmed
           sequence:
             - service: mqtt.publish
-              data_template:
+              data:
                 topic: "notify/burglar_alarm_state_request"
                 payload: "ARM_AWAY"
                 qos: 1
@@ -397,7 +397,7 @@
                 - triggered
           sequence:
             - service: mqtt.publish
-              data_template:
+              data:
                 topic: "notify/burglar_alarm_state_request"
                 payload: "DISARM"
                 qos: 1

@@ -5,7 +5,7 @@
       platform: time
   action:
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
 
 - id: coffee_brewed_notification
@@ -20,7 +20,7 @@
       state: "on"
   action:
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Kahvi on valmista.
@@ -34,11 +34,11 @@
       from: "off"
   action:
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: "Palvelinkaapin lämpötila on korkea!"
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message: "Palvelinkaapin lämpötila on korkea!"
 
 - id: scfb_fan_alarm
@@ -50,7 +50,7 @@
       from: "off"
   action:
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message: "Palvelinkaapin tuuletin on pysähtynyt!"
 
 - id: gas_alarm_possula
@@ -62,12 +62,12 @@
       from: "off"
   action:
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         title: "Suojeluhälytys!"
         message: >
           Epäpuhtauksia havaittu olohuoneen ilmassa.
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Varoitus: Epäpuhtauksia havaittu olohuoneen ilmassa.
@@ -92,7 +92,7 @@
           hours: 12
   action:
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         message:
           'Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature") }} °C,
           tuulee {{ states("sensor.saa_wind_speed") }} m/s ja {{ states("sensor.saa_condition") }}.
@@ -112,7 +112,7 @@
       state: "home"
   action:
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Kotiautomaatio käynnistetty.
@@ -126,7 +126,7 @@
       from: "pending"
   action:
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Murtohälytin pois.

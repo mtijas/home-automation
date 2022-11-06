@@ -10,7 +10,7 @@ turn_off_all_appliances:
         - input_boolean.bedroom_humidifier_automations
         - input_boolean.coffee_maker_loaded
     - service: notify.syslog_info
-      data_template:
+      data:
         message: "Yleistekniikka sammutettu."
 
 reverse_emergency_state:
@@ -23,7 +23,7 @@ reverse_emergency_state:
         qos: 0
         retain: false
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/burglar_alarm_state_request"
         payload: "DISARM"
         qos: 1
@@ -40,7 +40,7 @@ reverse_emergency_state:
       data:
         option: "Awake"
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Hälytykset kuitattu.
@@ -49,7 +49,7 @@ reverse_emergency_state:
         title: "Hälytykset kuitattu"
         message: "Hälytykset kuitattu."
     - service: notify.syslog_info
-      data_template:
+      data:
         message: "Hälytykset kuitattu."
 
 raise_alarm:
@@ -61,20 +61,20 @@ raise_alarm:
       data:
         option: "Emergency"
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/cmd"
         payload: "{{ command_payload }}"
         qos: 1
         retain: 0
     - service: input_boolean.turn_on
-      data_template:
+      data:
         entity_id: "{{ alarm_boolean }}"
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: "{{ alarm_message }}"
     - service: notify.telegram_notify_possula
-      data_template:
+      data:
         title: "{{ alarm_title }}"
         message: "{{ alarm_message }}"
         data:
@@ -84,5 +84,5 @@ raise_alarm:
               critical: 1
               volume: 1.0
     - service: notify.syslog_emergency
-      data_template:
+      data:
         message: "{{ alarm_title }}"

@@ -13,12 +13,12 @@
       state: "on"
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.eteisen_yleisvalot
         brightness: "{{ states('input_number.hallway_light_default_brightness') | int }}"
         kelvin: "{{ states('input_number.hallway_light_default_kelvin') | int }}"
     - service: timer.start
-      data_template:
+      data:
         entity_id: timer.hallway_motion_timeout
         duration: "00:{{ states('input_number.hallway_light_turnoff_time') | int}}:00"
 
@@ -37,12 +37,12 @@
       state: "on"
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.keittio
         brightness: "{{ states('input_number.kitchen_light_default_brightness') | int }}"
         kelvin: "{{ states('input_number.kitchen_light_default_kelvin') | int }}"
     - service: timer.start
-      data_template:
+      data:
         entity_id: timer.kitchen_motion_timeout
         duration: "00:{{ states('input_number.kitchen_light_turnoff_time') | int}}:00"
 
@@ -61,12 +61,12 @@
       state: "on"
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.pesuhuone
         brightness: "{{ states('input_number.toilet_light_default_brightness') | int }}"
         kelvin: "{{ states('input_number.toilet_light_default_kelvin') | int }}"
     - service: timer.start
-      data_template:
+      data:
         entity_id: timer.toilet_motion_timeout
         duration: "00:{{ states('input_number.toilet_light_turnoff_time') | int}}:00"
 
@@ -137,7 +137,7 @@
       state: "on"
   action:
     - service: timer.start
-      data_template:
+      data:
         entity_id: timer.hallway_motion_timeout
         duration: "00:{{ states('input_number.hallway_light_turnoff_time') | int}}:00"
 
@@ -154,7 +154,7 @@
       state: "on"
   action:
     - service: timer.start
-      data_template:
+      data:
         entity_id: timer.kitchen_motion_timeout
         duration: "00:{{ states('input_number.kitchen_light_turnoff_time') | int}}:00"
 
@@ -171,7 +171,7 @@
       state: "on"
   action:
     - service: timer.start
-      data_template:
+      data:
         entity_id: timer.toilet_motion_timeout
         duration: "00:{{ states('input_number.toilet_light_turnoff_time') | int}}:00"
 
@@ -288,7 +288,7 @@
       state: "on"
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.vaatehuone
         brightness: 255
         kelvin: 5000

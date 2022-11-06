@@ -6,7 +6,7 @@
       to: "Awake"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "state/home_mode"
         payload: "awake"
         qos: 1
@@ -21,7 +21,7 @@
       to: "Asleep"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "state/home_mode"
         payload: "asleep"
         qos: 1
@@ -35,7 +35,7 @@
       to: "Party"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "state/home_mode"
         payload: "party"
         qos: 1
@@ -49,7 +49,7 @@
       to: "Away"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "state/home_mode"
         payload: "away"
         qos: 1
@@ -64,7 +64,7 @@
       to: "Emergency"
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "state/home_mode"
         payload: "emergency"
         qos: 1
@@ -158,7 +158,7 @@
       entity_id: input_select.home_mode
   action:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "notify/cmd"
         payload: "event,unmute"
         qos: 1

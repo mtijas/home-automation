@@ -11,7 +11,7 @@
       for: "00:00:15"
   action:
     - service: script.light_brightness_calculation
-      data_template:
+      data:
         target_name: "living_room"
 
 - id: living_room_auto_brightness_default_set
@@ -27,7 +27,7 @@
         minutes: 15
   action:
     - service: input_number.set_value
-      data_template:
+      data:
         entity_id: input_number.light_auto_default_brightness_living_room
         value: "{{ states('input_number.light_auto_awake_brightness_living_room') | int }}"
 
@@ -52,19 +52,19 @@
               state: "on"
           sequence:
             - service: light.turn_on
-              data_template:
+              data:
                 entity_id: light.olohuoneen_yleisvalot
                 brightness: "{{ states('input_number.light_result_brightness_living_room') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
                 transition: 4
             - service: light.turn_on
-              data_template:
+              data:
                 entity_id: light.koristevalot
                 brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
                 transition: 4
             - service: light.turn_on
-              data_template:
+              data:
                 entity_id: light.oh_valonauhat
                 brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"

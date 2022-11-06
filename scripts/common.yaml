@@ -1,7 +1,7 @@
 test_living_room_announcer:
   sequence:
     - service: script.sonos_tts_notification
-      data_template:
+      data:
         player_location: "media_player.olohuone"
         message_str: >
           Kello on {{ now().strftime("%H:%M") }}.
@@ -21,7 +21,7 @@ sonos_tts_notification:
         entity_id: "{{ player_location }}"
         volume_level: "{{ states('input_number.default_notification_volume_sonos')|float }}"
     - service: tts.cloud_say
-      data_template:
+      data:
         entity_id: "{{ player_location }}"
         message: "{{ message_str }}"
         options:
@@ -39,7 +39,7 @@ scfb_command:
   alias: "Send SCFB Command"
   sequence:
     - service: mqtt.publish
-      data_template:
+      data:
         topic: "fancontrolbridge/test/commands"
         payload: "{\"command\": \"{{ cmd }}\", \"channel\": {{ ch }}, \"value\": {{ val }} }"
         qos: 1
