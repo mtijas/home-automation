@@ -7,7 +7,7 @@ light_brightness_calculation:
         damping: "{{ states('input_number.light_auto_brightness_damping_'+target_name) | float }}"
     - service: input_number.set_value
       target:
-        entity_id: "input_number.light_auto_awake_brightness_{{ target_name }}"
+        entity_id: "{{ 'input_number.light_auto_awake_brightness_'+target_name }}"
       data:
         value: >
           {% set needed_change = ((lightness_target - current_lightness) * damping) | int %}
