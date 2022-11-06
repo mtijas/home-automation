@@ -6,7 +6,18 @@
       to: "Emergency"
   action:
     - service: script.turn_off_all_appliances
-    - service: script.turn_on_emergency_lighting
+    - service: input_select.select_option
+      target:
+        entity_id:
+          - input_select.light_auto_home_mode_living_room
+      data:
+        option: "Emergency"
+    - service: input_select.select_option
+      target:
+        entity_id:
+          - input_select.light_base_mode_living_room
+      data:
+        option: "Automatic"
 
 - id: stop_emerg_mode_automations
   alias: "Stopping emergency mode"

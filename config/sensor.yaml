@@ -19,30 +19,6 @@
       value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float) * 3600) | round(2) }}"
       friendly_name: "Ilmanpaineen trendi (hPa/h)"
       unit_of_measurement: "hPa"
-    living_room_brightness_difference:
-      value_template: >
-        {% set current = states('sensor.olohuoneen_valoisuus') | float %}
-        {% set target = states('input_number.living_room_brightness_target') | float %}
-        {{ (target - current) | float | round(2) }}
-      friendly_name: "OH valoisuuden erotus"
-      unit_of_measurement: "%"
-    living_room_brightness_needed_change:
-      value_template: >
-        {% set current = states('sensor.olohuoneen_valoisuus') | float %}
-        {% set target = states('input_number.living_room_brightness_target') | float %}
-        {% set damping = states('input_number.living_room_brightness_damping') | float %}
-        {% set new_val = ((target - current) * damping) | int %}
-        {{ new_val }}
-      friendly_name: "OH valaistuksen asetuksen muutospyynti"
-      unit_of_measurement: "#"
-    lr_brightness_target:
-      value_template: "{{ states('input_number.living_room_brightness_target') | int }}"
-      friendly_name: "OH valoisuuden pyynti"
-      unit_of_measurement: "%"
-    lr_brightness_setting:
-      value_template: "{{ states('input_number.living_room_light_auto_brightness') | int }}"
-      friendly_name: "OH valaistuksen esiasetus"
-      unit_of_measurement: "#"
     sun_elevation:
       value_template: "{{ state_attr('sun.sun', 'elevation') }}"
       friendly_name: "Auringon korkeus"

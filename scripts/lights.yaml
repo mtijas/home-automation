@@ -1,3 +1,44 @@
+light_brightness_calculation:
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: "input_number.light_auto_awake_brightness_{{ target_name }}"
+        value_template: >
+          {% set current_setting = states('input_number.light_auto_awake_brightness_'+{{ target_name }}) | float %}
+          {% set current_lightness = states('sensor.current_lightness_'+target_name) | float %}
+          {% set target = states('input_number.light_auto_lightness_target_'+target_name) | float %}
+          {% set damping = states('input_number.light_auto_brightness_damping_'+target_name) | float %}
+          {% set needed_change = ((target - current_lightness) * damping) | int %}
+          {% set new_val = ( current_setting + needed_change ) | round(0, 'ceil') %}
+          {% if new_val > 255 %}
+            255
+          {% elif new_val < 5 %}
+            5
+          {% else %}
+            {{ new_val }}
+          {% endif %}
+
+update_light_result:
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: "input_select.light_base_mode_{{ target_name }}"
+              state: "Off"
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: "input_boolean.light_result_state_{{ target_name }}"
+        - conditions:
+            - condition: state
+              entity_id: "input_select.light_base_mode_{{ target_name }}"
+              state: "Automatic"
+            - condition: state
+              entity_id: "input_select.light_auto_home_mode_{{ target_name }}"
+              state: "Awake"
+          sequence:
+            - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_awake_state_'+target_name) }}"
+              entity_id: "input_boolean.light_result_state_{{ target_name }}"
+
 turn_cloakroom_light_on_with_settings:
   sequence:
     - service: light.turn_on
@@ -21,5 +62,5 @@ turn_on_decorative_lights_to_default:
       data_template:
         entity_id: light.oh_valonauhat
         brightness: "{{ states('input_number.living_room_lightstrips_default_brightness')|float }}"
-        kelvin: "{{ states('input_number.living_room_light_default_kelvin')|float }}"
+        kelvin: "{{ states('input_number.light_result_kelvin_living_room')|float }}"
         transition: 10

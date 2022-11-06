@@ -1,18 +1,142 @@
-living_room_brightness_target:
-  name: "OH valaistuksen tavoite"
+
+# Living room lights
+
+light_auto_lightness_target_living_room:
+  name: "OH valoisuuden tavoite automaatiolle"
   min: 1
   max: 100
   step: 1
   icon: mdi:speedometer-medium
   mode: box
   unit_of_measurement: "%"
-living_room_brightness_damping:
+light_auto_default_brightness_living_room:
+  name: "OH valaistuksen kirkkauden oletus automaatiolle"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_brightness_damping_living_room:
   name: "OH valaistuksen vaimennus"
   min: 0.1
   max: 10
   step: 0.1
   icon: mdi:speedometer-medium
   mode: box
+
+light_auto_awake_brightness_living_room:
+  name: "OH valaistuksen kirkkaus AWAKE-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_awake_kelvin_living_room:
+  name: "OH valaistuksen värilämpötila AWAKE-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+light_auto_away_brightness_living_room:
+  name: "OH valaistuksen kirkkaus AWAY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_away_kelvin_living_room:
+  name: "OH valaistuksen värilämpötila AWAY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+light_auto_asleep_brightness_living_room:
+  name: "OH valaistuksen kirkkaus ASLEEP-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_asleep_kelvin_living_room:
+  name: "OH valaistuksen värilämpötila ASLEEP-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+light_auto_emergency_brightness_living_room:
+  name: "OH valaistuksen kirkkaus EMERGENCY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  initial: 255
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_emergency_kelvin_living_room:
+  name: "OH valaistuksen värilämpötila EMERGENCY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  initial: 4000
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+light_auto_party_brightness_living_room:
+  name: "OH valaistuksen kirkkaus PARTY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_party_kelvin_living_room:
+  name: "OH valaistuksen värilämpötila PARTY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+light_manual_brightness_living_room:
+  name: "OH valaistuksen kirkkaus käsiohjauksella"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_manual_kelvin_living_room:
+  name: "OH valaistuksen värilämpötila käsiohjauksella"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+light_result_brightness_living_room:
+  name: "OH valaistuksen ohjaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_result_kelvin_living_room:
+  name: "OH valaistuksen ohjaus"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+
+
+
+
+
+# Others
+
 kitchen_light_default_brightness:
   name: "Keittiön valaistuksen kirkkaus"
   min: 1
@@ -34,20 +158,7 @@ toilet_light_default_brightness:
   step: 1
   icon: mdi:brightness-auto
   mode: box
-living_room_light_default_brightness:
-  name: "Olohuoneen valaistuksen oletuskirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-living_room_light_auto_brightness:
-  name: "Olohuoneen valaistuksen kirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
+
 bedroom_light_default_brightness:
   name: "Makuuhuoneen valaistuksen kirkkaus"
   min: 1
@@ -90,13 +201,7 @@ toilet_light_default_kelvin:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
-living_room_light_default_kelvin:
-  name: "Olohuoneen valaistuksen värilämpötila"
-  min: 2700
-  max: 6500
-  step: 1
-  icon: mdi:temperature-kelvin
-  unit_of_measurement: "K"
+
 bedroom_light_default_kelvin:
   name: "Makuuhuoneen valaistuksen värilämpötila"
   min: 2700

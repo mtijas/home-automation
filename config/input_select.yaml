@@ -8,3 +8,26 @@ home_mode:
     - "Emergency"
   initial: "Awake"
   icon: mdi:home-circle
+
+
+# Living room lights
+
+light_base_mode_living_room:
+  name: "OH valot"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_living_room:
+  name: "OH valojen automatiikka"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Party"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto

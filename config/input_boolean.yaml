@@ -17,9 +17,7 @@ toilet_should_illuminate:
   name: "Pesuhuoneen valaistuksen sytytys"
   initial: on
   icon: mdi:lightbulb-on-outline
-living_room_should_illuminate:
-  name: "Olohuoneen valaistuksen sytytys"
-  icon: mdi:lightbulb-on-outline
+
 burglar_alarm_raised:
   name: "Murtohälytys"
   initial: off
@@ -46,9 +44,7 @@ bedroom_humidifier_automations:
   name: "MH ilmankostutuksen automatiikka"
 bedroom_humidifier_empty:
   name: "MH ilmankostutin tyhjä"
-living_room_light_automations:
-  name: "Olohuoneen valoautomatiikka"
-  icon: mdi:brightness-auto
+
 kitchen_light_automations:
   name: "Keittiön valoautomatiikka"
   icon: mdi:brightness-auto
@@ -74,3 +70,27 @@ ack_master_caution:
 guests:
   name: "Guests"
   icon: mdi:human-capacity-increase
+
+
+# Living room lights
+
+light_auto_awake_state_living_room:
+  name: "OH Valaistus AWAKE-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_away_state_living_room:
+  name: "OH Valaistus AWAY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: off
+light_auto_asleep_state_living_room:
+  name: "OH Valaistus ASLEEP-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_emergency_state_living_room:
+  name: "OH Valaistus EMERGENCY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: on
+light_auto_party_state_living_room:
+  name: "OH Valaistus PARTY-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_result_state_living_room:
+  name: "OH Valaistuksen ohjaus"
+  icon: mdi:lightbulb-on-outline
