@@ -38,6 +38,12 @@ light_auto_awake_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+light_auto_awake_turnoff_time_living_room:
+  name: "OH valaistuksen sammutusviive AWAKE-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
 
 light_auto_away_brightness_living_room:
   name: "OH valaistuksen kirkkaus AWAY-tilassa"
@@ -53,6 +59,12 @@ light_auto_away_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+light_auto_away_turnoff_time_living_room:
+  name: "OH valaistuksen sammutusviive AWAY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
 
 light_auto_asleep_brightness_living_room:
   name: "OH valaistuksen kirkkaus ASLEEP-tilassa"
@@ -68,6 +80,12 @@ light_auto_asleep_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+light_auto_asleep_turnoff_time_living_room:
+  name: "OH valaistuksen sammutusviive ASLEEP-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
 
 light_auto_emergency_brightness_living_room:
   name: "OH valaistuksen kirkkaus EMERGENCY-tilassa"
@@ -85,31 +103,22 @@ light_auto_emergency_kelvin_living_room:
   initial: 4000
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
-
-light_manual_brightness_living_room:
-  name: "OH valaistuksen kirkkaus käsiohjauksella"
+light_auto_emergency_turnoff_time_living_room:
+  name: "OH valaistuksen sammutusviive EMERGENCY-tilassa"
   min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-light_manual_kelvin_living_room:
-  name: "OH valaistuksen värilämpötila käsiohjauksella"
-  min: 2700
-  max: 6500
-  step: 1
-  icon: mdi:temperature-kelvin
-  unit_of_measurement: "K"
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
 
 light_result_brightness_living_room:
-  name: "OH valaistuksen ohjaus"
+  name: "OH valaistuksen kirkkauden ohjaus"
   min: 1
   max: 255
   step: 1
   icon: mdi:brightness-auto
   mode: box
 light_result_kelvin_living_room:
-  name: "OH valaistuksen ohjaus"
+  name: "OH valaistuksen lämpötilan ohjaus"
   min: 2700
   max: 6500
   step: 1
