@@ -14,7 +14,7 @@
       data:
         target_entity: "input_number.light_auto_awake_brightness_living_room"
         previous_value: "{{ states('input_number.light_auto_awake_brightness_living_room') | float }}"
-        current_lightness: "{{ states('sensor.current_lightness_living_room') | float }}"
+        current_lightness: "{{ states('sensor.current_lightness_living_room') | float(0.0) }}"
         lightness_target: "{{ states('input_number.light_auto_lightness_target_living_room') | float }}"
         damping: "{{ states('input_number.light_auto_brightness_damping_living_room') | float }}"
 

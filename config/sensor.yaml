@@ -34,7 +34,7 @@
           empty
         {% elif is_state('switch.tp_link_smart_plug_5f83', 'off') %}
           off
-        {% elif (states('sensor.tp_link_smart_plug_5f83_current_consumption') | float) > 50 %}
+        {% elif (states('sensor.tp_link_smart_plug_5f83_current_consumption') | float(0.0)) > 50 %}
           humidifying
         {% elif is_state('switch.tp_link_smart_plug_5f83', 'on') %}
           standby

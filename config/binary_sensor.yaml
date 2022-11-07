@@ -7,7 +7,7 @@
       delay_off:
         minutes: 1
       value_template: >-
-        {{ states('sensor.kahvinkeitin_current_consumption') | float > 100 }}
+        {{ states('sensor.kahvinkeitin_current_consumption') | float(0.0) > 100 }}
     all_motion:
       device_class: motion
       value_template: "{{ is_state('group.all_motion', 'on') }}"
@@ -15,7 +15,7 @@
       device_class: door
       value_template: "{{ is_state('group.all_doors', 'on') }}"
     server_cabinet_fire_alarm:
-      value_template: "{{ (states('sensor.scfb_temp') | float) > 50 }}"
+      value_template: "{{ (states('sensor.scfb_temp') | float(0.0)) > 50 }}"
       friendly_name: "SCFB Fire Alarm"
       delay_on:
         seconds: 20
@@ -23,7 +23,7 @@
         seconds: 20
       device_class: "problem"
     scfb_fan_alarm:
-      value_template: "{{ (states('sensor.scfb_fan') | int) < 150 }}"
+      value_template: "{{ (states('sensor.scfb_fan') | int(0)) < 150 }}"
       friendly_name: "SCFB Fan Alarm"
       delay_on:
         seconds: 20
@@ -31,7 +31,7 @@
         seconds: 20
       device_class: "problem"
     living_room_gas_alarm:
-      value_template: "{{ (states('sensor.olohuoneen_kaasutaso') | float) > 50 }}"
+      value_template: "{{ (states('sensor.olohuoneen_kaasutaso') | float(0.0)) > 50 }}"
       friendly_name: "Olohuoneen kaasuhälytys"
       delay_on:
         seconds: 20
@@ -39,7 +39,7 @@
         seconds: 20
       device_class: "problem"
     living_room_particle_alarm:
-      value_template: "{{ (states('sensor.particulate_matter_2_5um_concentration') | float) > 150 }}"
+      value_template: "{{ (states('sensor.particulate_matter_2_5um_concentration') | float(0.0)) > 150 }}"
       friendly_name: "Olohuoneen hiukkashälytys"
       delay_on:
         minutes: 1
