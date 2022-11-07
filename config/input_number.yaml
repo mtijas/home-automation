@@ -124,6 +124,12 @@ light_result_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+light_result_turnoff_time_living_room:
+  name: "OH valaistuksen sammutusviiveen ohjaus"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
 
 
 
