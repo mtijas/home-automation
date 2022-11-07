@@ -155,7 +155,6 @@
       variables:
         room: living_room
   action:
-    sequence:
     - choose:
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Off') }}"

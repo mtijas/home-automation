@@ -32,9 +32,9 @@
   action:
     - service: input_number.set_value
       target:
-        entity_id: input_number.light_auto_default_brightness_living_room
+        entity_id: input_number.light_auto_awake_brightness_living_room
       data:
-        value: "{{ states('input_number.light_auto_awake_brightness_living_room') | int }}"
+        value: "{{ states('input_number.light_auto_default_brightness_living_room') | int }}"
 
 - id: living_room_state_set
   alias: "Olohuoneen valaistuksen asetus"
