@@ -39,9 +39,8 @@
         sequence:
           - if:
               - alias: "If we want to follow motion detections"
-                condition: state
-                entity_id: "input_boolean.light_auto_{{ repeat.item }}_follow_motion_{{ room }}"
-                state: "on"
+                condition: template
+                value_template: "{{ is_state('input_boolean.light_auto_'+repeat.item+'_follow_motion_'+room, 'on') }}"
             then:
               - service_template: "input_boolean.turn_{{ states(trigger.entity_id) }}"
                 target:
