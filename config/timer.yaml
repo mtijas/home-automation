@@ -1,4 +1,4 @@
-hallway_motion_timeout:
+light_off_timer_hallway:
   duration: "00:03:00"
 kitchen_motion_timeout:
   duration: "00:03:00"

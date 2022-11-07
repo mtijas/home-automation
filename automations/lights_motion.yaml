@@ -1,0 +1,57 @@
+- id: generic_light_autostart_by_motion
+  alias: "Valojen sytytys liiketunnistuksella"
+  trigger:
+    - platform: state
+      entity_id: group.light_motion_sensors_hallway
+      to: "on"
+      variables:
+        room: hallway
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ is_state('input_boolean.light_result_state_'+room, 'on') }}"
+          sequence:
+            - service: input_boolean.turn_on
+              target:
+                entity_id: "input_boolean.light_auto_source_motion_state_{{ room }}"
+        - conditions:
+            - condition: template
+              value_template: "{{ is_state('input_boolean.light_result_state_'+room, 'off') }}"
+            - condition: numeric_state
+              entity_id: "sensor.light_auto_lux_level_{{ room }}"
+              below: "input_number.light_auto_lux_limit_{{ room }}"
+          sequence:
+            - service: input_boolean.turn_on
+              target:
+                entity_id: "input_boolean.light_auto_source_motion_state_{{ room }}"
+    - service: timer.start
+      target:
+        entity_id: "timer.light_off_timer_{{ room }}"
+      data:
+        duration: "00:{{ states('input_number.light_result_turnoff_time_'+room) | int}}:00"
+
+- id: generic_light_auto_off_by_no_motion
+  alias: "Valojen sammutus kun ei liikettä"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.light_off_timer_hallway
+      variables:
+        room: hallway
+
+  action:
+    - if:
+        - condition: template
+          value_template: "{{ is_state('input_boolean.light_motion_sensors_'+room, 'on') }}"
+      then:
+        - service: timer.start
+          target:
+            entity_id: "timer.light_off_timer_{{ room }}"
+          data:
+            duration: "00:{{ states('input_number.light_result_turnoff_time_'+room) | int}}:00"
+      else:
+        - service_template: "input_boolean.turn_off"
+          target:
+            entity_id: "input_boolean.light_auto_source_motion_state_{{ room }}"

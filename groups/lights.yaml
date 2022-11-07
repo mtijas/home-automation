@@ -1,0 +1,15 @@
+light_motion_sensors_kitchen:
+  name: "Keittiön valaistuksen liiketunnistimet"
+  icon: mdi:walk
+  entities:
+    - binary_sensor.keittion_liike
+light_motion_sensors_hallway:
+  name: "Eteisen valaistuksen liiketunnistimet"
+  icon: mdi:walk
+  entities:
+    - binary_sensor.eteisen_liike
+light_motion_sensors_toilet:
+  name: "WC:n valaistuksen liiketunnistimet"
+  icon: mdi:walk
+  entities:
+    - binary_sensor.pesuhuoneen_liike
