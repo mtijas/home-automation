@@ -20,6 +20,26 @@
         entity_id: input_select.light_auto_home_mode_living_room
       data:
         option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_hallway
+      data:
+        option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_kitchen
+      data:
+        option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_toilet
+      data:
+        option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_bedroom
+      data:
+        option: "{{ trigger.to_state.state }}"
 
 - id: light_update_states_on_motion
   alias: "Valoautomatiikan liiketunnistuksen tilojen päivitys"
