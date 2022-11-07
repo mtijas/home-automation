@@ -35,7 +35,6 @@ cards:
       - type: entities
         show_header_toggle: false
         entities:
-          - input_boolean.hallway_light_automations
           - input_boolean.toilet_light_automations
           - input_boolean.cloakroom_light_automations
           - type: custom:slider-entity-row

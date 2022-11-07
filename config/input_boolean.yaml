@@ -9,10 +9,6 @@ kitchen_should_illuminate:
   name: "Keittiön valaistuksen sytytys"
   initial: on
   icon: mdi:lightbulb-on-outline
-hallway_should_illuminate:
-  name: "Eteisen valaistuksen sytytys"
-  initial: on
-  icon: mdi:lightbulb-on-outline
 toilet_should_illuminate:
   name: "Pesuhuoneen valaistuksen sytytys"
   initial: on
@@ -47,9 +43,6 @@ bedroom_humidifier_empty:
 
 kitchen_light_automations:
   name: "Keittiön valoautomatiikka"
-  icon: mdi:brightness-auto
-hallway_light_automations:
-  name: "Käytävän valoautomatiikka"
   icon: mdi:brightness-auto
 toilet_light_automations:
   name: "Pesuhuoneen valoautomatiikka"
@@ -111,4 +104,46 @@ light_auto_emergency_follow_motion_living_room:
 
 light_result_state_living_room:
   name: "OH Valaistuksen ohjaus"
+  icon: mdi:lightbulb-on-outline
+
+
+# Hallway lights
+
+light_auto_source_motion_state_hallway:
+  name: "Käytävän Liiketunnistus"
+  icon: mdi:motion-sensor
+
+light_auto_awake_state_hallway:
+  name: "Käytävän valaistus AWAKE-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_awake_follow_motion_hallway:
+  name: "Käytävän valaistus seuraa liikettä AWAKE-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_away_state_hallway:
+  name: "Käytävän valaistus AWAY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: off
+light_auto_away_follow_motion_hallway:
+  name: "Käytävän valaistus seuraa liikettä AWAY-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_asleep_state_hallway:
+  name: "Käytävän valaistus ASLEEP-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_asleep_follow_motion_hallway:
+  name: "Käytävän valaistus seuraa liikettä ASLEEP-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_emergency_state_hallway:
+  name: "Käytävän valaistus EMERGENCY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: on
+light_auto_emergency_follow_motion_hallway:
+  name: "Käytävän valaistus seuraa liikettä EMERGENCY-tilassa"
+  icon: mdi:motion-sensor
+  initial: off
+
+light_result_state_hallway:
+  name: "Käytävän valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline

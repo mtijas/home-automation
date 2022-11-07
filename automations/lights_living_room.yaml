@@ -6,7 +6,7 @@
       seconds: "/20"
   condition:
     - condition: state
-      entity_id: light.olohuoneen_yleisvalot
+      entity_id: input_boolean.light_result_state_living_room
       state: "on"
       for: "00:00:15"
   action:
@@ -25,7 +25,7 @@
       minutes: "/5"
   condition:
     - condition: state
-      entity_id: light.olohuoneen_yleisvalot
+      entity_id: input_boolean.light_result_state_living_room
       state: "off"
       for:
         minutes: 15

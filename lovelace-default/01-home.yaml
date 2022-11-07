@@ -198,7 +198,6 @@ cards:
         entities:
           - input_boolean.living_room_light_automations
           - input_boolean.kitchen_light_automations
-          - input_boolean.hallway_light_automations
           - input_boolean.toilet_light_automations
           - input_boolean.bedroom_light_automations
           - input_boolean.cloakroom_light_automations

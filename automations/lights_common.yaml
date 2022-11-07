@@ -29,6 +29,10 @@
       entity_id: input_boolean.light_auto_source_motion_state_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_hallway
+      variables:
+        room: hallway
   action:
     - repeat:
         for_each:
@@ -70,6 +74,26 @@
       variables:
         room: living_room
         home_mode: Emergency
+    - platform: state
+      entity_id: input_boolean.light_auto_awake_state_hallway
+      variables:
+        room: hallway
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_hallway
+      variables:
+        room: hallway
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_hallway
+      variables:
+        room: hallway
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_hallway
+      variables:
+        room: hallway
+        home_mode: Emergency
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
@@ -103,6 +127,26 @@
       entity_id: input_number.light_auto_emergency_brightness_living_room
       variables:
         room: living_room
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_brightness_hallway
+      variables:
+        room: hallway
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_hallway
+      variables:
+        room: hallway
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_hallway
+      variables:
+        room: hallway
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_hallway
+      variables:
+        room: hallway
         home_mode: Emergency
   condition:
     - condition: template
@@ -140,6 +184,26 @@
       variables:
         room: living_room
         home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_kelvin_hallway
+      variables:
+        room: hallway
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_hallway
+      variables:
+        room: hallway
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_hallway
+      variables:
+        room: hallway
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_hallway
+      variables:
+        room: hallway
+        home_mode: Emergency
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
@@ -176,6 +240,26 @@
       variables:
         room: living_room
         home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_turnoff_time_hallway
+      variables:
+        room: hallway
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_hallway
+      variables:
+        room: hallway
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_turnoff_time_hallway
+      variables:
+        room: hallway
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_hallway
+      variables:
+        room: hallway
+        home_mode: Emergency
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
@@ -200,6 +284,14 @@
       entity_id: input_select.light_auto_home_mode_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_select.light_base_mode_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_hallway
+      variables:
+        room: hallway
   action:
     - choose:
         - conditions:

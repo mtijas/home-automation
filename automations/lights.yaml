@@ -1,28 +1,4 @@
-- id: hallway_light_autostart_by_motion
-  alias: "Eteisen valojen liiketunnistus"
-  trigger:
-    - platform: state
-      entity_id: group.all_hallway_motion
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: input_boolean.hallway_should_illuminate
-      state: "on"
-    - condition: state
-      entity_id: input_boolean.hallway_light_automations
-      state: "on"
-  action:
-    - service: light.turn_on
-      target:
-        entity_id: light.eteisen_yleisvalot
-      data:
-        brightness: "{{ states('input_number.hallway_light_default_brightness') | int }}"
-        kelvin: "{{ states('input_number.hallway_light_default_kelvin') | int }}"
-    - service: timer.start
-      target:
-        entity_id: timer.hallway_motion_timeout
-      data:
-        duration: "00:{{ states('input_number.hallway_light_turnoff_time') | int}}:00"
+
 
 - id: kitchen_light_autostart_by_motion
   alias: "Keittiön valojen liiketunnistus"
@@ -76,24 +52,6 @@
       data:
         duration: "00:{{ states('input_number.toilet_light_turnoff_time') | int}}:00"
 
-- id: hallway_light_auto_off
-  alias: "Eteisen valojen automaattisammutus"
-  trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.hallway_motion_timeout
-  condition:
-    - condition: state
-      entity_id: group.all_hallway_motion
-      state: "off"
-    - condition: state
-      entity_id: input_boolean.hallway_light_automations
-      state: "on"
-  action:
-    - service: light.turn_off
-      target:
-        entity_id: light.eteisen_yleisvalot
 
 - id: kitchen_light_auto_off
   alias: "Keittiön valojen automaattisammutus"
@@ -133,23 +91,6 @@
       target:
         entity_id: light.pesuhuone
 
-- id: hallway_light_timer_restart
-  alias: "Eteisen valojen ajastuksen uudelleenkäynnistys"
-  trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.hallway_motion_timeout
-  condition:
-    - condition: state
-      entity_id: group.all_hallway_motion
-      state: "on"
-  action:
-    - service: timer.start
-      target:
-        entity_id: timer.hallway_motion_timeout
-      data:
-        duration: "00:{{ states('input_number.hallway_light_turnoff_time') | int}}:00"
 
 - id: kitchen_light_timer_restart
   alias: "Keittiön valojen ajastuksen uudelleenkäynnistys"
@@ -188,40 +129,6 @@
         duration: "00:{{ states('input_number.toilet_light_turnoff_time') | int}}:00"
 
 
-
-- id: light_hallway_illumination_criteria
-  alias: "Eteisen valaistuksen käynnistyskriteerit"
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-    - platform: numeric_state
-      entity_id: sensor.eteisen_liiketunnistin_light_level
-      below: 30
-    - platform: numeric_state
-      entity_id: sensor.eteisen_liiketunnistin_light_level
-      above: 40
-  action:
-    - choose:
-        - conditions:
-            - condition: numeric_state
-              entity_id: sensor.eteisen_liiketunnistin_light_level
-              below: 30
-          sequence:
-            - service: input_boolean.turn_on
-              entity_id: input_boolean.hallway_should_illuminate
-        - conditions:
-            - condition: numeric_state
-              entity_id: sensor.eteisen_liiketunnistin_light_level
-              above: 40
-            - condition: state
-              entity_id: light.eteisen_yleisvalot
-              state: "off"
-              for:
-                minutes: 1
-          sequence:
-            - service: input_boolean.turn_off
-              target:
-                entity_id: input_boolean.hallway_should_illuminate
 
 - id: light_kitchen_illumination_criteria
   alias: "Keittiön valaistuksen käynnistyskriteerit"
@@ -291,43 +198,4 @@
               target:
                 entity_id: input_boolean.toilet_should_illuminate
 
-- id: cloakroom_light_turn_on
-  alias: "Vaatehuoneen valaistuksen käynnistys"
-  trigger:
-    - platform: state
-      entity_id: switch.cloakroom_motion
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: input_boolean.cloakroom_light_automations
-      state: "on"
-  action:
-    - service: light.turn_on
-      target:
-        entity_id: light.vaatehuone
-      data:
-        brightness: 255
-        kelvin: 5000
 
-- id: cloakroom_light_turn_off
-  alias: "Vaatehuoneen valaistuksen sammutus"
-  trigger:
-    - platform: state
-      entity_id: switch.cloakroom_motion
-      to: "off"
-      for: "00:01:00"
-    - platform: state
-      entity_id: switch.cloakroom_motion
-      to: "on"
-      for: "00:15:00"
-  condition:
-    - condition: state
-      entity_id: input_boolean.cloakroom_light_automations
-      state: "on"
-  action:
-    - service: light.turn_off
-      target:
-        entity_id: light.vaatehuone
-    - service: switch.turn_off
-      target:
-        entity_id: switch.cloakroom_motion

@@ -12,7 +12,7 @@ home_mode:
 # Living room lights
 
 light_base_mode_living_room:
-  name: "OH valot"
+  name: "OH valoautomatiikka"
   options:
     - "Off"
     - "Manual"
@@ -21,7 +21,29 @@ light_base_mode_living_room:
   icon: mdi:lightbulb-auto
 
 light_auto_home_mode_living_room:
-  name: "OH valojen automatiikka"
+  name: "OH valojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto
+
+
+# Hallway lights
+
+light_base_mode_hallway:
+  name: "Käytävän valoautomatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_hallway:
+  name: "Käytävän valojen automatiikan toimintatila"
   options:
     - "Awake"
     - "Asleep"

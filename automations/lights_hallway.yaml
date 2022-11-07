@@ -1,0 +1,73 @@
+- id: light_auto_brightness_determination_hallway
+  alias: "Käytävän valaistuksen kirkkauden laskenta-automaatio"
+  mode: restart
+  trigger:
+    - platform: time_pattern
+      seconds: "/20"
+  condition:
+    - condition: state
+      entity_id: input_boolean.light_result_state_hallway
+      state: "on"
+      for: "00:00:15"
+  action:
+    - service: script.light_brightness_calculation
+      data:
+        target_entity: "input_number.light_auto_awake_brightness_hallway"
+        previous_value: "{{ states('input_number.light_auto_awake_brightness_hallway') | float }}"
+        current_lightness: "{{ states('sensor.current_lightness_hallway') | float(0.0) }}"
+        lightness_target: "{{ states('input_number.light_auto_lightness_target_hallway') | float }}"
+        speed_multiplier: "{{ states('input_number.light_auto_brightness_speed_multiplier_hallway') | float }}"
+
+- id: hallway_auto_brightness_default_set
+  alias: "Käytävän yleisvalojen kirkkauden oletusasetus kun pois päältä"
+  trigger:
+    - platform: time_pattern
+      minutes: "/5"
+  condition:
+    - condition: state
+      entity_id: input_boolean.light_result_state_hallway
+      state: "off"
+      for:
+        minutes: 15
+  action:
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.light_auto_awake_brightness_hallway
+      data:
+        value: "{{ states('input_number.light_auto_default_brightness_hallway') | int }}"
+
+- id: hallway_state_set
+  alias: "Käytävän valaistuksen asetus"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_result_brightness_hallway
+    - platform: state
+      entity_id: input_number.light_result_kelvin_hallway
+    - platform: state
+      entity_id: input_boolean.light_result_state_hallway
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_hallway
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.eteisen_yleisvalot
+              data:
+                brightness: "{{ states('input_number.light_result_brightness_hallway') | int }}"
+                kelvin: "{{ states('input_number.light_result_kelvin_hallway') | int }}"
+                transition: 4
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_hallway
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.eteisen_yleisvalot
+              data:
+                transition: 4
+    - delay: 5
