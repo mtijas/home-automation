@@ -16,13 +16,21 @@ light_auto_default_brightness_living_room:
   step: 1
   icon: mdi:brightness-auto
   mode: box
-light_auto_brightness_damping_living_room:
+light_auto_brightness_speed_multiplier_living_room:
   name: "OH valaistuksen vaimennus"
   min: 0.1
   max: 10
   step: 0.1
   icon: mdi:speedometer-medium
   mode: box
+light_auto_lux_limit_living_room:
+  name: "OH valojen sytytysraja"
+  min: 0
+  max: 1000
+  step: 1
+  icon: mdi:speedometer-medium
+  mode: box
+  unit_of_measurement: "lx"
 
 light_auto_awake_brightness_living_room:
   name: "OH valaistuksen kirkkaus AWAKE-tilassa"

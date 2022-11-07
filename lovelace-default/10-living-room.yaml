@@ -86,4 +86,4 @@ cards:
           - input_number.decorative_lights_default_brightness
           - input_number.living_room_lightstrips_default_brightness
           - input_number.living_room_brightness_target
-          - input_number.living_room_brightness_damping
+          - input_number.living_room_brightness_speed_multiplier

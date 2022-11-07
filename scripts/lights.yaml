@@ -5,7 +5,7 @@ light_brightness_calculation:
         entity_id: "{{ target_entity }}"
       data:
         value: >
-          {% set needed_change = ((lightness_target - current_lightness) * damping) | int %}
+          {% set needed_change = ((lightness_target - current_lightness) * speed_multiplier) | int %}
           {% set new_val = ( previous_value + needed_change ) | round(0, 'ceil') %}
           {% if new_val > 255 %}
             255
