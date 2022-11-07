@@ -83,7 +83,7 @@ light_auto_awake_state_living_room:
   icon: mdi:lightbulb-on-outline
 light_auto_awake_follow_motion_living_room:
   name: "OH valaistus seuraa liikettä AWAKE-tilassa"
-  icon: mdi:lightbulb-auto-outline
+  icon: mdi:motion-sensor
 
 light_auto_away_state_living_room:
   name: "OH Valaistus AWAY-tilassa"
@@ -91,14 +91,14 @@ light_auto_away_state_living_room:
   initial: off
 light_auto_away_follow_motion_living_room:
   name: "OH valaistus seuraa liikettä AWAY-tilassa"
-  icon: mdi:lightbulb-auto-outline
+  icon: mdi:motion-sensor
 
 light_auto_asleep_state_living_room:
   name: "OH Valaistus ASLEEP-tilassa"
   icon: mdi:lightbulb-on-outline
 light_auto_asleep_follow_motion_living_room:
   name: "OH valaistus seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:lightbulb-auto-outline
+  icon: mdi:motion-sensor
 
 light_auto_emergency_state_living_room:
   name: "OH Valaistus EMERGENCY-tilassa"
@@ -106,7 +106,7 @@ light_auto_emergency_state_living_room:
   initial: on
 light_auto_emergency_follow_motion_living_room:
   name: "OH valaistus seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:lightbulb-auto-outline
+  icon: mdi:motion-sensor
   initial: off
 
 light_result_state_living_room:
