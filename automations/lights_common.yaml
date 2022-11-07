@@ -225,6 +225,11 @@
                 entity_id: "input_number.light_result_kelvin_{{ room }}"
               data:
                 value: "{{ states('input_number.light_auto_awake_kelvin_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_awake_turnoff_time_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
@@ -242,6 +247,11 @@
                 entity_id: "input_number.light_result_kelvin_{{ room }}"
               data:
                 value: "{{ states('input_number.light_auto_asleep_kelvin_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_asleep_turnoff_time_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
@@ -259,6 +269,11 @@
                 entity_id: "input_number.light_result_kelvin_{{ room }}"
               data:
                 value: "{{ states('input_number.light_auto_away_kelvin_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_away_turnoff_time_'+room) }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
@@ -276,5 +291,10 @@
                 entity_id: "input_number.light_result_kelvin_{{ room }}"
               data:
                 value: "{{ states('input_number.light_auto_emergency_kelvin_'+room) }}"
+            - service_template: input_number.set_value
+              target:
+                entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+              data:
+                value: "{{ states('input_number.light_auto_emergency_turnoff_time_'+room) }}"
 
 
