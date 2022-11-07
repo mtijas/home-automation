@@ -21,6 +21,31 @@
       data:
         option: "{{ trigger.to_state.state }}"
 
+- id: light_update_states_on_motion
+  alias: "Valoautomatiikan liiketunnistuksen tilojen päivitys"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_living_room
+      variables:
+        room: living_room
+  action:
+    - repeat:
+        for_each:
+          - "awake"
+          - "asleep"
+          - "away"
+          - "emergency"
+        sequence:
+          - if:
+              - alias: "If we want to follow motion detections"
+                condition: template
+                value_template: "{{ is_state('input_boolean.light_auto_'+repeat.item+'_follow_motion_'+room, 'On') }}"
+            then:
+              - service_template: "input_boolean.turn_{{ states(trigger.entity_id) }}"
+                target:
+                  entity_id: "input_boolean.light_auto_{{ repeat.item }}_state_{{ room }}"
+
 - id: light_store_state_results
   alias: "Valoautomatiikan tilojen päivitys"
   mode: queued
