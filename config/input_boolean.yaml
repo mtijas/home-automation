@@ -147,3 +147,129 @@ light_auto_emergency_follow_motion_hallway:
 light_result_state_hallway:
   name: "Käytävän valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline
+
+
+# Kitchen lights
+
+light_auto_source_motion_state_kitchen:
+  name: "Keittiön Liiketunnistus"
+  icon: mdi:motion-sensor
+
+light_auto_awake_state_kitchen:
+  name: "Keittiön valaistus AWAKE-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_awake_follow_motion_kitchen:
+  name: "Keittiön valaistus seuraa liikettä AWAKE-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_away_state_kitchen:
+  name: "Keittiön valaistus AWAY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: off
+light_auto_away_follow_motion_kitchen:
+  name: "Keittiön valaistus seuraa liikettä AWAY-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_asleep_state_kitchen:
+  name: "Keittiön valaistus ASLEEP-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_asleep_follow_motion_kitchen:
+  name: "Keittiön valaistus seuraa liikettä ASLEEP-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_emergency_state_kitchen:
+  name: "Keittiön valaistus EMERGENCY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: on
+light_auto_emergency_follow_motion_kitchen:
+  name: "Keittiön valaistus seuraa liikettä EMERGENCY-tilassa"
+  icon: mdi:motion-sensor
+  initial: off
+
+light_result_state_kitchen:
+  name: "Keittiön valaistuksen ohjaus"
+  icon: mdi:lightbulb-on-outline
+
+
+# Toilet lights
+
+light_auto_source_motion_state_toilet:
+  name: "WC:n Liiketunnistus"
+  icon: mdi:motion-sensor
+
+light_auto_awake_state_toilet:
+  name: "WC:n valaistus AWAKE-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_awake_follow_motion_toilet:
+  name: "WC:n valaistus seuraa liikettä AWAKE-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_away_state_toilet:
+  name: "WC:n valaistus AWAY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: off
+light_auto_away_follow_motion_toilet:
+  name: "WC:n valaistus seuraa liikettä AWAY-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_asleep_state_toilet:
+  name: "WC:n valaistus ASLEEP-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_asleep_follow_motion_toilet:
+  name: "WC:n valaistus seuraa liikettä ASLEEP-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_emergency_state_toilet:
+  name: "WC:n valaistus EMERGENCY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: on
+light_auto_emergency_follow_motion_toilet:
+  name: "WC:n valaistus seuraa liikettä EMERGENCY-tilassa"
+  icon: mdi:motion-sensor
+  initial: off
+
+light_result_state_toilet:
+  name: "WC:n valaistuksen ohjaus"
+  icon: mdi:lightbulb-on-outline
+
+
+# Bedroom lights
+
+light_auto_source_motion_state_bedroom:
+  name: "Makuuhuoneen Liiketunnistus"
+  icon: mdi:motion-sensor
+
+light_auto_awake_state_bedroom:
+  name: "Makuuhuoneen valaistus AWAKE-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_awake_follow_motion_bedroom:
+  name: "Makuuhuoneen valaistus seuraa liikettä AWAKE-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_away_state_bedroom:
+  name: "Makuuhuoneen valaistus AWAY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: off
+light_auto_away_follow_motion_bedroom:
+  name: "Makuuhuoneen valaistus seuraa liikettä AWAY-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_asleep_state_bedroom:
+  name: "Makuuhuoneen valaistus ASLEEP-tilassa"
+  icon: mdi:lightbulb-on-outline
+light_auto_asleep_follow_motion_bedroom:
+  name: "Makuuhuoneen valaistus seuraa liikettä ASLEEP-tilassa"
+  icon: mdi:motion-sensor
+
+light_auto_emergency_state_bedroom:
+  name: "Makuuhuoneen valaistus EMERGENCY-tilassa"
+  icon: mdi:lightbulb-on-outline
+  initial: on
+light_auto_emergency_follow_motion_bedroom:
+  name: "Makuuhuoneen valaistus seuraa liikettä EMERGENCY-tilassa"
+  icon: mdi:motion-sensor
+  initial: off
+
+light_result_state_bedroom:
+  name: "Makuuhuoneen valaistuksen ohjaus"
+  icon: mdi:lightbulb-on-outline

@@ -1,6 +1,6 @@
 light_off_timer_hallway:
   duration: "00:03:00"
-kitchen_motion_timeout:
+light_off_timer_kitchen:
   duration: "00:03:00"
-toilet_motion_timeout:
+light_off_timer_toilet:
   duration: "00:03:00"

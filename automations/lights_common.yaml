@@ -33,6 +33,18 @@
       entity_id: input_boolean.light_auto_source_motion_state_hallway
       variables:
         room: hallway
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_bedroom
+      variables:
+        room: bedroom
   action:
     - repeat:
         for_each:
@@ -94,6 +106,66 @@
       variables:
         room: hallway
         home_mode: Emergency
+    - platform: state
+      entity_id: input_boolean.light_auto_awake_state_kitchen
+      variables:
+        room: kitchen
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_kitchen
+      variables:
+        room: kitchen
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_kitchen
+      variables:
+        room: kitchen
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_kitchen
+      variables:
+        room: kitchen
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_boolean.light_auto_awake_state_toilet
+      variables:
+        room: toilet
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_toilet
+      variables:
+        room: toilet
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_toilet
+      variables:
+        room: toilet
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_toilet
+      variables:
+        room: toilet
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_boolean.light_auto_awake_state_bedroom
+      variables:
+        room: bedroom
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_bedroom
+      variables:
+        room: bedroom
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_bedroom
+      variables:
+        room: bedroom
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_bedroom
+      variables:
+        room: bedroom
+        home_mode: Emergency
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
@@ -147,6 +219,66 @@
       entity_id: input_number.light_auto_emergency_brightness_hallway
       variables:
         room: hallway
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_brightness_kitchen
+      variables:
+        room: kitchen
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_kitchen
+      variables:
+        room: kitchen
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_kitchen
+      variables:
+        room: kitchen
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_kitchen
+      variables:
+        room: kitchen
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_brightness_toilet
+      variables:
+        room: toilet
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_toilet
+      variables:
+        room: toilet
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_toilet
+      variables:
+        room: toilet
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_toilet
+      variables:
+        room: toilet
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_brightness_bedroom
+      variables:
+        room: bedroom
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_bedroom
+      variables:
+        room: bedroom
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_bedroom
+      variables:
+        room: bedroom
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_bedroom
+      variables:
+        room: bedroom
         home_mode: Emergency
   condition:
     - condition: template
@@ -204,6 +336,66 @@
       variables:
         room: hallway
         home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_kelvin_kitchen
+      variables:
+        room: kitchen
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_kitchen
+      variables:
+        room: kitchen
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_kitchen
+      variables:
+        room: kitchen
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_kitchen
+      variables:
+        room: kitchen
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_kelvin_toilet
+      variables:
+        room: toilet
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_toilet
+      variables:
+        room: toilet
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_toilet
+      variables:
+        room: toilet
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_toilet
+      variables:
+        room: toilet
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_kelvin_bedroom
+      variables:
+        room: bedroom
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_bedroom
+      variables:
+        room: bedroom
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_bedroom
+      variables:
+        room: bedroom
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_bedroom
+      variables:
+        room: bedroom
+        home_mode: Emergency
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
@@ -260,6 +452,66 @@
       variables:
         room: hallway
         home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_turnoff_time_kitchen
+      variables:
+        room: kitchen
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_kitchen
+      variables:
+        room: kitchen
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_turnoff_time_kitchen
+      variables:
+        room: kitchen
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_kitchen
+      variables:
+        room: kitchen
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_turnoff_time_toilet
+      variables:
+        room: toilet
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_toilet
+      variables:
+        room: toilet
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_turnoff_time_toilet
+      variables:
+        room: toilet
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_toilet
+      variables:
+        room: toilet
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_number.light_auto_awake_turnoff_time_bedroom
+      variables:
+        room: bedroom
+        home_mode: Awake
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_bedroom
+      variables:
+        room: bedroom
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_number.light_auto_away_turnoff_time_bedroom
+      variables:
+        room: bedroom
+        home_mode: Away
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_bedroom
+      variables:
+        room: bedroom
+        home_mode: Emergency
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
@@ -292,6 +544,30 @@
       entity_id: input_select.light_auto_home_mode_hallway
       variables:
         room: hallway
+    - platform: state
+      entity_id: input_select.light_base_mode_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_select.light_base_mode_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_select.light_base_mode_bedroom
+      variables:
+        room: bedroom
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_bedroom
+      variables:
+        room: bedroom
   action:
     - choose:
         - conditions:

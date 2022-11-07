@@ -6,6 +6,16 @@
       to: "on"
       variables:
         room: hallway
+    - platform: state
+      entity_id: group.light_motion_sensors_kitchen
+      to: "on"
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: group.light_motion_sensors_toilet
+      to: "on"
+      variables:
+        room: toilet
   action:
     - choose:
         - conditions:
@@ -40,7 +50,18 @@
         entity_id: timer.light_off_timer_hallway
       variables:
         room: hallway
-
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.light_off_timer_kitchen
+      variables:
+        room: kitchen
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.light_off_timer_toilet
+      variables:
+        room: toilet
   action:
     - if:
         - condition: template

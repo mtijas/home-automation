@@ -51,3 +51,69 @@ light_auto_home_mode_hallway:
     - "Emergency"
   initial: "Awake"
   icon: mdi:lightbulb-auto
+
+
+# Toilet lights
+
+light_base_mode_toilet:
+  name: "WC:n valoautomatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_toilet:
+  name: "WC:n valojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto
+
+
+# Kitchen lights
+
+light_base_mode_kitchen:
+  name: "Keittiön valoautomatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_kitchen:
+  name: "Keittiön valojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto
+
+
+# Bedroom lights
+
+light_base_mode_bedroom:
+  name: "Makuuhuoneen valoautomatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Manual"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_bedroom:
+  name: "Makuuhuoneen valojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto

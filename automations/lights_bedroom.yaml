@@ -1,0 +1,35 @@
+- id: bedroom_state_set
+  alias: "Makuuhuoneen valaistuksen asetus"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_result_brightness_bedroom
+    - platform: state
+      entity_id: input_number.light_result_kelvin_bedroom
+    - platform: state
+      entity_id: input_boolean.light_result_state_bedroom
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_bedroom
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.makuuhuoneen_yleisvalot
+              data:
+                brightness: "{{ states('input_number.light_result_brightness_bedroom') | int }}"
+                kelvin: "{{ states('input_number.light_result_kelvin_bedroom') | int }}"
+                transition: 4
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_bedroom
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.makuuhuoneen_yleisvalot
+              data:
+                transition: 4
+    - delay: 5

@@ -259,67 +259,367 @@ light_result_turnoff_time_hallway:
   unit_of_measurement: "m"
 
 
+# Kitchen lights
+
+light_auto_lux_limit_kitchen:
+  name: "Keittiön valojen sytytysraja"
+  min: 0
+  max: 1000
+  step: 1
+  icon: mdi:brightness-7
+  mode: box
+  unit_of_measurement: "lx"
+
+light_auto_awake_brightness_kitchen:
+  name: "Keittiön valaistuksen kirkkaus AWAKE-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_awake_kelvin_kitchen:
+  name: "Keittiön valaistuksen värilämpötila AWAKE-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_awake_turnoff_time_kitchen:
+  name: "Keittiön valaistuksen sammutusviive AWAKE-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_away_brightness_kitchen:
+  name: "Keittiön valaistuksen kirkkaus AWAY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_away_kelvin_kitchen:
+  name: "Keittiön valaistuksen värilämpötila AWAY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_away_turnoff_time_kitchen:
+  name: "Keittiön valaistuksen sammutusviive AWAY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_asleep_brightness_kitchen:
+  name: "Keittiön valaistuksen kirkkaus ASLEEP-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_asleep_kelvin_kitchen:
+  name: "Keittiön valaistuksen värilämpötila ASLEEP-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_asleep_turnoff_time_kitchen:
+  name: "Keittiön valaistuksen sammutusviive ASLEEP-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_emergency_brightness_kitchen:
+  name: "Keittiön valaistuksen kirkkaus EMERGENCY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  initial: 255
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_emergency_kelvin_kitchen:
+  name: "Keittiön valaistuksen värilämpötila EMERGENCY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  initial: 4000
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_emergency_turnoff_time_kitchen:
+  name: "Keittiön valaistuksen sammutusviive EMERGENCY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_result_brightness_kitchen:
+  name: "Keittiön valaistuksen kirkkauden ohjaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_result_kelvin_kitchen:
+  name: "Keittiön valaistuksen lämpötilan ohjaus"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_result_turnoff_time_kitchen:
+  name: "Keittiön valaistuksen sammutusviiveen ohjaus"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+
+# Toilet lights
+
+light_auto_lux_limit_toilet:
+  name: "WC:n valojen sytytysraja"
+  min: 0
+  max: 1000
+  step: 1
+  icon: mdi:brightness-7
+  mode: box
+  unit_of_measurement: "lx"
+
+light_auto_awake_brightness_toilet:
+  name: "WC:n valaistuksen kirkkaus AWAKE-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_awake_kelvin_toilet:
+  name: "WC:n valaistuksen värilämpötila AWAKE-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_awake_turnoff_time_toilet:
+  name: "WC:n valaistuksen sammutusviive AWAKE-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_away_brightness_toilet:
+  name: "WC:n valaistuksen kirkkaus AWAY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_away_kelvin_toilet:
+  name: "WC:n valaistuksen värilämpötila AWAY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_away_turnoff_time_toilet:
+  name: "WC:n valaistuksen sammutusviive AWAY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_asleep_brightness_toilet:
+  name: "WC:n valaistuksen kirkkaus ASLEEP-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_asleep_kelvin_toilet:
+  name: "WC:n valaistuksen värilämpötila ASLEEP-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_asleep_turnoff_time_toilet:
+  name: "WC:n valaistuksen sammutusviive ASLEEP-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_emergency_brightness_toilet:
+  name: "WC:n valaistuksen kirkkaus EMERGENCY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  initial: 255
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_emergency_kelvin_toilet:
+  name: "WC:n valaistuksen värilämpötila EMERGENCY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  initial: 4000
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_emergency_turnoff_time_toilet:
+  name: "WC:n valaistuksen sammutusviive EMERGENCY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_result_brightness_toilet:
+  name: "WC:n valaistuksen kirkkauden ohjaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_result_kelvin_toilet:
+  name: "WC:n valaistuksen lämpötilan ohjaus"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_result_turnoff_time_toilet:
+  name: "WC:n valaistuksen sammutusviiveen ohjaus"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+
+# Bedroom lights
+
+light_auto_lux_limit_bedroom:
+  name: "Makuuhuoneen valojen sytytysraja"
+  min: 0
+  max: 1000
+  step: 1
+  icon: mdi:brightness-7
+  mode: box
+  unit_of_measurement: "lx"
+
+light_auto_awake_brightness_bedroom:
+  name: "Makuuhuoneen valaistuksen kirkkaus AWAKE-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_awake_kelvin_bedroom:
+  name: "Makuuhuoneen valaistuksen värilämpötila AWAKE-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_awake_turnoff_time_bedroom:
+  name: "Makuuhuoneen valaistuksen sammutusviive AWAKE-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_away_brightness_bedroom:
+  name: "Makuuhuoneen valaistuksen kirkkaus AWAY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_away_kelvin_bedroom:
+  name: "Makuuhuoneen valaistuksen värilämpötila AWAY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_away_turnoff_time_bedroom:
+  name: "Makuuhuoneen valaistuksen sammutusviive AWAY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_asleep_brightness_bedroom:
+  name: "Makuuhuoneen valaistuksen kirkkaus ASLEEP-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_asleep_kelvin_bedroom:
+  name: "Makuuhuoneen valaistuksen värilämpötila ASLEEP-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_asleep_turnoff_time_bedroom:
+  name: "Makuuhuoneen valaistuksen sammutusviive ASLEEP-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_auto_emergency_brightness_bedroom:
+  name: "Makuuhuoneen valaistuksen kirkkaus EMERGENCY-tilassa"
+  min: 1
+  max: 255
+  step: 1
+  initial: 255
+  icon: mdi:brightness-auto
+  mode: box
+light_auto_emergency_kelvin_bedroom:
+  name: "Makuuhuoneen valaistuksen värilämpötila EMERGENCY-tilassa"
+  min: 2700
+  max: 6500
+  step: 1
+  initial: 4000
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_auto_emergency_turnoff_time_bedroom:
+  name: "Makuuhuoneen valaistuksen sammutusviive EMERGENCY-tilassa"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
+light_result_brightness_bedroom:
+  name: "Makuuhuoneen valaistuksen kirkkauden ohjaus"
+  min: 1
+  max: 255
+  step: 1
+  icon: mdi:brightness-auto
+  mode: box
+light_result_kelvin_bedroom:
+  name: "Makuuhuoneen valaistuksen lämpötilan ohjaus"
+  min: 2700
+  max: 6500
+  step: 1
+  icon: mdi:temperature-kelvin
+  unit_of_measurement: "K"
+light_result_turnoff_time_bedroom:
+  name: "Makuuhuoneen valaistuksen sammutusviiveen ohjaus"
+  min: 1
+  max: 60
+  icon: mdi:timer-sand
+  unit_of_measurement: "m"
+
 
 
 
 # Others
 
-kitchen_light_default_brightness:
-  name: "Keittiön valaistuksen kirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-toilet_light_default_brightness:
-  name: "Pesuhuoneen valaistuksen kirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-
-bedroom_light_default_brightness:
-  name: "Makuuhuoneen valaistuksen kirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-kitchen_light_default_kelvin:
-  name: "Keittiön valaistuksen värilämpötila"
-  min: 2700
-  max: 6500
-  step: 1
-  icon: mdi:temperature-kelvin
-  unit_of_measurement: "K"
-toilet_light_default_kelvin:
-  name: "Pesuhuoneen valaistuksen värilämpötila"
-  min: 2700
-  max: 6500
-  step: 1
-  icon: mdi:temperature-kelvin
-  unit_of_measurement: "K"
-
-bedroom_light_default_kelvin:
-  name: "Makuuhuoneen valaistuksen värilämpötila"
-  min: 2700
-  max: 6500
-  step: 1
-  icon: mdi:temperature-kelvin
-  unit_of_measurement: "K"
-kitchen_light_turnoff_time:
-  name: "Keittiön valaistuksen sammutusviive"
-  min: 1
-  max: 60
-  icon: mdi:timer-sand
-  unit_of_measurement: "m"
-toilet_light_turnoff_time:
-  name: "Pesuhuoneen valaistuksen sammutusviive"
-  min: 1
-  max: 60
-  icon: mdi:timer-sand
-  unit_of_measurement: "m"
 default_notification_volume_sonos:
   min: 0
   max: 1
