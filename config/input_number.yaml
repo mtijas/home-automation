@@ -46,6 +46,7 @@ light_auto_awake_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_awake_turnoff_time_living_room:
   name: "OH valaistuksen sammutusviive AWAKE-tilassa"
   min: 1
@@ -67,6 +68,7 @@ light_auto_away_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_away_turnoff_time_living_room:
   name: "OH valaistuksen sammutusviive AWAY-tilassa"
   min: 1
@@ -88,6 +90,7 @@ light_auto_asleep_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_asleep_turnoff_time_living_room:
   name: "OH valaistuksen sammutusviive ASLEEP-tilassa"
   min: 1
@@ -111,6 +114,7 @@ light_auto_emergency_kelvin_living_room:
   initial: 4000
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_emergency_turnoff_time_living_room:
   name: "OH valaistuksen sammutusviive EMERGENCY-tilassa"
   min: 1
@@ -132,6 +136,7 @@ light_result_kelvin_living_room:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_result_turnoff_time_living_room:
   name: "OH valaistuksen sammutusviiveen ohjaus"
   min: 1
@@ -165,6 +170,7 @@ light_auto_awake_kelvin_hallway:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_awake_turnoff_time_hallway:
   name: "Käytävän valaistuksen sammutusviive AWAKE-tilassa"
   min: 1
@@ -186,6 +192,7 @@ light_auto_away_kelvin_hallway:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_away_turnoff_time_hallway:
   name: "Käytävän valaistuksen sammutusviive AWAY-tilassa"
   min: 1
@@ -207,6 +214,7 @@ light_auto_asleep_kelvin_hallway:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_asleep_turnoff_time_hallway:
   name: "Käytävän valaistuksen sammutusviive ASLEEP-tilassa"
   min: 1
@@ -230,6 +238,7 @@ light_auto_emergency_kelvin_hallway:
   initial: 4000
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_emergency_turnoff_time_hallway:
   name: "Käytävän valaistuksen sammutusviive EMERGENCY-tilassa"
   min: 1
@@ -251,6 +260,7 @@ light_result_kelvin_hallway:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_result_turnoff_time_hallway:
   name: "Käytävän valaistuksen sammutusviiveen ohjaus"
   min: 1
@@ -284,6 +294,7 @@ light_auto_awake_kelvin_kitchen:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_awake_turnoff_time_kitchen:
   name: "Keittiön valaistuksen sammutusviive AWAKE-tilassa"
   min: 1
@@ -305,6 +316,7 @@ light_auto_away_kelvin_kitchen:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_away_turnoff_time_kitchen:
   name: "Keittiön valaistuksen sammutusviive AWAY-tilassa"
   min: 1
@@ -326,6 +338,7 @@ light_auto_asleep_kelvin_kitchen:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_asleep_turnoff_time_kitchen:
   name: "Keittiön valaistuksen sammutusviive ASLEEP-tilassa"
   min: 1
@@ -349,6 +362,7 @@ light_auto_emergency_kelvin_kitchen:
   initial: 4000
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_emergency_turnoff_time_kitchen:
   name: "Keittiön valaistuksen sammutusviive EMERGENCY-tilassa"
   min: 1
@@ -370,6 +384,7 @@ light_result_kelvin_kitchen:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_result_turnoff_time_kitchen:
   name: "Keittiön valaistuksen sammutusviiveen ohjaus"
   min: 1
@@ -403,6 +418,7 @@ light_auto_awake_kelvin_toilet:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_awake_turnoff_time_toilet:
   name: "WC:n valaistuksen sammutusviive AWAKE-tilassa"
   min: 1
@@ -424,6 +440,7 @@ light_auto_away_kelvin_toilet:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_away_turnoff_time_toilet:
   name: "WC:n valaistuksen sammutusviive AWAY-tilassa"
   min: 1
@@ -445,6 +462,7 @@ light_auto_asleep_kelvin_toilet:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_asleep_turnoff_time_toilet:
   name: "WC:n valaistuksen sammutusviive ASLEEP-tilassa"
   min: 1
@@ -468,6 +486,7 @@ light_auto_emergency_kelvin_toilet:
   initial: 4000
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_emergency_turnoff_time_toilet:
   name: "WC:n valaistuksen sammutusviive EMERGENCY-tilassa"
   min: 1
@@ -489,6 +508,7 @@ light_result_kelvin_toilet:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_result_turnoff_time_toilet:
   name: "WC:n valaistuksen sammutusviiveen ohjaus"
   min: 1
@@ -522,6 +542,7 @@ light_auto_awake_kelvin_bedroom:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_awake_turnoff_time_bedroom:
   name: "Makuuhuoneen valaistuksen sammutusviive AWAKE-tilassa"
   min: 1
@@ -543,6 +564,7 @@ light_auto_away_kelvin_bedroom:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_away_turnoff_time_bedroom:
   name: "Makuuhuoneen valaistuksen sammutusviive AWAY-tilassa"
   min: 1
@@ -564,6 +586,7 @@ light_auto_asleep_kelvin_bedroom:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_asleep_turnoff_time_bedroom:
   name: "Makuuhuoneen valaistuksen sammutusviive ASLEEP-tilassa"
   min: 1
@@ -587,6 +610,7 @@ light_auto_emergency_kelvin_bedroom:
   initial: 4000
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_auto_emergency_turnoff_time_bedroom:
   name: "Makuuhuoneen valaistuksen sammutusviive EMERGENCY-tilassa"
   min: 1
@@ -608,6 +632,7 @@ light_result_kelvin_bedroom:
   step: 1
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
+  mode: box
 light_result_turnoff_time_bedroom:
   name: "Makuuhuoneen valaistuksen sammutusviiveen ohjaus"
   min: 1

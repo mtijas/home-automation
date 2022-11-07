@@ -188,20 +188,6 @@ cards:
             tap_action:
               action: toggle
 
-      - type: entity-filter
-        card:
-          title: "Pysäytetyt valoautomatiikat:"
-          show_header_toggle: true
-        show_empty: false
-        state_filter:
-          - "off"
-        entities:
-          - input_boolean.living_room_light_automations
-          - input_boolean.kitchen_light_automations
-          - input_boolean.toilet_light_automations
-          - input_boolean.bedroom_light_automations
-          - input_boolean.cloakroom_light_automations
-
       - type: grid
         columns: 4
         square: false
