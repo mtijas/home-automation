@@ -10,13 +10,13 @@
 - platform: template
   sensors:
     wan_router_ping_round_time:
-      value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float }}"
+      value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float(0.0) }}"
       unit_of_measurement: "ms"
     google_ping_round_time:
-      value_template: "{{ state_attr('binary_sensor.ping_google', 'round_trip_time_avg') | float }}"
+      value_template: "{{ state_attr('binary_sensor.ping_google', 'round_trip_time_avg') | float(0.0) }}"
       unit_of_measurement: "ms"
     pressure_hourly_trend:
-      value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float) * 3600) | round(2) }}"
+      value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float(0.0)) * 3600) | round(2) }}"
       friendly_name: "Ilmanpaineen trendi (hPa/h)"
       unit_of_measurement: "hPa"
     sun_elevation:
