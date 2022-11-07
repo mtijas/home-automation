@@ -88,9 +88,6 @@ light_auto_emergency_state_living_room:
   name: "OH Valaistus EMERGENCY-tilassa"
   icon: mdi:lightbulb-on-outline
   initial: on
-light_auto_party_state_living_room:
-  name: "OH Valaistus PARTY-tilassa"
-  icon: mdi:lightbulb-on-outline
 light_result_state_living_room:
   name: "OH Valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline

@@ -3,7 +3,6 @@ home_mode:
   options:
     - "Awake"
     - "Asleep"
-    - "Party"
     - "Away"
     - "Emergency"
   initial: "Awake"
@@ -26,7 +25,6 @@ light_auto_home_mode_living_room:
   options:
     - "Awake"
     - "Asleep"
-    - "Party"
     - "Away"
     - "Emergency"
   initial: "Awake"

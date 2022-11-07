@@ -27,20 +27,6 @@
         qos: 1
         retain: 1
 
-- id: party_mode_state_set
-  alias: "Set Party mode MQTT state"
-  trigger:
-    - platform: state
-      entity_id: input_select.home_mode
-      to: "Party"
-  action:
-    - service: mqtt.publish
-      data:
-        topic: "state/home_mode"
-        payload: "party"
-        qos: 1
-        retain: 1
-
 - id: away_mode_state_set
   alias: "Set Away mode MQTT state"
   trigger:

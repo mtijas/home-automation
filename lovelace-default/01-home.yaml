@@ -54,9 +54,6 @@ cards:
               - value: "Asleep"
                 color: black
                 icon: mdi:bed
-              - value: "Party"
-                color: hotpink
-                icon: mdi:balloon
               - value: "Away"
                 color: yellow
                 icon: mdi:airplane

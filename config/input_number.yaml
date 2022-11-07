@@ -86,21 +86,6 @@ light_auto_emergency_kelvin_living_room:
   icon: mdi:temperature-kelvin
   unit_of_measurement: "K"
 
-light_auto_party_brightness_living_room:
-  name: "OH valaistuksen kirkkaus PARTY-tilassa"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-light_auto_party_kelvin_living_room:
-  name: "OH valaistuksen värilämpötila PARTY-tilassa"
-  min: 2700
-  max: 6500
-  step: 1
-  icon: mdi:temperature-kelvin
-  unit_of_measurement: "K"
-
 light_manual_brightness_living_room:
   name: "OH valaistuksen kirkkaus käsiohjauksella"
   min: 1
