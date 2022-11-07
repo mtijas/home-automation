@@ -18,9 +18,9 @@
         - conditions:
             - condition: template
               value_template: "{{ is_state('input_boolean.light_result_state_'+room, 'off') }}"
-            - condition: numeric_state
-              entity_id: "sensor.light_auto_lux_level_{{ room }}"
-              below: "input_number.light_auto_lux_limit_{{ room }}"
+            - condition: template
+              value_template: >
+                {{ states('light_auto_lux_level_'+room) < states('light_auto_lux_limit'+room) }}
           sequence:
             - service: input_boolean.turn_on
               target:
