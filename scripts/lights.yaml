@@ -28,19 +28,3 @@ turn_cloakroom_light_on_with_settings:
         entity_id: light.vaatehuone
       data:
         kelvin: "{{ light_kelvin }}"
-
-turn_on_decorative_lights_to_default:
-  sequence:
-    - service: light.turn_on
-      target:
-        entity_id: light.koristevalot
-      data:
-        brightness: "{{ states('input_number.decorative_lights_default_brightness')|float }}"
-        transition: 10
-    - service: light.turn_on
-      target:
-        entity_id: light.oh_valonauhat
-      data:
-        brightness: "{{ states('input_number.living_room_lightstrips_default_brightness')|float }}"
-        kelvin: "{{ states('input_number.light_result_kelvin_living_room')|float }}"
-        transition: 10

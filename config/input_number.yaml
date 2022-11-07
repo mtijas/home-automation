@@ -174,20 +174,6 @@ bedroom_light_default_brightness:
   step: 1
   icon: mdi:brightness-auto
   mode: box
-decorative_lights_default_brightness:
-  name: "Koristevalojen kirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
-living_room_lightstrips_default_brightness:
-  name: "Valonauhojen kirkkaus"
-  min: 1
-  max: 255
-  step: 1
-  icon: mdi:brightness-auto
-  mode: box
 kitchen_light_default_kelvin:
   name: "Keittiön valaistuksen värilämpötila"
   min: 2700
