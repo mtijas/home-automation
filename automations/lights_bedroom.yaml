@@ -34,6 +34,16 @@
                 transition: 4
     - delay: 5
 
+- id: bedroom_auto_home_mode_revert_light_motion_state
+  alias: "Makuuhuoneen motion-tilan sammutus kun auto home mode muuttuu"
+  trigger:
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_bedroom
+  action:
+    - service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.light_auto_source_motion_state_bedroom
+
 - id: bedroom_hue_dimmer_1_automatic_bedroom_lights
   alias: "Makuuhuoneen himmenninkytkimen valo-ohjaukset automatiikalla"
   mode: queued
