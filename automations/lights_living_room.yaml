@@ -59,21 +59,18 @@
               data:
                 brightness: "{{ states('input_number.light_result_brightness_living_room') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-                transition: 4
             - service: light.turn_on
               target:
                 entity_id: light.koristevalot
               data:
                 brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-                transition: 4
             - service: light.turn_on
               target:
                 entity_id: light.oh_valonauhat
               data:
                 brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-                transition: 4
         - conditions:
             - condition: state
               entity_id: input_boolean.light_result_state_living_room
@@ -83,15 +80,12 @@
               target:
                 entity_id: light.olohuoneen_yleisvalot
               data:
-                transition: 4
             - service: light.turn_off
               target:
                 entity_id: light.koristevalot
               data:
-                transition: 4
             - service: light.turn_off
               target:
                 entity_id: light.oh_valonauhat
               data:
-                transition: 4
-    - delay: 5
+    - delay: 1

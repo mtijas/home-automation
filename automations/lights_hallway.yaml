@@ -21,7 +21,6 @@
               data:
                 brightness: "{{ states('input_number.light_result_brightness_hallway') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_hallway') | int }}"
-                transition: 4
         - conditions:
             - condition: state
               entity_id: input_boolean.light_result_state_hallway
@@ -31,5 +30,4 @@
               target:
                 entity_id: light.eteisen_yleisvalot
               data:
-                transition: 4
-    - delay: 5
+    - delay: 1

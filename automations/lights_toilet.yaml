@@ -21,7 +21,6 @@
               data:
                 brightness: "{{ states('input_number.light_result_brightness_toilet') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_toilet') | int }}"
-                transition: 4
         - conditions:
             - condition: state
               entity_id: input_boolean.light_result_state_toilet
@@ -31,8 +30,7 @@
               target:
                 entity_id: light.pesuhuone
               data:
-                transition: 4
-    - delay: 5
+    - delay: 1
 
 - id: toilet_motion_disable_on_high_humidity
   alias: "WC:n liiketunnistus pois kun suihkussa"

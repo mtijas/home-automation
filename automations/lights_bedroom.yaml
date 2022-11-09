@@ -21,7 +21,6 @@
               data:
                 brightness: "{{ states('input_number.light_result_brightness_bedroom') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_bedroom') | int }}"
-                transition: 4
         - conditions:
             - condition: state
               entity_id: input_boolean.light_result_state_bedroom
@@ -31,8 +30,7 @@
               target:
                 entity_id: light.makuuhuoneen_yleisvalot
               data:
-                transition: 4
-    - delay: 5
+    - delay: 1
 
 - id: bedroom_auto_home_mode_revert_light_motion_state
   alias: "Makuuhuoneen motion-tilan sammutus kun auto home mode muuttuu"

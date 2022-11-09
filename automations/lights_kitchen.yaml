@@ -21,7 +21,6 @@
               data:
                 brightness: "{{ states('input_number.light_result_brightness_kitchen') | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_kitchen') | int }}"
-                transition: 4
         - conditions:
             - condition: state
               entity_id: input_boolean.light_result_state_kitchen
@@ -31,5 +30,4 @@
               target:
                 entity_id: light.keittio
               data:
-                transition: 4
-    - delay: 5
+    - delay: 1
