@@ -79,13 +79,10 @@
             - service: light.turn_off
               target:
                 entity_id: light.olohuoneen_yleisvalot
-              data:
             - service: light.turn_off
               target:
                 entity_id: light.koristevalot
-              data:
             - service: light.turn_off
               target:
                 entity_id: light.oh_valonauhat
-              data:
     - delay: 1

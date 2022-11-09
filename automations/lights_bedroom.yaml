@@ -29,7 +29,6 @@
             - service: light.turn_off
               target:
                 entity_id: light.makuuhuoneen_yleisvalot
-              data:
     - delay: 1
 
 - id: bedroom_auto_home_mode_revert_light_motion_state
