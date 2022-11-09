@@ -105,7 +105,7 @@ light_base_mode_bedroom:
     - "Off"
     - "Manual"
     - "Automatic"
-  initial: "Manual"
+  initial: "Automatic"
   icon: mdi:lightbulb-auto
 
 light_auto_home_mode_bedroom:
