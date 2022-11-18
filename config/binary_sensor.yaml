@@ -52,7 +52,6 @@
         seconds: 5
       delay_off:
         seconds: 20
-      icon: mdi:television-classic
       value_template: >-
         {{ states('sensor.living_room_entertainment_plug_power') | float(0.0) > 50 }}
 - platform: rest
