@@ -27,7 +27,7 @@ all_settings = {
     # "light_auto_away_kelvin_toilet": (6500, 5000, 3800, 3200, 2700),
     # "light_auto_away_brightness_toilet": (255, 255, 200, 160, 65),
     "light_auto_awake_kelvin_living_room": (6500, 5000, 3800, 3200, 2700),
-    "light_auto_default_brightness_living_room": (200, 255, 200, 150, 80),
+    "light_auto_default_brightness_living_room": (160, 205, 200, 110, 40),
     "light_auto_lightness_target_living_room": (65, 80, 60, 30, 15),
     "light_auto_awake_kelvin_bedroom": (6500, 5000, 3800, 3200, 2700),
     "light_auto_awake_brightness_bedroom": (255, 255, 200, 160, 80),
