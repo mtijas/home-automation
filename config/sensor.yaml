@@ -56,6 +56,11 @@
         {% else %}
           failed
         {% endif %}
+    energy_reading:
+      friendly_name: "Kodin sähkön kulutus"
+      device_class: energy
+      unit_of_measurement: kWh
+      value_template: "{{ states('input_number.electricity_meter_reading') | int(default=0) }}"
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"
