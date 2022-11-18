@@ -1,6 +1,6 @@
 switch:
-  - name: "Office UPS Plug Switch"
-    unique_id: "office-ups-power-plug"
+  - name: "Living Room Entertainment Plug Switch"
+    unique_id: "living-room-entertainment-power-plug"
     command_topic: "shellies/shellyplug-s-C111E6/relay/0/command"
     state_topic: "shellies/shellyplug-s-C111E6/relay/0"
     payload_off: "off"
@@ -68,16 +68,16 @@ sensor:
   - name: "Event topic"
     state_topic: "notify/cmd"
 
-  - name: "Office UPS Plug Power"
-    unique_id: "office-ups-power-plug-power"
+  - name: "Living Room Entertainment Plug Power"
+    unique_id: "living-room-entertainment-plug-power"
     state_topic: "shellies/shellyplug-s-C111E6/relay/0/power"
     unit_of_measurement: "W"
     force_update: "true"
     device_class: "power"
     state_class: measurement
 
-  - name: "Office UPS Plug Temp"
-    unique_id: "office-ups-power-plug-temp"
+  - name: "Living Room Entertainment Plug Temp"
+    unique_id: "living-room-entertainment-plug-temp"
     state_topic: "shellies/shellyplug-s-C111E6/temperature"
     unit_of_measurement: "°C"
     force_update: "true"
