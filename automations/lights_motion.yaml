@@ -35,14 +35,37 @@
             - service: input_boolean.turn_on
               target:
                 entity_id: "input_boolean.light_auto_source_motion_state_{{ room }}"
+    - service: timer.pause
+      target:
+        entity_id: "timer.light_off_timer_{{ room }}"
+
+- id: generic_light_timer_autostart_when_motion_ends
+  alias: "Valojen sammutusajastimen käynnistys kun liikettä ei havaita"
+  trigger:
+    - platform: state
+      entity_id: group.light_motion_sensors_hallway
+      to: "off"
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: group.light_motion_sensors_kitchen
+      to: "off"
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: group.light_motion_sensors_toilet
+      to: "off"
+      variables:
+        room: toilet
+  action:
     - service: timer.start
       target:
         entity_id: "timer.light_off_timer_{{ room }}"
       data:
         duration: "00:{{ states('input_number.light_result_turnoff_time_'+room) | int}}:00"
 
-- id: generic_light_auto_off_by_no_motion
-  alias: "Valojen sammutus kun ei liikettä"
+- id: generic_light_auto_off_by_timer_and_no_motion
+  alias: "Valojen sammutus kun ajastin loppuu ja ei liikettä"
   trigger:
     - platform: event
       event_type: timer.finished
