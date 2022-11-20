@@ -30,6 +30,69 @@ light_auto_home_mode_living_room:
   initial: "Awake"
   icon: mdi:lightbulb-auto
 
+light_base_mode_living_room_decorative:
+  name: "OH koristevalojen automatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_living_room_decorative:
+  name: "OH koristevalojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto
+
+
+# Light strips
+
+light_base_mode_light_strips:
+  name: "Valonauhojen automatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_light_strips:
+  name: "Valonauhojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto
+
+
+# Office lights
+
+light_base_mode_office:
+  name: "Toimiston valoautomatiikka"
+  options:
+    - "Off"
+    - "Manual"
+    - "Automatic"
+  initial: "Automatic"
+  icon: mdi:lightbulb-auto
+
+light_auto_home_mode_office:
+  name: "Toimiston valojen automatiikan toimintatila"
+  options:
+    - "Awake"
+    - "Asleep"
+    - "Away"
+    - "Emergency"
+  initial: "Awake"
+  icon: mdi:lightbulb-auto
+
 
 # Hallway lights
 

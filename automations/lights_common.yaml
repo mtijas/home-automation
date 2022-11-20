@@ -40,6 +40,21 @@
         entity_id: input_select.light_auto_home_mode_bedroom
       data:
         option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_living_room_decorative
+      data:
+        option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_light_strips
+      data:
+        option: "{{ trigger.to_state.state }}"
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.light_auto_home_mode_office
+      data:
+        option: "{{ trigger.to_state.state }}"
 
 - id: light_update_states_on_motion
   alias: "Valoautomatiikan liiketunnistuksen tilojen päivitys"
@@ -493,26 +508,6 @@
   mode: queued
   trigger:
     - platform: state
-      entity_id: input_number.light_auto_awake_turnoff_time_living_room
-      variables:
-        room: living_room
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_turnoff_time_living_room
-      variables:
-        room: living_room
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_turnoff_time_living_room
-      variables:
-        room: living_room
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_turnoff_time_living_room
-      variables:
-        room: living_room
-        home_mode: Emergency
-    - platform: state
       entity_id: input_number.light_auto_awake_turnoff_time_hallway
       variables:
         room: hallway
@@ -616,6 +611,30 @@
       entity_id: input_select.light_auto_home_mode_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_select.light_base_mode_living_room_decorative
+      variables:
+        room: living_room_decorative
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_living_room_decorative
+      variables:
+        room: living_room_decorative
+    - platform: state
+      entity_id: input_select.light_base_mode_light_strips
+      variables:
+        room: light_strips
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_light_strips
+      variables:
+        room: light_strips
+    - platform: state
+      entity_id: input_select.light_base_mode_office
+      variables:
+        room: office
+    - platform: state
+      entity_id: input_select.light_auto_home_mode_office
+      variables:
+        room: office
     - platform: state
       entity_id: input_select.light_base_mode_hallway
       variables:
