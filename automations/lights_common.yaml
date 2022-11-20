@@ -80,6 +80,18 @@
       entity_id: input_boolean.light_auto_source_motion_state_bedroom
       variables:
         room: bedroom
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_light_strips
+      variables:
+        room: light_strips
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+    - platform: state
+      entity_id: input_boolean.light_auto_source_motion_state_office
+      variables:
+        room: office
   action:
     - repeat:
         for_each:
