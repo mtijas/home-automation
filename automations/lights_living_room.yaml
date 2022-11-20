@@ -5,10 +5,16 @@
     - platform: time_pattern
       seconds: "/20"
   condition:
-    - condition: state
-      entity_id: input_boolean.light_result_state_living_room
-      state: "on"
-      for: "00:00:15"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.light_result_state_living_room
+          state: "on"
+          for: "00:00:15"
+        - condition: state
+          entity_id: input_boolean.light_result_state_office
+          state: "on"
+          for: "00:00:15"
     - condition: template
       value_template: >
         {{ states('sensor.current_lightness_living_room') != 'unavailable' }}
