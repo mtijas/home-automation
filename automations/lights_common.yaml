@@ -107,6 +107,66 @@
         room: living_room
         home_mode: Emergency
     - platform: state
+      entity_id: input_boolean.light_auto_awake_state_light_strips
+      variables:
+        room: light_strips
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_light_strips
+      variables:
+        room: light_strips
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_light_strips
+      variables:
+        room: light_strips
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_light_strips
+      variables:
+        room: light_strips
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_boolean.light_auto_awake_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+        home_mode: Emergency
+    - platform: state
+      entity_id: input_boolean.light_auto_awake_state_office
+      variables:
+        room: office
+        home_mode: Awake
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_office
+      variables:
+        room: office
+        home_mode: Asleep
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_office
+      variables:
+        room: office
+        home_mode: Away
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_office
+      variables:
+        room: office
+        home_mode: Emergency
+    - platform: state
       entity_id: input_boolean.light_auto_awake_state_hallway
       variables:
         room: hallway

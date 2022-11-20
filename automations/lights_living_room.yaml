@@ -58,21 +58,9 @@
           sequence:
             - service: light.turn_on
               target:
-                entity_id: light.olohuoneen_yleisvalot
+                entity_id: light.olohuoneen_viihde
               data:
                 brightness: "{{ states('input_number.light_result_brightness_living_room') | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-            - service: light.turn_on
-              target:
-                entity_id: light.koristevalot
-              data:
-                brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-            - service: light.turn_on
-              target:
-                entity_id: light.oh_valonauhat
-              data:
-                brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
                 kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
         - conditions:
             - condition: state
@@ -81,11 +69,104 @@
           sequence:
             - service: light.turn_off
               target:
-                entity_id: light.olohuoneen_yleisvalot
-            - service: light.turn_off
+                entity_id: light.olohuoneen_viihde
+    - delay: 1
+
+- id: living_room_light_strips_state_set
+  alias: "Olohuoneen valonauhojen asetus"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_result_brightness_living_room
+    - platform: state
+      entity_id: input_number.light_result_kelvin_living_room
+    - platform: state
+      entity_id: input_boolean.light_result_state_light_strips
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_light_strips
+              state: "on"
+          sequence:
+            - service: light.turn_on
               target:
-                entity_id: light.koristevalot
+                entity_id: light.oh_valonauhat
+              data:
+                brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
+                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_light_strips
+              state: "off"
+          sequence:
             - service: light.turn_off
               target:
                 entity_id: light.oh_valonauhat
+    - delay: 1
+
+- id: living_room_decorative_lights_state_set
+  alias: "Olohuoneen valonauhojen asetus"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_result_brightness_living_room
+    - platform: state
+      entity_id: input_number.light_result_kelvin_living_room
+    - platform: state
+      entity_id: input_boolean.light_result_state_living_room_decorative
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_living_room_decorative
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.koristevalot
+              data:
+                brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
+                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_living_room_decorative
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.koristevalot
+    - delay: 1
+
+- id: office_state_set
+  alias: "Toimiston valaistuksen asetus"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_result_brightness_living_room
+    - platform: state
+      entity_id: input_number.light_result_kelvin_living_room
+    - platform: state
+      entity_id: input_boolean.light_result_state_office
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_office
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.markuksen_tyopiste
+              data:
+                brightness: "{{ states('input_number.light_result_brightness_living_room') | int }}"
+                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.light_result_state_office
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.markuksen_tyopiste
     - delay: 1
