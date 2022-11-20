@@ -9,6 +9,9 @@
       entity_id: input_boolean.light_result_state_living_room
       state: "on"
       for: "00:00:15"
+    - condition: template
+      value_template: >
+        {% states('sensor.current_lightness_living_room') != 'unavailable' %}
   action:
     - service: script.light_brightness_calculation
       data:
