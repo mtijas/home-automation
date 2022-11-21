@@ -38,6 +38,11 @@
       state: "off"
       for:
         minutes: 15
+    - condition: state
+      entity_id: input_boolean.light_result_state_office
+      state: "off"
+      for:
+        minutes: 15
   action:
     - service: input_number.set_value
       target:
