@@ -109,173 +109,45 @@
                 target:
                   entity_id: "input_boolean.light_auto_{{ repeat.item }}_state_{{ room }}"
 
-- id: light_store_state_results
-  alias: "Valoautomatiikan tilojen päivitys"
+- id: light_store_state_results_awake
+  alias: "Valoautomatiikan tilojen päivitys: Awake"
   mode: queued
   trigger:
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_living_room
       variables:
         room: living_room
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_living_room
-      variables:
-        room: living_room
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_living_room
-      variables:
-        room: living_room
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_living_room
-      variables:
-        room: living_room
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_light_strips
       variables:
         room: light_strips
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_light_strips
-      variables:
-        room: light_strips
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_light_strips
-      variables:
-        room: light_strips
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_light_strips
-      variables:
-        room: light_strips
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_living_room_decorative
       variables:
         room: living_room_decorative
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_living_room_decorative
-      variables:
-        room: living_room_decorative
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_living_room_decorative
-      variables:
-        room: living_room_decorative
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_living_room_decorative
-      variables:
-        room: living_room_decorative
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_office
       variables:
         room: office
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_office
-      variables:
-        room: office
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_office
-      variables:
-        room: office
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_office
-      variables:
-        room: office
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_hallway
       variables:
         room: hallway
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_hallway
-      variables:
-        room: hallway
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_hallway
-      variables:
-        room: hallway
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_hallway
-      variables:
-        room: hallway
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_kitchen
       variables:
         room: kitchen
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_kitchen
-      variables:
-        room: kitchen
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_kitchen
-      variables:
-        room: kitchen
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_kitchen
-      variables:
-        room: kitchen
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_toilet
       variables:
         room: toilet
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_toilet
-      variables:
-        room: toilet
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_toilet
-      variables:
-        room: toilet
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_toilet
-      variables:
-        room: toilet
-        home_mode: Emergency
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_bedroom
       variables:
         room: bedroom
-        home_mode: Awake
-    - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_bedroom
-      variables:
-        room: bedroom
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_boolean.light_auto_away_state_bedroom
-      variables:
-        room: bedroom
-        home_mode: Away
-    - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_bedroom
-      variables:
-        room: bedroom
-        home_mode: Emergency
   condition:
     - condition: template
-      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Awake') }}"
     - condition: template
       value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
   action:
@@ -283,113 +155,173 @@
       target:
         entity_id: "input_boolean.light_result_state_{{ room }}"
 
-- id: light_store_brightness_results
-  alias: "Valoautomatiikan kirkkauksien päivitys"
+- id: light_store_state_results_away
+  alias: "Valoautomatiikan tilojen päivitys: Away"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_light_strips
+      variables:
+        room: light_strips
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_office
+      variables:
+        room: office
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_boolean.light_auto_away_state_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: "input_boolean.turn_{{ states(trigger.entity_id) }}"
+      target:
+        entity_id: "input_boolean.light_result_state_{{ room }}"
+
+- id: light_store_state_results_asleep
+  alias: "Valoautomatiikan tilojen päivitys: Asleep"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_light_strips
+      variables:
+        room: light_strips
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_office
+      variables:
+        room: office
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_boolean.light_auto_asleep_state_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: "input_boolean.turn_{{ states(trigger.entity_id) }}"
+      target:
+        entity_id: "input_boolean.light_result_state_{{ room }}"
+
+- id: light_store_state_results_emergency
+  alias: "Valoautomatiikan tilojen päivitys: Emergency"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_light_strips
+      variables:
+        room: light_strips
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_living_room_decorative
+      variables:
+        room: living_room_decorative
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_office
+      variables:
+        room: office
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_boolean.light_auto_emergency_state_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: "input_boolean.turn_{{ states(trigger.entity_id) }}"
+      target:
+        entity_id: "input_boolean.light_result_state_{{ room }}"
+
+
+
+- id: light_store_brightness_results_awake
+  alias: "Valoautomatiikan kirkkauksien päivitys: Awake"
   mode: queued
   trigger:
     - platform: state
       entity_id: input_number.light_auto_awake_brightness_living_room
       variables:
         room: living_room
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_brightness_living_room
-      variables:
-        room: living_room
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_brightness_living_room
-      variables:
-        room: living_room
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_brightness_living_room
-      variables:
-        room: living_room
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_brightness_hallway
       variables:
         room: hallway
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_brightness_hallway
-      variables:
-        room: hallway
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_brightness_hallway
-      variables:
-        room: hallway
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_brightness_hallway
-      variables:
-        room: hallway
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_brightness_kitchen
       variables:
         room: kitchen
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_brightness_kitchen
-      variables:
-        room: kitchen
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_brightness_kitchen
-      variables:
-        room: kitchen
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_brightness_kitchen
-      variables:
-        room: kitchen
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_brightness_toilet
       variables:
         room: toilet
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_brightness_toilet
-      variables:
-        room: toilet
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_brightness_toilet
-      variables:
-        room: toilet
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_brightness_toilet
-      variables:
-        room: toilet
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_brightness_bedroom
       variables:
         room: bedroom
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_brightness_bedroom
-      variables:
-        room: bedroom
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_brightness_bedroom
-      variables:
-        room: bedroom
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_brightness_bedroom
-      variables:
-        room: bedroom
-        home_mode: Emergency
   condition:
     - condition: template
-      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Awake') }}"
     - condition: template
       value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
   action:
@@ -399,113 +331,141 @@
       data:
         value: "{{ trigger.to_state.state }}"
 
-- id: light_store_kelvin_results
-  alias: "Valoautomatiikan kelvinien päivitys"
+- id: light_store_brightness_results_away
+  alias: "Valoautomatiikan kirkkauksien päivitys: Away"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_brightness_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_brightness_results_asleep
+  alias: "Valoautomatiikan kirkkauksien päivitys: Asleep"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_brightness_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_brightness_results_emergency
+  alias: "Valoautomatiikan kirkkauksien päivitys: Emergency"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_brightness_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_kelvin_results_awake
+  alias: "Valoautomatiikan kelvinien päivitys: Awake"
   mode: queued
   trigger:
     - platform: state
       entity_id: input_number.light_auto_awake_kelvin_living_room
       variables:
         room: living_room
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_kelvin_living_room
-      variables:
-        room: living_room
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_kelvin_living_room
-      variables:
-        room: living_room
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_kelvin_living_room
-      variables:
-        room: living_room
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_kelvin_hallway
       variables:
         room: hallway
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_kelvin_hallway
-      variables:
-        room: hallway
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_kelvin_hallway
-      variables:
-        room: hallway
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_kelvin_hallway
-      variables:
-        room: hallway
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_kelvin_kitchen
       variables:
         room: kitchen
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_kelvin_kitchen
-      variables:
-        room: kitchen
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_kelvin_kitchen
-      variables:
-        room: kitchen
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_kelvin_kitchen
-      variables:
-        room: kitchen
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_kelvin_toilet
       variables:
         room: toilet
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_kelvin_toilet
-      variables:
-        room: toilet
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_kelvin_toilet
-      variables:
-        room: toilet
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_kelvin_toilet
-      variables:
-        room: toilet
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_kelvin_bedroom
       variables:
         room: bedroom
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_kelvin_bedroom
-      variables:
-        room: bedroom
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_kelvin_bedroom
-      variables:
-        room: bedroom
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_kelvin_bedroom
-      variables:
-        room: bedroom
-        home_mode: Emergency
   condition:
     - condition: template
-      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Awake') }}"
     - condition: template
       value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
   action:
@@ -515,93 +475,233 @@
       data:
         value: "{{ trigger.to_state.state }}"
 
-- id: light_store_turnoff_time_results
-  alias: "Valoautomatiikan sammutusaikojen päivitys"
+- id: light_store_kelvin_results_away
+  alias: "Valoautomatiikan kelvinien päivitys: Away"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_kelvin_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_kelvin_results_asleep
+  alias: "Valoautomatiikan kelvinien päivitys: Asleep"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_kelvin_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_kelvin_results_emergency
+  alias: "Valoautomatiikan kelvinien päivitys: Emergency"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_living_room
+      variables:
+        room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_kelvin_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_turnoff_time_results_awake
+  alias: "Valoautomatiikan sammutusaikojen päivitys: Awake"
   mode: queued
   trigger:
     - platform: state
       entity_id: input_number.light_auto_awake_turnoff_time_hallway
       variables:
         room: hallway
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_turnoff_time_hallway
-      variables:
-        room: hallway
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_turnoff_time_hallway
-      variables:
-        room: hallway
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_turnoff_time_hallway
-      variables:
-        room: hallway
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_turnoff_time_kitchen
       variables:
         room: kitchen
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_turnoff_time_kitchen
-      variables:
-        room: kitchen
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_turnoff_time_kitchen
-      variables:
-        room: kitchen
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_turnoff_time_kitchen
-      variables:
-        room: kitchen
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_turnoff_time_toilet
       variables:
         room: toilet
-        home_mode: Awake
-    - platform: state
-      entity_id: input_number.light_auto_asleep_turnoff_time_toilet
-      variables:
-        room: toilet
-        home_mode: Asleep
-    - platform: state
-      entity_id: input_number.light_auto_away_turnoff_time_toilet
-      variables:
-        room: toilet
-        home_mode: Away
-    - platform: state
-      entity_id: input_number.light_auto_emergency_turnoff_time_toilet
-      variables:
-        room: toilet
-        home_mode: Emergency
     - platform: state
       entity_id: input_number.light_auto_awake_turnoff_time_bedroom
       variables:
         room: bedroom
-        home_mode: Awake
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Awake') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_turnoff_time_results_away
+  alias: "Valoautomatiikan sammutusaikojen päivitys: Away"
+  mode: queued
+  trigger:
     - platform: state
-      entity_id: input_number.light_auto_asleep_turnoff_time_bedroom
+      entity_id: input_number.light_auto_away_turnoff_time_hallway
       variables:
-        room: bedroom
-        home_mode: Asleep
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_away_turnoff_time_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_away_turnoff_time_toilet
+      variables:
+        room: toilet
     - platform: state
       entity_id: input_number.light_auto_away_turnoff_time_bedroom
       variables:
         room: bedroom
-        home_mode: Away
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Away') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_turnoff_time_results_asleep
+  alias: "Valoautomatiikan sammutusaikojen päivitys: Asleep"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_toilet
+      variables:
+        room: toilet
+    - platform: state
+      entity_id: input_number.light_auto_asleep_turnoff_time_bedroom
+      variables:
+        room: bedroom
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Asleep') }}"
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+  action:
+    - service_template: input_number.set_value
+      target:
+        entity_id: "input_number.light_result_turnoff_time_{{ room }}"
+      data:
+        value: "{{ trigger.to_state.state }}"
+
+- id: light_store_turnoff_time_results_emergency
+  alias: "Valoautomatiikan sammutusaikojen päivitys: Emergency"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_number.light_auto_emergency_turnoff_time_toilet
+      variables:
+        room: toilet
     - platform: state
       entity_id: input_number.light_auto_emergency_turnoff_time_bedroom
       variables:
         room: bedroom
-        home_mode: Emergency
   condition:
     - condition: template
-      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, home_mode) }}"
+      value_template: "{{ is_state('input_select.light_auto_home_mode_'+room, 'Emergency') }}"
     - condition: template
       value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
   action:
@@ -614,6 +714,7 @@
 - id: light_store_results_automation_on_mode_change
   alias: "Valaistuksen moodien muutokset"
   mode: queued
+  max: 20
   trigger:
     - platform: state
       entity_id: input_select.light_base_mode_living_room
