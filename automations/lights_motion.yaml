@@ -30,7 +30,7 @@
               value_template: "{{ is_state('input_boolean.light_result_state_'+room, 'off') }}"
             - condition: template
               value_template: >
-                {{ (states('light_auto_lux_level_'+room) | int(0)) < (states('light_auto_lux_limit_'+room) | int(9999999)) }}
+                {{ (states('input_number.light_auto_lux_level_'+room) | int(0)) < (states('input_number.light_auto_lux_limit_'+room) | int(9999999)) }}
           sequence:
             - service: input_boolean.turn_on
               target:
