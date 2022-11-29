@@ -158,3 +158,36 @@
       data:
         value: "{{ states('input_number.bedroom_humidifier_stop_point') | int - 2 }}"
 
+- id: start_charging_living_room_tablet
+  alias: "Olohuoneen tabletin latauksen käynnistys"
+  trigger:
+    - platform: time_pattern
+      minutes: "/2"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.olohuoneen_tablet_battery_level
+      below: 30
+    - condition: state
+      entity_id: switch.telldus_socket_and_energy_meter
+      state: "off"
+  action:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.telldus_socket_and_energy_meter
+
+- id: stop_charging_living_room_tablet
+  alias: "Olohuoneen tabletin latauksen lopetus"
+  trigger:
+    - platform: time_pattern
+      minutes: "/2"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.olohuoneen_tablet_battery_level
+      above: 70
+    - condition: state
+      entity_id: switch.telldus_socket_and_energy_meter
+      state: "on"
+  action:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.telldus_socket_and_energy_meter
