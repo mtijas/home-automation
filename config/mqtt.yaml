@@ -119,4 +119,7 @@ sensor:
     value_template: "{{ value_json.kd }}"
 
   - name: "Test Fan Controller Command Results"
-    state_topic: "fancontrolbridge/test/ch1/command-results"
+    state_topic: "fancontrolbridge/test/command-results"
+
+  - name: "Test Fan Controller Commands"
+    state_topic: "fancontrolbridge/test/commands"
