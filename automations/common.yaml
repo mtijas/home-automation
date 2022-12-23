@@ -200,7 +200,7 @@
     - service: mqtt.publish
       data:
         topic: "fancontrolbridge/test/commands"
-        payload_template: '{"command": "SET_KP", "channel": 1, "value": {{ input_number.scfb_ch1_kp }} }'
+        payload_template: '{"command": "SET_KP", "channel": 1, "value": {{ states("input_number.scfb_ch1_kp") }} }'
         qos: 1
         retain: 0
 
@@ -212,7 +212,7 @@
     - service: mqtt.publish
       data:
         topic: "fancontrolbridge/test/commands"
-        payload_template: '{"command": "SET_KI", "channel": 1, "value": {{ input_number.scfb_ch1_ki }} }'
+        payload_template: '{"command": "SET_KI", "channel": 1, "value": {{ states("input_number.scfb_ch1_ki") }} }'
         qos: 1
         retain: 0
 
@@ -224,6 +224,6 @@
     - service: mqtt.publish
       data:
         topic: "fancontrolbridge/test/commands"
-        payload_template: '{"command": "SET_KD", "channel": 1, "value": {{ input_number.scfb_ch1_kd }} }'
+        payload_template: '{"command": "SET_KD", "channel": 1, "value": {{ states("input_number.scfb_ch1_kd") }} }'
         qos: 1
         retain: 0
