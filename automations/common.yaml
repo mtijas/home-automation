@@ -191,3 +191,39 @@
     - service: switch.turn_off
       target:
         entity_id: switch.telldus_socket_and_energy_meter
+
+- alias: "Send SCFB CH1 KP on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch1_kp
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_KP", "channel": 1, "value": {{ input_number.scfb_ch1_kp }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send SCFB CH1 KI on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch1_ki
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_KI", "channel": 1, "value": {{ input_number.scfb_ch1_ki }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send SCFB CH1 KD on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch1_kd
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_KD", "channel": 1, "value": {{ input_number.scfb_ch1_kd }} }'
+        qos: 1
+        retain: 0
