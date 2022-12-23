@@ -671,3 +671,40 @@ electricity_meter_reading:
   step: 0.1
   mode: box
   unit_of_measurement: kWh
+
+scfb_ch1_kp:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "SCFB CH1 KP"
+scfb_ch1_ki:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "SCFB CH1 KI"
+scfb_ch1_kd:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "SCFB CH1 KD"
+scfb_ch2_kp:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "SCFB CH2 KP"
+scfb_ch2_ki:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "SCFB CH2 KI"
+scfb_ch2_kd:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "SCFB CH2 KD"
