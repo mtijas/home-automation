@@ -304,6 +304,10 @@
       variables:
         room: living_room
     - platform: state
+      entity_id: input_number.light_auto_awake_brightness_lr_indirect
+      variables:
+        room: lr_indirect
+    - platform: state
       entity_id: input_number.light_auto_awake_brightness_hallway
       variables:
         room: hallway
@@ -339,6 +343,10 @@
       entity_id: input_number.light_auto_away_brightness_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_away_brightness_lr_indirect
+      variables:
+        room: lr_indirect
     - platform: state
       entity_id: input_number.light_auto_away_brightness_hallway
       variables:
@@ -376,6 +384,10 @@
       variables:
         room: living_room
     - platform: state
+      entity_id: input_number.light_auto_asleep_brightness_lr_indirect
+      variables:
+        room: lr_indirect
+    - platform: state
       entity_id: input_number.light_auto_asleep_brightness_hallway
       variables:
         room: hallway
@@ -411,6 +423,10 @@
       entity_id: input_number.light_auto_emergency_brightness_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_emergency_brightness_lr_indirect
+      variables:
+        room: lr_indirect
     - platform: state
       entity_id: input_number.light_auto_emergency_brightness_hallway
       variables:
@@ -448,6 +464,10 @@
       variables:
         room: living_room
     - platform: state
+      entity_id: input_number.light_auto_awake_kelvin_lr_indirect
+      variables:
+        room: lr_indirect
+    - platform: state
       entity_id: input_number.light_auto_awake_kelvin_hallway
       variables:
         room: hallway
@@ -483,6 +503,10 @@
       entity_id: input_number.light_auto_away_kelvin_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_away_kelvin_lr_indirect
+      variables:
+        room: lr_indirect
     - platform: state
       entity_id: input_number.light_auto_away_kelvin_hallway
       variables:
@@ -520,6 +544,10 @@
       variables:
         room: living_room
     - platform: state
+      entity_id: input_number.light_auto_asleep_kelvin_lr_indirect
+      variables:
+        room: lr_indirect
+    - platform: state
       entity_id: input_number.light_auto_asleep_kelvin_hallway
       variables:
         room: hallway
@@ -555,6 +583,10 @@
       entity_id: input_number.light_auto_emergency_kelvin_living_room
       variables:
         room: living_room
+    - platform: state
+      entity_id: input_number.light_auto_emergency_kelvin_lr_indirect
+      variables:
+        room: lr_indirect
     - platform: state
       entity_id: input_number.light_auto_emergency_kelvin_hallway
       variables:
