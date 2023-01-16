@@ -171,45 +171,45 @@ light_result_state_living_room_decorative:
   icon: mdi:lightbulb-variant-outline
 
 
-# Office lights
+# Living Room Indirect lights
 
-light_auto_source_motion_state_office:
-  name: "Toimiston Liiketunnistus"
+light_auto_source_motion_state_lr_indirect:
+  name: "OH epäsuorat Liiketunnistus"
   icon: mdi:lightbulb-auto
 
-light_auto_awake_state_office:
-  name: "Toimiston valot AWAKE-tilassa"
+light_auto_awake_state_lr_indirect:
+  name: "OH epäsuorat valot AWAKE-tilassa"
   icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_office:
-  name: "Toimiston valot seuraa liikettä AWAKE-tilassa"
+light_auto_awake_follow_motion_lr_indirect:
+  name: "OH epäsuorat valot seuraa liikettä AWAKE-tilassa"
   icon: mdi:motion-sensor
 
-light_auto_away_state_office:
-  name: "Toimiston valot AWAY-tilassa"
+light_auto_away_state_lr_indirect:
+  name: "OH epäsuorat valot AWAY-tilassa"
   icon: mdi:lightbulb-on-outline
   initial: off
-light_auto_away_follow_motion_office:
-  name: "Toimiston valot seuraa liikettä AWAY-tilassa"
+light_auto_away_follow_motion_lr_indirect:
+  name: "OH epäsuorat valot seuraa liikettä AWAY-tilassa"
   icon: mdi:motion-sensor
 
-light_auto_asleep_state_office:
-  name: "Toimiston valot ASLEEP-tilassa"
+light_auto_asleep_state_lr_indirect:
+  name: "OH epäsuorat valot ASLEEP-tilassa"
   icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_office:
-  name: "Toimiston valot seuraa liikettä ASLEEP-tilassa"
+light_auto_asleep_follow_motion_lr_indirect:
+  name: "OH epäsuorat valot seuraa liikettä ASLEEP-tilassa"
   icon: mdi:motion-sensor
 
-light_auto_emergency_state_office:
-  name: "Toimiston valot EMERGENCY-tilassa"
+light_auto_emergency_state_lr_indirect:
+  name: "OH epäsuorat valot EMERGENCY-tilassa"
   icon: mdi:lightbulb-on-outline
   initial: on
-light_auto_emergency_follow_motion_office:
-  name: "Toimiston valot seuraa liikettä EMERGENCY-tilassa"
+light_auto_emergency_follow_motion_lr_indirect:
+  name: "OH epäsuorat valot seuraa liikettä EMERGENCY-tilassa"
   icon: mdi:motion-sensor
   initial: off
 
-light_result_state_office:
-  name: "Toimiston ohjaus"
+light_result_state_lr_indirect:
+  name: "OH epäsuorat ohjaus"
   icon: mdi:lightbulb-on-outline
 
 

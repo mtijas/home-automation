@@ -72,10 +72,10 @@ light_auto_home_mode_light_strips:
   icon: mdi:lightbulb-auto
 
 
-# Office lights
+# Living Room Indirect lights
 
-light_base_mode_office:
-  name: "Toimiston valoautomatiikka"
+light_base_mode_lr_indirect:
+  name: "OH epäsuorien valoautomatiikka"
   options:
     - "Off"
     - "Manual"
@@ -83,8 +83,8 @@ light_base_mode_office:
   initial: "Automatic"
   icon: mdi:lightbulb-auto
 
-light_auto_home_mode_office:
-  name: "Toimiston valojen automatiikan toimintatila"
+light_auto_home_mode_lr_indirect:
+  name: "OH epäsuorien valojen automatiikan toimintatila"
   options:
     - "Awake"
     - "Asleep"

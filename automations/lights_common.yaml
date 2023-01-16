@@ -52,7 +52,7 @@
         option: "{{ trigger.to_state.state }}"
     - service: input_select.select_option
       target:
-        entity_id: input_select.light_auto_home_mode_office
+        entity_id: input_select.light_auto_home_mode_lr_indirect
       data:
         option: "{{ trigger.to_state.state }}"
 
@@ -89,9 +89,9 @@
       variables:
         room: living_room_decorative
     - platform: state
-      entity_id: input_boolean.light_auto_source_motion_state_office
+      entity_id: input_boolean.light_auto_source_motion_state_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
   action:
     - repeat:
         for_each:
@@ -126,9 +126,9 @@
       variables:
         room: living_room_decorative
     - platform: state
-      entity_id: input_boolean.light_auto_awake_state_office
+      entity_id: input_boolean.light_auto_awake_state_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
     - platform: state
       entity_id: input_boolean.light_auto_awake_state_hallway
       variables:
@@ -172,9 +172,9 @@
       variables:
         room: living_room_decorative
     - platform: state
-      entity_id: input_boolean.light_auto_away_state_office
+      entity_id: input_boolean.light_auto_away_state_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
     - platform: state
       entity_id: input_boolean.light_auto_away_state_hallway
       variables:
@@ -218,9 +218,9 @@
       variables:
         room: living_room_decorative
     - platform: state
-      entity_id: input_boolean.light_auto_asleep_state_office
+      entity_id: input_boolean.light_auto_asleep_state_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
     - platform: state
       entity_id: input_boolean.light_auto_asleep_state_hallway
       variables:
@@ -264,9 +264,9 @@
       variables:
         room: living_room_decorative
     - platform: state
-      entity_id: input_boolean.light_auto_emergency_state_office
+      entity_id: input_boolean.light_auto_emergency_state_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
     - platform: state
       entity_id: input_boolean.light_auto_emergency_state_hallway
       variables:
@@ -741,13 +741,13 @@
       variables:
         room: light_strips
     - platform: state
-      entity_id: input_select.light_base_mode_office
+      entity_id: input_select.light_base_mode_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
     - platform: state
-      entity_id: input_select.light_auto_home_mode_office
+      entity_id: input_select.light_auto_home_mode_lr_indirect
       variables:
-        room: office
+        room: lr_indirect
     - platform: state
       entity_id: input_select.light_base_mode_hallway
       variables:
