@@ -15,16 +15,16 @@
       device_class: door
       value_template: "{{ is_state('group.all_doors', 'on') }}"
     server_cabinet_fire_alarm:
-      value_template: "{{ (states('sensor.scfb_temp') | float(0.0)) > 50 }}"
-      friendly_name: "SCFB Fire Alarm"
+      value_template: "{{ (states('sensor.scfb_ch1_temperature') | float(0.0)) > 50 }}"
+      friendly_name: "SCFB CH1 Fire Alarm"
       delay_on:
         seconds: 20
       delay_off:
         seconds: 20
       device_class: "problem"
     scfb_fan_alarm:
-      value_template: "{{ (states('sensor.scfb_fan') | int(0)) < 150 }}"
-      friendly_name: "SCFB Fan Alarm"
+      value_template: "{{ (states('sensor.scfb_ch1_speed') | int(0)) < 150 }}"
+      friendly_name: "SCFB CH1 Fan Alarm"
       delay_on:
         seconds: 20
       delay_off:
