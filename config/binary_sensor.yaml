@@ -23,7 +23,7 @@
         seconds: 20
       device_class: "problem"
     scfb_temp_alarm:
-      value_template: "{{ ((states('sensor.scfb_ch1_temperature') | float(0.0)) - (states('sensor.scfb_ch1_target') | float(0.0)) | abs) > (states('input_number.scfb_temp_alarm_threshold') | float(0.0)) }}"
+      value_template: "{{ (((states('sensor.scfb_ch1_temperature') | float(0.0)) - (states('sensor.scfb_ch1_target') | float(0.0))) | abs) > (states('input_number.scfb_temp_alarm_threshold') | float(0.0)) }}"
       friendly_name: "SCFB CH1 Temperature Alarm"
       delay_on:
         seconds: 20
