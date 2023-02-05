@@ -228,6 +228,18 @@
         qos: 1
         retain: 0
 
+- alias: "Send SCFB CH1 Target on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch1_target
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/commands"
+        payload_template: '{"command": "SET_TARGET", "channel": 1, "value": {{ states("input_number.scfb_ch1_target") }} }'
+        qos: 1
+        retain: 0
+
 - alias: "Send FCB test CH1 KP on change"
   trigger:
     - platform: state
@@ -261,5 +273,17 @@
       data:
         topic: "fancontrolbridge/test/commands"
         payload_template: '{"command": "SET_KD", "channel": 1, "value": {{ states("input_number.fcb_test_ch1_kd") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send FCB test CH1 TARGET on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.fcb_test_ch1_target
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_TARGET", "channel": 1, "value": {{ states("input_number.fcb_test_ch1_target") }} }'
         qos: 1
         retain: 0
