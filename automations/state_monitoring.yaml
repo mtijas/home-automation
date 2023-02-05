@@ -96,15 +96,15 @@
       target:
         entity_id: input_boolean.front_door_alarm
 
-- id: force_update_sensors_for_grafana
-  alias: "Force update sensors for Grafana"
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  action:
-    - service: homeassistant.update_entity
-      target:
-        entity_id: >
-          - sensor.lr_brightness_target
-          - sensor.lr_brightness_setting
-          - sensor.scfb_setpoint
+# - id: force_update_sensors_for_grafana
+#   alias: "Force update sensors for Grafana"
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/1"
+#   action:
+#     - service: homeassistant.update_entity
+#       target:
+#         entity_id: >
+#           - sensor.lr_brightness_target
+#           - sensor.lr_brightness_setting
+#           - sensor.scfb_setpoint
