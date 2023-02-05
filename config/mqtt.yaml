@@ -44,26 +44,26 @@ sensor:
     value_template: "{{ ((value | float) * 100) - 200 }}"
     unit_of_measurement: "%"
 
-  - name: "SCFB Temp"
-    state_topic: "home/server/cabinet/exhausttemp"
-    unit_of_measurement: "°C"
-    state_class: measurement
-
-  - name: "SCFB Setpoint"
-    state_topic: "home/server/cabinet/setpoint"
-    unit_of_measurement: "°C"
-    state_class: measurement
-
-  - name: "SCFB Fan"
-    state_topic: "home/server/cabinet/fanspeed"
-    unit_of_measurement: "rpm"
-    state_class: measurement
-
-  - name: "SCFB PID"
-    state_topic: "home/server/cabinet/pwmout"
-    value_template: "{{ ( 100 - ( (value | float) / 230 * 100 ) ) | round(1) }}"
-    unit_of_measurement: "%"
-    state_class: measurement
+#   - name: "SCFB Temp"
+#     state_topic: "home/server/cabinet/exhausttemp"
+#     unit_of_measurement: "°C"
+#     state_class: measurement
+# 
+#   - name: "SCFB Setpoint"
+#     state_topic: "home/server/cabinet/setpoint"
+#     unit_of_measurement: "°C"
+#     state_class: measurement
+# 
+#   - name: "SCFB Fan"
+#     state_topic: "home/server/cabinet/fanspeed"
+#     unit_of_measurement: "rpm"
+#     state_class: measurement
+# 
+#   - name: "SCFB PID"
+#     state_topic: "home/server/cabinet/pwmout"
+#     value_template: "{{ ( 100 - ( (value | float) / 230 * 100 ) ) | round(1) }}"
+#     unit_of_measurement: "%"
+#     state_class: measurement
 
   - name: "Event topic"
     state_topic: "notify/cmd"
@@ -123,3 +123,45 @@ sensor:
 
   - name: "Test Fan Controller Commands"
     state_topic: "fancontrolbridge/test/commands"
+
+  - name: "SCFB CH1 temperature"
+    state_topic: "fancontrolbridge/ch1/status"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.temp }}"
+
+  - name: "SCFB CH1 target"
+    state_topic: "fancontrolbridge/ch1/status"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.target }}"
+
+  - name: "SCFB CH1 speed"
+    state_topic: "fancontrolbridge/ch1/status"
+    unit_of_measurement: "rpm"
+    value_template: "{{ value_json.speed }}"
+
+  - name: "SCFB CH1 output"
+    state_topic: "fancontrolbridge/ch1/status"
+    unit_of_measurement: "PID"
+    value_template: "{{ value_json.output }}"
+
+  - name: "SCFB CH1 mode"
+    state_topic: "fancontrolbridge/ch1/settings"
+    value_template: "{{ value_json.mode }}"
+
+  - name: "SCFB CH1 kp"
+    state_topic: "fancontrolbridge/ch1/settings"
+    value_template: "{{ value_json.kp }}"
+
+  - name: "SCFB CH1 ki"
+    state_topic: "fancontrolbridge/ch1/settings"
+    value_template: "{{ value_json.ki }}"
+
+  - name: "SCFB CH1 kd"
+    state_topic: "fancontrolbridge/ch1/settings"
+    value_template: "{{ value_json.kd }}"
+
+  - name: "SCFB Command Results"
+    state_topic: "fancontrolbridge/command-results"
+
+  - name: "SCFB Commands"
+    state_topic: "fancontrolbridge/commands"

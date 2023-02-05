@@ -792,3 +792,40 @@ scfb_ch2_kd:
   step: 0.1
   mode: box
   name: "SCFB CH2 KD"
+
+fcb_test_ch1_kp:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "FCB Test CH1 KP"
+fcb_test_ch1_ki:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "FCB Test CH1 KI"
+fcb_test_ch1_kd:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "FCB Test CH1 KD"
+fcb_test_ch2_kp:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "FCB Test CH2 KP"
+fcb_test_ch2_ki:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "FCB Test CH2 KI"
+fcb_test_ch2_kd:
+  min: 0.0
+  max: 100.0
+  step: 0.1
+  mode: box
+  name: "FCB Test CH2 KD"

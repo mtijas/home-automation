@@ -199,7 +199,7 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "fancontrolbridge/test/commands"
+        topic: "fancontrolbridge/commands"
         payload_template: '{"command": "SET_KP", "channel": 1, "value": {{ states("input_number.scfb_ch1_kp") }} }'
         qos: 1
         retain: 0
@@ -211,7 +211,7 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "fancontrolbridge/test/commands"
+        topic: "fancontrolbridge/commands"
         payload_template: '{"command": "SET_KI", "channel": 1, "value": {{ states("input_number.scfb_ch1_ki") }} }'
         qos: 1
         retain: 0
@@ -223,7 +223,43 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "fancontrolbridge/test/commands"
+        topic: "fancontrolbridge/commands"
         payload_template: '{"command": "SET_KD", "channel": 1, "value": {{ states("input_number.scfb_ch1_kd") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send FCB test CH1 KP on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.fcb_test_ch1_kp
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_KP", "channel": 1, "value": {{ states("input_number.fcb_test_ch1_kp") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send FCB test CH1 KI on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.fcb_test_ch1_ki
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_KI", "channel": 1, "value": {{ states("input_number.fcb_test_ch1_ki") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send FCB test CH1 KD on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.fcb_test_ch1_kd
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/test/commands"
+        payload_template: '{"command": "SET_KD", "channel": 1, "value": {{ states("input_number.fcb_test_ch1_kd") }} }'
         qos: 1
         retain: 0
