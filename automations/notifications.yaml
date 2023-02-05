@@ -36,10 +36,10 @@
     - service: script.sonos_tts_notification
       data:
         player_location: "media_player.olohuone"
-        message_str: "Palvelinkaapin lämpötila on korkea!"
+        message_str: "Palvelinkaapin lämpötilahälytys!"
     - service: notify.telegram_notify_possula
       data:
-        message: "Palvelinkaapin lämpötila on korkea!"
+        message: "Palvelinkaapin lämpötilahälytys!"
 
 - id: scfb_fan_alarm
   alias: "SCFB Fan Stop Alarm"
