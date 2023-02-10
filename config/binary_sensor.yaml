@@ -20,31 +20,31 @@
       delay_on:
         seconds: 20
       delay_off:
-        seconds: 20
+        minutes: 5
       device_class: "problem"
     scfb_temp_alarm:
       value_template: "{{ (((states('sensor.scfb_ch1_temperature') | float(0.0)) - (states('sensor.scfb_ch1_target') | float(0.0))) | abs) > (states('input_number.scfb_temp_alarm_threshold') | float(0.0)) }}"
       friendly_name: "SCFB CH1 Temperature Alarm"
       delay_on:
-        seconds: 20
+        minutes: 3
       delay_off:
-        seconds: 20
+        minutes: 5
       device_class: "problem"
     scfb_fan_alarm:
       value_template: "{{ (states('sensor.scfb_ch1_speed') | int(0)) < 150 }}"
       friendly_name: "SCFB CH1 Fan Alarm"
       delay_on:
-        seconds: 20
+        minutes: 3
       delay_off:
-        seconds: 20
+        minutes: 3
       device_class: "problem"
     scfb_mode_alarm:
       value_template: "{{ (states('sensor.scfb_ch1_mode') | int(0)) != 1 }}"
       friendly_name: "SCFB CH1 Mode Alarm"
       delay_on:
-        seconds: 20
+        minutes: 2
       delay_off:
-        seconds: 20
+        minutes: 2
       device_class: "problem"
     living_room_gas_alarm:
       value_template: "{{ (states('sensor.olohuoneen_kaasutaso') | float(0.0)) > 50 }}"
