@@ -17,9 +17,9 @@ all_settings = {
     "light_auto_awake_kelvin_toilet": (6500, 5000, 3800, 3200, 2700),
     "light_auto_awake_brightness_toilet": (255, 255, 200, 160, 80),
     "light_auto_awake_kelvin_living_room": (6500, 5000, 3800, 3200, 2700),
-    "light_auto_awake_brightness_living_room": (150, 255, 200, 160, 90),
+    "light_auto_awake_brightness_living_room": (255, 255, 210, 175, 90),
     "light_auto_awake_kelvin_lr_indirect": (6500, 5000, 3800, 3200, 2700),
-    "light_auto_awake_brightness_lr_indirect": (150, 255, 200, 160, 90),
+    "light_auto_awake_brightness_lr_indirect": (255, 255, 210, 175, 90),
     "light_auto_awake_kelvin_bedroom": (6500, 5000, 3800, 3200, 2700),
     "light_auto_awake_brightness_bedroom": (255, 255, 200, 160, 90),
 }
