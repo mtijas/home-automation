@@ -61,6 +61,13 @@
       device_class: energy
       unit_of_measurement: kWh
       value_template: "{{ states('input_number.electricity_meter_reading') | int(default=0) }}"
+    el_price:
+      friendly_name: "Sähkön hinta nyt"
+      unit_of_measurement: "c/kWh"
+      value_template: "{{ state_attr('sensor.spot_hinta_fi', 'PriceWithTax') | float * 100 }}"
+    el_price_rank:
+      friendly_name: "Kuluvan tunnin 'rank'"
+      value_template: "{{ state_attr('sensor.spot_hinta_fi', 'Rank') | int }}"
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"
@@ -88,3 +95,17 @@
   token: !secret aqicn_api_token
   locations:
     - "ihala, raisio"
+
+- platform: rest
+  scan_interval: 300  # Every five minutes should be more than enough
+  name: "spot_hinta_fi"
+  resource: https://api.spot-hinta.fi/JustNow  
+  method: GET
+  device_class: monetary
+  force_update: true
+  json_attributes:
+    - DateTime
+    - PriceWithTax
+    - PriceNoTax
+    - Rank
+  state_class: measurement
