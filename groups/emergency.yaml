@@ -30,3 +30,4 @@ master_caution:
     - binary_sensor.scfb_fan_alarm
     - binary_sensor.living_room_gas_alarm
     - binary_sensor.living_room_particle_alarm
+    - binary_sensor.korkeaprioriteettinen_sahkon_saasto
