@@ -58,6 +58,8 @@
   action:
     - service: switch.turn_off
       entity_id: switch.kahvinkeitin
+    - service: switch.turn_off
+      entity_id: switch.tp_link_smart_plug_5f83
 
 - alias: "Detect bedroom humidifier emptiness"
   trigger:
@@ -103,9 +105,22 @@
     - condition: state
       entity_id: switch.tp_link_smart_plug_5f83
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.sahkon_suhteellinen_hinta_korkea
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.matalaprioriteettinen_sahkon_saasto
+      state: "off"
     - condition: numeric_state
       entity_id: sensor.bedroom_humidity
       below: input_number.bedroom_humidifier_start_point
+    - or:
+      - condition: state
+        entity_id: input_select.home_mode
+        state: "Awake"
+      - condition: state
+        entity_id: input_select.home_mode
+        state: "Asleep"
   action:
     - service: switch.turn_on
       target:
