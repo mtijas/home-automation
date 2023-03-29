@@ -125,9 +125,9 @@
   entity_id: sensor.el_price
   name: "Matalaprioriteettinen sähkön säästö"
   upper: 15
-  hysteresis: 0.5
+  hysteresis: 0.0
 - platform: threshold
   entity_id: sensor.el_price
   name: "Korkeaprioriteettinen sähkön säästö"
   upper: 30
-  hysteresis: 0.5
+  hysteresis: 0.0
