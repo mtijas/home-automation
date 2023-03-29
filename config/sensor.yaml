@@ -68,6 +68,18 @@
     el_price_rank:
       friendly_name: "Kuluvan tunnin 'rank'"
       value_template: "{{ state_attr('sensor.spot_hinta_fi', 'Rank') | int }}"
+    electricity_saving_requirement:
+      friendly_name: "Sähkön säästötarve"
+      value_template: >-
+        {% if (states('sensor.el_price') | float(0.0)) > 15 %}
+          1
+        {% elif (states('sensor.el_price') | float(0.0)) > 30 %}
+          2
+        {% elif (states('sensor.el_price') | float(0.0)) > 45 %}
+          3
+        {% else %}
+          0
+        {% endif %}
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"

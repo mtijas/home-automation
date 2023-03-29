@@ -108,9 +108,9 @@
     - condition: state
       entity_id: binary_sensor.sahkon_suhteellinen_hinta_korkea
       state: "off"
-    - condition: state
-      entity_id: binary_sensor.matalaprioriteettinen_sahkon_saasto
-      state: "off"
+    - condition: numeric_state
+      entity_id: sensor.electricity_saving_requirement
+      below: 2
     - condition: numeric_state
       entity_id: sensor.bedroom_humidity
       below: input_number.bedroom_humidifier_start_point
