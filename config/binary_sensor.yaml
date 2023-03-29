@@ -120,4 +120,4 @@
 - platform: threshold
   entity_id: sensor.el_price_rank
   name: "Sähkön suhteellinen hinta korkea"
-  upper: 18
+  upper: 19
