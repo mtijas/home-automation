@@ -120,7 +120,7 @@
 - platform: threshold
   entity_id: sensor.el_price_rank
   name: "Sähkön suhteellinen hinta korkea"
-  upper: 12
+  upper: 18
 - platform: threshold
   entity_id: sensor.el_price
   name: "Matalaprioriteettinen sähkön säästö"
