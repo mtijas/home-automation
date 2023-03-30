@@ -181,7 +181,7 @@
   condition:
     - condition: numeric_state
       entity_id: sensor.olohuoneen_tablet_battery_level
-      below: 50
+      below: 51
     - condition: state
       entity_id: switch.telldus_socket_and_energy_meter
       state: "off"
@@ -191,7 +191,7 @@
         state: "off"
       - condition: numeric_state
         entity_id: sensor.olohuoneen_tablet_battery_level
-        below: 20
+        below: 21
   action:
     - service: switch.turn_on
       target:
@@ -205,14 +205,14 @@
   condition:
     - condition: numeric_state
       entity_id: sensor.olohuoneen_tablet_battery_level
-      above: 40
+      above: 39
     - condition: state
       entity_id: switch.telldus_socket_and_energy_meter
       state: "on"
     - or:
       - condition: numeric_state
         entity_id: sensor.olohuoneen_tablet_battery_level
-        above: 80
+        above: 79
       - condition: state
         entity_id: binary_sensor.sahkon_suhteellinen_hinta_korkea
         state: "on"
