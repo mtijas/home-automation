@@ -68,6 +68,7 @@
     el_price_rank:
       friendly_name: "Kuluvan tunnin 'rank'"
       value_template: "{{ state_attr('sensor.spot_hinta_fi', 'Rank') | int }}"
+      unit_of_measurement: "/24"
     electricity_saving_requirement:
       friendly_name: "Sähkön säästötarve"
       value_template: >-
