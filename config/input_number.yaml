@@ -737,15 +737,15 @@ default_notification_volume_sonos:
   name: "Sonosten ilmoitusten äänenvoimakkuus"
 bedroom_humidifier_start_point:
   name: "MH kostutuksen käynnistys"
-  min: 20
+  min: 10
   max: 40
   step: 1
   icon: mdi:water-percent
   unit_of_measurement: "%"
 bedroom_humidifier_stop_point:
   name: "MH kostutuksen sammutus"
-  min: 30
-  max: 60
+  min: 20
+  max: 50
   step: 1
   icon: mdi:water-percent
   unit_of_measurement: "%"

@@ -137,9 +137,13 @@
     - condition: state
       entity_id: switch.tp_link_smart_plug_5f83
       state: "on"
-    - condition: numeric_state
-      entity_id: sensor.bedroom_humidity
-      above: input_number.bedroom_humidifier_stop_point
+    - condition: or
+      - condition: numeric_state
+        entity_id: sensor.bedroom_humidity
+        above: input_number.bedroom_humidifier_stop_point
+      - condition: state
+        entity_id: binary_sensor.sahkon_suhteellinen_hinta_korkea
+        state: "on"
   action:
     - service: switch.turn_off
       target:
