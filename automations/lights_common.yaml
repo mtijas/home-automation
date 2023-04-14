@@ -45,9 +45,7 @@
   action:
     - choose:
         - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_living_room
-              state: "off"
+            - "{{ is_state('input_boolean.light_result_state_'+room, 'off') }}"
           sequence:
             - service: light.turn_off
               target:
@@ -72,7 +70,7 @@
         - conditions:
             - "{{ is_state('input_boolean.light_result_state_'+room, 'on') }}"
             - condition: time
-              before: "20:00:00"
+              before: "20:30:00"
           sequence:
             - service: scene.turn_on
               target:
