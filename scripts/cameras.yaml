@@ -14,7 +14,7 @@ living_room_camera_to_hallway:
       target:
         entity_id: camera.olohuone_profile000_mainstream
       data:
-        preset: "000"
+        preset: "001"
         move_mode: GotoPreset
 living_room_camera_to_entertainment:
   alias: Living Room Camera To Entertainment Area
@@ -23,5 +23,5 @@ living_room_camera_to_entertainment:
       target:
         entity_id: camera.olohuone_profile000_mainstream
       data:
-        preset: "001"
+        preset: "000"
         move_mode: GotoPreset
