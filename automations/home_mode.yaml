@@ -91,7 +91,10 @@
   alias: "Automaattinen Awake-tila aamuisin"
   trigger:
     - platform: state
-      entity_id: group.all_hallway_motion
+      entity_id: group.all_kitchen_motion
+      to: "on"
+    - platform: state
+      entity_id: group.all_toilet_motion
       to: "on"
   condition:
     - condition: state
