@@ -80,6 +80,18 @@
           target:
             entity_id: "scene.{{ target_zone }}_ilta"
 
+- id: turn_off_lights_on_away
+  alias: "Valaistuksen sammutus kun Away"
+  mode: queued
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: Away
+  action:
+    - service: light.turn_off
+      target:
+        entity_id: all
+
 # TODO: Emergency
 
 - id: light_update_states_on_motion
