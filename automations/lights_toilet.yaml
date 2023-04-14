@@ -1,76 +1,43 @@
-- id: toilet_state_set
-  alias: "WC:n valaistuksen asetus"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: input_number.light_result_brightness_toilet
-    - platform: state
-      entity_id: input_number.light_result_kelvin_toilet
-    - platform: state
-      entity_id: input_boolean.light_result_state_toilet
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_toilet
-              state: "on"
-          sequence:
-            - service: light.turn_on
-              target:
-                entity_id: light.pesuhuone
-              data:
-                brightness: "{{ states('input_number.light_result_brightness_toilet') | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_toilet') | int }}"
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_toilet
-              state: "off"
-          sequence:
-            - service: light.turn_off
-              target:
-                entity_id: light.pesuhuone
-    - delay: 1
-
-- id: toilet_motion_disable_on_high_humidity
-  alias: "WC:n liiketunnistus pois kun suihkussa"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.bathroom_humidity
-      above: 70
-  action:
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.light_auto_awake_follow_motion_toilet
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.light_auto_asleep_follow_motion_toilet
-    - service: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.light_auto_awake_state_toilet
-    - service: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.light_auto_asleep_state_toilet
-
-- id: toilet_motion_enable_on_lower_humidity
-  alias: "WC:n liiketunnistus päälle kun pois suihkusta"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.bathroom_humidity
-      below: 68
-  action:
-    - service: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.light_auto_awake_follow_motion_toilet
-    - service: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.light_auto_asleep_follow_motion_toilet
-    - condition: state
-      entity_id: input_boolean.light_auto_source_motion_state_toilet
-      state: "off"
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.light_auto_awake_state_toilet
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.light_auto_asleep_state_toilet
+# - id: toilet_motion_disable_on_high_humidity
+#   alias: "WC:n liiketunnistus pois kun suihkussa"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.bathroom_humidity
+#       above: 70
+#   action:
+#     - service: input_boolean.turn_off
+#       target:
+#         entity_id: input_boolean.light_auto_awake_follow_motion_toilet
+#     - service: input_boolean.turn_off
+#       target:
+#         entity_id: input_boolean.light_auto_asleep_follow_motion_toilet
+#     - service: input_boolean.turn_on
+#       target:
+#         entity_id: input_boolean.light_auto_awake_state_toilet
+#     - service: input_boolean.turn_on
+#       target:
+#         entity_id: input_boolean.light_auto_asleep_state_toilet
+# 
+# - id: toilet_motion_enable_on_lower_humidity
+#   alias: "WC:n liiketunnistus päälle kun pois suihkusta"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.bathroom_humidity
+#       below: 68
+#   action:
+#     - service: input_boolean.turn_on
+#       target:
+#         entity_id: input_boolean.light_auto_awake_follow_motion_toilet
+#     - service: input_boolean.turn_on
+#       target:
+#         entity_id: input_boolean.light_auto_asleep_follow_motion_toilet
+#     - condition: state
+#       entity_id: input_boolean.light_auto_source_motion_state_toilet
+#       state: "off"
+#     - service: input_boolean.turn_off
+#       target:
+#         entity_id: input_boolean.light_auto_awake_state_toilet
+#     - service: input_boolean.turn_off
+#       target:
+#         entity_id: input_boolean.light_auto_asleep_state_toilet
   
