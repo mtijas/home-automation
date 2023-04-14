@@ -9,9 +9,6 @@
     - type: load_15m
 - platform: template
   sensors:
-    light_auto_lux_level_living_room:
-      value_template: "0"
-      unit_of_measurement: "lx"
     light_auto_lux_level_hallway:
       value_template: "{{ states('sensor.eteisen_liiketunnistin_light_level') | int(0) }}"
       unit_of_measurement: "lx"
@@ -20,9 +17,6 @@
       unit_of_measurement: "lx"
     light_auto_lux_level_kitchen:
       value_template: "{{ states('sensor.kitchen_sensor_light_level') | int(0) }}"
-      unit_of_measurement: "lx"
-    light_auto_lux_level_bedroom:
-      value_template: "0"
       unit_of_measurement: "lx"
     wan_router_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_wan_router', 'round_trip_time_avg') | float(0.0) }}"

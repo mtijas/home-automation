@@ -20,77 +20,16 @@ light_base_mode_living_room:
   initial: "Automatic"
   icon: mdi:lightbulb-auto
 
-light_auto_home_mode_living_room:
-  name: "OH valojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
-  icon: mdi:lightbulb-auto
 
-light_base_mode_living_room_decorative:
-  name: "OH koristevalojen automatiikka"
+# Office lights
+
+light_base_mode_office:
+  name: "Toimiston valoautomatiikka"
   options:
     - "Off"
     - "Manual"
     - "Automatic"
   initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-light_auto_home_mode_living_room_decorative:
-  name: "OH koristevalojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
-  icon: mdi:lightbulb-auto
-
-
-# Light strips
-
-light_base_mode_light_strips:
-  name: "Valonauhojen automatiikka"
-  options:
-    - "Off"
-    - "Manual"
-    - "Automatic"
-  initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-light_auto_home_mode_light_strips:
-  name: "Valonauhojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
-  icon: mdi:lightbulb-auto
-
-
-# Living Room Indirect lights
-
-light_base_mode_lr_indirect:
-  name: "OH epäsuorien valoautomatiikka"
-  options:
-    - "Off"
-    - "Manual"
-    - "Automatic"
-  initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-light_auto_home_mode_lr_indirect:
-  name: "OH epäsuorien valojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
   icon: mdi:lightbulb-auto
 
 
@@ -105,16 +44,6 @@ light_base_mode_hallway:
   initial: "Automatic"
   icon: mdi:lightbulb-auto
 
-light_auto_home_mode_hallway:
-  name: "Käytävän valojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
-  icon: mdi:lightbulb-auto
-
 
 # Toilet lights
 
@@ -125,16 +54,6 @@ light_base_mode_toilet:
     - "Manual"
     - "Automatic"
   initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-light_auto_home_mode_toilet:
-  name: "WC:n valojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
   icon: mdi:lightbulb-auto
 
 
@@ -149,16 +68,6 @@ light_base_mode_kitchen:
   initial: "Automatic"
   icon: mdi:lightbulb-auto
 
-light_auto_home_mode_kitchen:
-  name: "Keittiön valojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
-  icon: mdi:lightbulb-auto
-
 
 # Bedroom lights
 
@@ -169,14 +78,4 @@ light_base_mode_bedroom:
     - "Manual"
     - "Automatic"
   initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-light_auto_home_mode_bedroom:
-  name: "Makuuhuoneen valojen automatiikan toimintatila"
-  options:
-    - "Awake"
-    - "Asleep"
-    - "Away"
-    - "Emergency"
-  initial: "Awake"
   icon: mdi:lightbulb-auto

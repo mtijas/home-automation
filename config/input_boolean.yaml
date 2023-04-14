@@ -51,166 +51,20 @@ light_auto_source_motion_state_living_room:
   name: "OH Liiketunnistus"
   icon: mdi:lightbulb-auto
 
-light_auto_awake_state_living_room:
-  name: "OH Valaistus AWAKE-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_living_room:
-  name: "OH valaistus seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_living_room:
-  name: "OH Valaistus AWAY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: off
-light_auto_away_follow_motion_living_room:
-  name: "OH valaistus seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_living_room:
-  name: "OH Valaistus ASLEEP-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_living_room:
-  name: "OH valaistus seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_living_room:
-  name: "OH Valaistus EMERGENCY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: on
-light_auto_emergency_follow_motion_living_room:
-  name: "OH Valaistus seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
-
 light_result_state_living_room:
   name: "OH Valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline
 
 
-# Living room light strips
+# Office lights
 
-light_auto_source_motion_state_light_strips:
-  name: "Valonauhojen Liiketunnistus"
+light_auto_source_motion_state_office:
+  name: "Toimiston Liiketunnistus"
   icon: mdi:lightbulb-auto
 
-light_auto_awake_state_light_strips:
-  name: "Valonauhat AWAKE-tilassa"
+light_result_state_office:
+  name: "Toimiston valaistuksen ohjaus"
   icon: mdi:led-strip-variant
-light_auto_awake_follow_motion_light_strips:
-  name: "Valonauhat seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_light_strips:
-  name: "Valonauhat AWAY-tilassa"
-  icon: mdi:led-strip-variant
-  initial: off
-light_auto_away_follow_motion_light_strips:
-  name: "Valonauhat seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_light_strips:
-  name: "Valonauhat ASLEEP-tilassa"
-  icon: mdi:led-strip-variant
-light_auto_asleep_follow_motion_light_strips:
-  name: "Valonauhat seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_light_strips:
-  name: "Valonauhat EMERGENCY-tilassa"
-  icon: mdi:led-strip-variant
-  initial: on
-light_auto_emergency_follow_motion_light_strips:
-  name: "Valonauhat seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
-
-light_result_state_light_strips:
-  name: "Valonauhojen ohjaus"
-  icon: mdi:led-strip-variant
-
-
-# Living room decorative lights
-
-light_auto_source_motion_state_living_room_decorative:
-  name: "OH koristevalot Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_auto_awake_state_living_room_decorative:
-  name: "OH koristevalot AWAKE-tilassa"
-  icon: mdi:lightbulb-variant-outline
-light_auto_awake_follow_motion_living_room_decorative:
-  name: "OH koristevalot seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_living_room_decorative:
-  name: "OH koristevalot AWAY-tilassa"
-  icon: mdi:lightbulb-variant-outline
-  initial: off
-light_auto_away_follow_motion_living_room_decorative:
-  name: "OH koristevalot seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_living_room_decorative:
-  name: "OH koristevalot ASLEEP-tilassa"
-  icon: mdi:lightbulb-variant-outline
-light_auto_asleep_follow_motion_living_room_decorative:
-  name: "OH koristevalot seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_living_room_decorative:
-  name: "OH koristevalot EMERGENCY-tilassa"
-  icon: mdi:lightbulb-variant-outline
-  initial: on
-light_auto_emergency_follow_motion_living_room_decorative:
-  name: "OH koristevalot seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
-
-light_result_state_living_room_decorative:
-  name: "OH koristevalot ohjaus"
-  icon: mdi:lightbulb-variant-outline
-
-
-# Living Room Indirect lights
-
-light_auto_source_motion_state_lr_indirect:
-  name: "OH epäsuorat Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_auto_awake_state_lr_indirect:
-  name: "OH epäsuorat valot AWAKE-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_lr_indirect:
-  name: "OH epäsuorat valot seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_lr_indirect:
-  name: "OH epäsuorat valot AWAY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: off
-light_auto_away_follow_motion_lr_indirect:
-  name: "OH epäsuorat valot seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_lr_indirect:
-  name: "OH epäsuorat valot ASLEEP-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_lr_indirect:
-  name: "OH epäsuorat valot seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_lr_indirect:
-  name: "OH epäsuorat valot EMERGENCY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: on
-light_auto_emergency_follow_motion_lr_indirect:
-  name: "OH epäsuorat valot seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
-
-light_result_state_lr_indirect:
-  name: "OH epäsuorat ohjaus"
-  icon: mdi:lightbulb-on-outline
 
 
 # Hallway lights
@@ -218,37 +72,6 @@ light_result_state_lr_indirect:
 light_auto_source_motion_state_hallway:
   name: "Käytävän Liiketunnistus"
   icon: mdi:lightbulb-auto
-
-light_auto_awake_state_hallway:
-  name: "Käytävän valaistus AWAKE-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_hallway:
-  name: "Käytävän valaistus seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_hallway:
-  name: "Käytävän valaistus AWAY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: off
-light_auto_away_follow_motion_hallway:
-  name: "Käytävän valaistus seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_hallway:
-  name: "Käytävän valaistus ASLEEP-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_hallway:
-  name: "Käytävän valaistus seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_hallway:
-  name: "Käytävän valaistus EMERGENCY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: on
-light_auto_emergency_follow_motion_hallway:
-  name: "Käytävän valaistus seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
 
 light_result_state_hallway:
   name: "Käytävän valaistuksen ohjaus"
@@ -261,37 +84,6 @@ light_auto_source_motion_state_kitchen:
   name: "Keittiön Liiketunnistus"
   icon: mdi:lightbulb-auto
 
-light_auto_awake_state_kitchen:
-  name: "Keittiön valaistus AWAKE-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_kitchen:
-  name: "Keittiön valaistus seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_kitchen:
-  name: "Keittiön valaistus AWAY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: off
-light_auto_away_follow_motion_kitchen:
-  name: "Keittiön valaistus seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_kitchen:
-  name: "Keittiön valaistus ASLEEP-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_kitchen:
-  name: "Keittiön valaistus seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_kitchen:
-  name: "Keittiön valaistus EMERGENCY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: on
-light_auto_emergency_follow_motion_kitchen:
-  name: "Keittiön valaistus seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
-
 light_result_state_kitchen:
   name: "Keittiön valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline
@@ -303,37 +95,6 @@ light_auto_source_motion_state_toilet:
   name: "WC:n Liiketunnistus"
   icon: mdi:lightbulb-auto
 
-light_auto_awake_state_toilet:
-  name: "WC:n valaistus AWAKE-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_toilet:
-  name: "WC:n valaistus seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_toilet:
-  name: "WC:n valaistus AWAY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: off
-light_auto_away_follow_motion_toilet:
-  name: "WC:n valaistus seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_toilet:
-  name: "WC:n valaistus ASLEEP-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_toilet:
-  name: "WC:n valaistus seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_toilet:
-  name: "WC:n valaistus EMERGENCY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: on
-light_auto_emergency_follow_motion_toilet:
-  name: "WC:n valaistus seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
-
 light_result_state_toilet:
   name: "WC:n valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline
@@ -344,37 +105,6 @@ light_result_state_toilet:
 light_auto_source_motion_state_bedroom:
   name: "Makuuhuoneen Liiketunnistus"
   icon: mdi:lightbulb-auto
-
-light_auto_awake_state_bedroom:
-  name: "Makuuhuoneen valaistus AWAKE-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_awake_follow_motion_bedroom:
-  name: "Makuuhuoneen valaistus seuraa liikettä AWAKE-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_away_state_bedroom:
-  name: "Makuuhuoneen valaistus AWAY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: off
-light_auto_away_follow_motion_bedroom:
-  name: "Makuuhuoneen valaistus seuraa liikettä AWAY-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_asleep_state_bedroom:
-  name: "Makuuhuoneen valaistus ASLEEP-tilassa"
-  icon: mdi:lightbulb-on-outline
-light_auto_asleep_follow_motion_bedroom:
-  name: "Makuuhuoneen valaistus seuraa liikettä ASLEEP-tilassa"
-  icon: mdi:motion-sensor
-
-light_auto_emergency_state_bedroom:
-  name: "Makuuhuoneen valaistus EMERGENCY-tilassa"
-  icon: mdi:lightbulb-on-outline
-  initial: on
-light_auto_emergency_follow_motion_bedroom:
-  name: "Makuuhuoneen valaistus seuraa liikettä EMERGENCY-tilassa"
-  icon: mdi:motion-sensor
-  initial: off
 
 light_result_state_bedroom:
   name: "Makuuhuoneen valaistuksen ohjaus"

@@ -1,135 +1,3 @@
-- id: living_room_state_set
-  alias: "Olohuoneen valaistuksen asetus"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: input_number.light_result_brightness_living_room
-    - platform: state
-      entity_id: input_number.light_result_kelvin_living_room
-    - platform: state
-      entity_id: input_boolean.light_result_state_living_room
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_living_room
-              state: "on"
-          sequence:
-            - service: light.turn_on
-              target:
-                entity_id: light.olohuoneen_yleisvalot
-              data:
-                brightness: "{{ states('input_number.light_result_brightness_living_room') | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_living_room
-              state: "off"
-          sequence:
-            - service: light.turn_off
-              target:
-                entity_id: light.olohuoneen_yleisvalot
-    - delay: 1
-
-- id: lr_indirect_light_strips_state_set
-  alias: "Olohuoneen valonauhojen asetus"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: input_number.light_result_brightness_lr_indirect
-    - platform: state
-      entity_id: input_number.light_result_kelvin_lr_indirect
-    - platform: state
-      entity_id: input_boolean.light_result_state_light_strips
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_light_strips
-              state: "on"
-          sequence:
-            - service: light.turn_on
-              target:
-                entity_id: light.oh_valonauhat
-              data:
-                brightness: "{{ (states('input_number.light_result_brightness_lr_indirect') | int) / 3 | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_lr_indirect') | int }}"
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_light_strips
-              state: "off"
-          sequence:
-            - service: light.turn_off
-              target:
-                entity_id: light.oh_valonauhat
-    - delay: 1
-
-- id: living_room_decorative_lights_state_set
-  alias: "Olohuoneen koristevalojen asetus"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: input_number.light_result_brightness_living_room
-    - platform: state
-      entity_id: input_number.light_result_kelvin_living_room
-    - platform: state
-      entity_id: input_boolean.light_result_state_living_room_decorative
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_living_room_decorative
-              state: "on"
-          sequence:
-            - service: light.turn_on
-              target:
-                entity_id: light.koristevalot
-              data:
-                brightness: "{{ (states('input_number.light_result_brightness_living_room') | int) / 3 | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_living_room') | int }}"
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_living_room_decorative
-              state: "off"
-          sequence:
-            - service: light.turn_off
-              target:
-                entity_id: light.koristevalot
-    - delay: 1
-
-- id: lr_indirect_state_set
-  alias: "OH epäsuoran valaistuksen asetus"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: input_number.light_result_brightness_lr_indirect
-    - platform: state
-      entity_id: input_number.light_result_kelvin_lr_indirect
-    - platform: state
-      entity_id: input_boolean.light_result_state_lr_indirect
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_lr_indirect
-              state: "on"
-          sequence:
-            - service: light.turn_on
-              target:
-                entity_id: light.markuksen_tyopiste
-              data:
-                brightness: "{{ states('input_number.light_result_brightness_lr_indirect') | int }}"
-                kelvin: "{{ states('input_number.light_result_kelvin_lr_indirect') | int }}"
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.light_result_state_lr_indirect
-              state: "off"
-          sequence:
-            - service: light.turn_off
-              target:
-                entity_id: light.markuksen_tyopiste
-    - delay: 1
-
 
 - id: living_room_auto_home_mode_revert_light_motion_state
   alias: "Olohuoneen motion-tilan sammutus kun auto home mode Asleepiin"
@@ -141,17 +9,6 @@
     - service: input_boolean.turn_off
       target:
         entity_id: input_boolean.light_auto_source_motion_state_living_room
-
-- id: lr_indirect_auto_home_mode_revert_light_motion_state
-  alias: "OH epäsuorien motion-tilan sammutus kun auto home mode Asleepiin"
-  trigger:
-    - platform: state
-      entity_id: input_select.light_auto_home_mode_lr_indirect
-      to: Asleep
-  action:
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.light_auto_source_motion_state_lr_indirect
 
 - id: living_room_hue_dimmer_1_automatic_living_room_lights
   alias: "Olohuoneen himmenninkytkimen valo-ohjaukset automatiikalla"
@@ -175,26 +32,26 @@
             - service: input_boolean.turn_on
               target:
                 entity_id: input_boolean.light_auto_source_motion_state_living_room
-        - conditions:
-            - condition: template
-              value_template: "{{ trigger.event.data.subtype == 2 }}"
-          sequence:
-            - service: input_boolean.turn_on
-              target:
-                entity_id: input_boolean.light_auto_source_motion_state_living_room_decorative
-            - service: input_boolean.turn_on
-              target:
-                entity_id: input_boolean.light_auto_source_motion_state_lr_indirect
-        - conditions:
-            - condition: template
-              value_template: "{{ trigger.event.data.subtype == 3 }}"
-          sequence:
-            - service: input_boolean.turn_off
-              target:
-                entity_id: input_boolean.light_auto_source_motion_state_living_room_decorative
-            - service: input_boolean.turn_off
-              target:
-                entity_id: input_boolean.light_auto_source_motion_state_lr_indirect
+        # - conditions:
+        #     - condition: template
+        #       value_template: "{{ trigger.event.data.subtype == 2 }}"
+        #   sequence:
+        #     - service: input_boolean.turn_on
+        #       target:
+        #         entity_id: input_boolean.light_auto_source_motion_state_living_room_decorative
+        #     - service: input_boolean.turn_on
+        #       target:
+        #         entity_id: input_boolean.light_auto_source_motion_state_lr_indirect
+        # - conditions:
+        #     - condition: template
+        #       value_template: "{{ trigger.event.data.subtype == 3 }}"
+        #   sequence:
+        #     - service: input_boolean.turn_off
+        #       target:
+        #         entity_id: input_boolean.light_auto_source_motion_state_living_room_decorative
+        #     - service: input_boolean.turn_off
+        #       target:
+        #         entity_id: input_boolean.light_auto_source_motion_state_lr_indirect
         - conditions:
             - condition: template
               value_template: "{{ trigger.event.data.subtype == 4 }}"
