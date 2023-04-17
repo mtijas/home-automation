@@ -6,24 +6,7 @@
   action:
     - service: notify.telegram_notify_possula
       data:
-        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
-
-- id: coffee_brewed_notification
-  alias: "Kahvin valmistumisilmoitus"
-  trigger:
-    - entity_id: binary_sensor.coffee_is_brewing
-      platform: state
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: switch.kahvinkeitin
-      state: "on"
-  action:
-    - service: script.sonos_tts_notification
-      data:
-        player_location: "media_player.olohuone"
-        message_str: >
-          Kahvi on valmista.
+        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature_2") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
 
 - id: scfb_temp_alarm
   alias: "SCFB Temp Alarm"
@@ -94,11 +77,9 @@
     - service: notify.telegram_notify_possula
       data:
         message:
-          'Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature") }} °C,
-          tuulee {{ states("sensor.saa_wind_speed") }} m/s ja {{ states("sensor.saa_condition") }}.
-          Olohuoneessa on {{ states("sensor.living_room_temperature") }} °C ja suhteellinen kosteus
-          {{ states("sensor.living_room_humidity") }} %. Murtohälyttimen tila:
-          {{ states("alarm_control_panel.ha_alarm") }}, kuorivalvonta: {{ states("input_boolean.perimeter_notifications") }}.'
+          'Olohuoneessa on {{ states("sensor.living_room_bt_sensor_temperature") }} °C ja suhteellinen kosteus
+          {{ states("sensor.living_room_bt_sensor_humidity") }} %. Murtohälyttimen tila:
+          {{ states("alarm_control_panel.ha_alarm") }}, kuorivalvonta: {{ states("input_boolean.perimeter_notifications") }}, liikeilmoitus: {{ states("input_boolean.motion_notify") }}.'
 
 - id: ha_start
   alias: "Home Assistantin käynnistysilmoitus"

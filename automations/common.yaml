@@ -15,6 +15,33 @@
         message_str: >
           Sammutin kahvinkeittimen.
 
+- id: coffee_brewed_notification
+  alias: "Kahvin valmistumisilmoitus"
+  trigger:
+    - entity_id: binary_sensor.coffee_is_brewing
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: switch.kahvinkeitin
+      state: "on"
+  action:
+    - service: script.sonos_tts_notification
+      data:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Kahvi on valmista.
+    - condition: numeric_state
+      entity_id: sensor.electricity_saving_requirement
+      above: 2
+    - service: switch.turn_off
+      entity_id: switch.kahvinkeitin
+    - service: script.sonos_tts_notification
+      data:
+        player_location: "media_player.olohuone"
+        message_str: >
+          Sammutin kahvinkeittimen, sillä sähkö on nyt kallista.
+
 - id: coffee_maker_autostart
   alias: "Kahvinkeittimen automaattikäynnistys"
   trigger:
