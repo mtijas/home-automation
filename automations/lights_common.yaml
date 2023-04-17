@@ -295,21 +295,6 @@
   action:
     - service_template: input_number.set_value
       target:
-        entity_id: "input_number.light_result_turnoff_time_living_room"
-      data:
-        value: "{{ states('input_number.light_auto_awake_turnoff_time_living_room') }}"
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_bedroom"
-      data:
-        value: "{{ states('input_number.light_auto_awake_turnoff_time_bedroom') }}"
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_office"
-      data:
-        value: "{{ states('input_number.light_auto_awake_turnoff_time_office') }}"
-    - service_template: input_number.set_value
-      target:
         entity_id: "input_number.light_result_turnoff_time_hallway"
       data:
         value: "{{ states('input_number.light_auto_awake_turnoff_time_hallway') }}"
@@ -335,21 +320,6 @@
   action:
     - service_template: input_number.set_value
       target:
-        entity_id: "input_number.light_result_turnoff_time_living_room"
-      data:
-        value: "{{ states('input_number.light_auto_away_turnoff_time_living_room') }}"
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_bedroom"
-      data:
-        value: "{{ states('input_number.light_auto_away_turnoff_time_bedroom') }}"
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_office"
-      data:
-        value: "{{ states('input_number.light_auto_away_turnoff_time_office') }}"
-    - service_template: input_number.set_value
-      target:
         entity_id: "input_number.light_result_turnoff_time_hallway"
       data:
         value: "{{ states('input_number.light_auto_away_turnoff_time_hallway') }}"
@@ -373,21 +343,6 @@
       entity_id: input_select.home_mode
       to: 'Asleep'
   action:
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_living_room"
-      data:
-        value: "{{ states('input_number.light_auto_asleep_turnoff_time_living_room') }}"
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_bedroom"
-      data:
-        value: "{{ states('input_number.light_auto_asleep_turnoff_time_bedroom') }}"
-    - service_template: input_number.set_value
-      target:
-        entity_id: "input_number.light_result_turnoff_time_office"
-      data:
-        value: "{{ states('input_number.light_auto_asleep_turnoff_time_office') }}"
     - service_template: input_number.set_value
       target:
         entity_id: "input_number.light_result_turnoff_time_hallway"
