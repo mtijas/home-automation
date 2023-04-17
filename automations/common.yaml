@@ -323,15 +323,17 @@
 
 - alias: "Turn off living room HiFi"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.living_room_hifi_on
-      to: "off"
-      for:
-        minutes: 15
+    - platform: time_pattern
+      minutes: "/2"
   condition:
     - condition: state
       entity_id: switch.living_room_entertainment_switch
       state: "on"
+    - condition: state
+      entity_id: binary_sensor.living_room_hifi_on
+      state: "off"
+      for:
+        minutes: 15
   action:
     - service: switch.turn_off
       target:
