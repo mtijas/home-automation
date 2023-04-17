@@ -144,6 +144,9 @@
       - condition: state
         entity_id: binary_sensor.sahkon_suhteellinen_hinta_korkea
         state: "on"
+      - condition: numeric_state
+        entity_id: sensor.electricity_saving_requirement
+        above: 1
   action:
     - service: switch.turn_off
       target:

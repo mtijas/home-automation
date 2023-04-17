@@ -65,16 +65,7 @@
       unit_of_measurement: "/24"
     electricity_saving_requirement:
       friendly_name: "Sähkön säästötarve"
-      value_template: >-
-        {% if (states('sensor.el_price') | float(0.0)) > 15 %}
-          1
-        {% elif (states('sensor.el_price') | float(0.0)) > 30 %}
-          2
-        {% elif (states('sensor.el_price') | float(0.0)) > 45 %}
-          3
-        {% else %}
-          0
-        {% endif %}
+      value_template: "{{ ((states('sensor.el_price') | float(0.0)) / 10) | round(0, 'floor') }}"
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"
