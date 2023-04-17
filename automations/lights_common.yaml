@@ -210,8 +210,8 @@
 
 
 
-- id: light_store_results_automation_on_mode_change
-  alias: "Valaistuksen moodien muutokset"
+- id: light_store_state_results_automation_on_mode_change
+  alias: "Valaistuksen moodien muutokset: state"
   mode: queued
   max: 20
   trigger:
@@ -249,11 +249,34 @@
                 entity_id: "input_boolean.light_result_state_{{ room }}"
         - conditions:
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
-            - "{{ is_state('input_select.home_mode', 'Awake') }}"
           sequence:
             - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_source_motion_state_'+room) }}"
               target:
                 entity_id: "input_boolean.light_result_state_{{ room }}"
+
+- id: light_store_turnoff_time:results_automation_on_mode_change
+  alias: "Valaistuksen moodien muutokset: sammutusajat"
+  mode: queued
+  max: 20
+  trigger:
+    - platform: state
+      entity_id: input_select.light_base_mode_hallway
+      variables:
+        room: hallway
+    - platform: state
+      entity_id: input_select.light_base_mode_kitchen
+      variables:
+        room: kitchen
+    - platform: state
+      entity_id: input_select.light_base_mode_toilet
+      variables:
+        room: toilet
+  action:
+    - choose:
+        - conditions:
+            - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
+            - "{{ is_state('input_select.home_mode', 'Awake') }}"
+          sequence:
             - service_template: input_number.set_value
               target:
                 entity_id: "input_number.light_result_turnoff_time_{{ room }}"
@@ -263,9 +286,6 @@
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.home_mode', 'Asleep') }}"
           sequence:
-            - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_source_motion_state_'+room) }}"
-              target:
-                entity_id: "input_boolean.light_result_state_{{ room }}"
             - service_template: input_number.set_value
               target:
                 entity_id: "input_number.light_result_turnoff_time_{{ room }}"
@@ -275,9 +295,6 @@
             - "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
             - "{{ is_state('input_select.home_mode', 'Away') }}"
           sequence:
-            - service_template: "input_boolean.turn_{{ states('input_boolean.light_auto_source_motion_state_'+room) }}"
-              target:
-                entity_id: "input_boolean.light_result_state_{{ room }}"
             - service_template: input_number.set_value
               target:
                 entity_id: "input_number.light_result_turnoff_time_{{ room }}"
