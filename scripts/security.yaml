@@ -6,6 +6,7 @@ turn_off_all_appliances:
         entity_id:
           - switch.kahvinkeitin
           - switch.tp_link_smart_plug_5f83
+          - switch.living_room_entertainment_switch
     - service: input_boolean.turn_off
       target:
         entity_id:
