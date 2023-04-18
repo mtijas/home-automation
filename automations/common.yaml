@@ -359,6 +359,8 @@
     - condition: state
       entity_id: switch.living_room_entertainment_switch
       state: "on"
+      for:
+        minutes: 15
     - condition: state
       entity_id: binary_sensor.living_room_hifi_on
       state: "off"
