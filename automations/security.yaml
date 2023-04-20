@@ -8,11 +8,6 @@
     - service: script.turn_off_all_appliances
     - service: input_select.select_option
       target:
-        entity_id: input_select.light_auto_home_mode_living_room
-      data:
-        option: "Emergency"
-    - service: input_select.select_option
-      target:
         entity_id: input_select.light_base_mode_living_room
       data:
         option: "Automatic"
@@ -70,9 +65,6 @@
     conditions:
       - condition: state
         entity_id: binary_sensor.etuovi_door_window_2
-        state: "on"
-      - condition: state
-        entity_id: binary_sensor.parvekkeen_ovi_door_window
         state: "on"
   action:
     - service: notify.telegram_notify_possula
@@ -145,9 +137,6 @@
     - platform: state
       entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
-    - platform: state
-      entity_id: binary_sensor.parvekkeen_ovi_door_window
-      to: "on"
   condition:
     - condition: state
       entity_id: alarm_control_panel.ha_alarm
@@ -186,6 +175,9 @@
       payload: "event,fire"
     - platform: state
       entity_id: binary_sensor.server_cabinet_fire_alarm
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.server_room_smoke_detector_smoke_detected
       to: "on"
   condition:
     - condition: state
