@@ -4,6 +4,11 @@ all_doors:
   entities:
     - binary_sensor.etuovi_door_window_2
     - binary_sensor.parvekkeen_ovi_door_window
+all_windows:
+  name: "Ikkunat"
+  icon: mdi:window-closed
+  entities:
+    - binary_sensor.living_room_window_sensor_state_door_window
 all_motion:
   name: "Liike"
   icon: mdi:walk
