@@ -1,18 +1,3 @@
-emergency_lights_common:
-  name: "Yleisvalaistus hätätilanteessa"
-  entities:
-    - light.keittio
-    - light.makuuhuoneen_yleisvalot
-    - light.pesuhuone
-    - light.olohuoneen_yleisvalot
-    - light.eteisen_yleisvalot
-    - light.yopoydat
-    - light.filament_1
-emergency_lights_alarm:
-  name: "Hälytysvalot"
-  entities:
-    - light.oh_lattiavalaisin
-    - light.oh_valonauhat
 master_warning:
   name: "Master Warning"
   icon: mdi:alert-outline
@@ -27,5 +12,4 @@ master_caution:
     - input_boolean.fridge_temperature_alarm
     - input_boolean.front_door_alarm
     - binary_sensor.scfb_temp_alarm
-    - binary_sensor.living_room_gas_alarm
     - binary_sensor.living_room_particle_alarm

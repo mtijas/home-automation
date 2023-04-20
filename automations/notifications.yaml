@@ -36,25 +36,6 @@
       data:
         message: "Palvelinkaapin tuuletin on pysähtynyt!"
 
-- id: gas_alarm_possula
-  alias: Gas alarm announcement through Possula
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.olohuoneen_kaasuhalytys
-      to: "on"
-      from: "off"
-  action:
-    - service: notify.telegram_notify_possula
-      data:
-        title: "Suojeluhälytys!"
-        message: >
-          Epäpuhtauksia havaittu olohuoneen ilmassa.
-    - service: script.sonos_tts_notification
-      data:
-        player_location: "media_player.olohuone"
-        message_str: >
-          Varoitus: Epäpuhtauksia havaittu olohuoneen ilmassa.
-
 - id: telegram_heartbeat
   alias: "Heartbeat-viesti Telegramiin"
   trigger:
