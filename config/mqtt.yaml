@@ -164,7 +164,7 @@ sensor:
 
 # SCFB CH 2
 
-- name: "SCFB CH2 temperature"
+  - name: "SCFB CH2 temperature"
     state_topic: "fancontrolbridge/ch2/status"
     unit_of_measurement: "°C"
     value_template: "{{ value_json.temp }}"
