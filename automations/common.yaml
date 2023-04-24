@@ -309,6 +309,54 @@
         qos: 1
         retain: 0
 
+- alias: "Send SCFB CH2 KP on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch2_kp
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/commands"
+        payload_template: '{"command": "SET_KP", "channel": 2, "value": {{ states("input_number.scfb_ch2_kp") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send SCFB CH2 KI on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch2_ki
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/commands"
+        payload_template: '{"command": "SET_KI", "channel": 2, "value": {{ states("input_number.scfb_ch2_ki") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send SCFB CH2 KD on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch2_kd
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/commands"
+        payload_template: '{"command": "SET_KD", "channel": 2, "value": {{ states("input_number.scfb_ch2_kd") }} }'
+        qos: 1
+        retain: 0
+
+- alias: "Send SCFB CH2 Target on change"
+  trigger:
+    - platform: state
+      entity_id: input_number.scfb_ch2_target
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "fancontrolbridge/commands"
+        payload_template: '{"command": "SET_TARGET", "channel": 2, "value": {{ states("input_number.scfb_ch2_target") }} }'
+        qos: 1
+        retain: 0
+
 - alias: "Send FCB test CH1 KP on change"
   trigger:
     - platform: state
