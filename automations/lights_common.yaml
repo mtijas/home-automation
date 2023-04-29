@@ -73,6 +73,8 @@
             - "{{ is_state('input_boolean.light_result_state_'+room, 'on') }}"
             - condition: time
               before: "20:30:00"
+            - condition: time
+              after: "07:59:59"
           sequence:
             - service: scene.turn_on
               target:
