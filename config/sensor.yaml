@@ -95,11 +95,10 @@
     - "ihala, raisio"
 
 - platform: rest
-  scan_interval: 90  # Every 1,5 minutes should be more than enough
+  scan_interval: 90 # Every 1,5 minutes should be more than enough
   name: "spot_hinta_fi"
-  resource: https://api.spot-hinta.fi/JustNow  
+  resource: https://api.spot-hinta.fi/JustNow
   method: GET
-  device_class: monetary
   force_update: true
   json_attributes:
     - DateTime
