@@ -101,8 +101,5 @@
   method: GET
   force_update: true
   json_attributes:
-    - DateTime
     - PriceWithTax
-    - PriceNoTax
     - Rank
-  state_class: measurement
