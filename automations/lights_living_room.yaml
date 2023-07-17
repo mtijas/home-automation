@@ -26,6 +26,9 @@
       event_data:
         id: olohuoneen_himmenninkytkin_button
         type: short_release
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_living_room', 'Automatic') }}"
   action:
     - choose:
         - conditions:
@@ -37,11 +40,74 @@
                 entity_id: input_boolean.light_auto_source_motion_state_living_room
         - conditions:
             - condition: template
+              value_template: "{{ trigger.event.data.subtype == 2 }}"
+          sequence:
+            - service: input_boolean.turn_on
+              target:
+                entity_id: input_boolean.light_auto_source_motion_state_living_room
+            - service: scene.turn_on
+              target:
+                entity_id: "scene.olohuone_paiva"
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.event.data.subtype == 3 }}"
+          sequence:
+            - service: input_boolean.turn_on
+              target:
+                entity_id: input_boolean.light_auto_source_motion_state_living_room
+            - service: scene.turn_on
+              target:
+                entity_id: "scene.olohuone_yo"
+        - conditions:
+            - condition: template
               value_template: "{{ trigger.event.data.subtype == 4 }}"
           sequence:
             - service: input_boolean.turn_off
               target:
                 entity_id: input_boolean.light_auto_source_motion_state_living_room
+
+- id: living_room_hue_dimmer_1_manual_living_room_lights
+  alias: "Olohuoneen himmenninkytkimen valo-ohjaukset käsiohjauksella"
+  mode: queued
+  trigger:
+    - platform: event
+      event_type: hue_event
+      event_data:
+        id: olohuoneen_himmenninkytkin_button
+        type: short_release
+  condition:
+    - condition: template
+      value_template: "{{ is_state('input_select.light_base_mode_living_room', 'Manual') }}"
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.event.data.subtype == 1 }}"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: "light.olohuone"
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.event.data.subtype == 2 }}"
+          sequence:
+            - service: scene.turn_on
+              target:
+                entity_id: "scene.olohuone_paiva"
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.event.data.subtype == 3 }}"
+          sequence:
+            - service: scene.turn_on
+              target:
+                entity_id: "scene.olohuone_yo"
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.event.data.subtype == 4 }}"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: "light.olohuone"
 
 - id: living_room_hue_dimmer_1_base_mode_control_living_room_lights
   alias: "Olohuoneen himmenninkytkimen base mode -ohjaukset"
@@ -68,6 +134,18 @@
                 entity_id: input_boolean.light_result_state_living_room
         - conditions:
             - condition: template
+              value_template: "{{ trigger.event.data.subtype == 2 }}"
+          sequence:
+            - service: input_select.select_option
+              target:
+                entity_id: input_select.light_base_mode_living_room
+              data:
+                option: "Manual"
+            - service: light.turn_on
+              target:
+                entity_id: "light.olohuone"
+        - conditions:
+            - condition: template
               value_template: "{{ trigger.event.data.subtype == 3 }}"
           sequence:
             - service: input_select.select_option
@@ -75,12 +153,23 @@
                 entity_id: input_select.light_base_mode_living_room
               data:
                 option: "Manual"
+            - service: light.turn_off
+              target:
+                entity_id: "light.olohuone"
         - conditions:
             - condition: template
               value_template: "{{ trigger.event.data.subtype == 4 }}"
           sequence:
+            - service: light.turn_off
+              target:
+                entity_id: "light.olohuone"
             - service: input_select.select_option
               target:
                 entity_id: input_select.light_base_mode_living_room
               data:
                 option: "Off"
+            - service: input_select.select_option
+              target:
+                entity_id: input_select.light_base_mode_living_room
+              data:
+                option: "Automatic"
