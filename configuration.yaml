@@ -40,7 +40,6 @@ energy:
 # COMPONENTS WITH EXTERNAL CONFIG #
 ###################################
 
-discovery: !include config/discovery.yaml
 zone: !include config/zone.yaml
 mqtt: !include config/mqtt.yaml
 recorder: !include config/recorder.yaml
