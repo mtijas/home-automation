@@ -46,7 +46,7 @@ reverse_emergency_state:
         player_location: "media_player.olohuone"
         message_str: >
           Hälytykset kuitattu.
-    - service: notify.telegram_notify_possula
+    - service: notify.all_devices
       data:
         title: "Hälytykset kuitattu"
         message: "Hälytykset kuitattu."
@@ -74,7 +74,7 @@ raise_alarm:
       data:
         player_location: "media_player.olohuone"
         message_str: "{{ alarm_message }}"
-    - service: notify.telegram_notify_possula
+    - service: notify.all_devices
       data:
         title: "{{ alarm_title }}"
         message: "{{ alarm_message }}"

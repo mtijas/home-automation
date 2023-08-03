@@ -14,7 +14,7 @@
 #     - service: input_boolean.turn_on
 #       target:
 #         entity_id: input_boolean.fridge_temperature_alarm
-#     - service: notify.telegram_notify_possula
+#     - service: notify.main_mobile_phones
 #       data:
 #         message: "Jääkaapin lämpötila on alhainen."
 # 
@@ -34,7 +34,7 @@
 #     - service: input_boolean.turn_on
 #       target:
 #         entity_id: input_boolean.fridge_temperature_alarm
-#     - service: notify.telegram_notify_possula
+#     - service: notify.main_mobile_phones
 #       data:
 #         message: "Jääkaapin lämpötila on korkea."
 # 
@@ -77,7 +77,7 @@
         player_location: "media_player.olohuone"
         message_str: >
           "Etuovi on jäänyt auki."
-    - service: notify.telegram_notify_possula
+    - service: notify.main_mobile_phones
       data:
         message: "Etuovi on jäänyt auki."
 

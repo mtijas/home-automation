@@ -1,16 +1,15 @@
-- name: Telegram_Notify_Markus
-  platform: telegram
-  chat_id: !secret telegram_chatid_markus
-
-- name: Telegram_Notify_Possula
-  platform: telegram
-  chat_id: !secret telegram_chatid_possula
-
 - name: ALL_DEVICES
   platform: group
   services:
-    - service: mobile_app_nokia_6_2
-    - service: mobile_app_markuksen_iphone
+    - service: mobile_app_ipad
+    - service: mobile_app_iphone_veera
+    - service: mobile_app_markuksen_nothing_phone
+
+- name: main_mobile_phones
+  platform: group
+  services:
+    - service: mobile_app_iphone_veera
+    - service: mobile_app_markuksen_nothing_phone
 
 - name: syslog_info
   platform: syslog

@@ -14,7 +14,7 @@ panic_alarm:
   can_acknowledge: True
   skip_first: False
   notifiers:
-    - telegram_notify_possula
+    - ALL_DEVICES
 
 fire_alarm:
   name: "PALOHÄLYTYS!"
@@ -32,7 +32,7 @@ fire_alarm:
   can_acknowledge: True
   skip_first: False
   notifiers:
-    - telegram_notify_possula
+    - ALL_DEVICES
 
 burglar_alarm:
   name: "MURTOHÄLYTYS!"
@@ -50,4 +50,4 @@ burglar_alarm:
   can_acknowledge: True
   skip_first: False
   notifiers:
-    - telegram_notify_possula
+    - ALL_DEVICES

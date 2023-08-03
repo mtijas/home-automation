@@ -67,7 +67,7 @@
         entity_id: binary_sensor.etuovi_door_window_2
         state: "on"
   action:
-    - service: notify.telegram_notify_possula
+    - service: notify.main_mobile_phones
       data:
         message: "Asunto ei ole suojattu, joten murtohälytintä ei voitu aktivoida. Tarkista asunto ja yritä uudelleen."
     - service: mqtt.publish
@@ -94,7 +94,7 @@
     - service: input_boolean.turn_off
       target:
         entity_id: input_boolean.motion_notify
-    - service: notify.telegram_notify_possula
+    - service: notify.main_mobile_phones
       data:
         message: "Liikettä havaittu!"
     - service: notify.syslog_info
@@ -286,7 +286,7 @@
       entity_id: input_boolean.perimeter_notifications
       state: "on"
   action:
-    - service: notify.telegram_notify_possula
+    - service: notify.main_mobile_phones
       data:
         message: "{{ trigger.to_state.name }} on avattu"
     - service: notify.syslog_info

@@ -4,7 +4,7 @@
     - at: "06:20:00"
       platform: time
   action:
-    - service: notify.telegram_notify_possula
+    - service: notify.main_mobile_phones
       data:
         message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature_2") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
 
@@ -20,7 +20,7 @@
       data:
         player_location: "media_player.olohuone"
         message_str: "Palvelinkaapin lämpötilahälytys!"
-    - service: notify.telegram_notify_possula
+    - service: notify.mobile_app_markuksen_nothing_phone
       data:
         message: "Palvelinkaapin lämpötilahälytys!"
 
@@ -32,12 +32,12 @@
       to: "on"
       from: "off"
   action:
-    - service: notify.telegram_notify_possula
+    - service: notify.mobile_app_markuksen_nothing_phone
       data:
         message: "Palvelinkaapin tuuletin on pysähtynyt!"
 
-- id: telegram_heartbeat
-  alias: "Heartbeat-viesti Telegramiin"
+- id: notification_heartbeat
+  alias: "Heartbeat-viesti"
   trigger:
     - platform: time
       at: "12:00:00"
@@ -55,7 +55,7 @@
         for:
           hours: 12
   action:
-    - service: notify.telegram_notify_possula
+    - service: notify.main_mobile_phones
       data:
         message:
           'Olohuoneessa on {{ states("sensor.living_room_bt_sensor_temperature") }} °C ja suhteellinen kosteus

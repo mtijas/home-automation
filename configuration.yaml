@@ -51,7 +51,6 @@ input_boolean: !include config/input_boolean.yaml
 input_number: !include config/input_number.yaml
 input_select: !include config/input_select.yaml
 timer: !include config/timer.yaml
-telegram_bot: !include config/telegram_bot.yaml
 notify: !include config/notify.yaml
 panel_iframe: !include config/panel_iframe.yaml
 alarm_control_panel: !include config/alarm_control_panel.yaml
