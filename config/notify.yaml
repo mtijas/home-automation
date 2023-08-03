@@ -2,13 +2,13 @@
   platform: group
   services:
     - service: mobile_app_ipad
-    - service: mobile_app_iphone_veera
+    - service: mobile_app_iphone_12_veera
     - service: mobile_app_markuksen_nothing_phone
 
 - name: main_mobile_phones
   platform: group
   services:
-    - service: mobile_app_iphone_veera
+    - service: mobile_app_iphone_12_veera
     - service: mobile_app_markuksen_nothing_phone
 
 - name: syslog_info
