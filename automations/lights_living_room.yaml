@@ -57,7 +57,7 @@
                 entity_id: input_boolean.light_auto_source_motion_state_living_room
             - service: scene.turn_on
               target:
-                entity_id: "scene.olohuone_yo"
+                entity_id: "scene.olohuone_ilta"
         - conditions:
             - condition: template
               value_template: "{{ trigger.event.data.subtype == 4 }}"
@@ -100,7 +100,7 @@
           sequence:
             - service: scene.turn_on
               target:
-                entity_id: "scene.olohuone_yo"
+                entity_id: "scene.olohuone_ilta"
         - conditions:
             - condition: template
               value_template: "{{ trigger.event.data.subtype == 4 }}"
