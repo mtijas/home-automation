@@ -237,7 +237,7 @@ cards:
         entities:
           - entity: binary_sensor.etuovi_door_window_2
             secondary_info: last-changed
-          - entity: binary_sensor.parvekkeen_ovi_door_window
+          - entity: binary_sensor.parvekkeen_ovi_sensor_state_door_window_2
             secondary_info: last-changed
 
   - type: vertical-stack

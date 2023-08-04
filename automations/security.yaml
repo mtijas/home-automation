@@ -279,7 +279,7 @@
       entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
     - platform: state
-      entity_id: binary_sensor.parvekkeen_ovi_door_window
+      entity_id: binary_sensor.parvekkeen_ovi_sensor_state_door_window_2
       to: "on"
   condition:
     - condition: state

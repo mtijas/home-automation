@@ -3,7 +3,7 @@ all_doors:
   icon: mdi:door-closed
   entities:
     - binary_sensor.etuovi_door_window_2
-    - binary_sensor.parvekkeen_ovi_door_window
+    - binary_sensor.parvekkeen_ovi_sensor_state_door_window_2
 all_windows:
   name: "Ikkunat"
   icon: mdi:window-closed

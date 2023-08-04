@@ -142,7 +142,7 @@
       entity_id: sensor.bedroom_bt_sensor_humidity
       below: input_number.bedroom_humidifier_start_point
     - condition: state
-      entity_id: binary_sensor.parvekkeen_ovi_door_window
+      entity_id: binary_sensor.parvekkeen_ovi_sensor_state_door_window_2
       state: "off"
     - or:
       - condition: state
@@ -178,7 +178,7 @@
         entity_id: sensor.electricity_saving_requirement
         above: 1
       - condition: state
-        entity_id: binary_sensor.parvekkeen_ovi_door_window
+        entity_id: binary_sensor.parvekkeen_ovi_sensor_state_door_window_2
         state: "on"
   action:
     - service: switch.turn_off
