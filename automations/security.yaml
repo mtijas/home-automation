@@ -390,7 +390,7 @@
               state:
                 - armed_away
                 - armed_night
-                - armied_home
+                - armed_home
                 - pending
                 - triggered
           sequence:

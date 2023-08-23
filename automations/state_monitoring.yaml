@@ -57,20 +57,36 @@
 #         entity_id: input_boolean.fridge_temperature_alarm
 
 - id: front_door_left_open_notification
-  alias: "Etuoven valvonta ovi auki"
+  alias: "Ovien ja ikkunoiden aukiolovalvonta"
   trigger:
     - platform: state
       entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
+      for:
+        minutes: 15
+      variables:
+        human_name: "Etuovi"
+    - platform: state
+      entity_id: binary_sensor.valiovi_sensor_state_door_window
+      to: "on"
+      for:
+        minutes: 15
+      variables:
+        human_name: "Väliovi"
   action:
-    - service: script.sonos_tts_notification
-      data:
-        player_location: "media_player.olohuone"
-        message_str: >
-          "Etuovi on jäänyt auki."
-    - service: notify.main_mobile_phones
-      data:
-        message: "Etuovi on jäänyt auki."
+    - choose:
+        - conditions:
+            - "{{ is_state('input_select.home_mode', 'Awake') }}"
+          sequence:
+            - service: script.sonos_tts_notification
+              data:
+                player_location: "media_player.olohuone"
+                message_str: >
+                  "{{ human_name }} on jäänyt auki."
+      default:
+        - service: notify.main_mobile_phones
+          data:
+            message: "{{ human_name }} on jäänyt auki."
 
 # - id: force_update_sensors_for_grafana
 #   alias: "Force update sensors for Grafana"
