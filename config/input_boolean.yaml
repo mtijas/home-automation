@@ -19,12 +19,6 @@ perimeter_notifications:
   name: "Kuorivalvonta"
   initial: on
   icon: mdi:vector-square
-fridge_temperature_alarm:
-  name: "Jääkaapin lämpötilahälytys"
-  initial: off
-  icon: mdi:fridge-bottom
-front_door_alarm:
-  name: "Etuoven aukijääntihälytys"
 motion_notify:
   name: "Liikeilmoitus"
   icon: mdi:bell-outline

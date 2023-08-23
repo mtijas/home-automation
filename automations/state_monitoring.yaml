@@ -56,22 +56,13 @@
 #       target:
 #         entity_id: input_boolean.fridge_temperature_alarm
 
-- id: front_door_alarm_open
+- id: front_door_left_open_notification
   alias: "Etuoven valvonta ovi auki"
   trigger:
     - platform: state
       entity_id: binary_sensor.etuovi_door_window_2
       to: "on"
-      for:
-        minutes: 15
-  condition:
-    - condition: state
-      entity_id: input_boolean.front_door_alarm
-      state: "off"
   action:
-    - service: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.front_door_alarm
     - service: script.sonos_tts_notification
       data:
         player_location: "media_player.olohuone"
@@ -80,21 +71,6 @@
     - service: notify.main_mobile_phones
       data:
         message: "Etuovi on jäänyt auki."
-
-- id: front_door_alarm_clear
-  alias: "Etuoven valvonnan kuittaus"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.etuovi_door_window_2
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.front_door_alarm
-      state: "on"
-  action:
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.front_door_alarm
 
 # - id: force_update_sensors_for_grafana
 #   alias: "Force update sensors for Grafana"

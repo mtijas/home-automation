@@ -62,6 +62,17 @@
         seconds: 20
       value_template: >-
         {{ states('sensor.living_room_entertainment_plug_power') | float(0.0) > 13 }}
+    front_door_open_alarm:
+      friendly_name: "Etuovi on jäänyt auki"
+      delay_on:
+        minutes: 15
+- platform: state
+  friendly_name: "Etuovi on jäänyt auki"
+  delay_on:
+    minutes: 15
+  resource: "binary_sensor.etuovi_door_window_2"
+  state: on
+  device_class: "problem"
 - platform: rest
   resource: !secret hue_sensor_3
   value_template: "{{ value_json.state.presence }}"
@@ -101,7 +112,7 @@
       sample_duration: 7200
       min_gradient: -0.00055
       max_samples: 480
-      friendly_name: "Ilmanpaineen trendi"
+      friendly_name: "Myrsky tulossa"
 # - platform: aurora
 #   forecast_threshold: 50
 - platform: threshold
