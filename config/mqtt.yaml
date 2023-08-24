@@ -166,6 +166,8 @@ sensor:
 
   - name: "SCFB Command Results"
     state_topic: "fancontrolbridge/command-results"
+    value_template: "{{ value_json.type }}"
+    json_attributes_topic: "fancontrolbridge/command-results"
 
   - name: "SCFB Commands"
     state_topic: "fancontrolbridge/commands"
