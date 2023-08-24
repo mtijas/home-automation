@@ -19,6 +19,7 @@ homeassistant:
 # COMPONENTS WITHOUT CONFIG #
 #############################
 
+default_config:
 cloud:
 conversation:
 history:
