@@ -162,44 +162,6 @@ sensor:
     state_topic: "fancontrolbridge/ch1/settings"
     value_template: "{{ value_json.kd }}"
 
-# SCFB CH 2
-
-  - name: "SCFB CH2 temperature"
-    state_topic: "fancontrolbridge/ch2/status"
-    unit_of_measurement: "°C"
-    value_template: "{{ value_json.temp }}"
-
-  - name: "SCFB CH2 target"
-    state_topic: "fancontrolbridge/ch2/status"
-    unit_of_measurement: "°C"
-    value_template: "{{ value_json.target }}"
-
-  - name: "SCFB CH2 speed"
-    state_topic: "fancontrolbridge/ch2/status"
-    unit_of_measurement: "rpm"
-    value_template: "{{ value_json.speed }}"
-
-  - name: "SCFB CH2 output"
-    state_topic: "fancontrolbridge/ch2/status"
-    unit_of_measurement: "PID"
-    value_template: "{{ value_json.output }}"
-
-  - name: "SCFB CH2 mode"
-    state_topic: "fancontrolbridge/ch2/settings"
-    value_template: "{{ value_json.mode }}"
-
-  - name: "SCFB CH2 kp"
-    state_topic: "fancontrolbridge/ch2/settings"
-    value_template: "{{ value_json.kp }}"
-
-  - name: "SCFB CH2 ki"
-    state_topic: "fancontrolbridge/ch2/settings"
-    value_template: "{{ value_json.ki }}"
-
-  - name: "SCFB CH2 kd"
-    state_topic: "fancontrolbridge/ch2/settings"
-    value_template: "{{ value_json.kd }}"
-
 # SCFB Common
 
   - name: "SCFB Command Results"

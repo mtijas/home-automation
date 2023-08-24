@@ -170,30 +170,6 @@ scfb_ch1_target:
   step: 0.1
   mode: box
   name: "SCFB CH1 Target"
-scfb_ch2_kp:
-  min: 0.0
-  max: 100.0
-  step: 0.1
-  mode: box
-  name: "SCFB CH2 KP"
-scfb_ch2_ki:
-  min: 0.0
-  max: 100.0
-  step: 0.1
-  mode: box
-  name: "SCFB CH2 KI"
-scfb_ch2_kd:
-  min: 0.0
-  max: 100.0
-  step: 0.1
-  mode: box
-  name: "SCFB CH2 KD"
-scfb_ch2_target:
-  min: 10.0
-  max: 40.0
-  step: 0.1
-  mode: box
-  name: "SCFB CH2 Target"
 
 scfb_temp_alarm_threshold:
   min: 0.1
@@ -226,27 +202,3 @@ fcb_test_ch1_target:
   step: 0.1
   mode: box
   name: "FCB Test CH1 Target"
-fcb_test_ch2_kp:
-  min: 0.0
-  max: 100.0
-  step: 0.1
-  mode: box
-  name: "FCB Test CH2 KP"
-fcb_test_ch2_ki:
-  min: 0.0
-  max: 100.0
-  step: 0.1
-  mode: box
-  name: "FCB Test CH2 KI"
-fcb_test_ch2_kd:
-  min: 0.0
-  max: 100.0
-  step: 0.1
-  mode: box
-  name: "FCB Test CH2 KD"
-fcb_test_ch2_target:
-  min: 10.0
-  max: 40.0
-  step: 0.1
-  mode: box
-  name: "FCB Test CH2 Target"
