@@ -42,7 +42,7 @@
         payload: "away"
         qos: 1
         retain: 1
-    - service: script.living_room_camera_to_hallway
+    - service: script.living_room_camera_to_entertainment
     - service: script.hallway_camera_to_front_door
 
 - id: emergency_mode_state_set
@@ -58,7 +58,7 @@
         payload: "emergency"
         qos: 1
         retain: 1
-    - service: script.living_room_camera_to_hallway
+    - service: script.living_room_camera_to_entertainment
     - service: script.hallway_camera_to_front_door
 
 - id: automated_away_mode
