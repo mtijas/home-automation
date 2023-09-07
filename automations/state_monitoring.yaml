@@ -99,4 +99,3 @@
 #         entity_id: >
 #           - sensor.lr_brightness_target
 #           - sensor.lr_brightness_setting
-#           - sensor.scfb_setpoint

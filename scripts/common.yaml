@@ -34,23 +34,3 @@ sonos_tts_notification:
     - service: sonos.restore
       data:
         entity_id: "{{ player_location }}"
-
-fcb_test_command:
-  alias: "Send FCB test Command"
-  sequence:
-    - service: mqtt.publish
-      data:
-        topic: "fancontrolbridge/test/commands"
-        payload: "{\"command\": \"{{ cmd }}\", \"channel\": {{ ch }}, \"value\": {{ val }} }"
-        qos: 1
-        retain: 0
-
-scfb_command:
-  alias: "Send SCFB Command"
-  sequence:
-    - service: mqtt.publish
-      data:
-        topic: "fancontrolbridge/commands"
-        payload: "{\"command\": \"{{ cmd }}\", \"channel\": {{ ch }}, \"value\": {{ val }} }"
-        qos: 1
-        retain: 0

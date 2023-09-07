@@ -62,8 +62,6 @@ cards:
           - input_boolean.panic_alarm_raised
           - input_boolean.fridge_temperature_alarm
           - input_boolean.front_door_alarm
-          - binary_sensor.scfb_temp_alarm
-          - binary_sensor.scfb_fan_alarm
           - binary_sensor.olohuoneen_kaasuhalytys
         state_filter:
           - "on"
@@ -186,8 +184,6 @@ cards:
           - input_boolean.panic_alarm_raised
           - input_boolean.fridge_temperature_alarm
           - input_boolean.front_door_alarm
-          - binary_sensor.scfb_temp_alarm
-          - binary_sensor.scfb_fan_alarm
           - binary_sensor.olohuoneen_kaasuhalytys
           - input_boolean.perimeter_notifications
           - input_boolean.motion_notify

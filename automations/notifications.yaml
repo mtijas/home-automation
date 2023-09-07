@@ -8,34 +8,6 @@
       data:
         message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature_2") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
 
-- id: scfb_temp_alarm
-  alias: "SCFB Temp Alarm"
-  trigger:
-    - entity_id: binary_sensor.scfb_temp_alarm
-      platform: state
-      to: "on"
-      from: "off"
-  action:
-    - service: script.sonos_tts_notification
-      data:
-        player_location: "media_player.olohuone"
-        message_str: "Palvelinkaapin lämpötilahälytys!"
-    - service: notify.mobile_app_markuksen_nothing_phone
-      data:
-        message: "Palvelinkaapin lämpötilahälytys!"
-
-- id: scfb_fan_alarm
-  alias: "SCFB Fan Stop Alarm"
-  trigger:
-    - entity_id: binary_sensor.scfb_fan_alarm
-      platform: state
-      to: "on"
-      from: "off"
-  action:
-    - service: notify.mobile_app_markuksen_nothing_phone
-      data:
-        message: "Palvelinkaapin tuuletin on pysähtynyt!"
-
 - id: notification_heartbeat
   alias: "Heartbeat-viesti"
   trigger:

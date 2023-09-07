@@ -10,8 +10,5 @@ master_caution:
   icon: mdi:alert-circle-outline
   entities:
     - input_boolean.front_door_alarm
-    - binary_sensor.scfb_temp_alarm
     - binary_sensor.living_room_particle_alarm
-    - binary_sensor.scfb_mode_alarm
-    - binary_sensor.scfb_fan_alarm
     - binary_sensor.pressure_trend_storm

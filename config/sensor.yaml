@@ -66,10 +66,6 @@
     electricity_saving_requirement:
       friendly_name: "Sähkön säästötarve"
       value_template: "{{ ((states('sensor.el_price') | float(0.0)) / 8) | round(0, 'floor') }}"
-    scfb_temp_difference:
-      friendly_name: "Poikkeama"
-      value_template: "{{ ((states('sensor.scfb_ch1_temperature') | float(0.0)) - (states('sensor.scfb_ch1_target') | float(0.0))) | round(1) }}"
-      unit_of_measurement: "°C"
 - platform: rest
   resource: !secret hue_sensor_2
   value_template: "{{ value_json.config.battery }}"

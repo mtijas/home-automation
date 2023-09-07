@@ -174,9 +174,6 @@
       topic: "notify/cmd"
       payload: "event,fire"
     - platform: state
-      entity_id: binary_sensor.server_cabinet_fire_alarm
-      to: "on"
-    - platform: state
       entity_id: binary_sensor.server_room_smoke_detector_smoke_detected
       to: "on"
   condition:
