@@ -6,11 +6,6 @@
   max: 20
   trigger:
     - platform: state
-      entity_id: input_boolean.light_result_state_living_room
-      variables:
-        room: living_room
-        target_zone: olohuone
-    - platform: state
       entity_id: input_boolean.light_result_state_hallway
       variables:
         room: hallway
@@ -25,16 +20,6 @@
       variables:
         room: toilet
         target_zone: pesuhuone
-    - platform: state
-      entity_id: input_boolean.light_result_state_bedroom
-      variables:
-        room: bedroom
-        target_zone: makuuhuone
-    - platform: state
-      entity_id: input_boolean.light_result_state_office
-      variables:
-        room: office
-        target_zone: tyohuoneen_yleisvalaistus
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -128,10 +113,6 @@
   mode: queued
   trigger:
     - platform: state
-      entity_id: input_boolean.light_auto_source_motion_state_living_room
-      variables:
-        room: living_room
-    - platform: state
       entity_id: input_boolean.light_auto_source_motion_state_hallway
       variables:
         room: hallway
@@ -143,14 +124,6 @@
       entity_id: input_boolean.light_auto_source_motion_state_toilet
       variables:
         room: toilet
-    - platform: state
-      entity_id: input_boolean.light_auto_source_motion_state_bedroom
-      variables:
-        room: bedroom
-    - platform: state
-      entity_id: input_boolean.light_auto_source_motion_state_office
-      variables:
-        room: office
   condition:
     - condition: template
       value_template: "{{ is_state('input_select.light_base_mode_'+room, 'Automatic') }}"
@@ -245,14 +218,6 @@
   max: 20
   trigger:
     - platform: state
-      entity_id: input_select.light_base_mode_living_room
-      variables:
-        room: living_room
-    - platform: state
-      entity_id: input_select.light_base_mode_office
-      variables:
-        room: office
-    - platform: state
       entity_id: input_select.light_base_mode_hallway
       variables:
         room: hallway
@@ -264,10 +229,6 @@
       entity_id: input_select.light_base_mode_toilet
       variables:
         room: toilet
-    - platform: state
-      entity_id: input_select.light_base_mode_bedroom
-      variables:
-        room: bedroom
   action:
     - choose:
         - conditions:

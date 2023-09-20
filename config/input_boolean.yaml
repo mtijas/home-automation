@@ -39,28 +39,6 @@ guests:
   icon: mdi:human-capacity-increase
 
 
-# Living room lights
-
-light_auto_source_motion_state_living_room:
-  name: "OH Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_result_state_living_room:
-  name: "OH Valaistuksen ohjaus"
-  icon: mdi:lightbulb-on-outline
-
-
-# Office lights
-
-light_auto_source_motion_state_office:
-  name: "Toimiston Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_result_state_office:
-  name: "Toimiston valaistuksen ohjaus"
-  icon: mdi:led-strip-variant
-
-
 # Hallway lights
 
 light_auto_source_motion_state_hallway:
@@ -91,15 +69,4 @@ light_auto_source_motion_state_toilet:
 
 light_result_state_toilet:
   name: "WC:n valaistuksen ohjaus"
-  icon: mdi:lightbulb-on-outline
-
-
-# Bedroom lights
-
-light_auto_source_motion_state_bedroom:
-  name: "Makuuhuoneen Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_result_state_bedroom:
-  name: "Makuuhuoneen valaistuksen ohjaus"
   icon: mdi:lightbulb-on-outline

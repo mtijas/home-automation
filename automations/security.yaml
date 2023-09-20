@@ -337,6 +337,12 @@
     - service: input_boolean.turn_off
       target:
         entity_id: input_boolean.ack_master_caution
+    - service: mqtt.publish
+      data:
+        topic: "notify/cmd"
+        payload: "event,clear"
+        qos: 1
+        retain: 0
 
 - id: clear_master_caution_if_acked_and_group_safe
   alias: "Clears Master Caution if acked and group goes safe"
@@ -355,6 +361,12 @@
     - service: input_boolean.turn_off
       target:
         entity_id: input_boolean.ack_master_caution
+    - service: mqtt.publish
+      data:
+        topic: "notify/cmd"
+        payload: "event,clear"
+        qos: 1
+        retain: 0
 
 - id: burglar_alarm_tag_scan
   alias: "Toggles burglar alarm between away-disarmed on tag scan"

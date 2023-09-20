@@ -9,30 +9,6 @@ home_mode:
   icon: mdi:home-circle
 
 
-# Living room lights
-
-light_base_mode_living_room:
-  name: "OH valoautomatiikka"
-  options:
-    - "Off"
-    - "Manual"
-    - "Automatic"
-  initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-
-# Office lights
-
-light_base_mode_office:
-  name: "Toimiston valoautomatiikka"
-  options:
-    - "Off"
-    - "Manual"
-    - "Automatic"
-  initial: "Automatic"
-  icon: mdi:lightbulb-auto
-
-
 # Hallway lights
 
 light_base_mode_hallway:
@@ -68,14 +44,3 @@ light_base_mode_kitchen:
   initial: "Automatic"
   icon: mdi:lightbulb-auto
 
-
-# Bedroom lights
-
-light_base_mode_bedroom:
-  name: "Makuuhuoneen valoautomatiikka"
-  options:
-    - "Off"
-    - "Manual"
-    - "Automatic"
-  initial: "Automatic"
-  icon: mdi:lightbulb-auto
