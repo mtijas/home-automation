@@ -89,10 +89,6 @@
     - "time"
     - "date"
     - "beat"
-- platform: waqi
-  token: !secret aqicn_api_token
-  locations:
-    - "ihala, raisio"
 
 - platform: rest
   scan_interval: 90 # Every 1,5 minutes should be more than enough

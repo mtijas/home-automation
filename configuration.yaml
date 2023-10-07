@@ -31,7 +31,6 @@ device_tracker:
 config:
 http:
 mobile_app:
-python_script:
 person:
 ffmpeg:
 media_source:
