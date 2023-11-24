@@ -12,3 +12,5 @@ master_caution:
     - input_boolean.front_door_alarm
     - binary_sensor.living_room_particle_alarm
     - binary_sensor.pressure_trend_storm
+    - binary_sensor.electric_supply_voltage_low
+    - binary_sensor.electric_supply_voltage_high

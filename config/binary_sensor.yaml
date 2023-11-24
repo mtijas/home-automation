@@ -36,6 +36,14 @@
         minutes: 15
       value_template: "{{ is_state('binary_sensor.etuovi_door_window_2', 'on') }}"
       device_class: "problem"
+    electric_supply_voltage_low:
+      value_template: "{{ (states('sensor.asustor_input_voltage') | float(0.0)) < 207 }}"
+      friendly_name: "Sähköverkon jännite alhainen"
+      device_class: "problem"
+    electric_supply_voltage_high:
+      value_template: "{{ (states('sensor.asustor_input_voltage') | float(0.0)) > 253 }}"
+      friendly_name: "Sähköverkon jännite korkea"
+      device_class: "problem"
 - platform: rest
   resource: !secret hue_sensor_3
   value_template: "{{ value_json.state.presence }}"
