@@ -24,6 +24,9 @@
     google_ping_round_time:
       value_template: "{{ state_attr('binary_sensor.ping_google', 'round_trip_time_avg') | float(0.0) }}"
       unit_of_measurement: "ms"
+    living_room_ap_ping_round_time:
+      value_template: "{{ state_attr('binary_sensor.ping_living_room_ap', 'round_trip_time_avg') | float(0.0) }}"
+      unit_of_measurement: "ms"
     pressure_hourly_trend:
       value_template: "{{ ((state_attr('binary_sensor.pressure_trend_storm', 'gradient') | float(0.0)) * 3600) | round(2) }}"
       friendly_name: "Ilmanpaineen trendi (hPa/h)"
