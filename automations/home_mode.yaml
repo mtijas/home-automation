@@ -124,9 +124,12 @@
 - id: automated_night_mode_enabling
   alias: "Yötilan aktivointi automaattisesti"
   trigger:
-    - platform: state
-      entity_id: light.yopoydat
-      to: "on"
+    - device_id: 79a49a8fe034e5632429842fbdb4a869
+      domain: hue
+      platform: device
+      type: initial_press
+      subtype: 4
+      unique_id: f44ae3c1-58dd-4f14-8b9e-938db3aadf55
   condition:
     - condition: state
       entity_id: group.master_warning

@@ -37,36 +37,3 @@ ack_master_caution:
 guests:
   name: "Guests"
   icon: mdi:human-capacity-increase
-
-
-# Hallway lights
-
-light_auto_source_motion_state_hallway:
-  name: "Käytävän Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_result_state_hallway:
-  name: "Käytävän valaistuksen ohjaus"
-  icon: mdi:lightbulb-on-outline
-
-
-# Kitchen lights
-
-light_auto_source_motion_state_kitchen:
-  name: "Keittiön Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_result_state_kitchen:
-  name: "Keittiön valaistuksen ohjaus"
-  icon: mdi:lightbulb-on-outline
-
-
-# Toilet lights
-
-light_auto_source_motion_state_toilet:
-  name: "WC:n Liiketunnistus"
-  icon: mdi:lightbulb-auto
-
-light_result_state_toilet:
-  name: "WC:n valaistuksen ohjaus"
-  icon: mdi:lightbulb-on-outline
