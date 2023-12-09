@@ -88,8 +88,6 @@
       min_gradient: -0.00055
       max_samples: 480
       friendly_name: "Myrsky tulossa"
-# - platform: aurora
-#   forecast_threshold: 50
 - platform: threshold
   entity_id: sensor.pressure_hourly_trend
   name: "Sää huononee nopeasti"
