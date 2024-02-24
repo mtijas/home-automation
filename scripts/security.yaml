@@ -4,14 +4,12 @@ turn_off_all_appliances:
     - service: switch.turn_off
       target:
         entity_id:
-          - switch.kahvinkeitin
           - switch.tp_link_smart_plug_5f83
           - switch.living_room_entertainment_switch
     - service: input_boolean.turn_off
       target:
         entity_id:
           - input_boolean.bedroom_humidifier_automations
-          - input_boolean.coffee_maker_loaded
     - service: notify.syslog_info
       data:
         message: "Yleistekniikka sammutettu."
