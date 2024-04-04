@@ -24,7 +24,6 @@ cloud:
 conversation:
 history:
 logbook:
-map:
 sun:
 system_health:
 device_tracker:
@@ -49,7 +48,6 @@ input_boolean: !include config/input_boolean.yaml
 input_number: !include config/input_number.yaml
 input_select: !include config/input_select.yaml
 notify: !include config/notify.yaml
-panel_iframe: !include config/panel_iframe.yaml
 alarm_control_panel: !include config/alarm_control_panel.yaml
 calendar: !include config/calendar.yaml
 prometheus: !include config/prometheus.yaml

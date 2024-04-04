@@ -1,8 +1,0 @@
-meteoalarm_frame:
-  title: "Meteoalarm"
-  url: "https://meteoalarm.org/en/?view=list&z=8.812495720945435&lon=22.381691&lat=60.436996"
-  icon: mdi:weather-windy
-blitzortung_frame:
-  title: "Ukkostutka"
-  url: "http://map.blitzortung.org/#8.51/60.5335/22.3352"
-  icon: mdi:flash
