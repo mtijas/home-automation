@@ -2,8 +2,6 @@ automations_card:
   name: "Automaatiot"
   entities:
     - automation.kotoa_poistumisautomaatiot
-    - automation.kahvin_valmistumisilmoitus
-    - automation.kahvinkeittimen_sammutusajastin
     - automation.lampotilailmoitus
     - automation.kodin_tilavalo
 all_batteries:

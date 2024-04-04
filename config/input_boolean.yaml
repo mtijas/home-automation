@@ -1,6 +1,3 @@
-coffee_maker_loaded:
-  name: "Kahvinkeitin on ladattu"
-  icon: mdi:coffee-to-go
 show_alarm_buttons:
   name: "Näytä hälytyspainikkeet"
   initial: off

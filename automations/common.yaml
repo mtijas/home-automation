@@ -20,8 +20,6 @@
       to: "Away"
   action:
     - service: switch.turn_off
-      entity_id: switch.kahvinkeitin
-    - service: switch.turn_off
       entity_id: switch.tp_link_smart_plug_5f83
 
 - alias: "Ensure bedroom humidifier hysteresis when increasing start point"
