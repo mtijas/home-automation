@@ -12,16 +12,6 @@
     - service: media_player.media_stop
       entity_id: media_player.olohuone
 
-- id: away_mode_switches_turn_off
-  alias: "Turn off switches on away mode"
-  trigger:
-    - platform: state
-      entity_id: input_select.home_mode
-      to: "Away"
-  action:
-    - service: switch.turn_off
-      entity_id: switch.tp_link_smart_plug_5f83
-
 - id: start_charging_living_room_tablet
   alias: "Olohuoneen tabletin latauksen käynnistys"
   trigger:

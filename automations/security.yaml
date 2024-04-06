@@ -12,17 +12,6 @@
       data:
         option: "Automatic"
 
-# - id: stop_emerg_mode_automations
-#   alias: "Stopping emergency mode"
-#   trigger:
-#     - platform: state
-#       entity_id: input_select.home_mode
-#       from: "Emergency"
-#   action:
-#     - service: light.turn_off
-#       target:
-#         entity_id: light.yopoydat
-
 - id: automated_disarm_on_awake
   alias: "Automaattinen disarm kun siirrytään awake-tilaan"
   trigger:
