@@ -1,19 +1,4 @@
 homeassistant:
-##############################
-# COMPONENTS CONFIGURED HERE #
-##############################
-
-# lovelace: DEPRECATED
-#   mode: yaml
-#   resources:
-#     - url: /local/button-card.js
-#       type: module
-#     - url: /local/plan-coordinates.js
-#       type: module
-#     - url: /local/battery-state-card.js
-#       type: module
-#     - url: /local/slider-entity-row.js
-#       type: module
 
 #############################
 # COMPONENTS WITHOUT CONFIG #
