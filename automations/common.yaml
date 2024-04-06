@@ -22,34 +22,6 @@
     - service: switch.turn_off
       entity_id: switch.tp_link_smart_plug_5f83
 
-- alias: "Ensure bedroom humidifier hysteresis when increasing start point"
-  trigger:
-    - platform: state
-      entity_id: input_number.bedroom_humidifier_start_point
-  condition:
-    - condition: template
-      value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
-  action:
-    - service: input_number.set_value
-      target:
-        entity_id: input_number.bedroom_humidifier_stop_point
-      data:
-        value: "{{ states('input_number.bedroom_humidifier_start_point') | int + 2 }}"
-
-- alias: "Ensure bedroom humidifier hysteresis when decreasing stop point"
-  trigger:
-    - platform: state
-      entity_id: input_number.bedroom_humidifier_stop_point
-  condition:
-    - condition: template
-      value_template: "{{ states('input_number.bedroom_humidifier_stop_point') | int - states('input_number.bedroom_humidifier_start_point') | int < 2 }}"
-  action:
-    - service: input_number.set_value
-      target:
-        entity_id: input_number.bedroom_humidifier_start_point
-      data:
-        value: "{{ states('input_number.bedroom_humidifier_stop_point') | int - 2 }}"
-
 - id: start_charging_living_room_tablet
   alias: "Olohuoneen tabletin latauksen käynnistys"
   trigger:
@@ -97,23 +69,3 @@
     - service: switch.turn_off
       target:
         entity_id: switch.telldus_socket_and_energy_meter
-
-- alias: "Turn off living room HiFi"
-  trigger:
-    - platform: time_pattern
-      minutes: "/2"
-  condition:
-    - condition: state
-      entity_id: switch.living_room_entertainment_switch
-      state: "on"
-      for:
-        minutes: 15
-    - condition: state
-      entity_id: binary_sensor.living_room_hifi_on
-      state: "off"
-      for:
-        minutes: 15
-  action:
-    - service: switch.turn_off
-      target:
-        entity_id: switch.living_room_entertainment_switch

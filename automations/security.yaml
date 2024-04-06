@@ -248,27 +248,6 @@
       data:
         option: "Away"
 
-- id: returning_home_automation
-  alias: "Kotiin palaamisen automaatiot"
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.ha_alarm
-      to: "disarmed"
-      from: "pending"
-  condition:
-    - condition: state
-      entity_id: group.master_warning
-      state: "off"
-  action:
-    - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
-      data:
-        option: "Awake"
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.motion_notify
-
 - id: perimeter_notifications
   alias: "Kuori-ilmoitukset"
   trigger:
