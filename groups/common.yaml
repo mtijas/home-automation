@@ -1,31 +1,6 @@
-automations_card:
-  name: "Automaatiot"
-  entities:
-    - automation.kotoa_poistumisautomaatiot
-    - automation.lampotilailmoitus
-    - automation.kodin_tilavalo
-all_batteries:
-  name: "Paristot"
-  entities:
-    - sensor.eteisen_liiketunnistimen_paristo
-    - sensor.keittion_liiketunnistimen_paristo
-    - sensor.pesuhuoneen_liiketunnistimen_paristo
-    - sensor.olohuoneen_himmenninkytkin_battery_level
-    - sensor.mh_himmenninkytkin_1_battery_level
-    - sensor.etuoven_anturin_paristo
-    - sensor.parvekkeen_oven_anturin_paristo
 people:
   name: "Ihmiset"
   icon: mdi:home-account
   entities:
     - person.markus
     - person.veera
-all_interior_lights:
-  name: "Kaikkien huoneiden valot"
-  entities:
-    - light.eteinen
-    - light.keittio
-    - light.olohuone
-    - light.makuuhuone
-    - light.pesuhuone
-    - light.vaatehuone

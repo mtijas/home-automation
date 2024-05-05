@@ -6,11 +6,6 @@
       to: "Emergency"
   action:
     - service: script.turn_off_all_appliances
-    - service: input_select.select_option
-      target:
-        entity_id: input_select.light_base_mode_living_room
-      data:
-        option: "Automatic"
 
 - id: automated_disarm_on_awake
   alias: "Automaattinen disarm kun siirrytään awake-tilaan"
@@ -218,25 +213,6 @@
       target:
         entity_id: script.reverse_emergency_state
 
-- id: leaving_home_automation
-  alias: "Kotoa poistumisautomaatiot"
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.ha_alarm
-      to: "armed_away"
-      for:
-        seconds: 10
-  condition:
-    - condition: state
-      entity_id: group.master_warning
-      state: "off"
-  action:
-    - service: input_select.select_option
-      target:
-        entity_id: input_select.home_mode
-      data:
-        option: "Away"
-
 - id: perimeter_notifications
   alias: "Kuori-ilmoitukset"
   trigger:
@@ -261,78 +237,6 @@
       data:
         topic: "notify/cmd"
         payload: "event,doorbell"
-        qos: 1
-        retain: 0
-
-- id: activate_master_caution
-  alias: "Activate Master Caution"
-  trigger:
-    - platform: state
-      entity_id: group.master_caution
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: input_boolean.master_caution_triggered
-      state: "off"
-  action:
-    - service: mqtt.publish
-      data:
-        topic: "notify/cmd"
-        payload: "event,master_caution"
-        qos: 1
-        retain: 0
-    - service: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.master_caution_triggered
-    - service: notify.syslog_critical
-      data:
-        message: "Master Caution!"
-
-- id: clear_master_caution_on_ack
-  alias: "Clears Master Caution on ack if group is safe"
-  trigger:
-    - platform: state
-      entity_id: input_boolean.ack_master_caution
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: group.master_caution
-      state: "off"
-  action:
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.master_caution_triggered
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.ack_master_caution
-    - service: mqtt.publish
-      data:
-        topic: "notify/cmd"
-        payload: "event,clear"
-        qos: 1
-        retain: 0
-
-- id: clear_master_caution_if_acked_and_group_safe
-  alias: "Clears Master Caution if acked and group goes safe"
-  trigger:
-    - platform: state
-      entity_id: group.master_caution
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.ack_master_caution
-      state: "on"
-  action:
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.master_caution_triggered
-    - service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.ack_master_caution
-    - service: mqtt.publish
-      data:
-        topic: "notify/cmd"
-        payload: "event,clear"
         qos: 1
         retain: 0
 

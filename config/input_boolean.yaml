@@ -24,13 +24,6 @@ bedroom_humidifier_automations:
 bedroom_humidifier_empty:
   name: "MH ilmankostutin tyhjä"
 
-master_caution_triggered:
-  name: "Master Caution"
-  icon: mdi:alert-circle-outline
-ack_master_caution:
-  name: "Varoitukset kuitattu"
-  icon: mdi:check-all
-  initial: off
 guests:
   name: "Guests"
   icon: mdi:human-capacity-increase
