@@ -1,13 +1,3 @@
-- id: good_morning_msg
-  alias: "Lämpötilailmoitus"
-  trigger:
-    - at: "06:20:00"
-      platform: time
-  action:
-    - service: notify.main_mobile_phones
-      data:
-        message: 'Hyvää huomenta! Ulkoilman lämpötila on {{ states("sensor.ruuvitag_ba33_temperature_2") }} °C, tuulee {{ states("sensor.openweathermap_wind_speed") }} m/s ja {{ states("sensor.openweathermap_weather") }}.'
-
 - id: notification_heartbeat
   alias: "Heartbeat-viesti"
   trigger:
