@@ -41,7 +41,7 @@ reverse_emergency_state:
         option: "Awake"
     - service: script.sonos_tts_notification
       data:
-        player_location: "media_player.olohuone"
+        player_location: "media_player.makuuhuoneen_sonos"
         message_str: >
           Hälytykset kuitattu.
     - service: notify.all_devices
@@ -70,7 +70,7 @@ raise_alarm:
         entity_id: "{{ alarm_boolean }}"
     - service: script.sonos_tts_notification
       data:
-        player_location: "media_player.olohuone"
+        player_location: "media_player.makuuhuoneen_sonos"
         message_str: "{{ alarm_message }}"
     - service: notify.all_devices
       data:

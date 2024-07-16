@@ -2,7 +2,7 @@ test_living_room_announcer:
   sequence:
     - service: script.sonos_tts_notification
       data:
-        player_location: "media_player.olohuone"
+        player_location: "media_player.makuuhuoneen_sonos"
         message_str: >
           Kello on {{ now().strftime("%H:%M") }}.
 

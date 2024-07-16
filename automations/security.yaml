@@ -48,7 +48,7 @@
     condition: or
     conditions:
       - condition: state
-        entity_id: binary_sensor.etuovi_door_window_2
+        entity_id: binary_sensor.etuovi_contact
         state: "on"
   action:
     - service: notify.main_mobile_phones
@@ -89,7 +89,7 @@
   alias: "Armed home -tilan hälytyksen aktivointilogiikka"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi_door_window_2
+      entity_id: binary_sensor.etuovi_contact
       to: "on"
   condition:
     - condition: state
@@ -104,7 +104,7 @@
   alias: "Armed night -tilan hälytyksen aktivointilogiikka"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi_door_window_2
+      entity_id: binary_sensor.etuovi_contact
       to: "on"
   condition:
     - condition: state
@@ -119,7 +119,7 @@
   alias: "Armed away -tilan hälytyksen aktivointilogiikka"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi_door_window_2
+      entity_id: binary_sensor.etuovi_contact
       to: "on"
   condition:
     - condition: state
@@ -217,10 +217,10 @@
   alias: "Kuori-ilmoitukset"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi_door_window_2
+      entity_id: binary_sensor.etuovi_contact
       to: "on"
     - platform: state
-      entity_id: binary_sensor.parvekkeen_ovi_sensor_state_door_window_2
+      entity_id: binary_sensor.takaovi_contact
       to: "on"
   condition:
     - condition: state

@@ -23,34 +23,3 @@
           'Olohuoneessa on {{ states("sensor.living_room_bt_sensor_temperature") }} °C ja suhteellinen kosteus
           {{ states("sensor.living_room_bt_sensor_humidity") }} %. Murtohälyttimen tila:
           {{ states("alarm_control_panel.ha_alarm") }}, kuorivalvonta: {{ states("input_boolean.perimeter_notifications") }}, liikeilmoitus: {{ states("input_boolean.motion_notify") }}.'
-
-- id: ha_start
-  alias: "Home Assistantin käynnistysilmoitus"
-  trigger:
-    - platform: homeassistant
-      # Event can also be 'shutdown'
-      event: start
-  condition:
-    - condition: state
-      entity_id: group.people
-      state: "home"
-  action:
-    - service: script.sonos_tts_notification
-      data:
-        player_location: "media_player.olohuone"
-        message_str: >
-          Kotiautomaatio käynnistetty.
-
-- id: burglar_alarm_disarm_notification
-  alias: "Burglar alarm disarm notification"
-  trigger:
-    - entity_id: alarm_control_panel.ha_alarm
-      platform: state
-      to: "disarmed"
-      from: "pending"
-  action:
-    - service: script.sonos_tts_notification
-      data:
-        player_location: "media_player.olohuone"
-        message_str: >
-          Murtohälytin pois.

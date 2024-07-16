@@ -2,19 +2,12 @@
   alias: "Ovien ja ikkunoiden aukiolovalvonta"
   trigger:
     - platform: state
-      entity_id: binary_sensor.etuovi_door_window_2
+      entity_id: binary_sensor.etuovi_contact
       to: "on"
       for:
         minutes: 15
       variables:
         human_name: "Etuovi"
-    - platform: state
-      entity_id: binary_sensor.valiovi_sensor_state_door_window
-      to: "on"
-      for:
-        minutes: 15
-      variables:
-        human_name: "Väliovi"
   action:
     - choose:
         - conditions:
@@ -22,7 +15,7 @@
           sequence:
             - service: script.sonos_tts_notification
               data:
-                player_location: "media_player.olohuone"
+                player_location: "media_player.makuuhuoneen_sonos"
                 message_str: >
                   "{{ human_name }} on jäänyt auki."
       default:
