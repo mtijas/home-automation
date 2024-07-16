@@ -24,7 +24,6 @@ energy:
 # COMPONENTS WITH EXTERNAL CONFIG #
 ###################################
 
-zone: !include config/zone.yaml
 mqtt: !include config/mqtt.yaml
 remote: !include config/remote.yaml
 binary_sensor: !include config/binary_sensor.yaml
