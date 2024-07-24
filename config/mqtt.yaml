@@ -1,6 +1,6 @@
 switch:
-  - name: "Living Room Entertainment Plug Switch"
-    unique_id: "living-room-entertainment-power-plug"
+  - name: "Shellyplug S C111E6 Switch"
+    unique_id: "shellyplug-s-c111e6-switch"
     command_topic: "shellies/shellyplug-s-C111E6/relay/0/command"
     state_topic: "shellies/shellyplug-s-C111E6/relay/0"
     payload_off: "off"
@@ -47,16 +47,16 @@ sensor:
   - name: "Event topic"
     state_topic: "notify/cmd"
 
-  - name: "Living Room Entertainment Plug Power"
-    unique_id: "living-room-entertainment-plug-power"
+  - name: "Shellyplug S C111E6 Power"
+    unique_id: "shellyplug-s-c111e6-power"
     state_topic: "shellies/shellyplug-s-C111E6/relay/0/power"
     unit_of_measurement: "W"
     force_update: "true"
     device_class: "power"
     state_class: measurement
 
-  - name: "Living Room Entertainment Plug Temp"
-    unique_id: "living-room-entertainment-plug-temp"
+  - name: "Shellyplug S C111E6 Temp"
+    unique_id: "shellyplug-s-c111e6-temp"
     state_topic: "shellies/shellyplug-s-C111E6/temperature"
     unit_of_measurement: "°C"
     force_update: "true"
