@@ -7,14 +7,14 @@ living_room_camera_to_wall:
       data:
         preset: "001"
         move_mode: GotoPreset
-living_room_camera_to_window:
-  alias: Living Room Camera To Window
+living_room_camera_to_kitchen:
+  alias: Living Room Camera To Kitchen
   sequence:
     - service: onvif.ptz
       target:
         entity_id: camera.olohuone_profile000_mainstream
       data:
-        preset: "000"
+        preset: "002"
         move_mode: GotoPreset
 living_room_camera_to_entertainment:
   alias: Living Room Camera To Entertainment Area
@@ -23,7 +23,7 @@ living_room_camera_to_entertainment:
       target:
         entity_id: camera.olohuone_profile000_mainstream
       data:
-        preset: "003"
+        preset: "000"
         move_mode: GotoPreset
 hallway_camera_to_front_door:
   alias: Hallway Camera To Front Door
