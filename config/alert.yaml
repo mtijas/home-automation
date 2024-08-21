@@ -14,7 +14,8 @@ panic_alarm:
   can_acknowledge: True
   skip_first: False
   notifiers:
-    - ALL_DEVICES
+    - mobile_app_iphone_markus
+    - mobile_app_iphone_12_veera
 
 fire_alarm:
   name: "PALOHÄLYTYS!"
@@ -32,7 +33,8 @@ fire_alarm:
   can_acknowledge: True
   skip_first: False
   notifiers:
-    - ALL_DEVICES
+    - mobile_app_iphone_markus
+    - mobile_app_iphone_12_veera
 
 burglar_alarm:
   name: "MURTOHÄLYTYS!"
@@ -50,4 +52,5 @@ burglar_alarm:
   can_acknowledge: True
   skip_first: False
   notifiers:
-    - ALL_DEVICES
+    - mobile_app_iphone_markus
+    - mobile_app_iphone_12_veera

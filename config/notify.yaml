@@ -2,14 +2,15 @@
   platform: group
   services:
     - service: mobile_app_ipad
+    - service: mobile_app_ipad_markus
     - service: mobile_app_iphone_12_veera
-    - service: mobile_app_iphone_markus_2
+    - service: mobile_app_iphone_markus
 
 - name: main_mobile_phones
   platform: group
   services:
     - service: mobile_app_iphone_12_veera
-    - service: mobile_app_iphone_markus_2
+    - service: mobile_app_iphone_markus
 
 - name: syslog_info
   platform: syslog
