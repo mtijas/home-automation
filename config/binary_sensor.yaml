@@ -62,14 +62,6 @@
   country: "finland"
   province: "Varsinais-Suomi"
   language: "fi-FI"
-- platform: trend
-  sensors:
-    pressure_trend_storm:
-      entity_id: sensor.cloakroom_pressure
-      sample_duration: 7200
-      min_gradient: -0.00055
-      max_samples: 480
-      friendly_name: "Myrsky tulossa"
 - platform: threshold
   entity_id: sensor.pressure_hourly_trend
   name: "Sää huononee nopeasti"
