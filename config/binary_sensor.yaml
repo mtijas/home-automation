@@ -63,11 +63,6 @@
   province: "Varsinais-Suomi"
   language: "fi-FI"
 - platform: threshold
-  entity_id: sensor.pressure_hourly_trend
-  name: "Sää huononee nopeasti"
-  lower: -1.45
-  hysteresis: 0.45 #On when under 1.9 and off when over 1
-- platform: threshold
   entity_id: sensor.el_price_rank
   name: "Sähkön suhteellinen hinta korkea"
   upper: 18.5
