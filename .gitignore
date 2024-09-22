@@ -24,5 +24,7 @@
 !python_scripts/**
 !lovelace-default
 !lovelace-default/**
+!custom_components
+!custom_components/**
 secrets.yaml
 known_devices.yaml
