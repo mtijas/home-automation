@@ -44,7 +44,7 @@ sensor:
     value_template: "{{ ((value | float) * 100) - 200 }}"
     unit_of_measurement: "%"
 
-  - name: "Event topic"
+  - name: "Command topic"
     state_topic: "notify/cmd"
 
   - name: "Shellyplug S C111E6 Power"

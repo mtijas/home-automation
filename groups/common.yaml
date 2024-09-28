@@ -1,6 +1,0 @@
-people:
-  name: "Ihmiset"
-  icon: mdi:home-account
-  entities:
-    - person.markus
-    - person.veera

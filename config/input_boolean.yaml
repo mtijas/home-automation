@@ -3,15 +3,6 @@ show_alarm_buttons:
   initial: off
   icon: mdi:alert-outline
 
-burglar_alarm_raised:
-  name: "Murtohälytys"
-  initial: off
-fire_alarm_raised:
-  name: "Palohälytys"
-  initial: off
-panic_alarm_raised:
-  name: "Paniikkihälytys"
-  initial: off
 perimeter_notifications:
   name: "Kuorivalvonta"
   initial: on
