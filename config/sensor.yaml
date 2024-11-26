@@ -34,11 +34,7 @@
     el_price:
       friendly_name: "Sähkön hinta nyt"
       unit_of_measurement: "c/kWh"
-      value_template: "{{ state_attr('sensor.spot_hinta_fi', 'PriceWithTax') | float * 100 }}"
-    el_price_rank:
-      friendly_name: "Kuluvan tunnin 'rank'"
-      value_template: "{{ state_attr('sensor.spot_hinta_fi', 'Rank') | int }}"
-      unit_of_measurement: "/24"
+      value_template: "{{ states('sensor.shf_electricity_price_now') | float * 100 }}"
     electricity_saving_requirement:
       friendly_name: "Sähkön säästötarve"
       value_template: "{{ ((states('sensor.el_price') | float(0.0)) / 8) | round(0, 'floor') }}"
@@ -46,13 +42,3 @@
   display_options:
     - "time"
     - "date"
-
-- platform: rest
-  scan_interval: 90 # Every 1,5 minutes should be more than enough
-  name: "spot_hinta_fi"
-  resource: https://api.spot-hinta.fi/JustNow
-  method: GET
-  force_update: true
-  json_attributes:
-    - PriceWithTax
-    - Rank

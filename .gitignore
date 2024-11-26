@@ -26,5 +26,7 @@
 !lovelace-default/**
 !custom_components
 !custom_components/**
+!packages
+!packages/**
 secrets.yaml
 known_devices.yaml
