@@ -36,6 +36,5 @@ notify: !include config/notify.yaml
 alarm_control_panel: !include config/alarm_control_panel.yaml
 calendar: !include config/calendar.yaml
 prometheus: !include config/prometheus.yaml
-switch: !include config/switch.yaml
 automation ui: !include automations.yaml
 script: !include scripts.yaml

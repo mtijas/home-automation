@@ -20,24 +20,7 @@
         minutes: 15
       value_template: "{{ is_state('binary_sensor.etuovi_contact', 'on') }}"
       device_class: "problem"
-    electric_supply_voltage_low:
-      value_template: "{{ (states('sensor.asustor_input_voltage') | float(0.0)) < 207 }}"
-      friendly_name: "Sähköverkon jännite alhainen"
-      device_class: "problem"
-      delay_on:
-        seconds: 20
-    electric_supply_voltage_high:
-      value_template: "{{ (states('sensor.asustor_input_voltage') | float(0.0)) > 253 }}"
-      friendly_name: "Sähköverkon jännite korkea"
-      device_class: "problem"
-      delay_on:
-        seconds: 20
 - platform: meteoalarm
   country: "finland"
   province: "Varsinais-Suomi"
   language: "fi-FI"
-- platform: threshold
-  entity_id: sensor.el_price_rank
-  name: "Sähkön suhteellinen hinta korkea"
-  upper: 18.5
-  hysteresis: 0.1

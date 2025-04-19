@@ -31,13 +31,6 @@
         {% else %}
           failed
         {% endif %}
-    el_price:
-      friendly_name: "Sähkön hinta nyt"
-      unit_of_measurement: "c/kWh"
-      value_template: "{{ states('sensor.shf_electricity_price_now') | float * 100 }}"
-    electricity_saving_requirement:
-      friendly_name: "Sähkön säästötarve"
-      value_template: "{{ ((states('sensor.el_price') | float(0.0)) / 8) | round(0, 'floor') }}"
 - platform: time_date
   display_options:
     - "time"
