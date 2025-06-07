@@ -1,17 +1,17 @@
-- plant:
-    olohuoneen_puu:
-      sensors:
-        moisture: sensor.puu_moisture
-        temperature: sensor.puu_temperature
-        conductivity: sensor.puu_conductivity
-        brightness: sensor.puu_illuminance
-      min_moisture: 20
-      min_conductivity: 200
-    hapsukukka:
-      sensors:
-        moisture: sensor.hapsukukka_moisture
-        temperature: sensor.hapsukukka_temperature
-        conductivity: sensor.hapsukukka_conductivity
-        brightness: sensor.hapsukukka_illuminance
-      min_moisture: 10
-      min_conductivity: 20
+plant:
+  olohuoneen_puu:
+    sensors:
+      moisture: sensor.puu_moisture
+      temperature: sensor.puu_temperature
+      conductivity: sensor.puu_conductivity
+      brightness: sensor.puu_illuminance
+    min_moisture: 20
+    min_conductivity: 200
+  hapsukukka:
+    sensors:
+      moisture: sensor.hapsukukka_moisture
+      temperature: sensor.hapsukukka_temperature
+      conductivity: sensor.hapsukukka_conductivity
+      brightness: sensor.hapsukukka_illuminance
+    min_moisture: 10
+    min_conductivity: 20
