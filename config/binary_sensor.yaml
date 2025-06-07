@@ -24,7 +24,7 @@
       friendly_name: "Kuivausrumpu on valmis"
       delay_on:
         minutes: 3
-      value_template: "{{ (states('sensor.kuivausrumpu_switch_0_power')|float(0.0) < 5) and (is_state('switch.kuivausrumpu_switch_0', 'on')) }}"
+      value_template: "{{ (states('sensor.kuivausrumpu_switch_0_power')|float(0.0) < 120) and (is_state('switch.kuivausrumpu_switch_0', 'on')) }}"
     washing_machine_finished:
       friendly_name: "Pyykkikone on valmis"
       delay_on:
