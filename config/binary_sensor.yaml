@@ -1,25 +1,5 @@
 - platform: template
   sensors:
-    all_motion:
-      device_class: motion
-      value_template: "{{ is_state('group.all_motion', 'on') }}"
-    all_doors:
-      device_class: door
-      value_template: "{{ is_state('group.all_doors', 'on') }}"
-    living_room_particle_alarm:
-      value_template: "{{ (states('sensor.particulate_matter_2_5um_concentration') | float(0.0)) > 150 }}"
-      friendly_name: "Olohuoneen hiukkashälytys"
-      delay_on:
-        minutes: 1
-      delay_off:
-        minutes: 2
-      device_class: "problem"
-    front_door_open_alarm:
-      friendly_name: "Etuovi on jäänyt auki"
-      delay_on:
-        minutes: 15
-      value_template: "{{ is_state('binary_sensor.etuovi_contact', 'on') }}"
-      device_class: "problem"
     tumble_dryer_finished:
       friendly_name: "Kuivausrumpu on valmis"
       delay_on:
