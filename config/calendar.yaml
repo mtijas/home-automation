@@ -1,8 +1,0 @@
-- platform: caldav
-  url: !secret pilvi_caldav_url
-  username: !secret pilvi_caldav_user
-  password: !secret pilvi_caldav_pass
-  custom_calendars:
-    - name: "Perhe"
-      calendar: "Perhe"
-      search: ".*"

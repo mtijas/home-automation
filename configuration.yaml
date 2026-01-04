@@ -34,7 +34,6 @@ input_number: !include config/input_number.yaml
 input_select: !include config/input_select.yaml
 notify: !include config/notify.yaml
 alarm_control_panel: !include config/alarm_control_panel.yaml
-calendar: !include config/calendar.yaml
 prometheus: !include config/prometheus.yaml
 plant: !include config/plant.yaml
 automation ui: !include automations.yaml
