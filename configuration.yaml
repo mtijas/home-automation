@@ -30,7 +30,6 @@ mqtt: !include config/mqtt.yaml
 binary_sensor: !include config/binary_sensor.yaml
 sensor: !include config/sensor.yaml
 input_boolean: !include config/input_boolean.yaml
-input_number: !include config/input_number.yaml
 input_select: !include config/input_select.yaml
 notify: !include config/notify.yaml
 alarm_control_panel: !include config/alarm_control_panel.yaml

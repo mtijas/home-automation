@@ -10,10 +10,6 @@ perimeter_notifications:
 motion_notify:
   name: "Liikeilmoitus"
   icon: mdi:bell-outline
-bedroom_humidifier_automations:
-  name: "MH ilmankostutuksen automatiikka"
-bedroom_humidifier_empty:
-  name: "MH ilmankostutin tyhjä"
 
 guests:
   name: "Guests"
